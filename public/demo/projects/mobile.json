@@ -1,0 +1,83 @@
+{
+  "meta": {
+    "project_id": "mobile_app_analysis",
+    "name": "Mobile App User Experience",
+    "source": "App Store Reviews",
+    "date_range": ["2024-01-01", "2024-12-31"],
+    "languages": ["en", "it", "es"],
+    "totals": { "reviews": 8750, "clusters": 6 }
+  },
+  "aggregates": {
+    "sentiment_mean": 0.58,
+    "sentiment_dist": { "neg": 0.25, "neu": 0.35, "pos": 0.4 },
+    "rating_hist": [[1, 890], [2, 1200], [3, 1850], [4, 2400], [5, 2410]]
+  },
+  "clusters": [
+    {
+      "id": "app_crashes",
+      "label": "Crash e Stabilità",
+      "size": 2100,
+      "share": 0.24,
+      "sentiment": -0.78,
+      "trend": [
+        { "week": "2024-W01", "count": 65 },
+        { "week": "2024-W02", "count": 72 },
+        { "week": "2024-W03", "count": 58 }
+      ],
+      "keywords": ["crash", "freeze", "bug", "unstable", "error"],
+      "summary": "Problemi critici di stabilità che impattano l'esperienza utente",
+      "strengths": ["Team di sviluppo reattivo", "Aggiornamenti frequenti"],
+      "weaknesses": ["Crash frequenti", "Perdita di dati", "Performance scadenti"],
+      "opportunity_score": 0.95,
+      "quotes": [
+        { "id": "q1", "text": "App crashes every time I try to save", "rating": 1, "lang": "en" },
+        { "id": "q2", "text": "Si blocca continuamente, inutilizzabile", "rating": 1, "lang": "it" }
+      ],
+      "co_occurs": ["performance_issues", "user_interface"]
+    },
+    {
+      "id": "user_interface",
+      "label": "Interfaccia Utente",
+      "size": 1890,
+      "share": 0.22,
+      "sentiment": 0.65,
+      "trend": [
+        { "week": "2024-W01", "count": 48 },
+        { "week": "2024-W02", "count": 52 },
+        { "week": "2024-W03", "count": 45 }
+      ],
+      "keywords": ["design", "intuitive", "beautiful", "easy", "navigation"],
+      "summary": "Design apprezzato ma con margini di miglioramento nella navigazione",
+      "strengths": ["Design moderno", "Colori piacevoli", "Layout pulito"],
+      "weaknesses": ["Navigazione confusa", "Troppi passaggi", "Icone poco chiare"],
+      "opportunity_score": 0.58,
+      "quotes": [
+        { "id": "q3", "text": "Beautiful design but hard to navigate", "rating": 3, "lang": "en" },
+        { "id": "q4", "text": "Interfaccia bella ma complicata", "rating": 3, "lang": "it" }
+      ],
+      "co_occurs": ["app_crashes", "feature_requests"]
+    }
+  ],
+  "personas": [
+    {
+      "id": "power_user",
+      "name": "Utente Esperto",
+      "share": 0.4,
+      "goals": ["Efficienza", "Funzionalità avanzate", "Personalizzazione"],
+      "pains": ["Limitazioni", "Crash", "Lentezza"],
+      "clusters": ["app_crashes", "feature_requests"],
+      "quotes": ["Need more advanced features", "App is too basic"],
+      "channels": ["Forum tecnici", "Beta testing", "Feedback diretto"]
+    },
+    {
+      "id": "casual_user",
+      "name": "Utente Occasionale",
+      "share": 0.35,
+      "goals": ["Semplicità", "Affidabilità", "Velocità"],
+      "pains": ["Complessità", "Crash", "Confusione"],
+      "clusters": ["user_interface", "app_crashes"],
+      "quotes": ["Just want it to work", "Too complicated"],
+      "channels": ["App store", "Raccomandazioni", "Pubblicità"]
+    }
+  ]
+}

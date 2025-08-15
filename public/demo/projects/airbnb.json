@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "project_id": "airbnb_analysis",
+    "name": "Airbnb Host Experience Analysis",
+    "source": "Airbnb Reviews",
+    "date_range": ["2024-01-01", "2024-12-31"],
+    "languages": ["en", "it", "es", "fr"],
+    "totals": { "reviews": 15420, "clusters": 8 }
+  },
+  "aggregates": {
+    "sentiment_mean": 0.72,
+    "sentiment_dist": { "neg": 0.15, "neu": 0.25, "pos": 0.6 },
+    "rating_hist": [[1, 120], [2, 280], [3, 890], [4, 3200], [5, 10930]]
+  },
+  "clusters": [
+    {
+      "id": "location_convenience",
+      "label": "Posizione e Convenienza",
+      "size": 3420,
+      "share": 0.22,
+      "sentiment": 0.85,
+      "trend": [
+        { "week": "2024-W01", "count": 45 },
+        { "week": "2024-W02", "count": 52 },
+        { "week": "2024-W03", "count": 48 }
+      ],
+      "keywords": ["location", "convenient", "metro", "walking", "nearby"],
+      "summary": "Gli ospiti apprezzano molto la posizione strategica e la convenienza dei trasporti",
+      "strengths": ["Vicinanza ai trasporti", "Zona sicura", "Molti servizi nelle vicinanze"],
+      "weaknesses": ["Rumore del traffico", "Parcheggio limitato"],
+      "opportunity_score": 0.78,
+      "quotes": [
+        { "id": "q1", "text": "Perfect location, walking distance to everything!", "rating": 5, "lang": "en" },
+        { "id": "q2", "text": "La posizione è fantastica, metro a 2 minuti", "rating": 5, "lang": "it" }
+      ],
+      "co_occurs": ["cleanliness", "host_communication"]
+    },
+    {
+      "id": "cleanliness_issues",
+      "label": "Problemi di Pulizia",
+      "size": 1890,
+      "share": 0.12,
+      "sentiment": -0.65,
+      "trend": [
+        { "week": "2024-W01", "count": 28 },
+        { "week": "2024-W02", "count": 35 },
+        { "week": "2024-W03", "count": 31 }
+      ],
+      "keywords": ["dirty", "cleaning", "bathroom", "kitchen", "stains"],
+      "summary": "Problemi ricorrenti con la pulizia degli spazi comuni e bagni",
+      "strengths": ["Feedback costruttivo", "Ospiti comprensivi"],
+      "weaknesses": ["Standard di pulizia inconsistenti", "Mancanza di controlli regolari"],
+      "opportunity_score": 0.92,
+      "quotes": [
+        { "id": "q3", "text": "The bathroom was not properly cleaned", "rating": 2, "lang": "en" },
+        { "id": "q4", "text": "Cucina sporca, piatti non lavati", "rating": 1, "lang": "it" }
+      ],
+      "co_occurs": ["host_responsiveness", "value_for_money"]
+    },
+    {
+      "id": "host_communication",
+      "label": "Comunicazione Host",
+      "size": 2890,
+      "share": 0.19,
+      "sentiment": 0.78,
+      "trend": [
+        { "week": "2024-W01", "count": 42 },
+        { "week": "2024-W02", "count": 48 },
+        { "week": "2024-W03", "count": 45 }
+      ],
+      "keywords": ["responsive", "helpful", "communication", "quick", "friendly"],
+      "summary": "Host molto comunicativi e disponibili per assistenza",
+      "strengths": ["Risposta rapida", "Informazioni dettagliate", "Disponibilità h24"],
+      "weaknesses": ["Occasionali ritardi nelle risposte", "Barriere linguistiche"],
+      "opportunity_score": 0.65,
+      "quotes": [
+        { "id": "q5", "text": "Host was super responsive and helpful!", "rating": 5, "lang": "en" },
+        { "id": "q6", "text": "Comunicazione perfetta, sempre disponibile", "rating": 5, "lang": "it" }
+      ],
+      "co_occurs": ["location_convenience", "amenities"]
+    },
+    {
+      "id": "value_for_money",
+      "label": "Rapporto Qualità-Prezzo",
+      "size": 2100,
+      "share": 0.14,
+      "sentiment": 0.45,
+      "trend": [
+        { "week": "2024-W01", "count": 32 },
+        { "week": "2024-W02", "count": 38 },
+        { "week": "2024-W03", "count": 35 }
+      ],
+      "keywords": ["price", "expensive", "worth", "value", "cost"],
+      "summary": "Opinioni miste sul rapporto qualità-prezzo",
+      "strengths": ["Buona posizione giustifica il prezzo", "Servizi inclusi"],
+      "weaknesses": ["Prezzo alto per la qualità", "Costi aggiuntivi non chiari"],
+      "opportunity_score": 0.82,
+      "quotes": [
+        { "id": "q7", "text": "A bit pricey but location makes up for it", "rating": 4, "lang": "en" },
+        { "id": "q8", "text": "Troppo caro per quello che offre", "rating": 2, "lang": "it" }
+      ],
+      "co_occurs": ["cleanliness_issues", "amenities"]
+    }
+  ],
+  "personas": [
+    {
+      "id": "business_traveler",
+      "name": "Viaggiatore Business",
+      "share": 0.35,
+      "goals": ["Efficienza", "Connettività", "Posizione centrale"],
+      "pains": ["Rumore", "WiFi lento", "Check-in complicato"],
+      "clusters": ["location_convenience", "host_communication"],
+      "quotes": ["Perfect for business trips", "Great location for meetings"],
+      "channels": ["Booking diretti", "App mobile", "Recensioni online"]
+    },
+    {
+      "id": "family_vacation",
+      "name": "Famiglia in Vacanza",
+      "share": 0.28,
+      "goals": ["Spazio", "Sicurezza", "Servizi per bambini"],
+      "pains": ["Pulizia", "Rumore", "Costi extra"],
+      "clusters": ["cleanliness_issues", "value_for_money"],
+      "quotes": ["Great space for kids", "Clean and safe environment"],
+      "channels": ["Ricerca online", "Raccomandazioni", "Social media"]
+    },
+    {
+      "id": "budget_conscious",
+      "name": "Viaggiatore Attento al Budget",
+      "share": 0.22,
+      "goals": ["Risparmio", "Essenzialità", "Trasparenza prezzi"],
+      "pains": ["Costi nascosti", "Qualità inconsistente"],
+      "clusters": ["value_for_money", "cleanliness_issues"],
+      "quotes": ["Good value for money", "No hidden fees please"],
+      "channels": ["Comparatori prezzi", "Offerte speciali", "Last minute"]
+    }
+  ]
+}
