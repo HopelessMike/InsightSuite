@@ -1,0 +1,622 @@
+{
+  "meta": {
+    "project_id": "mobile",
+    "name": "BCA Mobile (Google Play)",
+    "source": "Mendeley",
+    "date_range": [
+      "2023-12-24",
+      "2024-06-12"
+    ],
+    "languages": [
+      "id"
+    ],
+    "totals": {
+      "reviews": 10000,
+      "clusters": 27
+    },
+    "method": {
+      "sentiment": "xlm-roberta (CardiffNLP)",
+      "embedding": "voyage-3.5-lite",
+      "clustering": "hdbscan",
+      "llm": "claude-sonnet-4-20250514"
+    }
+  },
+  "aggregates": {
+    "sentiment_mean": -0.204,
+    "sentiment_dist": {
+      "neg": 0.539,
+      "neu": 0.13,
+      "pos": 0.331
+    },
+    "rating_hist": [
+      [
+        1,
+        3830
+      ],
+      [
+        2,
+        698
+      ],
+      [
+        3,
+        580
+      ],
+      [
+        4,
+        465
+      ],
+      [
+        5,
+        4427
+      ]
+    ]
+  },
+  "clusters": [
+    {
+      "id": "cluster_0",
+      "label": "Masalah Saldo dan Transaksi QRIS",
+      "size": 148,
+      "share": 0.074,
+      "sentiment": -0.764,
+      "keywords": [
+        "saya",
+        "saldo",
+        "di",
+        "bca",
+        "ada",
+        "transaksi",
+        "masuk",
+        "tidak",
+        "ini",
+        "bisa",
+        "ke",
+        "kenapa"
+      ],
+      "summary": "Keluhan utama terkait masalah saldo yang terpotong saat transaksi QRIS gagal namun dana tidak dikembalikan, transfer yang tidak masuk meski sudah terpotong, dan lambatnya penanganan customer service dalam menyelesaikan masalah pengembalian dana.",
+      "strengths": [],
+      "weaknesses": [
+        "Transaksi QRIS sering gagal namun saldo tetap terpotong",
+        "Dana yang hilang tidak dikembalikan atau proses pengembalian sangat lambat (hingga 1 bulan lebih)",
+        "Transfer masuk tidak tercatat di saldo meski mutasi menunjukkan dana masuk"
+      ]
+    },
+    {
+      "id": "cluster_1",
+      "label": "Masalah Verifikasi OTP dan Login",
+      "size": 192,
+      "share": 0.096,
+      "sentiment": -0.738,
+      "keywords": [
+        "otp",
+        "kode",
+        "bisa",
+        "kode otp",
+        "verifikasi",
+        "saya",
+        "ga",
+        "sms",
+        "tidak",
+        "pulsa",
+        "login",
+        "masuk"
+      ],
+      "summary": "Pengguna mengalami kesulitan serius dalam proses verifikasi OTP dan login ke aplikasi BCA Mobile. Kode OTP tidak diterima melalui SMS meskipun pulsa terpotong, menyebabkan frustrasi dan kerugian finansial bagi pengguna.",
+      "strengths": [],
+      "weaknesses": [
+        "Kode OTP tidak dikirim atau tidak diterima melalui SMS",
+        "Pulsa terpotong tanpa mendapat kode verifikasi",
+        "Proses verifikasi gagal berulang kali"
+      ]
+    },
+    {
+      "id": "cluster_2",
+      "label": "Masalah Verifikasi Wajah",
+      "size": 68,
+      "share": 0.034,
+      "sentiment": -0.84,
+      "keywords": [
+        "verifikasi",
+        "wajah",
+        "susah",
+        "verifikasi wajah",
+        "gagal",
+        "terus",
+        "gagal terus",
+        "bisa",
+        "banget",
+        "susah verifikasi",
+        "selalu gagal",
+        "selalu"
+      ],
+      "summary": "Pengguna mengalami kesulitan besar dalam proses verifikasi wajah yang sering gagal meskipun sudah mengikuti panduan dengan benar, menyebabkan frustrasi dan tidak bisa mengakses aplikasi",
+      "strengths": [],
+      "weaknesses": [
+        "Proses verifikasi wajah sangat sulit dan sering gagal",
+        "Sistem verifikasi tidak konsisten meskipun foto jelas dan mengikuti panduan",
+        "Proses berulang-ulang yang menyebabkan frustrasi pengguna"
+      ]
+    },
+    {
+      "id": "cluster_3",
+      "label": "Aplikasi Sangat Bagus dan Membantu",
+      "size": 63,
+      "share": 0.031,
+      "sentiment": 0.808,
+      "keywords": [
+        "aplikasi",
+        "bagus",
+        "sangat",
+        "membantu",
+        "sangat membantu",
+        "nya",
+        "aplikasi nya",
+        "aplikasinya",
+        "aplikasi bagus",
+        "dan",
+        "transaksi",
+        "sangat bagus"
+      ],
+      "summary": "Pengguna memberikan penilaian sangat positif terhadap aplikasi ini, memuji kualitas aplikasi yang bagus dan sangat membantu dalam memudahkan berbagai transaksi tanpa perlu keluar rumah.",
+      "strengths": [
+        "Aplikasi dinilai sangat bagus dan berkualitas",
+        "Sangat membantu dan memudahkan pengguna",
+        "Cepat dan mudah digunakan"
+      ],
+      "weaknesses": []
+    },
+    {
+      "id": "cluster_4",
+      "label": "Kemudahan Transaksi",
+      "size": 49,
+      "share": 0.024,
+      "sentiment": 0.415,
+      "keywords": [
+        "transaksi",
+        "mempermudah",
+        "memudahkan",
+        "mempermudah transaksi",
+        "bertransaksi",
+        "mudah",
+        "lebih",
+        "memudahkan transaksi",
+        "lebih mudah",
+        "dan",
+        "untuk",
+        "memudahkan bertransaksi"
+      ],
+      "summary": "Pengguna sangat menghargai kemudahan dan kepraktisan aplikasi dalam melakukan berbagai jenis transaksi pembayaran, menghilangkan kebutuhan untuk menggunakan ATM atau metode pembayaran konvensional lainnya.",
+      "strengths": [
+        "Mempermudah dan mempercepat proses transaksi",
+        "Mudah digunakan untuk berbagai jenis pembayaran",
+        "Menghilangkan ketergantungan pada ATM"
+      ],
+      "weaknesses": []
+    },
+    {
+      "id": "cluster_5",
+      "label": "Sangat Membantu dalam Transaksi",
+      "size": 50,
+      "share": 0.025,
+      "sentiment": 0.7,
+      "keywords": [
+        "sangat",
+        "membantu",
+        "sangat membantu",
+        "transaksi",
+        "bertransaksi",
+        "untuk",
+        "dalam",
+        "membantu untuk",
+        "mudah",
+        "membantu dalam",
+        "dan",
+        "mempermudah"
+      ],
+      "summary": "Pengguna sangat puas dengan kemudahan dan kepraktisan aplikasi untuk berbagai jenis transaksi keuangan, terutama pembayaran dan transfer uang",
+      "strengths": [
+        "Sangat membantu dan mempermudah proses transaksi",
+        "Cepat dan praktis dalam pembayaran",
+        "Mudah digunakan untuk berbagai jenis transaksi"
+      ],
+      "weaknesses": []
+    },
+    {
+      "id": "cluster_6",
+      "label": "Kepuasan Tinggi - Ulasan Positif Singkat",
+      "size": 131,
+      "share": 0.065,
+      "sentiment": 0.503,
+      "keywords": [
+        "sangat",
+        "bagus",
+        "sangat bagus",
+        "memuaskan",
+        "puas",
+        "sangat puas",
+        "membatu",
+        "bermanfaat",
+        "sangat bermanfaat",
+        "sangat membatu",
+        "berguna",
+        "sangat berguna"
+      ],
+      "summary": "Cluster berisi 131 ulasan (6.5%) dengan ekspresi kepuasan yang sangat tinggi menggunakan kata-kata positif sederhana seperti 'sangat bagus', 'memuaskan', dan 'sangat bermanfaat'",
+      "strengths": [
+        "Tingkat kepuasan pengguna yang sangat tinggi",
+        "Konsistensi feedback positif yang kuat",
+        "Penggunaan kata intensifier 'sangat' menunjukkan apresiasi mendalam"
+      ],
+      "weaknesses": [
+        "Ulasan terlalu singkat dan tidak informatif",
+        "Tidak ada detail spesifik tentang fitur atau aspek yang disukai",
+        "Kurangnya konteks atau penjelasan mendalam"
+      ]
+    },
+    {
+      "id": "cluster_7",
+      "label": "Excellent Overall Satisfaction",
+      "size": 78,
+      "share": 0.039,
+      "sentiment": 0.574,
+      "keywords": [
+        "terbaik",
+        "top",
+        "best",
+        "the",
+        "the best",
+        "is",
+        "is the",
+        "top bgt",
+        "bgt"
+      ],
+      "summary": "Users consistently express highest satisfaction using superlative terms like 'terbaik' (best), 'top', and 'the best', indicating exceptional product/service quality",
+      "strengths": [
+        "Consistently rated as the best by users",
+        "High customer satisfaction and loyalty",
+        "Strong positive brand perception"
+      ],
+      "weaknesses": [
+        "Reviews lack specific details about what makes it the best",
+        "No constructive feedback for potential improvements",
+        "Limited insight into specific product features or benefits"
+      ]
+    },
+    {
+      "id": "cluster_8",
+      "label": "Emoji-Only Positive Reactions",
+      "size": 79,
+      "share": 0.039,
+      "sentiment": 0.547,
+      "keywords": [],
+      "summary": "A cluster of extremely brief reviews consisting almost entirely of positive emoji reactions, primarily thumbs up symbols, with minimal text content.",
+      "strengths": [
+        "High volume of positive sentiment indicators",
+        "Quick and easy user engagement",
+        "Clear approval signals"
+      ],
+      "weaknesses": [
+        "Lack of specific feedback or details",
+        "No actionable insights for improvement",
+        "Minimal informational value"
+      ]
+    },
+    {
+      "id": "cluster_9",
+      "label": "Kepuasan Umum - Sangat Membantu",
+      "size": 89,
+      "share": 0.044,
+      "sentiment": 0.816,
+      "keywords": [],
+      "summary": "Cluster berisi 89 review (4.4%) dengan sentiment positif tinggi (0.82) yang secara konsisten menyatakan aplikasi 'sangat membantu' tanpa detail spesifik",
+      "strengths": [
+        "Tingkat kepuasan pengguna yang sangat tinggi",
+        "Konsistensi feedback positif yang kuat",
+        "Aplikasi dinilai memberikan manfaat nyata"
+      ],
+      "weaknesses": [
+        "Tidak ada detail spesifik tentang fitur yang membantu",
+        "Feedback terlalu umum untuk improvement",
+        "Kurangnya insight mendalam tentang pengalaman pengguna"
+      ]
+    },
+    {
+      "id": "cluster_10",
+      "label": "cluster_10",
+      "size": 49,
+      "share": 0.024,
+      "sentiment": 0.816,
+      "keywords": [],
+      "summary": "Tema caratterizzato da: . Riassume opinioni simili nel dataset.",
+      "strengths": [],
+      "weaknesses": []
+    },
+    {
+      "id": "cluster_11",
+      "label": "cluster_11",
+      "size": 54,
+      "share": 0.027,
+      "sentiment": 0.593,
+      "keywords": [
+        "sekali",
+        "bagus sekali",
+        "sangat",
+        "sangat bagus",
+        "kurang bagus",
+        "kurang"
+      ],
+      "summary": "Tema caratterizzato da: sekali, bagus sekali, sangat, sangat bagus, kurang bagus. Riassume opinioni simili nel dataset.",
+      "strengths": [],
+      "weaknesses": []
+    },
+    {
+      "id": "cluster_12",
+      "label": "cluster_12",
+      "size": 47,
+      "share": 0.023,
+      "sentiment": 0.382,
+      "keywords": [],
+      "summary": "Tema caratterizzato da: . Riassume opinioni simili nel dataset.",
+      "strengths": [],
+      "weaknesses": []
+    },
+    {
+      "id": "cluster_13",
+      "label": "cluster_13",
+      "size": 50,
+      "share": 0.025,
+      "sentiment": 0.714,
+      "keywords": [
+        "sangat baik",
+        "sangat",
+        "cukup",
+        "cukup baik",
+        "sekali",
+        "baik sekali"
+      ],
+      "summary": "Tema caratterizzato da: sangat baik, sangat, cukup, cukup baik, sekali. Riassume opinioni simili nel dataset.",
+      "strengths": [],
+      "weaknesses": []
+    },
+    {
+      "id": "cluster_14",
+      "label": "cluster_14",
+      "size": 63,
+      "share": 0.031,
+      "sentiment": 0.513,
+      "keywords": [],
+      "summary": "Tema caratterizzato da: . Riassume opinioni simili nel dataset.",
+      "strengths": [],
+      "weaknesses": []
+    },
+    {
+      "id": "cluster_15",
+      "label": "cluster_15",
+      "size": 47,
+      "share": 0.023,
+      "sentiment": 0.513,
+      "keywords": [],
+      "summary": "Tema caratterizzato da: . Riassume opinioni simili nel dataset.",
+      "strengths": [],
+      "weaknesses": []
+    },
+    {
+      "id": "cluster_16",
+      "label": "cluster_16",
+      "size": 51,
+      "share": 0.025,
+      "sentiment": 0.513,
+      "keywords": [],
+      "summary": "Tema caratterizzato da: . Riassume opinioni simili nel dataset.",
+      "strengths": [],
+      "weaknesses": []
+    },
+    {
+      "id": "cluster_17",
+      "label": "cluster_17",
+      "size": 71,
+      "share": 0.035,
+      "sentiment": 0.49,
+      "keywords": [],
+      "summary": "Tema caratterizzato da: . Riassume opinioni simili nel dataset.",
+      "strengths": [],
+      "weaknesses": []
+    },
+    {
+      "id": "cluster_18",
+      "label": "cluster_18",
+      "size": 74,
+      "share": 0.037,
+      "sentiment": 0.49,
+      "keywords": [],
+      "summary": "Tema caratterizzato da: . Riassume opinioni simili nel dataset.",
+      "strengths": [],
+      "weaknesses": []
+    },
+    {
+      "id": "cluster_19",
+      "label": "cluster_19",
+      "size": 69,
+      "share": 0.034,
+      "sentiment": 0.007,
+      "keywords": [
+        "okey"
+      ],
+      "summary": "Tema caratterizzato da: okey. Riassume opinioni simili nel dataset.",
+      "strengths": [],
+      "weaknesses": []
+    },
+    {
+      "id": "cluster_20",
+      "label": "cluster_20",
+      "size": 53,
+      "share": 0.026,
+      "sentiment": 0.0,
+      "keywords": [],
+      "summary": "Tema caratterizzato da: . Riassume opinioni simili nel dataset.",
+      "strengths": [],
+      "weaknesses": []
+    },
+    {
+      "id": "cluster_21",
+      "label": "cluster_21",
+      "size": 56,
+      "share": 0.028,
+      "sentiment": 0.0,
+      "keywords": [],
+      "summary": "Tema caratterizzato da: . Riassume opinioni simili nel dataset.",
+      "strengths": [],
+      "weaknesses": []
+    },
+    {
+      "id": "cluster_22",
+      "label": "cluster_22",
+      "size": 69,
+      "share": 0.034,
+      "sentiment": 0.0,
+      "keywords": [],
+      "summary": "Tema caratterizzato da: . Riassume opinioni simili nel dataset.",
+      "strengths": [],
+      "weaknesses": []
+    },
+    {
+      "id": "cluster_23",
+      "label": "cluster_23",
+      "size": 63,
+      "share": 0.031,
+      "sentiment": 0.0,
+      "keywords": [],
+      "summary": "Tema caratterizzato da: . Riassume opinioni simili nel dataset.",
+      "strengths": [],
+      "weaknesses": []
+    },
+    {
+      "id": "cluster_24",
+      "label": "cluster_24",
+      "size": 77,
+      "share": 0.038,
+      "sentiment": 0.207,
+      "keywords": [
+        "keren",
+        "jos",
+        "josss",
+        "aman"
+      ],
+      "summary": "Tema caratterizzato da: keren, jos, josss, aman. Riassume opinioni simili nel dataset.",
+      "strengths": [],
+      "weaknesses": []
+    },
+    {
+      "id": "cluster_25",
+      "label": "cluster_25",
+      "size": 86,
+      "share": 0.043,
+      "sentiment": 0.645,
+      "keywords": [],
+      "summary": "Tema caratterizzato da: . Riassume opinioni simili nel dataset.",
+      "strengths": [],
+      "weaknesses": []
+    },
+    {
+      "id": "cluster_26",
+      "label": "cluster_26",
+      "size": 81,
+      "share": 0.04,
+      "sentiment": 0.645,
+      "keywords": [],
+      "summary": "Tema caratterizzato da: . Riassume opinioni simili nel dataset.",
+      "strengths": [],
+      "weaknesses": []
+    }
+  ],
+  "personas": [
+    {
+      "id": "persona_1",
+      "name": "Tech-Struggling Sarah",
+      "share": 0.33,
+      "goals": [
+        "Complete transactions quickly without technical issues",
+        "Access account reliably through secure login",
+        "Have accurate balance information at all times"
+      ],
+      "pains": [
+        "Cannot receive or verify OTP codes for login",
+        "QRIS transactions fail or show incorrect balances",
+        "Frequent app crashes during critical payment moments"
+      ],
+      "clusters": [
+        "1",
+        "0"
+      ],
+      "quotes": [
+        "OTP tidak masuk lagi, tidak bisa login",
+        "Saldo QRIS tidak sesuai setelah transaksi",
+        "Aplikasi error terus saat mau bayar"
+      ],
+      "channels": [
+        "customer_support",
+        "app_store_reviews",
+        "social_media_complaints"
+      ]
+    },
+    {
+      "id": "persona_2",
+      "name": "Happy Customer Mike",
+      "share": 0.29,
+      "goals": [
+        "Use app efficiently for daily transactions",
+        "Recommend reliable financial services to others",
+        "Maintain positive banking experience"
+      ],
+      "pains": [
+        "Occasional minor UI improvements needed",
+        "Limited advanced features for power users",
+        "Sometimes slow customer service response"
+      ],
+      "clusters": [
+        "6",
+        "9",
+        "7"
+      ],
+      "quotes": [
+        "Aplikasi sangat membantu untuk transaksi harian",
+        "Excellent service, very satisfied!",
+        "Recommended untuk semua orang"
+      ],
+      "channels": [
+        "app_store_reviews",
+        "word_of_mouth",
+        "social_media_praise"
+      ]
+    },
+    {
+      "id": "persona_3",
+      "name": "Quick Reactor Alex",
+      "share": 0.23,
+      "goals": [
+        "Express satisfaction with minimal effort",
+        "Acknowledge good service quickly",
+        "Maintain simple interaction with brands"
+      ],
+      "pains": [
+        "Don't want to write lengthy reviews",
+        "Prefer visual communication over text",
+        "Limited time for detailed feedback"
+      ],
+      "clusters": [
+        "25",
+        "26",
+        "8"
+      ],
+      "quotes": [
+        "👍👍👍",
+        "Good",
+        "😊💯"
+      ],
+      "channels": [
+        "app_ratings",
+        "emoji_reactions",
+        "quick_surveys"
+      ]
+    }
+  ]
+}

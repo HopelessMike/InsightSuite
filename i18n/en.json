@@ -1,0 +1,85 @@
+{
+  "app": {
+    "name": "InsightSuite",
+    "loading": "Loading…"
+  },
+  "header": {
+    "dataset": "Dataset",
+    "themeToggle": "Theme",
+    "language": "Language",
+    "project": "{name} • {source}"
+  },
+  "datasets": {
+    "airbnb": "Airbnb Rome",
+    "mobile": "BCA Mobile",
+    "ecommerce": "E-Commerce"
+  },
+  "kpi": {
+    "totalReviews": "Total Reviews",
+    "clustersIdentified": "{n} clusters identified",
+    "avgSentiment": "Average Sentiment",
+    "avgScale": "On a -1 to +1 scale",
+    "personas": "Personas",
+    "segments": "Identified segments",
+    "topThemes": "Top Themes"
+  },
+  "charts": {
+    "themesMap": "Themes Treemap",
+    "themesLegend": "Size = Frequency • Color = Sentiment",
+    "opportunityMatrix": "Opportunity Matrix",
+    "quadrants": {
+      "quickWins": "Quick Wins",
+      "mustFix": "Must Fix",
+      "observe": "Observe",
+      "strategic": "Strategic",
+      "q1": "High impact, easy fix",
+      "q2": "Urgent issues",
+      "q3": "Low impact",
+      "q4": "High negativity"
+    },
+    "trends": {
+      "title": "Trends",
+      "sentimentOverTime": "Sentiment over time",
+      "volumeOverTime": "Review volume",
+      "topClusterTrends": "Top cluster trends"
+    }
+  },
+  "personas": {
+    "title": "User Personas",
+    "share": "{p}% of users",
+    "goals": "Goals",
+    "pains": "Pain Points",
+    "channels": "Channels"
+  },
+  "reviews": {
+    "title": "Review Explorer",
+    "search": "Search text…",
+    "language": "Language",
+    "cluster": "Theme",
+    "rating": "Rating",
+    "sentiment": "Sentiment",
+    "reset": "Reset",
+    "noResults": "No results with current filters"
+  },
+  "treemap": {
+    "keywords": "Keywords",
+    "clickForDetails": "Click for details",
+    "empty": "Themes will appear here"
+  },
+  "chat": {
+    "title": "AI Chat",
+    "placeholder": "Ask a question about the dataset…",
+    "send": "Send",
+    "quick": {
+      "summary": "Give me the main summary",
+      "issues": "What are the main issues?",
+      "improvements": "Suggest quick improvements"
+    }
+  },
+  "methodology": {
+    "title": "Methodology & Attribution",
+    "techStack": "Tech Stack",
+    "datasetAttrib": "Dataset Attribution",
+    "footer": "This is a demo using public data. In production, InsightSuite integrates with your sources respecting privacy & compliance."
+  }
+}

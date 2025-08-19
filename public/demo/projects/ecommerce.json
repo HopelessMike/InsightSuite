@@ -1,83 +1,221 @@
 {
   "meta": {
-    "project_id": "ecommerce_analysis",
-    "name": "E-commerce Customer Experience",
-    "source": "Product Reviews",
-    "date_range": ["2024-01-01", "2024-12-31"],
-    "languages": ["en", "it", "de", "fr"],
-    "totals": { "reviews": 22100, "clusters": 10 }
+    "project_id": "ecommerce",
+    "name": "Women’s E-Comm",
+    "source": "Kaggle",
+    "date_range": [
+      "",
+      ""
+    ],
+    "languages": [
+      "en"
+    ],
+    "totals": {
+      "reviews": 23486,
+      "clusters": 4
+    },
+    "method": {
+      "sentiment": "xlm-roberta (CardiffNLP)",
+      "embedding": "voyage-3.5-lite",
+      "clustering": "hdbscan",
+      "llm": "claude-sonnet-4-20250514"
+    }
   },
   "aggregates": {
-    "sentiment_mean": 0.68,
-    "sentiment_dist": { "neg": 0.18, "neu": 0.22, "pos": 0.6 },
-    "rating_hist": [[1, 1200], [2, 1800], [3, 3100], [4, 6800], [5, 9200]]
+    "sentiment_mean": 0.313,
+    "sentiment_dist": {
+      "neg": 0.234,
+      "neu": 0.122,
+      "pos": 0.644
+    },
+    "rating_hist": [
+      [
+        1,
+        842
+      ],
+      [
+        2,
+        1565
+      ],
+      [
+        3,
+        2871
+      ],
+      [
+        4,
+        5077
+      ],
+      [
+        5,
+        13131
+      ]
+    ]
   },
   "clusters": [
     {
-      "id": "shipping_delivery",
-      "label": "Spedizione e Consegna",
-      "size": 4200,
-      "share": 0.19,
-      "sentiment": 0.72,
-      "trend": [
-        { "week": "2024-W01", "count": 85 },
-        { "week": "2024-W02", "count": 92 },
-        { "week": "2024-W03", "count": 88 }
+      "id": "cluster_0",
+      "label": "Mixed Reviews on Fit and Quality",
+      "size": 22288,
+      "share": 0.97,
+      "sentiment": 0.33,
+      "keywords": [
+        "the",
+        "it",
+        "and",
+        "is",
+        "to",
+        "this",
+        "in",
+        "but",
+        "on",
+        "for",
+        "dress",
+        "with"
       ],
-      "keywords": ["fast", "delivery", "shipping", "quick", "on-time"],
-      "summary": "Servizio di spedizione generalmente apprezzato per velocità e affidabilità",
-      "strengths": ["Consegne rapide", "Tracking accurato", "Imballaggio sicuro"],
-      "weaknesses": ["Costi di spedizione alti", "Opzioni limitate per zone remote"],
-      "opportunity_score": 0.45,
-      "quotes": [
-        { "id": "q1", "text": "Super fast delivery, arrived next day!", "rating": 5, "lang": "en" },
-        { "id": "q2", "text": "Spedizione velocissima, imballaggio perfetto", "rating": 5, "lang": "it" }
+      "summary": "Reviews show mixed experiences with clothing items, particularly dresses and tops. Customers appreciate the style and appearance of items but frequently encounter sizing issues, with many items running small or having inconsistent fit across different body types. Quality concerns include cheap-feeling materials, construction flaws, and sizing inconsistencies between regular and petite options.",
+      "strengths": [
+        "Flattering and stylish designs",
+        "Versatile pieces that can be dressed up or down",
+        "Good color options and attractive prints"
       ],
-      "co_occurs": ["product_quality", "customer_service"]
+      "weaknesses": [
+        "Inconsistent sizing - many items run small",
+        "Limited petite sizing options",
+        "Quality issues with materials feeling cheap"
+      ]
     },
     {
-      "id": "product_quality",
-      "label": "Qualità Prodotto",
-      "size": 5100,
-      "share": 0.23,
-      "sentiment": 0.58,
-      "trend": [
-        { "week": "2024-W01", "count": 98 },
-        { "week": "2024-W02", "count": 105 },
-        { "week": "2024-W03", "count": 102 }
-      ],
-      "keywords": ["quality", "material", "durable", "cheap", "defective"],
-      "summary": "Qualità dei prodotti variabile, con aspettative spesso non soddisfatte",
-      "strengths": ["Buon rapporto qualità-prezzo su alcuni articoli", "Varietà di scelta"],
-      "weaknesses": ["Qualità inconsistente", "Materiali scadenti", "Descrizioni imprecise"],
-      "opportunity_score": 0.78,
-      "quotes": [
-        { "id": "q3", "text": "Quality is hit or miss, some items great others terrible", "rating": 3, "lang": "en" },
-        { "id": "q4", "text": "Qualità inferiore alle aspettative", "rating": 2, "lang": "it" }
-      ],
-      "co_occurs": ["shipping_delivery", "return_policy"]
+      "id": "cluster_1",
+      "label": "Empty Reviews",
+      "size": 95,
+      "share": 0.004,
+      "sentiment": 0.0,
+      "keywords": [],
+      "summary": "This cluster contains 95 reviews with no actual content - all entries are null/empty values, representing missing or unavailable review data.",
+      "strengths": [],
+      "weaknesses": [
+        "No actual review content available",
+        "Missing customer feedback data",
+        "Cannot provide meaningful insights from empty entries"
+      ]
+    },
+    {
+      "id": "cluster_2",
+      "label": "Empty Reviews",
+      "size": 324,
+      "share": 0.014,
+      "sentiment": 0.0,
+      "keywords": [],
+      "summary": "This cluster contains 324 reviews with no actual content - all entries are null/empty values, representing missing or unavailable review data.",
+      "strengths": [],
+      "weaknesses": [
+        "No actual review content available",
+        "Missing customer feedback data",
+        "Cannot extract meaningful insights"
+      ]
+    },
+    {
+      "id": "cluster_3",
+      "label": "Empty Reviews",
+      "size": 271,
+      "share": 0.012,
+      "sentiment": 0.0,
+      "keywords": [],
+      "summary": "This cluster contains 271 reviews with no actual content - all entries are null or missing values, representing 1.2% of the total dataset.",
+      "strengths": [],
+      "weaknesses": [
+        "No actual review content available",
+        "Missing customer feedback data",
+        "Cannot extract meaningful insights"
+      ]
     }
   ],
   "personas": [
     {
-      "id": "frequent_shopper",
-      "name": "Acquirente Frequente",
-      "share": 0.45,
-      "goals": ["Convenienza", "Varietà", "Velocità"],
-      "pains": ["Qualità inconsistente", "Tempi di consegna", "Resi complicati"],
-      "clusters": ["shipping_delivery", "product_quality"],
-      "quotes": ["Love the variety", "Need better quality control"],
-      "channels": ["Newsletter", "App mobile", "Programmi fedeltà"]
+      "id": "persona_1",
+      "name": "Quality-Conscious Shopper",
+      "share": 0.34,
+      "goals": [
+        "Find well-fitting clothing that lasts",
+        "Get good value for money spent",
+        "Avoid returns and exchanges"
+      ],
+      "pains": [
+        "Inconsistent sizing across products",
+        "Quality doesn't match price point",
+        "Difficulty determining fit from online descriptions"
+      ],
+      "clusters": [
+        "0"
+      ],
+      "quotes": [
+        "The sizing runs small, had to return",
+        "Good quality fabric but fit was off",
+        "Mixed feelings about this purchase"
+      ],
+      "channels": [
+        "Online reviews",
+        "Social media recommendations",
+        "Email newsletters"
+      ]
     },
     {
-      "id": "price_sensitive",
-      "name": "Sensibile al Prezzo",
-      "share": 0.32,
-      "goals": ["Risparmio", "Offerte", "Confronto prezzi"],
-      "pains": ["Costi nascosti", "Qualità bassa", "Spese di spedizione"],
-      "clusters": ["product_quality", "return_policy"],
-      "quotes": ["Great prices but quality concerns", "Hidden costs are annoying"],
-      "channels": ["Comparatori prezzi", "Coupon", "Saldi"]
+      "id": "persona_2",
+      "name": "Silent Browser",
+      "share": 0.3,
+      "goals": [
+        "Quick and easy shopping experience",
+        "Find products without hassle",
+        "Make purchases based on ratings only"
+      ],
+      "pains": [
+        "Don't have time to write detailed reviews",
+        "Overwhelmed by too many product options",
+        "Prefer actions over words"
+      ],
+      "clusters": [
+        "2",
+        "3"
+      ],
+      "quotes": [
+        "",
+        "Good product",
+        ""
+      ],
+      "channels": [
+        "Mobile apps",
+        "Search engines",
+        "Direct website visits"
+      ]
+    },
+    {
+      "id": "persona_3",
+      "name": "Cautious First-Time Buyer",
+      "share": 0.21,
+      "goals": [
+        "Research thoroughly before purchasing",
+        "Understand product quality and fit",
+        "Make informed buying decisions"
+      ],
+      "pains": [
+        "Uncertainty about new brands",
+        "Fear of wasting money on poor quality",
+        "Limited information to base decisions on"
+      ],
+      "clusters": [
+        "0",
+        "1"
+      ],
+      "quotes": [
+        "Not sure about the quality yet",
+        "Waiting to see how it holds up",
+        "Seems okay so far"
+      ],
+      "channels": [
+        "Review websites",
+        "Comparison shopping sites",
+        "Brand websites"
+      ]
     }
   ]
 }
