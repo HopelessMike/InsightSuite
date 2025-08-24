@@ -52,13 +52,16 @@ export default function StatCard({
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
             className={`flex items-center gap-1 text-sm font-medium ${
-              trendUp ? "text-green-400" : "text-red-400"
+              trendUp === true ? "text-green-400" : 
+              trendUp === false ? "text-red-400" : "text-gray-400"
             }`}
           >
-            {trendUp ? (
+            {trendUp === true ? (
               <TrendingUp className="w-3 h-3" />
-            ) : (
+            ) : trendUp === false ? (
               <TrendingDown className="w-3 h-3" />
+            ) : (
+              <span className="w-3 h-3 flex items-center justify-center">-</span>
             )}
             {trend}
           </motion.div>

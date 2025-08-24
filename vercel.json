@@ -1,0 +1,12 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "regions": ["fra1"],
+  "functions": {
+    "api/**/*.py": { "maxDuration": 10, "memory": 512 }
+  },
+  "rewrites": [
+    { "source": "/InsightSuite/api/InsightChat", "destination": "/api/InsightChat" },
+    { "source": "/InsightSuite/api/InsightChat/(.*)", "destination": "/api/InsightChat/$1" },
+    { "source": "/InsightSuite/api/(.*)", "destination": "/api/insightsuite/$1" }
+  ]
+}

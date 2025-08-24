@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { withBase } from "@/lib/basePath";
 import { motion, AnimatePresence } from "framer-motion";
 import { useAppStore } from "@/store/app";
 import ThemesTreemap from "@/components/ThemesTreemap";
@@ -41,16 +42,16 @@ import {
 type TabKey = "airbnb" | "mobile" | "ecommerce";
 
 const PROJECT_FILES: Record<TabKey, string> = {
-  airbnb: "/demo/projects/airbnb.json",
-  mobile: "/demo/projects/mobile.json",
-  ecommerce: "/demo/projects/ecommerce.json",
+  airbnb: withBase("/demo/projects/airbnb.json"),
+  mobile: withBase("/demo/projects/mobile.json"),
+  ecommerce: withBase("/demo/projects/ecommerce.json"),
 };
 
 export default function InsightSuitePage() {
   const { t, locale } = useLocale();
   const [mounted, setMounted] = React.useState(false);
-  const [showLoadingScreen, setShowLoadingScreen] = React.useState(true);
   const [initialLoadComplete, setInitialLoadComplete] = React.useState(false);
+  const [showLoadingScreen, setShowLoadingScreen] = React.useState(true);
   const { theme, setTheme } = useTheme();
   const {
     selectedProject,
@@ -123,6 +124,38 @@ export default function InsightSuitePage() {
   const topThemes = React.useMemo(() => {
     return [...clusters].sort((a, b) => b.share - a.share).slice(0, 3);
   }, [clusters]);
+
+  // Calculate trends from timeseries data
+  const trends = React.useMemo(() => {
+    const timeseries = projectData?.timeseries?.monthly;
+    if (!timeseries || timeseries.length < 2) {
+      return { reviewsTrend: null, sentimentTrend: null };
+    }
+
+    // Get last two months for comparison
+    const lastMonth = timeseries[timeseries.length - 1];
+    const prevMonth = timeseries[timeseries.length - 2];
+    
+    // Calculate volume trend
+    const volumeChange = lastMonth.volume - prevMonth.volume;
+    const volumePercent = prevMonth.volume > 0 ? (volumeChange / prevMonth.volume) * 100 : 0;
+    
+    // Calculate sentiment trend
+    const sentimentChange = lastMonth.sentiment_mean - prevMonth.sentiment_mean;
+    
+    return {
+      reviewsTrend: volumePercent !== 0 ? {
+        value: volumePercent > 0 ? `+${volumePercent.toFixed(1)}%` : `${volumePercent.toFixed(1)}%`,
+        isPositive: volumePercent > 0,
+        isZero: false
+      } : null,
+      sentimentTrend: Math.abs(sentimentChange) > 0.01 ? {
+        value: sentimentChange > 0 ? `+${sentimentChange.toFixed(2)}` : `${sentimentChange.toFixed(2)}`,
+        isPositive: sentimentChange > 0,
+        isZero: false
+      } : null
+    };
+  }, [projectData?.timeseries?.monthly]);
 
   if (!mounted) return null;
 
@@ -229,8 +262,8 @@ export default function InsightSuitePage() {
                   subtitle={t("kpi.clustersIdentified", {
                     n: projectData?.meta?.totals?.clusters ?? 0,
                   })}
-                  trend="+12.5%"
-                  trendUp={true}
+                  trend={trends.reviewsTrend?.value}
+                  trendUp={trends.reviewsTrend?.isPositive}
                 />
                 <StatCard
                   icon={<TrendingUp className="w-5 h-5" />}
@@ -241,8 +274,8 @@ export default function InsightSuitePage() {
                       : "—"
                   }
                   subtitle={t("kpi.avgScale")}
-                  trend="+0.15"
-                  trendUp={true}
+                  trend={trends.sentimentTrend?.value}
+                  trendUp={trends.sentimentTrend?.isPositive}
                 />
                 <StatCard
                   icon={<Users className="w-5 h-5" />}

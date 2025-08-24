@@ -4,66 +4,53 @@ Reviews router for paginated review data with filters
 from fastapi import APIRouter, HTTPException, Query
 from typing import Optional, List, Dict, Any, Literal
 from datetime import datetime
-import json
+import json, os
 from pathlib import Path
 import pandas as pd
 from functools import lru_cache
 import time
 
-# IMPORT CORRETTO:
-from ..models import (
-    Review,
-    ReviewPage,
-    ReviewQuery
-)
+from ..models import Review, ReviewPage, ReviewQuery
 
 router = APIRouter()
 
-# Cache for loaded review data (TTL 10 minutes)
 _cache: Dict[str, tuple[pd.DataFrame, float]] = {}
 CACHE_TTL = 600  # 10 minutes
 
-
 def load_reviews(project_id: str) -> pd.DataFrame:
-    """
-    Load reviews from JSONL file with caching
-    """
-    current_time = time.time()
-    
-    # Check cache
+    now = time.time()
     if project_id in _cache:
-        df, timestamp = _cache[project_id]
-        if current_time - timestamp < CACHE_TTL:
+        df, ts = _cache[project_id]
+        if now - ts < CACHE_TTL:
             return df
-    
-    # Load from file
-    base_paths = [
+
+    data_dir_env = os.environ.get("INSIGHTS_DATA_DIR")
+    paths = []
+    if data_dir_env:
+        paths.append(Path(data_dir_env) / f"{project_id}_reviews.jsonl")
+    paths += [
         Path(f"./out/{project_id}_reviews.jsonl"),
         Path(f"./pipeline/out/{project_id}_reviews.jsonl"),
         Path(f"../pipeline/out/{project_id}_reviews.jsonl"),
         Path(f"./public/demo/projects/{project_id}_reviews.jsonl"),
         Path(f"../public/demo/projects/{project_id}_reviews.jsonl"),
-        # AGGIUNGI PATH PER SVILUPPO:
         Path(f"./{project_id}_reviews.jsonl"),
         Path(f"./data/{project_id}_reviews.jsonl"),
     ]
-    
-    for path in base_paths:
-        if path.exists():
+
+    for p in paths:
+        if p.exists():
             try:
-                df = pd.read_json(path, lines=True)
-                # Convert date strings to datetime
+                df = pd.read_json(p, lines=True)
                 if 'date' in df.columns:
                     df['date'] = pd.to_datetime(df['date'], errors='coerce')
-                # Cache the dataframe
-                _cache[project_id] = (df, current_time)
+                _cache[project_id] = (df, now)
                 return df
             except Exception as e:
-                print(f"Error loading {path}: {e}")
+                print(f"Error loading {p}: {e}")
                 continue
-    
-    raise HTTPException(status_code=404, detail=f"Reviews data not found for project {project_id}")
 
+    raise HTTPException(status_code=404, detail=f"Reviews data not found for project {project_id}")
 
 @router.get("/reviews", response_model=ReviewPage)
 async def get_reviews(
@@ -82,73 +69,42 @@ async def get_reviews(
     page: int = Query(1, ge=1, description="Page number"),
     pageSize: int = Query(50, ge=1, le=200, description="Page size")
 ) -> ReviewPage:
-    """
-    Get paginated reviews with filters
-    """
-    # Load data
     try:
         df = load_reviews(projectId)
     except HTTPException as e:
         raise e
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error loading reviews: {str(e)}")
-    
-    # Apply filters
+
     if q:
-        mask = df['text'].str.contains(q, case=False, na=False)
-        df = df[mask]
-    
+        df = df[df['text'].str.contains(q, case=False, na=False)]
     if clusterId:
         df = df[df['clusterId'] == clusterId]
-    
     if lang:
         df = df[df['lang'] == lang]
-    
     if ratingMin is not None:
         df = df[df['rating'] >= ratingMin]
-    
     if ratingMax is not None:
         df = df[df['rating'] <= ratingMax]
-    
     if sentimentMin is not None:
         df = df[df['sentiment'] >= sentimentMin]
-    
     if sentimentMax is not None:
         df = df[df['sentiment'] <= sentimentMax]
-    
     if dateFrom:
-        try:
-            date_from = pd.to_datetime(dateFrom)
-            df = df[df['date'] >= date_from]
-        except:
-            pass
-    
+        try: df = df[df['date'] >= pd.to_datetime(dateFrom)]
+        except: pass
     if dateTo:
-        try:
-            date_to = pd.to_datetime(dateTo)
-            df = df[df['date'] <= date_to]
-        except:
-            pass
-    
-    # Sort
-    sort_column = sort
-    if sort_column == 'date' and 'date' not in df.columns:
-        sort_column = 'sentiment'  # Fallback if no date column
-    
-    if sort_column in df.columns:
-        df = df.sort_values(by=sort_column, ascending=(order == 'asc'))
-    
-    # Calculate total before pagination
+        try: df = df[df['date'] <= pd.to_datetime(dateTo)]
+        except: pass
+
+    sort_col = sort if sort in df.columns else 'sentiment'
+    df = df.sort_values(by=sort_col, ascending=(order == 'asc'))
     total = len(df)
-    
-    # Pagination
-    start = (page - 1) * pageSize
-    end = start + pageSize
-    df_page = df.iloc[start:end]
-    
-    # Convert to response format
+    start, end = (page - 1) * pageSize, (page - 1) * pageSize + pageSize
+    page_df = df.iloc[start:end]
+
     items = []
-    for _, row in df_page.iterrows():
+    for _, row in page_df.iterrows():
         items.append(Review(
             id=str(row.get('id', '')),
             text=str(row.get('text', '')),
@@ -157,35 +113,20 @@ async def get_reviews(
             sentiment=float(row.get('sentiment', 0)),
             lang=str(row.get('lang', 'unknown')),
             date=row.get('date').strftime('%Y-%m-%d') if pd.notna(row.get('date')) else None,
-            rating=float(row.get('rating')) if pd.notna(row.get('rating')) else None,
+            rating=float(row.get('rating')) if 'rating' in row and pd.notna(row.get('rating')) else None,
             sourceId=str(row.get('sourceId', '')),
             projectId=str(row.get('projectId', projectId))
         ))
-    
-    return ReviewPage(
-        total=total,
-        page=page,
-        pageSize=pageSize,
-        items=items
-    )
 
+    return ReviewPage(total=total, page=page, pageSize=pageSize, items=items)
 
 @router.get("/reviews/stats")
-async def get_review_stats(
-    projectId: str = Query(..., description="Project ID")
-) -> Dict[str, Any]:
-    """
-    Get statistics about reviews for a project
-    """
-    try:
-        df = load_reviews(projectId)
-    except HTTPException as e:
-        raise e
-    
+async def get_review_stats(projectId: str = Query(..., description="Project ID")) -> Dict[str, Any]:
+    df = load_reviews(projectId)
     return {
-        "total": len(df),
-        "languages": df['lang'].value_counts().to_dict(),
-        "clusters": df['clusterId'].value_counts().to_dict(),
+        "total": int(len(df)),
+        "languages": df['lang'].value_counts(dropna=False).to_dict(),
+        "clusters": df['clusterId'].value_counts(dropna=False).to_dict(),
         "sentiment": {
             "mean": float(df['sentiment'].mean()),
             "std": float(df['sentiment'].std()),
@@ -194,6 +135,6 @@ async def get_review_stats(
         },
         "rating": {
             "mean": float(df['rating'].mean()) if 'rating' in df.columns else None,
-            "distribution": df['rating'].value_counts().to_dict() if 'rating' in df.columns else {}
+            "distribution": df['rating'].value_counts(dropna=False).to_dict() if 'rating' in df.columns else {}
         }
     }

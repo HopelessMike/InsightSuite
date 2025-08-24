@@ -3,6 +3,7 @@
 import { useEffect, useState, useMemo } from "react"
 import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
+import { withBase } from "@/lib/basePath";
 
 // Animazioni particelle
 const particleVariants = {
@@ -31,7 +32,7 @@ export default function LoadingScreen({
   isVisible,
   onLoadingComplete = () => {},
 }: LoadingScreenProps) {
-  const [showScreen, setShowScreen] = useState(true)
+  const [showScreen, setShowScreen] = useState(isVisible)
   const [displayProgress, setDisplayProgress] = useState(0)
   const [currentTextIndex, setCurrentTextIndex] = useState(0)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
@@ -218,18 +219,13 @@ export default function LoadingScreen({
           {/* Animated particles */}
           <div className="absolute inset-0 overflow-hidden">{memoizedParticles}</div>
 
-          <div className="flex flex-col items-center justify-center z-10 relative px-8">
+          <div className="flex flex-col items-center justify-center z-10 relative px-4 md:px-8 w-full max-w-2xl mx-auto min-h-screen">
             {/* Logo Container */}
-            <motion.div className="mb-6 relative" variants={itemVariants}>
-              <motion.div
-                className="absolute -inset-4 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 blur-xl"
-                variants={glowVariants}
-                animate="animate"
-              />
-              <div className="relative w-36 h-36 rounded-full overflow-hidden border-2 border-blue-600/50 bg-gradient-to-r from-blue-600 to-purple-600 p-0.5">
-                <div className="w-full h-full rounded-full overflow-hidden bg-black flex items-center justify-center">
+            <motion.div className="mb-8 md:mb-12 relative flex-shrink-0" variants={itemVariants}>
+              <div className="relative w-40 h-40 md:w-44 md:h-44 rounded-full overflow-hidden bg-black">
+                <div className="w-full h-full rounded-full overflow-hidden flex items-center justify-center">
                   <Image
-                    src="/data-avatar.png"
+                    src={withBase("/data-avatar.png")}
                     alt="InsightSuite Analytics"
                     width={130}
                     height={130}
@@ -254,22 +250,15 @@ export default function LoadingScreen({
             </motion.div>
 
             {/* Title */}
-            <motion.h1 className="text-5xl md:text-7xl font-bold mb-2 text-center" variants={itemVariants}>
+            <motion.h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 md:mb-8 text-center flex-shrink-0" variants={itemVariants}>
               <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
-                Insight
+                InsightSuite
               </span>
             </motion.h1>
 
-            <motion.h2
-              className="text-3xl md:text-5xl font-light mb-8 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent"
-              variants={itemVariants}
-            >
-              Suite
-            </motion.h2>
-
             {/* Progress bar and loading text container */}
-            <motion.div className="w-80 max-w-full space-y-2 mb-4" variants={itemVariants}>
-              <div className="h-2 bg-gray-800/50 backdrop-blur rounded-full overflow-hidden relative">
+            <motion.div className="w-full max-w-xs sm:max-w-sm md:max-w-md space-y-4 md:space-y-6 mb-8 md:mb-12 flex-shrink-0" variants={itemVariants}>
+              <div className="h-2 md:h-3 bg-gray-800/50 backdrop-blur rounded-full overflow-hidden relative">
                 <motion.div
                   className="h-full bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 rounded-full"
                   initial={{ width: "0%" }}
@@ -280,7 +269,7 @@ export default function LoadingScreen({
               </div>
 
               <motion.div
-                className="text-sm text-gray-300 text-center"
+                className="text-lg md:text-xl text-gray-300 text-center font-medium"
                 key={currentTextIndex}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -290,11 +279,10 @@ export default function LoadingScreen({
               </motion.div>
             </motion.div>
 
-            <div className="h-20" />
 
             {/* Tips */}
             <motion.div
-              className="absolute bottom-12 left-0 right-0 text-xs text-gray-500 text-center px-8"
+              className="text-sm md:text-base text-gray-400 text-center px-4 md:px-8 mt-6 md:mt-8 flex-shrink-0"
               variants={itemVariants}
               initial={{ opacity: 0 }}
               animate={{ opacity: [0, 1, 1, 0] }}
