@@ -3,7 +3,13 @@
     "allow": [
       "Bash(python:*)",
       "Bash(pip install:*)",
-      "Read(/C:\\c\\Users\\mmiranda\\Downloads\\insight-suite/**)"
+      "Read(/C:\\c\\Users\\mmiranda\\Downloads\\insight-suite/**)",
+      "Bash(cat:*)",
+      "Bash(find:*)",
+      "Bash(npm run type-check:*)",
+      "Bash(npm run lint)",
+      "Bash(npm run build:*)",
+      "Bash(npm run dev:*)"
     ],
     "deny": [],
     "ask": [],

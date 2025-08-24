@@ -139,21 +139,21 @@ const sections: Section[] = [
 const attributions = [
   {
     name: "Airbnb B&B Reviews",
-    license: "Public Domain",
-    description: "Guest reviews for B&B accommodations in Italy",
-    url: "https://booking.com"
+    license: "Synthetic Dataset",
+    description: "Tutti i dataset utilizzati sono stati prodotti in maniera sintetica, utilizzando Large Language Models appositamente fine tunati.",
+    url: "#"
   },
   {
     name: "BCA Mobile Reviews",
-    license: "CC BY 4.0",
-    description: "Google Play Store reviews dataset",
-    url: "https://data.mendeley.com"
+    license: "Synthetic Dataset",
+    description: "Tutti i dataset utilizzati sono stati prodotti in maniera sintetica, utilizzando Large Language Models appositamente fine tunati.",
+    url: "#"
   },
   {
     name: "Women's E-Commerce",
-    license: "CC0 (Public Domain)",
-    description: "Clothing reviews dataset",
-    url: "https://kaggle.com"
+    license: "Synthetic Dataset",
+    description: "Tutti i dataset utilizzati sono stati prodotti in maniera sintetica, utilizzando Large Language Models appositamente fine tunati.",
+    url: "#"
   },
 ];
 
@@ -166,7 +166,7 @@ export default function MethodologyDrawer() {
     <>
       <motion.button
         onClick={() => setIsOpen(true)}
-        className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-gradient-to-r from-blue-600/20 to-purple-600/20 border border-blue-600/30 text-blue-400 hover:from-blue-600/30 hover:to-purple-600/30 transition-all duration-200 font-medium"
+        className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-blue-600/20 border border-blue-600/30 text-blue-400 hover:bg-blue-600/30 hover:border-blue-600/40 transition-all duration-200 font-medium backdrop-blur-sm"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
@@ -357,24 +357,10 @@ export default function MethodologyDrawer() {
                             }`}>
                               {attr.description}
                             </div>
-                            <div className="text-xs text-green-400 mt-1">
-                              License: {attr.license}
+                            <div className="text-xs text-blue-400 mt-1">
+                              {attr.license}
                             </div>
                           </div>
-                          <a
-                            href={attr.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={`p-1.5 rounded transition-colors ${
-                              theme === 'light'
-                                ? 'hover:bg-neutral-100'
-                                : 'hover:bg-neutral-800'
-                            }`}
-                          >
-                            <ExternalLink className={`w-3 h-3 ${
-                              theme === 'light' ? 'text-neutral-500' : 'text-neutral-500'
-                            }`} />
-                          </a>
                         </div>
                       </motion.div>
                     ))}
@@ -384,8 +370,9 @@ export default function MethodologyDrawer() {
                 {/* Footer Note */}
                 <div className="mt-8 p-4 rounded-lg bg-blue-600/10 border border-blue-600/20">
                   <p className="text-xs text-blue-400">
-                    ℹ️ Questa è una demo con dati pubblici. In produzione, 
-                    InsightSuite si integra con le tue fonti dati aziendali 
+                    ℹ️ Questa è una demo con dati sintetici generati tramite LLM. 
+                    Tutti i dataset utilizzati sono stati prodotti in maniera sintetica. 
+                    In produzione, InsightSuite si integra con le tue fonti dati aziendali 
                     rispettando tutti i requisiti di privacy e compliance.
                   </p>
                 </div>

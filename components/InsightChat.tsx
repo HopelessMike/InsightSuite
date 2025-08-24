@@ -92,7 +92,7 @@ export default function InsightChat({ data, projectId }: Props) {
     
     try {
       // Call the API route with LLM integration
-      const response = await fetch('/api/chat', {
+      const response = await fetch('/api/InsightChat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -103,26 +103,39 @@ export default function InsightChat({ data, projectId }: Props) {
         })
       });
 
+      console.log('API Response status:', response.status);
+      
       if (!response.ok) {
-        throw new Error('API request failed');
+        const errorText = await response.text();
+        console.error('API Error Response:', errorText);
+        throw new Error(`API request failed with status ${response.status}: ${errorText}`);
       }
 
       const result = await response.json();
+      console.log('API Success Response:', result);
       
-      // Add assistant message
-      const assistantMessage: Message = {
-        role: "assistant",
-        text: result.answer || "Mi dispiace, non ho potuto elaborare la richiesta.",
-        timestamp: new Date()
-      };
-      
-      setMessages(prev => [...prev, assistantMessage]);
+      // Check if we got a valid answer from the API
+      if (result.answer && result.answer.trim() && !result.answer.includes('ANTHROPIC_API_KEY not configured')) {
+        // Add assistant message from LLM
+        const assistantMessage: Message = {
+          role: "assistant",
+          text: result.answer,
+          timestamp: new Date()
+        };
+        
+        setMessages(prev => [...prev, assistantMessage]);
+      } else {
+        // Use fallback if API key is not configured or response is empty
+        throw new Error('LLM service not available or returned empty response');
+      }
       
     } catch (error) {
       console.error("Chat error:", error);
       
-      // Fallback to enhanced local response if API fails
-      const fallbackResponse = generateEnhancedResponse(question, data);
+      // Show a notification that we're using fallback
+      const fallbackResponse = "🔄 **Modalità Offline Attiva**\n\n" + generateEnhancedResponse(question, data) + 
+        "\n\n*Nota: Al momento sto utilizzando l'analisi locale. Per accedere all'AI Assistant completo, configura la chiave API Anthropic.*";
+      
       setMessages(prev => [...prev, {
         role: "assistant",
         text: fallbackResponse,
@@ -182,83 +195,86 @@ export default function InsightChat({ data, projectId }: Props) {
     if (q.includes("critici") || q.includes("problemi") || q.includes("urgenti")) {
       const criticalClusters = clusters
         .sort((a, b) => {
-          const scoreA = (Math.abs(a.sentiment) * a.share * 100) + a.opportunity_score;
-          const scoreB = (Math.abs(b.sentiment) * b.share * 100) + b.opportunity_score;
+          const scoreA = (Math.abs(a.sentiment || 0) * (a.share || 0) * 100) + (a.opportunity_score || 0);
+          const scoreB = (Math.abs(b.sentiment || 0) * (b.share || 0) * 100) + (b.opportunity_score || 0);
           return scoreB - scoreA;
         })
         .slice(0, 3);
       
-      const totalImpact = criticalClusters.reduce((sum, c) => sum + c.share, 0);
+      const totalImpact = criticalClusters.reduce((sum, c) => sum + (c.share || 0), 0);
       
       return `**Analisi dei Temi Critici**\n\n` +
         `I 3 temi più critici rappresentano il ${(totalImpact * 100).toFixed(0)}% del totale:\n\n` +
         criticalClusters.map((c, i) => {
-          const urgencyLevel = c.sentiment < -0.5 ? "Critico" : 
-                              c.sentiment < -0.2 ? "Alto" : "Medio";
+          const sentiment = c.sentiment || 0;
+          const urgencyLevel = sentiment < -0.5 ? "Critico" : 
+                              sentiment < -0.2 ? "Alto" : "Medio";
           
           return `**${i + 1}. ${c.label}** (${urgencyLevel})\n` +
-            `• Opportunity Score: ${c.opportunity_score.toFixed(2)}\n` +
-            `• Impatto: ${(c.share * 100).toFixed(1)}% degli utenti (${c.size.toLocaleString()} recensioni)\n` +
-            `• Sentiment: ${c.sentiment.toFixed(2)}\n` +
+            `• Opportunity Score: ${(c.opportunity_score || 0).toFixed(2)}\n` +
+            `• Impatto: ${((c.share || 0) * 100).toFixed(1)}% degli utenti (${(c.size || 0).toLocaleString()} recensioni)\n` +
+            `• Sentiment: ${sentiment.toFixed(2)}\n` +
             `• Criticità principali:\n` +
-            c.weaknesses.slice(0, 3).map(w => `  - ${w}`).join("\n") + "\n" +
-            `• Quote rappresentative: "${c.quotes[0]?.text.substring(0, 100)}..."`;
+            (c.weaknesses || []).slice(0, 3).map(w => `  - ${w}`).join("\n") + "\n" +
+            `• Quote rappresentative: "${c.quotes?.[0]?.text?.substring(0, 100) || 'Non disponibile'}..."`;
         }).join("\n\n") +
-        `\n\n**Insight chiave**: Il cluster "${criticalClusters[0].label}" richiede intervento prioritario ` +
-        `con ${(criticalClusters[0].share * 100).toFixed(0)}% di impatto sugli utenti.`;
+        `\n\n**Insight chiave**: Il cluster "${criticalClusters[0]?.label || 'identificato'}" richiede intervento prioritario ` +
+        `con ${((criticalClusters[0]?.share || 0) * 100).toFixed(0)}% di impatto sugli utenti.`;
     }
     
     // Driver del sentiment negativo con correlazioni
     if (q.includes("driver") || q.includes("sentiment negativ") || q.includes("causa") || q.includes("motiv")) {
       const negativeDrivers = clusters
-        .filter(c => c.sentiment < 0)
-        .sort((a, b) => (a.sentiment * a.share) - (b.sentiment * b.share))
+        .filter(c => (c.sentiment || 0) < 0)
+        .sort((a, b) => ((a.sentiment || 0) * (a.share || 0)) - ((b.sentiment || 0) * (b.share || 0)))
         .slice(0, 4);
       
-      const totalNegativeImpact = negativeDrivers.reduce((sum, c) => sum + c.share, 0);
-      const avgNegativeSentiment = negativeDrivers.reduce((sum, c) => sum + c.sentiment, 0) / negativeDrivers.length;
+      const totalNegativeImpact = negativeDrivers.reduce((sum, c) => sum + (c.share || 0), 0);
+      const avgNegativeSentiment = negativeDrivers.length > 0 
+        ? negativeDrivers.reduce((sum, c) => sum + (c.sentiment || 0), 0) / negativeDrivers.length
+        : 0;
       
       return `**Analisi dei Driver del Sentiment Negativo**\n\n` +
         `Ho identificato ${negativeDrivers.length} driver principali che impattano il ${(totalNegativeImpact * 100).toFixed(0)}% degli utenti:\n\n` +
         negativeDrivers.map((c, i) => 
           `**${i + 1}. ${c.label}**\n` +
-          `• Contributo negativo: ${Math.abs(c.sentiment * c.share * 100).toFixed(1)} punti\n` +
-          `• Problematiche: ${c.weaknesses.slice(0, 2).join(", ")}\n` +
-          `• Keywords negative: ${c.keywords.filter(k => k.toLowerCase().includes('non') || k.toLowerCase().includes('problema')).slice(0, 3).join(", ")}`
+          `• Contributo negativo: ${Math.abs((c.sentiment || 0) * (c.share || 0) * 100).toFixed(1)} punti\n` +
+          `• Problematiche: ${(c.weaknesses || []).slice(0, 2).join(", ") || 'Non specificate'}\n` +
+          `• Keywords negative: ${(c.keywords || []).filter(k => k.toLowerCase().includes('non') || k.toLowerCase().includes('problema')).slice(0, 3).join(", ") || 'Non disponibili'}`
         ).join("\n\n") +
         `\n\n**Correlazioni identificate**:\n` +
         `• Sentiment medio negativo: ${avgNegativeSentiment.toFixed(2)}\n` +
         `• Cluster più correlati: ${negativeDrivers.slice(0, 2).map(c => c.label).join(" + ")}\n` +
-        `• Pattern ricorrente: ${negativeDrivers[0].weaknesses[0]}\n\n` +
-        `**Strategia consigliata**: Focus immediato su "${negativeDrivers[0].label}" ` +
+        `• Pattern ricorrente: ${negativeDrivers.length > 0 && negativeDrivers[0].weaknesses?.length > 0 ? negativeDrivers[0].weaknesses[0] : 'Non identificato'}\n\n` +
+        `**Strategia consigliata**: Focus immediato su "${negativeDrivers.length > 0 ? negativeDrivers[0].label : 'le aree critiche identificate'}" ` +
         `per massimizzare l'impatto positivo sul sentiment complessivo.`;
     }
     
     // Azioni prioritarie con roadmap dettagliata
     if (q.includes("azioni") || q.includes("priorit") || q.includes("suggerisci") || q.includes("fare")) {
       const topIssues = clusters
-        .sort((a, b) => b.opportunity_score - a.opportunity_score)
+        .sort((a, b) => (b.opportunity_score || 0) - (a.opportunity_score || 0))
         .slice(0, 5);
       
-      const quickWins = topIssues.filter(c => c.sentiment > -0.3 && c.share > 0.1);
-      const mustFix = topIssues.filter(c => c.sentiment <= -0.3 && c.share > 0.1);
-      const strategic = topIssues.filter(c => c.sentiment <= -0.3 && c.share <= 0.1);
+      const quickWins = topIssues.filter(c => (c.sentiment || 0) > -0.3 && (c.share || 0) > 0.1);
+      const mustFix = topIssues.filter(c => (c.sentiment || 0) <= -0.3 && (c.share || 0) > 0.1);
+      const strategic = topIssues.filter(c => (c.sentiment || 0) <= -0.3 && (c.share || 0) <= 0.1);
       
       return `**Piano d'Azione Strategico - ${projectId.toUpperCase()}**\n\n` +
-        `Basandomi su ${meta.totals.reviews.toLocaleString()} recensioni analizzate:\n\n` +
+        `Basandomi su ${(meta.totals?.reviews || 0).toLocaleString()} recensioni analizzate:\n\n` +
         
         `**FASE 1: Quick Wins (0-30 giorni)**\n` +
         `Impatto stimato: +${(quickWins.length * 0.15).toFixed(1)} punti sentiment\n` +
         quickWins.map(c =>
-          `• ${c.label}: ${c.strengths[0] ? `Potenziare ${c.strengths[0]}` : `Migliorare processo`}\n` +
-          `  - Effort: Basso | Impact: ${(c.share * 100).toFixed(0)}% utenti`
+          `• ${c.label}: ${(c.strengths || [])[0] ? `Potenziare ${c.strengths[0]}` : `Migliorare processo`}\n` +
+          `  - Effort: Basso | Impact: ${((c.share || 0) * 100).toFixed(0)}% utenti`
         ).join("\n") + "\n\n" +
         
         `**FASE 2: Must Fix (30-60 giorni)**\n` +
         `Impatto stimato: +${(mustFix.length * 0.25).toFixed(1)} punti sentiment\n` +
         mustFix.map(c =>
-          `• ${c.label}: Risolvere ${c.weaknesses[0]}\n` +
-          `  - Effort: Medio | Impact: ${(c.share * 100).toFixed(0)}% utenti | Urgenza: Alta`
+          `• ${c.label}: Risolvere ${(c.weaknesses || [])[0] || 'problemi identificati'}\n` +
+          `  - Effort: Medio | Impact: ${((c.share || 0) * 100).toFixed(0)}% utenti | Urgenza: Alta`
         ).join("\n") + "\n\n" +
         
         `**FASE 3: Iniziative Strategiche (60-90 giorni)**\n` +
@@ -280,18 +296,18 @@ export default function InsightChat({ data, projectId }: Props) {
     // Default response with comprehensive overview
     return `**Dashboard Analitica ${projectId.toUpperCase()}**\n\n` +
       `**Metriche Chiave:**\n` +
-      `• Dataset: ${meta.totals.reviews.toLocaleString()} recensioni\n` +
-      `• Cluster identificati: ${meta.totals.clusters}\n` +
-      `• Sentiment medio: ${aggregates.sentiment_mean.toFixed(2)}\n\n` +
+      `• Dataset: ${(meta.totals?.reviews || 0).toLocaleString()} recensioni\n` +
+      `• Cluster identificati: ${meta.totals?.clusters || 0}\n` +
+      `• Sentiment medio: ${(aggregates.sentiment_mean || 0).toFixed(2)}\n\n` +
       
       `**Top 3 Temi Positivi:**\n` +
-      clusters.filter(c => c.sentiment > 0).sort((a, b) => b.sentiment - a.sentiment).slice(0, 3).map((c, i) =>
-        `${i + 1}. ${c.label} (+${c.sentiment.toFixed(2)})`
+      clusters.filter(c => (c.sentiment || 0) > 0).sort((a, b) => (b.sentiment || 0) - (a.sentiment || 0)).slice(0, 3).map((c, i) =>
+        `${i + 1}. ${c.label} (+${(c.sentiment || 0).toFixed(2)})`
       ).join("\n") + "\n\n" +
       
       `**Top 3 Aree Critiche:**\n` +
-      clusters.filter(c => c.sentiment < 0).sort((a, b) => a.sentiment - b.sentiment).slice(0, 3).map((c, i) =>
-        `${i + 1}. ${c.label} (${c.sentiment.toFixed(2)})`
+      clusters.filter(c => (c.sentiment || 0) < 0).sort((a, b) => (a.sentiment || 0) - (b.sentiment || 0)).slice(0, 3).map((c, i) =>
+        `${i + 1}. ${c.label} (${(c.sentiment || 0).toFixed(2)})`
       ).join("\n") + "\n\n" +
       
       `Usa i suggerimenti sopra per esplorare aspetti specifici, oppure fammi qualsiasi domanda sui dati!`;

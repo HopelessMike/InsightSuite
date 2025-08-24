@@ -12,6 +12,7 @@ import InsightChat from "@/components/InsightChat";
 import StatCard from "@/components/StatCard";
 import ClusterDetail from "@/components/ClusterDetail";
 import LocaleToggle from "@/components/LocaleToggle";
+import LoadingScreen from "@/components/LoadingScreen";
 import {
   Database,
   TrendingUp,
@@ -23,7 +24,7 @@ import {
 } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useLocale } from "@/lib/i18n";
-import type { ProjectData } from "@/lib/types";
+import type { ProjectData, Persona } from "@/lib/types";
 import {
   AreaChart,
   Area,
@@ -48,6 +49,8 @@ const PROJECT_FILES: Record<TabKey, string> = {
 export default function InsightSuitePage() {
   const { t, locale } = useLocale();
   const [mounted, setMounted] = React.useState(false);
+  const [showLoadingScreen, setShowLoadingScreen] = React.useState(true);
+  const [initialLoadComplete, setInitialLoadComplete] = React.useState(false);
   const { theme, setTheme } = useTheme();
   const {
     selectedProject,
@@ -67,10 +70,20 @@ export default function InsightSuitePage() {
   React.useEffect(() => {
     let cancelled = false;
     const loadData = async () => {
-      setIsLoading(true);
-      // Scroll to top when project changes
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      await new Promise((r) => setTimeout(r, 250));
+      // Only show loading screen on initial load
+      if (!initialLoadComplete) {
+        setShowLoadingScreen(true);
+      } else {
+        setIsLoading(true);
+        // Scroll to top when project changes
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+      
+      // Start timing for minimum loading duration
+      const startTime = Date.now();
+      const minLoadingTime = initialLoadComplete ? 250 : 3500; // 3.5 seconds for initial load
+      
+      await new Promise((r) => setTimeout(r, initialLoadComplete ? 250 : 100));
       try {
         const res = await fetch(PROJECT_FILES[selectedProject as TabKey], {
           cache: "no-store",
@@ -80,15 +93,28 @@ export default function InsightSuitePage() {
       } catch (e) {
         console.error("Failed to load project:", e);
         if (!cancelled) setProjectData(null);
-      } finally {
-        if (!cancelled) setIsLoading(false);
+      }
+      
+      // Ensure minimum loading time has passed
+      const elapsedTime = Date.now() - startTime;
+      const remainingTime = Math.max(0, minLoadingTime - elapsedTime);
+      
+      if (remainingTime > 0) {
+        await new Promise((r) => setTimeout(r, remainingTime));
+      }
+      
+      if (!cancelled) {
+        if (!initialLoadComplete) {
+          setInitialLoadComplete(true);
+        }
+        setIsLoading(false);
       }
     };
     loadData();
     return () => {
       cancelled = true;
     };
-  }, [selectedProject, setIsLoading, setProjectData]);
+  }, [selectedProject, setIsLoading, setProjectData, initialLoadComplete]);
 
   const clusters = projectData?.clusters ?? [];
   const selectedCluster =
@@ -101,6 +127,17 @@ export default function InsightSuitePage() {
   if (!mounted) return null;
 
   const datasetName = (key: TabKey) => t(`datasets.${key}`);
+
+  // Show loading screen on initial load
+  if (showLoadingScreen && !initialLoadComplete) {
+    return (
+      <LoadingScreen
+        progress={100}
+        isVisible={true}
+        onLoadingComplete={() => setShowLoadingScreen(false)}
+      />
+    );
+  }
 
   return (
     <div className="min-h-screen">
@@ -228,8 +265,7 @@ export default function InsightSuitePage() {
                         transition={{ delay: idx * 0.05 }}
                         title={cluster.label}
                       >
-                        {/* Rimosso il motion.div extra che causava il quadrato stondato */}
-                        <span className="whitespace-nowrap">
+                        <span className="break-words line-clamp-2 text-left leading-tight">
                           {cluster.label}
                         </span>
                       </motion.span>
@@ -334,13 +370,17 @@ export default function InsightSuitePage() {
                   <Users className="w-5 h-5 text-purple-400" />
                   <h2 className="title-lg">{t("personas.title")}</h2>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {projectData?.personas?.map((persona, idx) => (
-                    <motion.div key={persona.id} whileHover={{ y: -4, scale: 1.02 }}>
-                      <PersonaCard persona={persona} index={idx} />
-                    </motion.div>
-                  ))}
-                </div>
+                {projectData?.personas && projectData.personas.length > 3 ? (
+                  <PersonasScrollContainer personas={projectData.personas} />
+                ) : (
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {projectData?.personas?.map((persona, idx) => (
+                      <motion.div key={persona.id} whileHover={{ y: -4, scale: 1.02 }}>
+                        <PersonaCard persona={persona} index={idx} />
+                      </motion.div>
+                    ))}
+                  </div>
+                )}
               </div>
 
               {/* Reviews Table */}
@@ -367,6 +407,86 @@ export default function InsightSuitePage() {
         {/* Cluster Detail Sheet */}
         <ClusterDetail cluster={selectedCluster} />
       </div>
+    </div>
+  );
+}
+
+// Personas Scroll Container Component
+function PersonasScrollContainer({ personas }: { personas: Persona[] }) {
+  const [scrollState, setScrollState] = React.useState({
+    canScrollLeft: false,
+    canScrollRight: true
+  });
+  const scrollRef = React.useRef<HTMLDivElement>(null);
+
+  const checkScrollPosition = React.useCallback(() => {
+    const container = scrollRef.current;
+    if (!container) return;
+
+    const { scrollLeft, scrollWidth, clientWidth } = container;
+    const canScrollLeft = scrollLeft > 0;
+    const canScrollRight = scrollLeft < scrollWidth - clientWidth - 1; // -1 for rounding errors
+
+    setScrollState({ canScrollLeft, canScrollRight });
+  }, []);
+
+  React.useEffect(() => {
+    const container = scrollRef.current;
+    if (!container) return;
+
+    // Check initial state
+    checkScrollPosition();
+
+    // Add scroll listener
+    container.addEventListener('scroll', checkScrollPosition);
+    
+    // Add resize listener for responsive changes
+    window.addEventListener('resize', checkScrollPosition);
+
+    return () => {
+      container.removeEventListener('scroll', checkScrollPosition);
+      window.removeEventListener('resize', checkScrollPosition);
+    };
+  }, [checkScrollPosition]);
+
+  return (
+    <div className="relative">
+      <div 
+        ref={scrollRef}
+        className="flex gap-4 overflow-x-auto pb-4 scrollbar-thin scrollbar-thumb-neutral-600 scrollbar-track-neutral-800"
+      >
+        {personas.map((persona, idx) => (
+          <motion.div 
+            key={persona.id} 
+            className="flex-shrink-0 w-80"
+            whileHover={{ y: -4, scale: 1.02 }}
+          >
+            <PersonaCard persona={persona} index={idx} />
+          </motion.div>
+        ))}
+      </div>
+      
+      {/* Dynamic gradients */}
+      <AnimatePresence>
+        {scrollState.canScrollRight && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.75 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="absolute top-0 right-0 bg-gradient-to-l from-neutral-900 to-transparent w-16 h-full pointer-events-none"
+          />
+        )}
+        {scrollState.canScrollLeft && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.75 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="absolute top-0 left-0 bg-gradient-to-r from-neutral-900 to-transparent w-16 h-full pointer-events-none"
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 }

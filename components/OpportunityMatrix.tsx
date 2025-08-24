@@ -36,24 +36,55 @@ export default function OpportunityMatrix({ clusters }: Props) {
   
   // Calculate data points with proper metrics
   const { data, xSplit, ySplit } = React.useMemo(() => {
-    const points: DataPoint[] = clusters.map(cluster => {
+    const initialPoints: DataPoint[] = clusters.map(cluster => {
       // Calculate negativity ratio (% of negative sentiment)
       const negRatio = Math.max(0, -cluster.sentiment);
-      
-      // Add small jitter to prevent overlap
-      const jitterX = (Math.random() - 0.5) * 0.008;
-      const jitterY = (Math.random() - 0.5) * 0.008;
       
       return {
         id: cluster.id,
         name: cluster.label,
-        x: Math.max(0, Math.min(1, negRatio + jitterX)),
-        y: Math.max(0, Math.min(1, cluster.share + jitterY)),
-        z: Math.sqrt(cluster.size) * 8, // FIX 8: Doubled bubble size
+        x: Math.max(0, Math.min(1, negRatio)),
+        y: Math.max(0, Math.min(1, cluster.share)),
+        z: Math.sqrt(cluster.size) * 10, // Increased bubble size for better visibility
         sentiment: cluster.sentiment,
         cluster,
       };
     });
+
+    // Advanced collision detection and resolution
+    const points = [...initialPoints];
+    const minDistance = 0.035; // Minimum distance between points
+    const maxIterations = 50;
+    
+    for (let iteration = 0; iteration < maxIterations; iteration++) {
+      let hasCollisions = false;
+      
+      for (let i = 0; i < points.length; i++) {
+        for (let j = i + 1; j < points.length; j++) {
+          const dx = points[i].x - points[j].x;
+          const dy = points[i].y - points[j].y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          
+          if (distance < minDistance && distance > 0) {
+            hasCollisions = true;
+            
+            // Calculate repulsion force
+            const force = (minDistance - distance) / distance * 0.5;
+            const forceX = dx * force;
+            const forceY = dy * force;
+            
+            // Apply force to both points (with bounds checking)
+            points[i].x = Math.max(0, Math.min(1, points[i].x + forceX));
+            points[i].y = Math.max(0, Math.min(1, points[i].y + forceY));
+            points[j].x = Math.max(0, Math.min(1, points[j].x - forceX));
+            points[j].y = Math.max(0, Math.min(1, points[j].y - forceY));
+          }
+        }
+      }
+      
+      // If no collisions detected, break early
+      if (!hasCollisions) break;
+    }
     
     // Calculate dynamic thresholds using quantiles
     const xValues = points.map(p => p.x).sort((a, b) => a - b);
@@ -219,20 +250,34 @@ export default function OpportunityMatrix({ clusters }: Props) {
               fill="#60a5fa"
               onClick={handleClick}
             >
-              {data.map((entry, index) => (
-                <Cell 
-                  key={`cell-${index}`}
-                  fill={sentimentToColor(entry.sentiment)}
-                  fillOpacity={0.9}  // cambiato da 0.8
-                  stroke={sentimentToColor(entry.sentiment)}
-                  strokeWidth={2}  // cambiato da 1
-                  strokeOpacity={0.5}  // cambiato da 0.3
-                  className="cursor-pointer hover:fillOpacity-100 transition-all duration-200"
-                  style={{
-                    filter: "drop-shadow(0 4px 8px rgba(0,0,0,0.4))",  // enhanced shadow
-                  }}
-                />
-              ))}
+              {data.map((entry, index) => {
+                // Calculate dynamic stroke width based on proximity to other points
+                const proximityBoost = data.filter(other => {
+                  if (other.id === entry.id) return false;
+                  const distance = Math.sqrt(
+                    Math.pow(other.x - entry.x, 2) + Math.pow(other.y - entry.y, 2)
+                  );
+                  return distance < 0.08;
+                }).length;
+                
+                const strokeWidth = Math.max(2, 2 + proximityBoost * 0.5);
+                const shadowIntensity = Math.max(0.4, 0.4 + proximityBoost * 0.2);
+                
+                return (
+                  <Cell 
+                    key={`cell-${index}`}
+                    fill={sentimentToColor(entry.sentiment)}
+                    fillOpacity={0.9}
+                    stroke="#ffffff"
+                    strokeWidth={strokeWidth}
+                    strokeOpacity={0.8}
+                    className="cursor-pointer hover:fillOpacity-100 transition-all duration-200"
+                    style={{
+                      filter: `drop-shadow(0 4px 8px rgba(0,0,0,${shadowIntensity}))`,
+                    }}
+                  />
+                );
+              })}
             </Scatter>
           </ScatterChart>
         </ResponsiveContainer>
