@@ -49,7 +49,7 @@ export default function OpportunityMatrix({ clusters }: Props) {
         name: cluster.label,
         x: Math.max(0, Math.min(1, negRatio + jitterX)),
         y: Math.max(0, Math.min(1, cluster.share + jitterY)),
-        z: Math.sqrt(cluster.size) * 4, // bubble size
+        z: Math.sqrt(cluster.size) * 8, // FIX 8: Doubled bubble size
         sentiment: cluster.sentiment,
         cluster,
       };
@@ -223,13 +223,13 @@ export default function OpportunityMatrix({ clusters }: Props) {
                 <Cell 
                   key={`cell-${index}`}
                   fill={sentimentToColor(entry.sentiment)}
-                  fillOpacity={0.8}
+                  fillOpacity={0.9}  // cambiato da 0.8
                   stroke={sentimentToColor(entry.sentiment)}
-                  strokeWidth={1}
-                  strokeOpacity={0.3}
+                  strokeWidth={2}  // cambiato da 1
+                  strokeOpacity={0.5}  // cambiato da 0.3
                   className="cursor-pointer hover:fillOpacity-100 transition-all duration-200"
                   style={{
-                    filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.3))",
+                    filter: "drop-shadow(0 4px 8px rgba(0,0,0,0.4))",  // enhanced shadow
                   }}
                 />
               ))}

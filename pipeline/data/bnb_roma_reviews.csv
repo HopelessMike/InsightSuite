@@ -1,0 +1,481 @@
+listing_id,id,date,reviewer_id,reviewer_name,comments,rating
+87654321,100085,2024-01-02,271119,Matteo,Letto comodo e biancheria morbida; abbiamo dormito benissimo per tutto il soggiorno.,5
+87654321,100378,2024-01-05,232614,Marco,Materasso un po' duro e cuscini scomodi; riposo non ottimale.,3
+87654321,100254,2024-01-07,243545,Amelia,Lots of street noise at night; poor sleep.,1
+87654321,100189,2024-01-09,256483,Ilaria,Acqua calda incostante e cattivo odore dallo scarico; da sistemare.,3
+87654321,100291,2024-01-09,221512,Elisa,Climatizzatore poco potente e rumoroso; camera calda nel pomeriggio.,1
+87654321,100311,2024-01-10,200192,Angela,Personale gentilissimo e disponibile; ci hanno aiutato con consigli utili. Perfetto per famiglia con bambini.,4
+87654321,100242,2024-01-10,210838,Matteo,Buon rapporto qualità/prezzo per la posizione e i servizi offerti.,3
+87654321,100296,2024-01-13,241481,Alessio,"Colazione varia e di qualità, ottime torte fatte in casa e opzioni senza lattosio.",5
+87654321,100194,2024-01-18,288318,Sofia,Wi‑Fi instabile: segnale debole in camera e continue disconnessioni.,2
+87654321,100058,2024-01-21,231267,Francesca,Aria condizionata efficiente e silenziosa; temperatura piacevole in camera.,4
+87654321,100294,2024-01-28,286299,Riccardo,Molto rumore di notte dalla strada e dal bar vicino; abbiamo dormito male.,2
+87654321,100393,2024-01-30,295326,Eleonora,Climatizzatore poco potente e rumoroso; camera calda nel pomeriggio.,2
+87654321,100430,2024-02-01,269923,Paolo,Stanza silenziosa nonostante la zona centrale; ottimo isolamento acustico.,5
+87654321,100477,2024-02-03,251606,Elisa,Personale gentilissimo e disponibile; ci hanno aiutato con consigli utili. Perfetto per da solo.,5
+87654321,100306,2024-02-06,293589,Nicola,Letto comodo e biancheria morbida; abbiamo dormito benissimo per tutto il soggiorno.,4
+87654321,100096,2024-02-06,230772,Aurora,Prezzo un po' alto rispetto alla qualità della stanza e dei servizi.,3
+87654321,100377,2024-02-08,295769,Vittoria,Climatizzatore poco potente e rumoroso; camera calda nel pomeriggio.,2
+87654321,100150,2024-02-08,281007,Ilaria,"Posizione ottima, a pochi minuti dal centro e ben collegata ai mezzi. Ideale per con amici.",5
+87654321,100034,2024-02-10,227536,Davide,Buon rapporto qualità/prezzo per la posizione e i servizi offerti.,5
+87654321,100386,2024-02-10,227223,Valentina,Wi‑Fi instabile: segnale debole in camera e continue disconnessioni.,3
+87654321,100417,2024-02-11,272955,Michael,Could be cleaner: dust on shelves and a smell in the bathroom.,3
+87654321,100143,2024-02-12,274929,Matteo,Molto rumore di notte dalla strada e dal bar vicino; abbiamo dormito male.,3
+87654321,100135,2024-02-13,260261,Riccardo,Climatizzatore poco potente e rumoroso; camera calda nel pomeriggio.,2
+87654321,100305,2024-02-15,201611,Eleonora,Climatizzatore poco potente e rumoroso; camera calda nel pomeriggio.,3
+87654321,100261,2024-02-15,284546,Matteo,"Posizione ottima, a pochi minuti dal centro e ben collegata ai mezzi. Ideale per smart working.",5
+87654321,100414,2024-02-18,250798,Riccardo,Buon rapporto qualità/prezzo per la posizione e i servizi offerti.,5
+87654321,100405,2024-02-19,256730,Filippo,"Wi‑Fi stabile e veloce, video call perfette per da solo.",4
+87654321,100295,2024-02-25,231371,Andrea,Wi‑Fi instabile: segnale debole in camera e continue disconnessioni.,3
+87654321,100312,2024-03-02,218662,Arianna,"Check-in rapido e flessibile, ci hanno permesso di lasciare i bagagli prima. Molto comodo.",5
+87654321,100024,2024-03-03,207493,Martina,"Check-in rapido e flessibile, ci hanno permesso di lasciare i bagagli prima. Molto comodo.",5
+87654321,100314,2024-03-04,217133,Chiara,"Wi‑Fi stabile e veloce, video call perfette per da solo.",4
+87654321,100218,2024-03-06,207898,Marco,Colazione un po' scarsa: poche opzioni salate e niente alternative senza glutine.,3
+87654321,100308,2024-03-11,237003,Sara,"Camera molto pulita e profumata, cambio biancheria regolare. Con Amici perfetto.",5
+87654321,100041,2024-03-12,243280,Edoardo,Wi‑Fi instabile: segnale debole in camera e continue disconnessioni.,2
+87654321,100426,2024-03-14,220153,Andrea,Wi‑Fi instabile: segnale debole in camera e continue disconnessioni.,3
+87654321,100046,2024-03-15,282545,Martina,"Camera molto pulita e profumata, cambio biancheria regolare. Weekend Romantico perfetto.",4
+87654321,100429,2024-03-15,265908,Pietro,"Posizione ottima, a pochi minuti dal centro e ben collegata ai mezzi. Ideale per con amici.",5
+87654321,100259,2024-03-16,278373,Federico,"Check-in lento, istruzioni poco chiare e attesa lunga alla consegna delle chiavi.",2
+87654321,100439,2024-03-18,266477,Elisa,"Wi‑Fi stabile e veloce, video call perfette per smart working.",5
+87654321,100171,2024-03-19,269398,Emily,Quiet room despite central area; good soundproofing.,5
+87654321,100307,2024-03-20,215651,Angela,"Colazione varia e di qualità, ottime torte fatte in casa e opzioni senza lattosio.",4
+87654321,100246,2024-03-21,245333,Aurora,Letto comodo e biancheria morbida; abbiamo dormito benissimo per tutto il soggiorno.,4
+87654321,100463,2024-03-22,294961,Nicola,Molto rumore di notte dalla strada e dal bar vicino; abbiamo dormito male.,2
+87654321,100241,2024-03-23,285183,Lucas,Quiet room despite central area; good soundproofing.,4
+87654321,100214,2024-03-24,269229,Riccardo,Acqua calda incostante e cattivo odore dallo scarico; da sistemare.,2
+87654321,100424,2024-03-25,221941,Sofia,Acqua calda incostante e cattivo odore dallo scarico; da sistemare.,2
+87654321,100320,2024-03-27,233925,Sara,"Colazione varia e di qualità, ottime torte fatte in casa e opzioni senza lattosio.",4
+87654321,100300,2024-03-29,215203,Francesca,"Check-in lento, istruzioni poco chiare e attesa lunga alla consegna delle chiavi.",2
+87654321,100278,2024-03-30,215387,Federico,"Check-in lento, istruzioni poco chiare e attesa lunga alla consegna delle chiavi.",2
+87654321,100337,2024-03-31,287822,Francesca,"Colazione varia e di qualità, ottime torte fatte in casa e opzioni senza lattosio.",4
+87654321,100083,2024-04-03,253524,Stefano,Pulizia migliorabile: polvere sui comodini e odore in bagno al nostro arrivo.,3
+87654321,100321,2024-04-04,243457,Michael,Unfriendly staff and slow replies at check-in. Not ideal for romantic weekend.,3
+87654321,100124,2024-04-05,297595,Davide,Climatizzatore poco potente e rumoroso; camera calda nel pomeriggio.,1
+87654321,100395,2024-04-07,295244,Edoardo,Molto rumore di notte dalla strada e dal bar vicino; abbiamo dormito male.,2
+87654321,100112,2024-04-11,280695,Aurora,Prezzo un po' alto rispetto alla qualità della stanza e dei servizi.,2
+87654321,100097,2024-04-12,290965,Ilaria,Colazione un po' scarsa: poche opzioni salate e niente alternative senza glutine.,2
+87654321,100319,2024-04-14,218323,Simone,Staff freddo e poco presente; comunicazione lenta al check-in. Non ideale per da solo.,2
+87654321,100030,2024-04-16,217602,Pietro,Climatizzatore poco potente e rumoroso; camera calda nel pomeriggio.,3
+87654321,100336,2024-04-16,218435,Serena,Materasso un po' duro e cuscini scomodi; riposo non ottimale.,2
+87654321,100047,2024-04-19,228684,Arianna,Bagno funzionale e doccia spaziosa; asciugamani puliti ogni giorno.,4
+87654321,100367,2024-04-20,244078,Gabriele,Wi‑Fi instabile: segnale debole in camera e continue disconnessioni.,2
+87654321,100387,2024-04-23,287691,Nicola,Letto comodo e biancheria morbida; abbiamo dormito benissimo per tutto il soggiorno.,4
+87654321,100138,2024-04-26,225416,Michele,"Colazione varia e di qualità, ottime torte fatte in casa e opzioni senza lattosio.",5
+87654321,100461,2024-05-01,258537,Alexander,Mattress too firm and uncomfortable pillows; poor sleep quality.,2
+87654321,100297,2024-05-01,234366,Eleonora,Buon rapporto qualità/prezzo per la posizione e i servizi offerti.,4
+87654321,100448,2024-05-01,254345,Stefano,"Colazione varia e di qualità, ottime torte fatte in casa e opzioni senza lattosio.",4
+87654321,100191,2024-05-01,212673,Arianna,Wi‑Fi instabile: segnale debole in camera e continue disconnessioni.,2
+87654321,100301,2024-05-02,217985,Serena,Personale gentilissimo e disponibile; ci hanno aiutato con consigli utili. Perfetto per smart working.,4
+87654321,100061,2024-05-03,274178,Filippo,Aria condizionata efficiente e silenziosa; temperatura piacevole in camera.,5
+87654321,100125,2024-05-05,287208,Elisa,"Wi‑Fi stabile e veloce, video call perfette per con amici.",5
+87654321,100108,2024-05-06,288189,Daniele,Wi‑Fi instabile: segnale debole in camera e continue disconnessioni.,1
+87654321,100230,2024-05-07,224907,Francesca,Colazione un po' scarsa: poche opzioni salate e niente alternative senza glutine.,2
+87654321,100281,2024-05-09,217393,Emma,Could be cleaner: dust on shelves and a smell in the bathroom.,2
+87654321,100071,2024-05-09,207147,Ilaria,"Colazione varia e di qualità, ottime torte fatte in casa e opzioni senza lattosio.",5
+87654321,100302,2024-05-09,235228,Giorgia,Acqua calda incostante e cattivo odore dallo scarico; da sistemare.,2
+87654321,100178,2024-05-11,272261,Silvia,Aria condizionata efficiente e silenziosa; temperatura piacevole in camera.,4
+87654321,100406,2024-05-11,286183,Nicola,Wi‑Fi instabile: segnale debole in camera e continue disconnessioni.,2
+87654321,100134,2024-05-12,292232,Ilaria,Letto comodo e biancheria morbida; abbiamo dormito benissimo per tutto il soggiorno.,4
+87654321,100285,2024-05-13,263615,Claudia,"Check-in rapido e flessibile, ci hanno permesso di lasciare i bagagli prima. Molto comodo.",4
+87654321,100185,2024-05-13,267500,Davide,Materasso un po' duro e cuscini scomodi; riposo non ottimale.,3
+87654321,100223,2024-05-13,257536,Francesca,"Posizione ottima, a pochi minuti dal centro e ben collegata ai mezzi. Ideale per da solo.",5
+87654321,100032,2024-05-13,234336,Sara,"Posizione ottima, a pochi minuti dal centro e ben collegata ai mezzi. Ideale per famiglia con bambini.",4
+87654321,100381,2024-05-14,202873,Martina,Pulizia migliorabile: polvere sui comodini e odore in bagno al nostro arrivo.,2
+87654321,100453,2024-05-15,226523,Michele,Acqua calda incostante e cattivo odore dallo scarico; da sistemare.,2
+87654321,100364,2024-05-15,278793,Sofia,Staff freddo e poco presente; comunicazione lenta al check-in. Non ideale per smart working.,2
+87654321,100141,2024-05-16,257962,Eleonora,Climatizzatore poco potente e rumoroso; camera calda nel pomeriggio.,2
+87654321,100385,2024-05-16,226038,Pietro,Molto rumore di notte dalla strada e dal bar vicino; abbiamo dormito male.,1
+87654321,100380,2024-05-17,264249,Ilaria,Acqua calda incostante e cattivo odore dallo scarico; da sistemare.,2
+87654321,100441,2024-05-17,266901,Davide,Letto comodo e biancheria morbida; abbiamo dormito benissimo per tutto il soggiorno.,4
+87654321,100255,2024-05-19,279065,Arianna,Letto comodo e biancheria morbida; abbiamo dormito benissimo per tutto il soggiorno.,4
+87654321,100204,2024-05-20,272136,Alessandra,Personale gentilissimo e disponibile; ci hanno aiutato con consigli utili. Perfetto per famiglia con bambini.,4
+87654321,100157,2024-05-20,261926,Mia,Tasty breakfast with homemade cakes and lactose-free options.,4
+87654321,100104,2024-05-20,282243,Alessandra,Molto rumore di notte dalla strada e dal bar vicino; abbiamo dormito male.,2
+87654321,100009,2024-05-21,211916,Filippo,Prezzo un po' alto rispetto alla qualità della stanza e dei servizi.,3
+87654321,100447,2024-05-22,230146,Noemi,Acqua calda incostante e cattivo odore dallo scarico; da sistemare.,1
+87654321,100008,2024-05-22,273580,Silvia,Colazione un po' scarsa: poche opzioni salate e niente alternative senza glutine.,3
+87654321,100293,2024-05-23,284492,Alessio,Molto rumore di notte dalla strada e dal bar vicino; abbiamo dormito male.,3
+87654321,100338,2024-05-24,200168,Michele,Bagno funzionale e doccia spaziosa; asciugamani puliti ogni giorno.,4
+87654321,100079,2024-05-25,221748,Martina,Buon rapporto qualità/prezzo per la posizione e i servizi offerti.,4
+87654321,100264,2024-05-25,244967,Ilaria,Prezzo un po' alto rispetto alla qualità della stanza e dei servizi.,2
+87654321,100205,2024-05-25,211726,Olivia,A bit overpriced for the room quality and amenities.,3
+87654321,100469,2024-05-26,267278,Valentina,"Camera molto pulita e profumata, cambio biancheria regolare. Viaggio Di Lavoro perfetto.",5
+87654321,100462,2024-05-26,211940,Giorgia,"Posizione ottima, a pochi minuti dal centro e ben collegata ai mezzi. Ideale per da solo.",4
+87654321,100355,2024-05-27,289236,Claudia,Molto rumore di notte dalla strada e dal bar vicino; abbiamo dormito male.,2
+87654321,100089,2024-05-28,278562,Stefano,Prezzo un po' alto rispetto alla qualità della stanza e dei servizi.,2
+87654321,100114,2024-05-28,259601,Mia,Unstable Wi‑Fi: weak signal in the room and frequent drops.,2
+87654321,100139,2024-05-29,222741,Mia,Mattress too firm and uncomfortable pillows; poor sleep quality.,2
+87654321,100351,2024-05-31,233802,Vittoria,Zona rumorosa e un po' distante dai principali punti di interesse.,2
+87654321,100353,2024-05-31,276373,Pietro,Molto rumore di notte dalla strada e dal bar vicino; abbiamo dormito male.,1
+87654321,100033,2024-06-01,248394,Tommaso,Wi‑Fi instabile: segnale debole in camera e continue disconnessioni.,1
+87654321,100323,2024-06-01,281157,Simone,Letto comodo e biancheria morbida; abbiamo dormito benissimo per tutto il soggiorno.,5
+87654321,100368,2024-06-02,231497,William,"Fast and flexible check-in, we could drop bags earlier. Very convenient.",5
+87654321,100315,2024-06-05,276639,Valentina,Materasso un po' duro e cuscini scomodi; riposo non ottimale.,3
+87654321,100116,2024-06-05,270808,Riccardo,Colazione un po' scarsa: poche opzioni salate e niente alternative senza glutine.,3
+87654321,100436,2024-06-05,247775,Martina,Letto comodo e biancheria morbida; abbiamo dormito benissimo per tutto il soggiorno.,4
+87654321,100088,2024-06-06,293927,Matteo,Colazione un po' scarsa: poche opzioni salate e niente alternative senza glutine.,3
+87654321,100181,2024-06-06,281852,Aurora,"Posizione ottima, a pochi minuti dal centro e ben collegata ai mezzi. Ideale per weekend romantico.",5
+87654321,100418,2024-06-07,242288,Giorgia,Molto rumore di notte dalla strada e dal bar vicino; abbiamo dormito male.,2
+87654321,100327,2024-06-09,269952,Nicola,Wi‑Fi instabile: segnale debole in camera e continue disconnessioni.,2
+87654321,100333,2024-06-10,257262,Daniele,Stanza silenziosa nonostante la zona centrale; ottimo isolamento acustico.,5
+87654321,100286,2024-06-10,200089,Sara,Personale gentilissimo e disponibile; ci hanno aiutato con consigli utili. Perfetto per da solo.,5
+87654321,100145,2024-06-11,237080,Simone,Personale gentilissimo e disponibile; ci hanno aiutato con consigli utili. Perfetto per da solo.,5
+87654321,100376,2024-06-11,211540,Sara,Personale gentilissimo e disponibile; ci hanno aiutato con consigli utili. Perfetto per weekend romantico.,5
+87654321,100087,2024-06-11,201793,Claudia,"Posizione ottima, a pochi minuti dal centro e ben collegata ai mezzi. Ideale per smart working.",5
+87654321,100392,2024-06-12,277431,Giorgia,"Posizione ottima, a pochi minuti dal centro e ben collegata ai mezzi. Ideale per smart working.",5
+87654321,100187,2024-06-12,267467,Giorgia,Materasso un po' duro e cuscini scomodi; riposo non ottimale.,3
+87654321,100478,2024-06-13,276154,Simone,Acqua calda incostante e cattivo odore dallo scarico; da sistemare.,3
+87654321,100051,2024-06-13,290958,Francesca,"Check-in rapido e flessibile, ci hanno permesso di lasciare i bagagli prima. Molto comodo.",4
+87654321,100412,2024-06-13,289574,Arianna,"Camera molto pulita e profumata, cambio biancheria regolare. Viaggio Di Lavoro perfetto.",5
+87654321,100013,2024-06-14,269515,Ava,Weak and noisy AC; the room was hot in the afternoon.,1
+87654321,100151,2024-06-18,205727,Arianna,"Camera molto pulita e profumata, cambio biancheria regolare. Smart Working perfetto.",5
+87654321,100304,2024-06-19,233439,Claudia,Acqua calda incostante e cattivo odore dallo scarico; da sistemare.,3
+87654321,100014,2024-06-19,210323,Harper,Comfortable bed and soft sheets; we slept very well.,5
+87654321,100245,2024-06-19,251008,Andrea,Stanza silenziosa nonostante la zona centrale; ottimo isolamento acustico.,5
+87654321,100350,2024-06-20,225261,David,Noisy area and a bit far from main attractions.,2
+87654321,100059,2024-06-20,298033,Alessio,Molto rumore di notte dalla strada e dal bar vicino; abbiamo dormito male.,2
+87654321,100379,2024-06-20,205993,Noemi,"Check-in rapido e flessibile, ci hanno permesso di lasciare i bagagli prima. Molto comodo.",5
+87654321,100252,2024-06-22,222217,Arianna,"Posizione ottima, a pochi minuti dal centro e ben collegata ai mezzi. Ideale per con amici.",5
+87654321,100045,2024-06-22,240688,Giorgia,Aria condizionata efficiente e silenziosa; temperatura piacevole in camera.,4
+87654321,100328,2024-06-26,277663,Sara,Colazione un po' scarsa: poche opzioni salate e niente alternative senza glutine.,3
+87654321,100175,2024-06-27,266684,Aurora,"Check-in lento, istruzioni poco chiare e attesa lunga alla consegna delle chiavi.",3
+87654321,100266,2024-06-27,243384,Michele,Aria condizionata efficiente e silenziosa; temperatura piacevole in camera.,4
+87654321,100082,2024-06-28,285395,Alexander,Lots of street noise at night; poor sleep.,2
+87654321,100464,2024-06-28,257537,Daniele,Molto rumore di notte dalla strada e dal bar vicino; abbiamo dormito male.,1
+87654321,100438,2024-06-28,210745,Nicola,Acqua calda incostante e cattivo odore dallo scarico; da sistemare.,3
+87654321,100063,2024-06-29,285257,Gabriele,Climatizzatore poco potente e rumoroso; camera calda nel pomeriggio.,3
+87654321,100206,2024-06-29,204764,Alessandra,Wi‑Fi instabile: segnale debole in camera e continue disconnessioni.,2
+87654321,100331,2024-06-30,242414,Marco,Materasso un po' duro e cuscini scomodi; riposo non ottimale.,2
+87654321,100394,2024-07-01,292350,David,Inconsistent hot water and bad smell from the drain; needs fixing.,3
+87654321,100244,2024-07-02,241221,Francesca,Climatizzatore poco potente e rumoroso; camera calda nel pomeriggio.,3
+87654321,100452,2024-07-05,266953,Giorgia,Colazione un po' scarsa: poche opzioni salate e niente alternative senza glutine.,2
+87654321,100340,2024-07-09,213727,Eleonora,Climatizzatore poco potente e rumoroso; camera calda nel pomeriggio.,1
+87654321,100287,2024-07-09,210804,Charlotte,Basic breakfast: few savory choices and no gluten-free options.,3
+87654321,100290,2024-07-10,217974,Charlotte,"Very clean room, fresh linens. Romantic Weekend friendly.",4
+87654321,100056,2024-07-11,299776,Vittoria,Pulizia migliorabile: polvere sui comodini e odore in bagno al nostro arrivo.,2
+87654321,100170,2024-07-12,250182,Giulia,Pulizia migliorabile: polvere sui comodini e odore in bagno al nostro arrivo.,3
+87654321,100040,2024-07-13,292902,Silvia,Prezzo un po' alto rispetto alla qualità della stanza e dei servizi.,2
+87654321,100019,2024-07-13,286375,Elisa,Molto rumore di notte dalla strada e dal bar vicino; abbiamo dormito male.,3
+87654321,100165,2024-07-14,206266,Silvia,"Check-in rapido e flessibile, ci hanno permesso di lasciare i bagagli prima. Molto comodo.",4
+87654321,100199,2024-07-15,236570,Lucas,Unstable Wi‑Fi: weak signal in the room and frequent drops.,2
+87654321,100069,2024-07-16,297371,Noemi,Bagno funzionale e doccia spaziosa; asciugamani puliti ogni giorno.,4
+87654321,100416,2024-07-17,223256,Gabriele,Molto rumore di notte dalla strada e dal bar vicino; abbiamo dormito male.,2
+87654321,100031,2024-07-17,264033,Chiara,"Wi‑Fi stabile e veloce, video call perfette per famiglia con bambini.",5
+87654321,100468,2024-07-18,252948,Mia,Mattress too firm and uncomfortable pillows; poor sleep quality.,2
+87654321,100269,2024-07-20,234388,Francesca,Stanza silenziosa nonostante la zona centrale; ottimo isolamento acustico.,4
+87654321,100123,2024-07-22,233409,Alessandra,Buon rapporto qualità/prezzo per la posizione e i servizi offerti.,3
+87654321,100179,2024-07-23,229553,Simone,"Camera molto pulita e profumata, cambio biancheria regolare. Viaggio Di Lavoro perfetto.",5
+87654321,100020,2024-07-26,214323,Vittoria,Buon rapporto qualità/prezzo per la posizione e i servizi offerti.,4
+87654321,100247,2024-07-26,259055,Vittoria,Colazione un po' scarsa: poche opzioni salate e niente alternative senza glutine.,3
+87654321,100280,2024-07-28,267426,Sara,Molto rumore di notte dalla strada e dal bar vicino; abbiamo dormito male.,2
+87654321,100027,2024-07-28,241181,Angela,Climatizzatore poco potente e rumoroso; camera calda nel pomeriggio.,2
+87654321,100342,2024-07-29,253646,Olivia,Lots of street noise at night; poor sleep.,1
+87654321,100458,2024-07-29,241406,Marco,Molto rumore di notte dalla strada e dal bar vicino; abbiamo dormito male.,1
+87654321,100268,2024-07-29,292244,Martina,Acqua calda incostante e cattivo odore dallo scarico; da sistemare.,1
+87654321,100474,2024-07-30,232729,Martina,Acqua calda incostante e cattivo odore dallo scarico; da sistemare.,2
+87654321,100076,2024-07-31,234688,Pietro,Personale gentilissimo e disponibile; ci hanno aiutato con consigli utili. Perfetto per smart working.,5
+87654321,100005,2024-08-02,291989,Arianna,"Check-in rapido e flessibile, ci hanno permesso di lasciare i bagagli prima. Molto comodo.",5
+87654321,100240,2024-08-03,248897,Chiara,"Wi‑Fi stabile e veloce, video call perfette per weekend romantico.",5
+87654321,100007,2024-08-04,274342,Sara,Colazione un po' scarsa: poche opzioni salate e niente alternative senza glutine.,3
+87654321,100002,2024-08-04,247053,Marco,"Camera molto pulita e profumata, cambio biancheria regolare. Famiglia Con Bambini perfetto.",4
+87654321,100147,2024-08-05,277994,Serena,"Camera molto pulita e profumata, cambio biancheria regolare. Con Amici perfetto.",5
+87654321,100105,2024-08-06,226319,Paolo,Bagno funzionale e doccia spaziosa; asciugamani puliti ogni giorno.,4
+87654321,100425,2024-08-06,255602,Isabella,Stable and fast Wi‑Fi; perfect for business trip video calls.,4
+87654321,100158,2024-08-08,271933,Elisa,Acqua calda incostante e cattivo odore dallo scarico; da sistemare.,2
+87654321,100451,2024-08-09,261790,Harper,Lots of street noise at night; poor sleep.,2
+87654321,100346,2024-08-09,229655,Aurora,Buon rapporto qualità/prezzo per la posizione e i servizi offerti.,5
+87654321,100146,2024-08-10,233030,Michele,Climatizzatore poco potente e rumoroso; camera calda nel pomeriggio.,3
+87654321,100292,2024-08-10,213169,Andrea,Climatizzatore poco potente e rumoroso; camera calda nel pomeriggio.,3
+87654321,100473,2024-08-11,235269,Michele,"Posizione ottima, a pochi minuti dal centro e ben collegata ai mezzi. Ideale per weekend romantico.",4
+87654321,100326,2024-08-12,236823,Eleonora,Wi‑Fi instabile: segnale debole in camera e continue disconnessioni.,3
+87654321,100471,2024-08-13,230138,Filippo,Personale gentilissimo e disponibile; ci hanno aiutato con consigli utili. Perfetto per famiglia con bambini.,5
+87654321,100052,2024-08-13,276557,Andrea,"Posizione ottima, a pochi minuti dal centro e ben collegata ai mezzi. Ideale per famiglia con bambini.",5
+87654321,100275,2024-08-13,236026,Tommaso,Bagno funzionale e doccia spaziosa; asciugamani puliti ogni giorno.,4
+87654321,100420,2024-08-14,286945,Sofia,"Camera molto pulita e profumata, cambio biancheria regolare. Con Amici perfetto.",4
+87654321,100433,2024-08-14,233128,Noemi,"Colazione varia e di qualità, ottime torte fatte in casa e opzioni senza lattosio.",4
+87654321,100233,2024-08-14,202126,Silvia,"Colazione varia e di qualità, ottime torte fatte in casa e opzioni senza lattosio.",5
+87654321,100370,2024-08-15,283666,Benjamin,A bit overpriced for the room quality and amenities.,2
+87654321,100446,2024-08-16,246256,Arianna,Materasso un po' duro e cuscini scomodi; riposo non ottimale.,3
+87654321,100372,2024-08-16,240251,Simone,Climatizzatore poco potente e rumoroso; camera calda nel pomeriggio.,1
+87654321,100363,2024-08-18,235270,Giulia,Buon rapporto qualità/prezzo per la posizione e i servizi offerti.,4
+87654321,100107,2024-08-19,294925,Michele,"Posizione ottima, a pochi minuti dal centro e ben collegata ai mezzi. Ideale per viaggio di lavoro.",5
+87654321,100127,2024-08-19,273527,Chiara,Materasso un po' duro e cuscini scomodi; riposo non ottimale.,2
+87654321,100222,2024-08-20,202051,Federico,Bagno funzionale e doccia spaziosa; asciugamani puliti ogni giorno.,4
+87654321,100270,2024-08-20,222614,Claudia,Wi‑Fi instabile: segnale debole in camera e continue disconnessioni.,3
+87654321,100357,2024-08-21,297482,Paolo,"Check-in rapido e flessibile, ci hanno permesso di lasciare i bagagli prima. Molto comodo.",5
+87654321,100208,2024-08-21,233721,Aurora,Wi‑Fi instabile: segnale debole in camera e continue disconnessioni.,3
+87654321,100037,2024-08-21,286512,Luca,Bagno funzionale e doccia spaziosa; asciugamani puliti ogni giorno.,5
+87654321,100234,2024-08-23,232209,Filippo,Molto rumore di notte dalla strada e dal bar vicino; abbiamo dormito male.,2
+87654321,100237,2024-08-24,219796,Francesca,Aria condizionata efficiente e silenziosa; temperatura piacevole in camera.,5
+87654321,100388,2024-08-24,238801,Matteo,"Wi‑Fi stabile e veloce, video call perfette per smart working.",4
+87654321,100465,2024-08-25,288346,Edoardo,"Check-in rapido e flessibile, ci hanno permesso di lasciare i bagagli prima. Molto comodo.",5
+87654321,100330,2024-08-26,202613,Claudia,Wi‑Fi instabile: segnale debole in camera e continue disconnessioni.,1
+87654321,100239,2024-08-26,223497,Riccardo,Buon rapporto qualità/prezzo per la posizione e i servizi offerti.,5
+87654321,100078,2024-08-27,281928,Alessandra,"Check-in lento, istruzioni poco chiare e attesa lunga alla consegna delle chiavi.",2
+87654321,100062,2024-08-27,264252,Noemi,Wi‑Fi instabile: segnale debole in camera e continue disconnessioni.,1
+87654321,100109,2024-08-27,281206,Valentina,Molto rumore di notte dalla strada e dal bar vicino; abbiamo dormito male.,2
+87654321,100288,2024-08-27,211954,Giorgia,Personale gentilissimo e disponibile; ci hanno aiutato con consigli utili. Perfetto per famiglia con bambini.,4
+87654321,100398,2024-08-28,258221,Emily,Stable and fast Wi‑Fi; perfect for remote work video calls.,4
+87654321,100186,2024-08-28,280659,Silvia,"Colazione varia e di qualità, ottime torte fatte in casa e opzioni senza lattosio.",5
+87654321,100435,2024-08-28,281202,Chiara,Colazione un po' scarsa: poche opzioni salate e niente alternative senza glutine.,3
+87654321,100113,2024-08-29,213023,Stefano,Personale gentilissimo e disponibile; ci hanno aiutato con consigli utili. Perfetto per weekend romantico.,5
+87654321,100022,2024-08-30,263654,Riccardo,"Posizione ottima, a pochi minuti dal centro e ben collegata ai mezzi. Ideale per con amici.",5
+87654321,100035,2024-08-30,223207,Chiara,Materasso un po' duro e cuscini scomodi; riposo non ottimale.,2
+87654321,100018,2024-08-31,263625,Sara,"Colazione varia e di qualità, ottime torte fatte in casa e opzioni senza lattosio.",4
+87654321,100117,2024-08-31,202069,Simone,"Posizione ottima, a pochi minuti dal centro e ben collegata ai mezzi. Ideale per viaggio di lavoro.",4
+87654321,100271,2024-09-01,223993,Paolo,Molto rumore di notte dalla strada e dal bar vicino; abbiamo dormito male.,2
+87654321,100092,2024-09-01,230614,Aurora,Buon rapporto qualità/prezzo per la posizione e i servizi offerti.,4
+87654321,100152,2024-09-01,261475,Federico,Acqua calda incostante e cattivo odore dallo scarico; da sistemare.,3
+87654321,100231,2024-09-02,237102,Emma,Inconsistent hot water and bad smell from the drain; needs fixing.,2
+87654321,100099,2024-09-03,276436,Simone,"Camera molto pulita e profumata, cambio biancheria regolare. Con Amici perfetto.",4
+87654321,100188,2024-09-03,246255,Paolo,Bagno funzionale e doccia spaziosa; asciugamani puliti ogni giorno.,4
+87654321,100207,2024-09-04,243915,Benjamin,Functional bathroom and spacious shower; towels replaced daily.,5
+87654321,100203,2024-09-05,269605,Riccardo,"Check-in rapido e flessibile, ci hanno permesso di lasciare i bagagli prima. Molto comodo.",5
+87654321,100196,2024-09-05,291819,Sara,Molto rumore di notte dalla strada e dal bar vicino; abbiamo dormito male.,3
+87654321,100111,2024-09-05,250941,Alessio,"Camera molto pulita e profumata, cambio biancheria regolare. Viaggio Di Lavoro perfetto.",4
+87654321,100086,2024-09-05,237753,Sara,"Colazione varia e di qualità, ottime torte fatte in casa e opzioni senza lattosio.",5
+87654321,100115,2024-09-06,274001,Andrea,Climatizzatore poco potente e rumoroso; camera calda nel pomeriggio.,1
+87654321,100422,2024-09-06,289464,Noemi,Bagno funzionale e doccia spaziosa; asciugamani puliti ogni giorno.,4
+87654321,100470,2024-09-06,260143,Isabella,Lots of street noise at night; poor sleep.,3
+87654321,100064,2024-09-08,211360,Aurora,Acqua calda incostante e cattivo odore dallo scarico; da sistemare.,2
+87654321,100182,2024-09-09,285345,Serena,Materasso un po' duro e cuscini scomodi; riposo non ottimale.,2
+87654321,100026,2024-09-09,205210,Francesca,Climatizzatore poco potente e rumoroso; camera calda nel pomeriggio.,1
+87654321,100074,2024-09-11,254549,Sara,"Camera molto pulita e profumata, cambio biancheria regolare. Con Amici perfetto.",4
+87654321,100472,2024-09-11,252289,Angela,Letto comodo e biancheria morbida; abbiamo dormito benissimo per tutto il soggiorno.,4
+87654321,100210,2024-09-11,250276,Daniele,Aria condizionata efficiente e silenziosa; temperatura piacevole in camera.,5
+87654321,100036,2024-09-11,291918,Giulia,"Camera molto pulita e profumata, cambio biancheria regolare. Famiglia Con Bambini perfetto.",4
+87654321,100021,2024-09-12,209881,Martina,Wi‑Fi instabile: segnale debole in camera e continue disconnessioni.,2
+87654321,100081,2024-09-13,230006,Claudia,Bagno funzionale e doccia spaziosa; asciugamani puliti ogni giorno.,5
+87654321,100220,2024-09-13,269317,Arianna,Buon rapporto qualità/prezzo per la posizione e i servizi offerti.,4
+87654321,100457,2024-09-14,233792,Eleonora,"Posizione ottima, a pochi minuti dal centro e ben collegata ai mezzi. Ideale per famiglia con bambini.",4
+87654321,100159,2024-09-15,208233,Harper,Unstable Wi‑Fi: weak signal in the room and frequent drops.,2
+87654321,100243,2024-09-16,235533,Vittoria,Climatizzatore poco potente e rumoroso; camera calda nel pomeriggio.,1
+87654321,100132,2024-09-16,269067,Tommaso,Buon rapporto qualità/prezzo per la posizione e i servizi offerti.,4
+87654321,100228,2024-09-18,284766,Sara,Wi‑Fi instabile: segnale debole in camera e continue disconnessioni.,2
+87654321,100382,2024-09-18,281676,Giorgia,"Posizione ottima, a pochi minuti dal centro e ben collegata ai mezzi. Ideale per smart working.",5
+87654321,100225,2024-09-19,296366,Federico,"Check-in lento, istruzioni poco chiare e attesa lunga alla consegna delle chiavi.",3
+87654321,100028,2024-09-19,213105,Daniele,"Camera molto pulita e profumata, cambio biancheria regolare. Famiglia Con Bambini perfetto.",4
+87654321,100262,2024-09-21,297892,Daniele,Materasso un po' duro e cuscini scomodi; riposo non ottimale.,3
+87654321,100450,2024-09-21,267718,Elisa,Climatizzatore poco potente e rumoroso; camera calda nel pomeriggio.,1
+87654321,100362,2024-09-21,290290,Amelia,Lots of street noise at night; poor sleep.,2
+87654321,100193,2024-09-24,239222,Michele,Acqua calda incostante e cattivo odore dallo scarico; da sistemare.,2
+87654321,100303,2024-09-26,275583,Alessio,Personale gentilissimo e disponibile; ci hanno aiutato con consigli utili. Perfetto per da solo.,5
+87654321,100445,2024-09-26,274733,William,"Great location, close to the center and public transport. Perfect for with friends.",5
+87654321,100334,2024-09-27,222984,Claudia,Aria condizionata efficiente e silenziosa; temperatura piacevole in camera.,4
+87654321,100039,2024-09-28,278194,Giulia,Zona rumorosa e un po' distante dai principali punti di interesse.,2
+87654321,100195,2024-09-28,275822,Angela,Molto rumore di notte dalla strada e dal bar vicino; abbiamo dormito male.,1
+87654321,100128,2024-09-30,235819,Harper,Lots of street noise at night; poor sleep.,1
+87654321,100011,2024-09-30,244588,Riccardo,Personale gentilissimo e disponibile; ci hanno aiutato con consigli utili. Perfetto per viaggio di lavoro.,4
+87654321,100282,2024-10-02,249175,Silvia,Colazione un po' scarsa: poche opzioni salate e niente alternative senza glutine.,3
+87654321,100131,2024-10-05,255577,Sara,"Camera molto pulita e profumata, cambio biancheria regolare. Con Amici perfetto.",5
+87654321,100365,2024-10-08,249346,Alessandra,"Check-in lento, istruzioni poco chiare e attesa lunga alla consegna delle chiavi.",3
+87654321,100352,2024-10-09,201621,Francesca,"Posizione ottima, a pochi minuti dal centro e ben collegata ai mezzi. Ideale per da solo.",5
+87654321,100324,2024-10-13,254950,Ilaria,Acqua calda incostante e cattivo odore dallo scarico; da sistemare.,3
+87654321,100153,2024-10-15,265917,Daniel,Mattress too firm and uncomfortable pillows; poor sleep quality.,3
+87654321,100072,2024-10-18,257734,Elisa,Climatizzatore poco potente e rumoroso; camera calda nel pomeriggio.,1
+87654321,100004,2024-10-23,230513,Gabriele,Stanza silenziosa nonostante la zona centrale; ottimo isolamento acustico.,4
+87654321,100309,2024-10-25,239835,Paolo,Letto comodo e biancheria morbida; abbiamo dormito benissimo per tutto il soggiorno.,4
+87654321,100160,2024-10-25,280585,Claudia,Molto rumore di notte dalla strada e dal bar vicino; abbiamo dormito male.,2
+87654321,100042,2024-10-29,225145,Alessio,"Check-in rapido e flessibile, ci hanno permesso di lasciare i bagagli prima. Molto comodo.",4
+87654321,100075,2024-10-31,256208,Pietro,Colazione un po' scarsa: poche opzioni salate e niente alternative senza glutine.,3
+87654321,100227,2024-11-03,218921,Arianna,Pulizia migliorabile: polvere sui comodini e odore in bagno al nostro arrivo.,2
+87654321,100133,2024-11-04,217988,Luca,"Colazione varia e di qualità, ottime torte fatte in casa e opzioni senza lattosio.",4
+87654321,100080,2024-11-07,235684,Serena,Molto rumore di notte dalla strada e dal bar vicino; abbiamo dormito male.,1
+87654321,100317,2024-11-07,291342,Beatrice,"Check-in lento, istruzioni poco chiare e attesa lunga alla consegna delle chiavi.",2
+87654321,100400,2024-11-07,273707,Angela,Personale gentilissimo e disponibile; ci hanno aiutato con consigli utili. Perfetto per viaggio di lavoro.,5
+87654321,100217,2024-11-11,251898,Sofia,Buon rapporto qualità/prezzo per la posizione e i servizi offerti.,3
+87654321,100212,2024-11-14,283718,Beatrice,"Check-in rapido e flessibile, ci hanno permesso di lasciare i bagagli prima. Molto comodo.",5
+87654321,100389,2024-11-16,215192,Sara,Zona rumorosa e un po' distante dai principali punti di interesse.,3
+87654321,100419,2024-11-21,224101,Pietro,Aria condizionata efficiente e silenziosa; temperatura piacevole in camera.,4
+87654321,100224,2024-11-22,288151,Andrea,Personale gentilissimo e disponibile; ci hanno aiutato con consigli utili. Perfetto per famiglia con bambini.,5
+87654321,100226,2024-11-22,253512,Charlotte,Unstable Wi‑Fi: weak signal in the room and frequent drops.,3
+87654321,100174,2024-11-23,293001,Tommaso,Pulizia migliorabile: polvere sui comodini e odore in bagno al nostro arrivo.,2
+87654321,100130,2024-11-28,274396,Arianna,Buon rapporto qualità/prezzo per la posizione e i servizi offerti.,5
+87654321,100251,2024-11-28,201618,Chiara,Personale gentilissimo e disponibile; ci hanno aiutato con consigli utili. Perfetto per con amici.,5
+87654321,100401,2024-12-05,281233,Beatrice,Letto comodo e biancheria morbida; abbiamo dormito benissimo per tutto il soggiorno.,4
+87654321,100407,2024-12-17,259356,Silvia,Wi‑Fi instabile: segnale debole in camera e continue disconnessioni.,2
+87654321,100144,2024-12-17,211054,Silvia,Molto rumore di notte dalla strada e dal bar vicino; abbiamo dormito male.,1
+87654321,100354,2024-12-18,234621,Chiara,"Posizione ottima, a pochi minuti dal centro e ben collegata ai mezzi. Ideale per viaggio di lavoro.",4
+87654321,100347,2024-12-18,254263,Eleonora,Personale gentilissimo e disponibile; ci hanno aiutato con consigli utili. Perfetto per smart working.,4
+87654321,100409,2024-12-19,217390,Riccardo,Aria condizionata efficiente e silenziosa; temperatura piacevole in camera.,4
+87654321,100339,2024-12-25,213295,Tommaso,Prezzo un po' alto rispetto alla qualità della stanza e dei servizi.,3
+87654321,100410,2024-12-26,276390,Olivia,Unstable Wi‑Fi: weak signal in the room and frequent drops.,2
+87654321,100402,2024-12-29,238271,Gabriele,Bagno funzionale e doccia spaziosa; asciugamani puliti ogni giorno.,3
+87654321,100316,2025-01-01,227216,Chiara,"Camera molto pulita e profumata, cambio biancheria regolare. Famiglia Con Bambini perfetto.",4
+87654321,100325,2025-01-02,263528,Edoardo,Colazione un po' scarsa: poche opzioni salate e niente alternative senza glutine.,2
+87654321,100102,2025-01-02,291656,Martina,Prezzo un po' alto rispetto alla qualità della stanza e dei servizi.,2
+87654321,100211,2025-01-03,208143,Stefano,Letto comodo e biancheria morbida; abbiamo dormito benissimo per tutto il soggiorno.,3
+87654321,100260,2025-01-03,270374,Daniele,Wi‑Fi instabile: segnale debole in camera e continue disconnessioni.,3
+87654321,100332,2025-01-08,248968,Davide,Molto rumore di notte dalla strada e dal bar vicino; abbiamo dormito male.,1
+87654321,100176,2025-01-12,272306,Martina,"Camera molto pulita e profumata, cambio biancheria regolare. Da Solo perfetto.",5
+87654321,100313,2025-01-16,298029,Matteo,Staff freddo e poco presente; comunicazione lenta al check-in. Non ideale per con amici.,3
+87654321,100431,2025-01-17,201462,Daniele,"Wi‑Fi stabile e veloce, video call perfette per smart working.",4
+87654321,100060,2025-01-19,293719,Giorgia,"Check-in rapido e flessibile, ci hanno permesso di lasciare i bagagli prima. Molto comodo.",4
+87654321,100229,2025-01-21,279027,Tommaso,Letto comodo e biancheria morbida; abbiamo dormito benissimo per tutto il soggiorno.,4
+87654321,100121,2025-01-25,269542,Elisa,"Check-in lento, istruzioni poco chiare e attesa lunga alla consegna delle chiavi.",3
+87654321,100093,2025-01-25,286992,Angela,Personale gentilissimo e disponibile; ci hanno aiutato con consigli utili. Perfetto per da solo.,4
+87654321,100010,2025-01-29,261349,Alessio,"Camera molto pulita e profumata, cambio biancheria regolare. Smart Working perfetto.",4
+87654321,100428,2025-02-02,270102,Charlotte,Good value for money considering the location and services.,3
+87654321,100053,2025-02-03,254922,John,Lots of street noise at night; poor sleep.,2
+87654321,100299,2025-02-04,285176,Matteo,"Check-in rapido e flessibile, ci hanno permesso di lasciare i bagagli prima. Molto comodo.",5
+87654321,100335,2025-02-04,274382,Ilaria,"Camera molto pulita e profumata, cambio biancheria regolare. Viaggio Di Lavoro perfetto.",5
+87654321,100343,2025-02-06,264350,Aurora,"Check-in lento, istruzioni poco chiare e attesa lunga alla consegna delle chiavi.",2
+87654321,100055,2025-02-07,286901,Daniele,Pulizia migliorabile: polvere sui comodini e odore in bagno al nostro arrivo.,3
+87654321,100322,2025-02-08,250166,Beatrice,Personale gentilissimo e disponibile; ci hanno aiutato con consigli utili. Perfetto per con amici.,5
+87654321,100201,2025-02-08,219199,Stefano,"Check-in rapido e flessibile, ci hanno permesso di lasciare i bagagli prima. Molto comodo.",5
+87654321,100318,2025-02-09,288760,Andrea,Letto comodo e biancheria morbida; abbiamo dormito benissimo per tutto il soggiorno.,4
+87654321,100366,2025-02-10,200964,Beatrice,"Check-in rapido e flessibile, ci hanno permesso di lasciare i bagagli prima. Molto comodo.",5
+87654321,100095,2025-02-11,243066,Davide,"Posizione ottima, a pochi minuti dal centro e ben collegata ai mezzi. Ideale per famiglia con bambini.",4
+87654321,100016,2025-02-12,285181,Serena,Prezzo un po' alto rispetto alla qualità della stanza e dei servizi.,2
+87654321,100466,2025-02-13,251793,Federico,Aria condizionata efficiente e silenziosa; temperatura piacevole in camera.,4
+87654321,100038,2025-02-13,270283,Michele,"Check-in lento, istruzioni poco chiare e attesa lunga alla consegna delle chiavi.",2
+87654321,100073,2025-02-14,275632,Sara,"Check-in lento, istruzioni poco chiare e attesa lunga alla consegna delle chiavi.",2
+87654321,100137,2025-02-14,251874,Gabriele,"Posizione ottima, a pochi minuti dal centro e ben collegata ai mezzi. Ideale per viaggio di lavoro.",5
+87654321,100084,2025-02-14,272103,Chiara,"Camera molto pulita e profumata, cambio biancheria regolare. Smart Working perfetto.",4
+87654321,100192,2025-02-15,205939,Michele,Wi‑Fi instabile: segnale debole in camera e continue disconnessioni.,2
+87654321,100043,2025-02-19,200054,Arianna,Climatizzatore poco potente e rumoroso; camera calda nel pomeriggio.,3
+87654321,100209,2025-02-19,267539,Marco,Materasso un po' duro e cuscini scomodi; riposo non ottimale.,2
+87654321,100169,2025-02-19,298291,Noemi,Molto rumore di notte dalla strada e dal bar vicino; abbiamo dormito male.,1
+87654321,100258,2025-02-22,218243,Beatrice,"Colazione varia e di qualità, ottime torte fatte in casa e opzioni senza lattosio.",5
+87654321,100197,2025-02-24,280148,Giulia,Bagno funzionale e doccia spaziosa; asciugamani puliti ogni giorno.,5
+87654321,100177,2025-02-24,275354,Matteo,"Posizione ottima, a pochi minuti dal centro e ben collegata ai mezzi. Ideale per smart working.",5
+87654321,100184,2025-03-01,226742,Daniele,"Check-in rapido e flessibile, ci hanno permesso di lasciare i bagagli prima. Molto comodo.",5
+87654321,100383,2025-03-02,216200,Sara,Aria condizionata efficiente e silenziosa; temperatura piacevole in camera.,4
+87654321,100384,2025-03-06,286833,Nicola,"Camera molto pulita e profumata, cambio biancheria regolare. Smart Working perfetto.",4
+87654321,100219,2025-03-06,250133,Michael,Functional bathroom and spacious shower; towels replaced daily.,4
+87654321,100411,2025-03-08,268516,Angela,Climatizzatore poco potente e rumoroso; camera calda nel pomeriggio.,2
+87654321,100101,2025-03-10,259879,Francesca,Acqua calda incostante e cattivo odore dallo scarico; da sistemare.,2
+87654321,100250,2025-03-17,272711,Lucas,Mattress too firm and uncomfortable pillows; poor sleep quality.,2
+87654321,100267,2025-03-18,296651,Beatrice,Colazione un po' scarsa: poche opzioni salate e niente alternative senza glutine.,2
+87654321,100390,2025-03-24,235168,Luca,Staff freddo e poco presente; comunicazione lenta al check-in. Non ideale per smart working.,2
+87654321,100166,2025-03-26,250679,Michele,"Check-in rapido e flessibile, ci hanno permesso di lasciare i bagagli prima. Molto comodo.",4
+87654321,100277,2025-03-27,255726,Stefano,Wi‑Fi instabile: segnale debole in camera e continue disconnessioni.,1
+87654321,100044,2025-03-28,267001,Andrea,Prezzo un po' alto rispetto alla qualità della stanza e dei servizi.,3
+87654321,100415,2025-03-29,283072,Silvia,"Wi‑Fi stabile e veloce, video call perfette per smart working.",4
+87654321,100091,2025-04-02,245237,Paolo,Molto rumore di notte dalla strada e dal bar vicino; abbiamo dormito male.,3
+87654321,100077,2025-04-06,261593,Giorgia,"Colazione varia e di qualità, ottime torte fatte in casa e opzioni senza lattosio.",3
+87654321,100273,2025-04-06,247060,Olivia,Stable and fast Wi‑Fi; perfect for family with kids video calls.,4
+87654321,100444,2025-04-10,205231,Alessandra,Personale gentilissimo e disponibile; ci hanno aiutato con consigli utili. Perfetto per con amici.,5
+87654321,100213,2025-04-10,279396,Ava,Mattress too firm and uncomfortable pillows; poor sleep quality.,2
+87654321,100110,2025-04-20,239609,Riccardo,Materasso un po' duro e cuscini scomodi; riposo non ottimale.,2
+87654321,100048,2025-04-20,273260,Edoardo,Bagno funzionale e doccia spaziosa; asciugamani puliti ogni giorno.,4
+87654321,100100,2025-04-21,288816,Beatrice,Aria condizionata efficiente e silenziosa; temperatura piacevole in camera.,3
+87654321,100479,2025-04-27,244971,Gabriele,Molto rumore di notte dalla strada e dal bar vicino; abbiamo dormito male.,2
+87654321,100345,2025-04-27,286644,Ilaria,"Posizione ottima, a pochi minuti dal centro e ben collegata ai mezzi. Ideale per viaggio di lavoro.",4
+87654321,100356,2025-05-01,248817,Luca,Prezzo un po' alto rispetto alla qualità della stanza e dei servizi.,3
+87654321,100348,2025-05-01,230887,Alexander,Basic breakfast: few savory choices and no gluten-free options.,3
+87654321,100015,2025-05-01,221644,Claudia,Zona rumorosa e un po' distante dai principali punti di interesse.,2
+87654321,100454,2025-05-02,278619,Sofia,Climatizzatore poco potente e rumoroso; camera calda nel pomeriggio.,3
+87654321,100118,2025-05-02,247454,Sara,"Camera molto pulita e profumata, cambio biancheria regolare. Con Amici perfetto.",5
+87654321,100129,2025-05-03,297795,Paolo,Letto comodo e biancheria morbida; abbiamo dormito benissimo per tutto il soggiorno.,4
+87654321,100249,2025-05-03,200681,Matteo,"Check-in rapido e flessibile, ci hanno permesso di lasciare i bagagli prima. Molto comodo.",5
+87654321,100198,2025-05-04,241125,Emily,"Very clean room, fresh linens. With Friends friendly.",4
+87654321,100449,2025-05-05,275169,Alessio,Acqua calda incostante e cattivo odore dallo scarico; da sistemare.,2
+87654321,100202,2025-05-05,270593,Ilaria,"Posizione ottima, a pochi minuti dal centro e ben collegata ai mezzi. Ideale per da solo.",5
+87654321,100344,2025-05-06,203374,Gabriele,Personale gentilissimo e disponibile; ci hanno aiutato con consigli utili. Perfetto per famiglia con bambini.,4
+87654321,100154,2025-05-07,272685,Giorgia,Colazione un po' scarsa: poche opzioni salate e niente alternative senza glutine.,3
+87654321,100456,2025-05-08,249970,Edoardo,Buon rapporto qualità/prezzo per la posizione e i servizi offerti.,3
+87654321,100106,2025-05-08,238685,Aurora,Letto comodo e biancheria morbida; abbiamo dormito benissimo per tutto il soggiorno.,4
+87654321,100238,2025-05-09,202062,Sofia,Bagno funzionale e doccia spaziosa; asciugamani puliti ogni giorno.,4
+87654321,100341,2025-05-09,256535,Giorgia,Buon rapporto qualità/prezzo per la posizione e i servizi offerti.,4
+87654321,100120,2025-05-11,279731,Emily,Inconsistent hot water and bad smell from the drain; needs fixing.,1
+87654321,100253,2025-05-12,232991,Paolo,"Check-in rapido e flessibile, ci hanno permesso di lasciare i bagagli prima. Molto comodo.",5
+87654321,100162,2025-05-12,208856,Sofia,"Wi‑Fi stabile e veloce, video call perfette per da solo.",4
+87654321,100149,2025-05-12,218031,Gabriele,Personale gentilissimo e disponibile; ci hanno aiutato con consigli utili. Perfetto per weekend romantico.,5
+87654321,100054,2025-05-12,244058,Aurora,Molto rumore di notte dalla strada e dal bar vicino; abbiamo dormito male.,2
+87654321,100283,2025-05-14,200325,Matteo,Prezzo un po' alto rispetto alla qualità della stanza e dei servizi.,3
+87654321,100375,2025-05-14,223177,Eleonora,Bagno funzionale e doccia spaziosa; asciugamani puliti ogni giorno.,4
+87654321,100361,2025-05-15,223277,Beatrice,Wi‑Fi instabile: segnale debole in camera e continue disconnessioni.,1
+87654321,100200,2025-05-15,245719,Alessandra,"Check-in lento, istruzioni poco chiare e attesa lunga alla consegna delle chiavi.",2
+87654321,100235,2025-05-17,296046,Michele,"Check-in lento, istruzioni poco chiare e attesa lunga alla consegna delle chiavi.",3
+87654321,100067,2025-05-17,202261,Angela,Acqua calda incostante e cattivo odore dallo scarico; da sistemare.,3
+87654321,100173,2025-05-17,217791,Valentina,Bagno funzionale e doccia spaziosa; asciugamani puliti ogni giorno.,5
+87654321,100256,2025-05-17,231776,Daniel,Functional bathroom and spacious shower; towels replaced daily.,5
+87654321,100397,2025-05-18,243372,Giorgia,Wi‑Fi instabile: segnale debole in camera e continue disconnessioni.,2
+87654321,100475,2025-05-19,270973,Noemi,Pulizia migliorabile: polvere sui comodini e odore in bagno al nostro arrivo.,2
+87654321,100065,2025-05-21,223835,Tommaso,Colazione un po' scarsa: poche opzioni salate e niente alternative senza glutine.,3
+87654321,100274,2025-05-21,264452,Amelia,"Very clean room, fresh linens. Solo Traveler friendly.",5
+87654321,100276,2025-05-22,214839,Ilaria,Pulizia migliorabile: polvere sui comodini e odore in bagno al nostro arrivo.,3
+87654321,100103,2025-05-23,237513,Daniele,"Check-in rapido e flessibile, ci hanno permesso di lasciare i bagagli prima. Molto comodo.",5
+87654321,100399,2025-05-24,202330,Tommaso,Zona rumorosa e un po' distante dai principali punti di interesse.,3
+87654321,100232,2025-05-24,294689,Aurora,Climatizzatore poco potente e rumoroso; camera calda nel pomeriggio.,2
+87654321,100369,2025-05-24,234004,Serena,Prezzo un po' alto rispetto alla qualità della stanza e dei servizi.,2
+87654321,100172,2025-05-26,273620,Silvia,Aria condizionata efficiente e silenziosa; temperatura piacevole in camera.,4
+87654321,100263,2025-05-27,203220,Filippo,Stanza silenziosa nonostante la zona centrale; ottimo isolamento acustico.,5
+87654321,100012,2025-05-27,266543,Vittoria,"Camera molto pulita e profumata, cambio biancheria regolare. Smart Working perfetto.",5
+87654321,100156,2025-05-29,250616,Alessandra,Acqua calda incostante e cattivo odore dallo scarico; da sistemare.,3
+87654321,100359,2025-06-02,268720,Gabriele,Personale gentilissimo e disponibile; ci hanno aiutato con consigli utili. Perfetto per weekend romantico.,5
+87654321,100164,2025-06-02,226145,Beatrice,Acqua calda incostante e cattivo odore dallo scarico; da sistemare.,1
+87654321,100090,2025-06-03,200337,Elisa,"Posizione ottima, a pochi minuti dal centro e ben collegata ai mezzi. Ideale per da solo.",4
+87654321,100126,2025-06-03,286080,Charlotte,Unfriendly staff and slow replies at check-in. Not ideal for with friends.,1
+87654321,100025,2025-06-04,224357,Nicola,Wi‑Fi instabile: segnale debole in camera e continue disconnessioni.,2
+87654321,100374,2025-06-05,226254,Martina,"Wi‑Fi stabile e veloce, video call perfette per smart working.",4
+87654321,100216,2025-06-06,207293,Tommaso,"Posizione ottima, a pochi minuti dal centro e ben collegata ai mezzi. Ideale per smart working.",5
+87654321,100476,2025-06-07,229111,Amelia,Mattress too firm and uncomfortable pillows; poor sleep quality.,3
+87654321,100155,2025-06-09,257341,Henry,"Great location, close to the center and public transport. Perfect for romantic weekend.",4
+87654321,100442,2025-06-10,220870,Gabriele,"Wi‑Fi stabile e veloce, video call perfette per weekend romantico.",5
+87654321,100423,2025-06-13,249147,Arianna,"Posizione ottima, a pochi minuti dal centro e ben collegata ai mezzi. Ideale per con amici.",5
+87654321,100349,2025-06-13,288806,Matteo,Prezzo un po' alto rispetto alla qualità della stanza e dei servizi.,2
+87654321,100050,2025-06-17,231359,Nicola,Bagno funzionale e doccia spaziosa; asciugamani puliti ogni giorno.,4
+87654321,100119,2025-06-17,284324,Chiara,Acqua calda incostante e cattivo odore dallo scarico; da sistemare.,1
+87654321,100070,2025-06-21,213177,Simone,"Colazione varia e di qualità, ottime torte fatte in casa e opzioni senza lattosio.",4
+87654321,100148,2025-06-23,287879,Matteo,"Check-in rapido e flessibile, ci hanno permesso di lasciare i bagagli prima. Molto comodo.",4
+87654321,100279,2025-06-26,227083,Federico,Colazione un po' scarsa: poche opzioni salate e niente alternative senza glutine.,3
+87654321,100068,2025-06-27,297772,Alessandra,Prezzo un po' alto rispetto alla qualità della stanza e dei servizi.,3
+87654321,100284,2025-07-01,256315,Matteo,Acqua calda incostante e cattivo odore dallo scarico; da sistemare.,2
+87654321,100459,2025-07-02,247926,Chiara,"Camera molto pulita e profumata, cambio biancheria regolare. Con Amici perfetto.",4
+87654321,100265,2025-07-02,293164,Andrea,Wi‑Fi instabile: segnale debole in camera e continue disconnessioni.,1
+87654321,100215,2025-07-03,243008,Francesca,Stanza silenziosa nonostante la zona centrale; ottimo isolamento acustico.,4
+87654321,100432,2025-07-04,211158,Riccardo,"Camera molto pulita e profumata, cambio biancheria regolare. Viaggio Di Lavoro perfetto.",5
+87654321,100437,2025-07-05,289074,Vittoria,"Camera molto pulita e profumata, cambio biancheria regolare. Weekend Romantico perfetto.",5
+87654321,100455,2025-07-06,288941,Aurora,Wi‑Fi instabile: segnale debole in camera e continue disconnessioni.,3
+87654321,100136,2025-07-06,281019,William,Lots of street noise at night; poor sleep.,3
+87654321,100057,2025-07-06,245871,Stefano,Buon rapporto qualità/prezzo per la posizione e i servizi offerti.,3
+87654321,100236,2025-07-09,207699,Giorgia,"Camera molto pulita e profumata, cambio biancheria regolare. Da Solo perfetto.",5
+87654321,100221,2025-07-11,249713,Alessandra,Personale gentilissimo e disponibile; ci hanno aiutato con consigli utili. Perfetto per famiglia con bambini.,5
+87654321,100001,2025-07-12,258879,Matteo,"Colazione varia e di qualità, ottime torte fatte in casa e opzioni senza lattosio.",5
+87654321,100257,2025-07-12,272103,Stefano,Buon rapporto qualità/prezzo per la posizione e i servizi offerti.,4
+87654321,100000,2025-07-12,255303,Giulia,"Check-in rapido e flessibile, ci hanno permesso di lasciare i bagagli prima. Molto comodo.",5
+87654321,100183,2025-07-12,239597,Eleonora,Prezzo un po' alto rispetto alla qualità della stanza e dei servizi.,3
+87654321,100310,2025-07-13,232130,Federico,Bagno funzionale e doccia spaziosa; asciugamani puliti ogni giorno.,4
+87654321,100163,2025-07-13,284253,Chiara,Molto rumore di notte dalla strada e dal bar vicino; abbiamo dormito male.,3
+87654321,100408,2025-07-14,293307,Elisa,Prezzo un po' alto rispetto alla qualità della stanza e dei servizi.,3
+87654321,100049,2025-07-15,220862,Tommaso,Molto rumore di notte dalla strada e dal bar vicino; abbiamo dormito male.,3
+87654321,100467,2025-07-16,273285,Martina,"Wi‑Fi stabile e veloce, video call perfette per smart working.",4
+87654321,100434,2025-07-16,288040,Simone,Climatizzatore poco potente e rumoroso; camera calda nel pomeriggio.,3
+87654321,100122,2025-07-18,228184,Sofia,Molto rumore di notte dalla strada e dal bar vicino; abbiamo dormito male.,1
+87654321,100440,2025-07-18,270737,Filippo,Molto rumore di notte dalla strada e dal bar vicino; abbiamo dormito male.,2
+87654321,100180,2025-07-18,281923,Edoardo,"Check-in lento, istruzioni poco chiare e attesa lunga alla consegna delle chiavi.",2
+87654321,100017,2025-07-21,228865,Edoardo,Bagno funzionale e doccia spaziosa; asciugamani puliti ogni giorno.,4
+87654321,100066,2025-07-23,225043,Noemi,"Check-in rapido e flessibile, ci hanno permesso di lasciare i bagagli prima. Molto comodo.",5
+87654321,100360,2025-07-23,226098,Giulia,"Camera molto pulita e profumata, cambio biancheria regolare. Weekend Romantico perfetto.",5
+87654321,100371,2025-07-24,273274,Noemi,Wi‑Fi instabile: segnale debole in camera e continue disconnessioni.,2
+87654321,100396,2025-07-25,280336,Noemi,Climatizzatore poco potente e rumoroso; camera calda nel pomeriggio.,1
+87654321,100427,2025-07-25,229838,Michele,Personale gentilissimo e disponibile; ci hanno aiutato con consigli utili. Perfetto per viaggio di lavoro.,5
+87654321,100460,2025-07-26,233264,Daniele,"Colazione varia e di qualità, ottime torte fatte in casa e opzioni senza lattosio.",5
+87654321,100003,2025-07-27,282398,Serena,"Check-in lento, istruzioni poco chiare e attesa lunga alla consegna delle chiavi.",2
+87654321,100289,2025-07-27,215807,Marco,"Colazione varia e di qualità, ottime torte fatte in casa e opzioni senza lattosio.",4
+87654321,100142,2025-07-27,237628,Stefano,Stanza silenziosa nonostante la zona centrale; ottimo isolamento acustico.,4
+87654321,100421,2025-07-28,285106,Gabriele,"Check-in rapido e flessibile, ci hanno permesso di lasciare i bagagli prima. Molto comodo.",5
+87654321,100190,2025-07-29,272513,Valentina,Materasso un po' duro e cuscini scomodi; riposo non ottimale.,2
+87654321,100140,2025-07-31,258839,Francesca,Pulizia migliorabile: polvere sui comodini e odore in bagno al nostro arrivo.,2
+87654321,100329,2025-07-31,224673,Noemi,Stanza silenziosa nonostante la zona centrale; ottimo isolamento acustico.,5
+87654321,100094,2025-08-01,294693,Davide,Acqua calda incostante e cattivo odore dallo scarico; da sistemare.,2
+87654321,100443,2025-08-08,208240,Eleonora,Climatizzatore poco potente e rumoroso; camera calda nel pomeriggio.,3
+87654321,100168,2025-08-12,258607,Silvia,"Posizione ottima, a pochi minuti dal centro e ben collegata ai mezzi. Ideale per smart working.",4
+87654321,100391,2025-08-23,262685,Matteo,Materasso un po' duro e cuscini scomodi; riposo non ottimale.,2
+87654321,100358,2025-08-24,263500,Silvia,"Check-in lento, istruzioni poco chiare e attesa lunga alla consegna delle chiavi.",3
+87654321,100029,2025-08-27,271201,Andrea,"Wi‑Fi stabile e veloce, video call perfette per famiglia con bambini.",4
+87654321,100404,2025-09-04,259049,Daniele,"Colazione varia e di qualità, ottime torte fatte in casa e opzioni senza lattosio.",4
+87654321,100403,2025-09-07,224582,Gabriele,"Posizione ottima, a pochi minuti dal centro e ben collegata ai mezzi. Ideale per weekend romantico.",4
+87654321,100006,2025-09-08,289734,Michael,Lots of street noise at night; poor sleep.,2
+87654321,100248,2025-09-10,232303,Noemi,Wi‑Fi instabile: segnale debole in camera e continue disconnessioni.,2
+87654321,100098,2025-09-14,274178,Giulia,Personale gentilissimo e disponibile; ci hanno aiutato con consigli utili. Perfetto per viaggio di lavoro.,5
+87654321,100161,2025-09-18,266497,Eleonora,Buon rapporto qualità/prezzo per la posizione e i servizi offerti.,4
+87654321,100298,2025-09-18,280747,Sara,Prezzo un po' alto rispetto alla qualità della stanza e dei servizi.,3
+87654321,100373,2025-09-19,281351,Michele,Letto comodo e biancheria morbida; abbiamo dormito benissimo per tutto il soggiorno.,5
+87654321,100023,2025-09-22,294164,Daniele,Personale gentilissimo e disponibile; ci hanno aiutato con consigli utili. Perfetto per viaggio di lavoro.,5
+87654321,100272,2025-09-23,284576,Davide,Wi‑Fi instabile: segnale debole in camera e continue disconnessioni.,2
+87654321,100167,2025-09-27,223653,Simone,Acqua calda incostante e cattivo odore dallo scarico; da sistemare.,2
+87654321,100413,2025-09-28,229401,Sara,"Check-in rapido e flessibile, ci hanno permesso di lasciare i bagagli prima. Molto comodo.",5

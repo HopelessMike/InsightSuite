@@ -7,8 +7,8 @@ from contextlib import asynccontextmanager
 from datetime import datetime
 import os
 
-from ai_service.routers import jobs, health
-from ai_service.models import HealthStatus
+from .routers import jobs, health, reviews  # Added reviews
+from .models import HealthStatus
 
 # App configuration
 app_config = {
@@ -23,7 +23,7 @@ async def lifespan(app: FastAPI):
     Lifespan context manager for startup and shutdown
     """
     # Startup
-    print("🚀 Starting InsightSuite AI Service...")
+    print("Starting InsightSuite AI Service...")
     
     # Initialize any necessary services here
     # e.g., database connections, ML model loading, etc.
@@ -31,7 +31,7 @@ async def lifespan(app: FastAPI):
     yield
     
     # Shutdown
-    print("🛑 Shutting down InsightSuite AI Service...")
+    print("Shutting down InsightSuite AI Service...")
     
     # Cleanup resources here
 
@@ -67,6 +67,7 @@ app.add_middleware(
 # Include routers
 app.include_router(health.router, tags=["health"])
 app.include_router(jobs.router, prefix="/api/v1", tags=["jobs"])
+app.include_router(reviews.router, prefix="/api/v1", tags=["reviews"])  # NEW
 
 @app.get("/", tags=["root"])
 async def root():
@@ -123,7 +124,7 @@ if __name__ == "__main__":
     import uvicorn
     
     uvicorn.run(
-        "ai_service.main:app",
+        "main:app",
         host="0.0.0.0",
         port=8000,
         reload=True,

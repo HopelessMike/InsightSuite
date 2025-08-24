@@ -56,7 +56,7 @@ ARCHETYPES = [
     "Budget Seeker", "Quality Seeker", "Convenience First", "Value Maximizer"
 ]
 
-ICONS = ["🧭", "🧳", "👨‍👩‍👧", "💼", "💸", "⭐️", "⚡️", "🎯"]
+ICONS = ["A", "B", "C", "D", "E", "F", "G", "H"]
 ACCENTS = ["#60a5fa", "#22c55e", "#f59e0b", "#f43f5e", "#a78bfa", "#14b8a6", "#eab308", "#fb7185"]
 
 
@@ -115,11 +115,60 @@ def _clusters_preview_for_prompt(clusters: List[Dict[str, Any]], embed_df: pd.Da
     return json.dumps(out, ensure_ascii=False)
 
 
-def generate_personas(clusters: List[Dict[str, Any]], embed_df: pd.DataFrame, n_personas: int = 3) -> List[Dict[str, Any]]:
-    client = _anthropic_client()
-    if client is None:
-        return generate_placeholder_personas(clusters, n_personas)
+def _assess_data_quality(clusters: List[Dict[str, Any]], embed_df: pd.DataFrame) -> Dict[str, Any]:
+    """
+    Analizza la qualità dei dati per determinare se generare personas AI o placeholder
+    """
+    if not clusters or embed_df.empty:
+        return {"use_ai": False, "reason": "no_data", "avg_length": 0}
+    
+    # Calcola lunghezza media delle recensioni
+    texts = embed_df["text"].astype(str)
+    avg_length = texts.str.len().mean()
+    
+    # Conta quante recensioni sono molto brevi (<=10 caratteri)
+    short_reviews = (texts.str.len() <= 10).sum()
+    short_ratio = short_reviews / len(texts) if len(texts) > 0 else 1
+    
+    # Conta recensioni di una sola parola
+    single_word = texts.str.split().str.len().eq(1).sum()
+    single_word_ratio = single_word / len(texts) if len(texts) > 0 else 1
+    
+    # Criteri per usare AI
+    use_ai = (
+        avg_length >= 20 and  # Lunghezza media ragionevole
+        short_ratio < 0.7 and  # Meno del 70% di recensioni molto brevi
+        single_word_ratio < 0.5 and  # Meno del 50% di recensioni di una parola
+        len(clusters) >= 2  # Almeno 2 cluster
+    )
+    
+    reason = "sufficient_data" if use_ai else "insufficient_data"
+    if short_ratio >= 0.7:
+        reason = "too_many_short_reviews"
+    elif single_word_ratio >= 0.5:
+        reason = "too_many_single_words"
+    elif avg_length < 20:
+        reason = "low_avg_length"
+    
+    return {
+        "use_ai": use_ai,
+        "reason": reason,
+        "avg_length": round(avg_length, 1),
+        "short_ratio": round(short_ratio, 3),
+        "single_word_ratio": round(single_word_ratio, 3)
+    }
 
+
+def generate_personas(clusters: List[Dict[str, Any]], embed_df: pd.DataFrame, n_personas: int = 3) -> List[Dict[str, Any]]:
+    # Analizza qualità dei dati
+    quality = _assess_data_quality(clusters, embed_df)
+    
+    client = _anthropic_client()
+    if client is None or not quality["use_ai"]:
+        print(f">> Using placeholder personas: {quality['reason']} (avg_length: {quality['avg_length']})")
+        return generate_adaptive_personas(clusters, embed_df, n_personas, quality)
+
+    print(f">> Data quality sufficient for AI personas (avg_length: {quality['avg_length']})")
     clusters_json = _clusters_preview_for_prompt(clusters, embed_df)
     user = PERSONA_USER_TEMPLATE.format(
         archetypes=", ".join(ARCHETYPES),
@@ -138,11 +187,13 @@ def generate_personas(clusters: List[Dict[str, Any]], embed_df: pd.DataFrame, n_
         txt = "".join([c.text for c in res.content if hasattr(c, "text")])
         data = json.loads(txt)
         personas = data.get("personas", [])
-    except Exception:
+        print(f">> Generated {len(personas)} AI personas successfully")
+    except Exception as e:
+        print(f">> AI persona generation failed: {str(e)[:100]}")
         personas = []
 
     if not personas:
-        return generate_placeholder_personas(clusters, n_personas)
+        return generate_adaptive_personas(clusters, embed_df, n_personas, quality)
 
     # normalizza struttura e riempi campi mancanti
     out: List[Persona] = []
@@ -168,25 +219,183 @@ def generate_personas(clusters: List[Dict[str, Any]], embed_df: pd.DataFrame, n_
     return [asdict(pp) for pp in out]
 
 
-def generate_placeholder_personas(clusters: List[Dict[str, Any]], n_personas: int = 3) -> List[Dict[str, Any]]:
+def generate_adaptive_personas(clusters: List[Dict[str, Any]], embed_df: pd.DataFrame, n_personas: int = 3, quality: Dict[str, Any] = None) -> List[Dict[str, Any]]:
+    """
+    Genera personas adattive basate sui cluster reali quando i dati sono insufficienti per l'AI
+    """
     n = max(2, min(4, n_personas))
     out: List[Persona] = []
+    
+    # Determina il tipo di contenuto dalle keywords dei cluster
+    all_keywords = []
+    cluster_sentiments = []
+    for c in clusters:
+        all_keywords.extend(c.get("keywords", []))
+        cluster_sentiments.append(c.get("sentiment", 0))
+    
+    avg_sentiment = sum(cluster_sentiments) / len(cluster_sentiments) if cluster_sentiments else 0
+    
+    # Classifica il dominio basato sulle keywords
+    domain_type = _classify_domain(all_keywords, embed_df)
+    
+    # Genera personas specifiche per dominio
     for i in range(n):
+        persona_data = _generate_domain_specific_persona(domain_type, i, avg_sentiment, clusters)
+        
         out.append(
             Persona(
                 id=f"persona_{i+1}",
-                title=["Strategic Traveler", "Value Maximizer", "Quality Seeker", "Family Planner"][i % 4],
-                archetype=ARCHETYPES[i % len(ARCHETYPES)],
+                title=persona_data["title"],
+                archetype=persona_data["archetype"],
                 share=round(1.0 / n, 3),
-                goals=["Find reliable options", "Optimize cost vs. benefits", "Seamless booking experience"],
-                pains=["Hidden fees", "Inconsistent quality", "Slow customer support"],
-                quotes=["“Great location with supportive host”", "“Good value for money”"],
-                channels=["Search engines", "Review websites", "Friends & community"],
+                goals=persona_data["goals"],
+                pains=persona_data["pains"],
+                quotes=persona_data["quotes"],
+                channels=persona_data["channels"],
                 icon=ICONS[i % len(ICONS)],
                 accent=ACCENTS[i % len(ACCENTS)],
             )
         )
     return [asdict(pp) for pp in out]
+
+
+def _classify_domain(keywords: List[str], embed_df: pd.DataFrame) -> str:
+    """
+    Classifica il tipo di dominio basato su keywords e testi
+    """
+    keywords_str = " ".join(keywords).lower()
+    
+    # Analizza anche i testi per pattern
+    sample_texts = embed_df["text"].head(20).str.lower().str.cat(sep=" ")
+    combined_text = keywords_str + " " + sample_texts
+    
+    # Classificazione per pattern
+    if any(word in combined_text for word in ["hotel", "airbnb", "host", "room", "location", "stay", "guest", "eccellente", "eccezionale", "ottimo", "carino", "posizione", "parcheggio", "soggiorno"]):
+        return "hospitality"
+    elif any(word in combined_text for word in ["app", "mobile", "feature", "bug", "update", "interface"]):
+        return "mobile_app"
+    elif any(word in combined_text for word in ["product", "quality", "size", "fabric", "delivery", "shipping", "order"]):
+        return "ecommerce"
+    elif any(word in combined_text for word in ["service", "support", "staff", "customer", "help"]):
+        return "service"
+    else:
+        return "generic"
+
+
+def _generate_domain_specific_persona(domain: str, index: int, avg_sentiment: float, clusters: List[Dict]) -> Dict:
+    """
+    Genera dati persona specifici per dominio
+    """
+    
+    # Template per hospitality (Airbnb, hotel, etc.)
+    if domain == "hospitality":
+        personas_data = [
+            {
+                "title": "Budget Traveler",
+                "archetype": "Budget Seeker",
+                "goals": ["Find affordable stays", "Good location access", "Basic amenities"],
+                "pains": ["Unexpected fees", "Poor location", "Misleading photos"],
+                "quotes": ["\"Perfect location, great value\"", "\"Simple but clean\""],
+                "channels": ["Price comparison sites", "Review platforms", "Social media"]
+            },
+            {
+                "title": "Experience Seeker", 
+                "archetype": "Explorer",
+                "goals": ["Authentic experiences", "Local recommendations", "Unique properties"],
+                "pains": ["Generic accommodations", "Poor host communication", "Limited local info"],
+                "quotes": ["\"Loved the local touch\"", "\"Host made all the difference\""],
+                "channels": ["Instagram", "Travel blogs", "Word of mouth"]
+            },
+            {
+                "title": "Comfort Focused",
+                "archetype": "Quality Seeker", 
+                "goals": ["Clean comfortable space", "Reliable amenities", "Quiet environment"],
+                "pains": ["Noise issues", "Cleanliness problems", "Broken facilities"],
+                "quotes": ["\"Everything worked perfectly\"", "\"Spotlessly clean\""],
+                "channels": ["Direct booking", "Premium platforms", "Referrals"]
+            }
+        ]
+    
+    # Template per mobile app
+    elif domain == "mobile_app":
+        personas_data = [
+            {
+                "title": "Power User",
+                "archetype": "Convenience First",
+                "goals": ["Advanced features", "Quick navigation", "Customization options"],
+                "pains": ["Missing features", "Slow performance", "Complex UI"],
+                "quotes": ["\"Love the new features\"", "\"Could be faster\""],
+                "channels": ["App stores", "Tech forums", "Social media"]
+            },
+            {
+                "title": "Casual User",
+                "archetype": "Convenience First", 
+                "goals": ["Simple interface", "Reliable basic functions", "Easy learning"],
+                "pains": ["Too many options", "Confusing navigation", "Frequent crashes"],
+                "quotes": ["\"Simple and works\"", "\"Too complicated\""],
+                "channels": ["App stores", "Friends", "Default options"]
+            }
+        ]
+    
+    # Template per ecommerce
+    elif domain == "ecommerce":
+        personas_data = [
+            {
+                "title": "Quality Conscious",
+                "archetype": "Quality Seeker",
+                "goals": ["High quality products", "Accurate descriptions", "Good materials"],
+                "pains": ["Poor quality", "Misleading descriptions", "Size issues"],
+                "quotes": ["\"Exactly as described\"", "\"Great quality materials\""],
+                "channels": ["Review sites", "Brand websites", "Social proof"]
+            },
+            {
+                "title": "Deal Hunter",
+                "archetype": "Value Maximizer",
+                "goals": ["Best prices", "Fast shipping", "Easy returns"],
+                "pains": ["High prices", "Slow delivery", "Complicated returns"],
+                "quotes": ["\"Great deal, fast delivery\"", "\"Perfect price point\""],
+                "channels": ["Price comparison", "Deal alerts", "Social media"]
+            }
+        ]
+    
+    # Template generico
+    else:
+        personas_data = [
+            {
+                "title": "Satisfied User",
+                "archetype": "Quality Seeker",
+                "goals": ["Reliable service", "Good value", "Positive experience"],
+                "pains": ["Service issues", "Poor communication", "Unmet expectations"],
+                "quotes": ["\"Met my expectations\"", "\"Good overall experience\""],
+                "channels": ["Search engines", "Reviews", "Recommendations"]
+            },
+            {
+                "title": "Critical User",
+                "archetype": "Quality Seeker",
+                "goals": ["High standards", "Attention to detail", "Consistent quality"],
+                "pains": ["Quality inconsistency", "Poor attention to detail", "Service gaps"],
+                "quotes": ["\"Could be better\"", "\"Needs improvement\""],
+                "channels": ["Review platforms", "Direct feedback", "Community forums"]
+            }
+        ]
+    
+    # Adatta il sentiment
+    persona = personas_data[index % len(personas_data)].copy()
+    if avg_sentiment < -0.3:
+        # Sentiment negativo - enfatizza i pain points
+        persona["pains"] = persona["pains"] + ["Frequent disappointments", "Poor customer service"]
+        persona["quotes"] = ["\"Not as expected\"", "\"Room for improvement\""]
+    elif avg_sentiment > 0.5:
+        # Sentiment positivo - enfatizza i successi
+        persona["goals"] = persona["goals"] + ["Consistent positive experiences"]
+        persona["quotes"] = ["\"Exceeded expectations\"", "\"Highly recommend\""]
+    
+    return persona
+
+
+def generate_placeholder_personas(clusters: List[Dict[str, Any]], n_personas: int = 3) -> List[Dict[str, Any]]:
+    """Legacy function - now redirects to adaptive personas"""
+    return generate_adaptive_personas(clusters, pd.DataFrame(), n_personas)
 
 
 def enrich_personas_with_data(personas: List[Dict[str, Any]], embed_df: pd.DataFrame, clusters: List[Dict[str, Any]]) -> List[Dict[str, Any]]:

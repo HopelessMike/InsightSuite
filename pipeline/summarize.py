@@ -216,7 +216,7 @@ def test_anthropic_connection() -> bool:
     try:
         api_key = os.getenv("ANTHROPIC_API_KEY")
         if not api_key:
-            print("❌ ANTHROPIC_API_KEY not found in environment")
+            print("ERROR: ANTHROPIC_API_KEY not found in environment")
             return False
         client = Anthropic(api_key=api_key)
         model_alias = os.getenv("ANTHROPIC_MODEL", DEFAULT_ALIAS)
@@ -225,12 +225,12 @@ def test_anthropic_connection() -> bool:
             model=model_id, max_tokens=8, messages=[{"role": "user", "content": "ok"}]
         )
         if resp and resp.content:
-            print(f"✅ Anthropic reachable with model '{model_id}' (from alias '{model_alias}')")
+            print(f"SUCCESS: Anthropic reachable with model '{model_id}' (from alias '{model_alias}')")
             return True
         return False
     except APIStatusError as e:
         if e.status_code == 404:
-            print("❌ Model still not found by API; try ANTHROPIC_MODEL=claude-3-5-haiku")
+            print("ERROR: Model still not found by API; try ANTHROPIC_MODEL=claude-3-5-haiku")
         else:
             print(f"Anthropic connection failed: {e}")
         return False

@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python:*)",
+      "Bash(pip install:*)",
+      "Read(/C:\\c\\Users\\mmiranda\\Downloads\\insight-suite/**)"
+    ],
+    "deny": [],
+    "ask": [],
+    "additionalDirectories": [
+      "C:\\c\\Users\\mmiranda\\Downloads\\insight-suite"
+    ]
+  }
+}

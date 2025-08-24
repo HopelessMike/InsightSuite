@@ -180,20 +180,17 @@ function CustomNode(props: any) {
     let bgColor, textColor, borderColor;
     
     if (sentiment > 0.3) {
-      // Positive - Green
-      bgColor = "#10b981";
+      bgColor = "#22c55e"; // più luminoso
       textColor = "#ffffff";
-      borderColor = "#065f46";
+      borderColor = "#15803d";
     } else if (sentiment < -0.3) {
-      // Negative - Red
-      bgColor = "#ef4444";
+      bgColor = "#f87171"; // più morbido
       textColor = "#ffffff";
-      borderColor = "#7f1d1d";
+      borderColor = "#dc2626";
     } else {
-      // Neutral - Blue/Gray
-      bgColor = "#6b7280";
+      bgColor = "#64748b"; // più neutro
       textColor = "#ffffff";
-      borderColor = "#374151";
+      borderColor = "#475569";
     }
     
     return { bgColor, textColor, borderColor };

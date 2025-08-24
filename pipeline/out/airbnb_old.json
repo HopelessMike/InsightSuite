@@ -1,0 +1,239 @@
+{
+  "meta": {
+    "project_id": "airbnb",
+    "name": "Airbnb Roma",
+    "source": "InsideAirbnb",
+    "date_range": [
+      "2010-05-14",
+      "2025-03-12"
+    ],
+    "languages": [
+      "en",
+      "fr",
+      "es",
+      "it",
+      "other"
+    ],
+    "totals": {
+      "reviews": 36481,
+      "clusters": 3
+    },
+    "method": {
+      "sentiment": "xlm-roberta (CardiffNLP)",
+      "embedding": "voyage-3.5-lite",
+      "clustering": "hdbscan",
+      "llm": "claude-sonnet-4-20250514"
+    }
+  },
+  "aggregates": {
+    "sentiment_mean": 0.754,
+    "sentiment_dist": {
+      "neg": 0.04,
+      "neu": 0.025,
+      "pos": 0.935
+    },
+    "rating_hist": [
+      [
+        1,
+        0
+      ],
+      [
+        2,
+        0
+      ],
+      [
+        3,
+        0
+      ],
+      [
+        4,
+        0
+      ],
+      [
+        5,
+        0
+      ]
+    ]
+  },
+  "clusters": [
+    {
+      "id": "cluster_0",
+      "label": "Excellent Rome Accommodations with Outstanding Hosts",
+      "size": 2368,
+      "share": 0.484,
+      "sentiment": 0.842,
+      "keywords": [
+        "the",
+        "to",
+        "in",
+        "was",
+        "is",
+        "we",
+        "apartment",
+        "very",
+        "of",
+        "great",
+        "stay",
+        "for"
+      ],
+      "summary": "Highly positive reviews of Rome apartments featuring exceptional hosts, prime locations near major attractions and transport, clean and well-equipped spaces, and excellent guest service including airport transfers and local recommendations.",
+      "strengths": [
+        "Outstanding host service with responsive communication and helpful local recommendations",
+        "Prime locations near major attractions (Colosseum, Roman Forum, Vatican) and transport hubs",
+        "Clean, spacious, and well-equipped apartments with modern amenities"
+      ],
+      "weaknesses": [
+        "Occasional noise from neighbors",
+        "Some apartments smaller than they appear in photos"
+      ]
+    },
+    {
+      "id": "cluster_1",
+      "label": "Appartements parfaitement situés avec hôtes attentionnés",
+      "size": 206,
+      "share": 0.042,
+      "sentiment": 0.922,
+      "keywords": [
+        "de",
+        "et",
+        "très",
+        "est",
+        "nous",
+        "pour",
+        "bien",
+        "un",
+        "le",
+        "la",
+        "dans",
+        "situé"
+      ],
+      "summary": "Appartements très bien situés au cœur de Rome permettant de visiter les principaux sites touristiques à pied. Les logements sont propres, bien équipés et confortables. Les hôtes sont accueillants, réactifs et prodiguent d'excellents conseils pour découvrir la ville.",
+      "strengths": [
+        "Emplacement idéal au centre de Rome, proche des sites touristiques majeurs",
+        "Possibilité de tout faire à pied depuis les appartements",
+        "Hôtes très accueillants, réactifs et de bon conseil"
+      ],
+      "weaknesses": [
+        "Quelques chambres sur rue peuvent être bruyantes",
+        "Qualité du ménage parfois perfectible"
+      ]
+    },
+    {
+      "id": "cluster_2",
+      "label": "Excellent Location & Host Experience",
+      "size": 2318,
+      "share": 0.474,
+      "sentiment": 0.845,
+      "keywords": [
+        "great",
+        "location",
+        "great location",
+        "and",
+        "place",
+        "very",
+        "good",
+        "apartment",
+        "stay",
+        "nice",
+        "host",
+        "perfect"
+      ],
+      "summary": "Guests consistently praise the exceptional central location with easy access to shops, restaurants, and main attractions, combined with highly responsive and helpful hosts who provide excellent communication and recommendations.",
+      "strengths": [
+        "Perfect central location with walkable access to shops, restaurants, and main sites",
+        "Excellent host communication and responsiveness",
+        "Helpful hosts who provide valuable local recommendations"
+      ],
+      "weaknesses": [
+        "Limited specific feedback on potential areas for improvement",
+        "Some reviews lack detailed commentary"
+      ]
+    }
+  ],
+  "personas": [
+    {
+      "id": "persona_1",
+      "name": "The Rome Explorer",
+      "share": 0.39,
+      "goals": [
+        "Find authentic accommodations with local character in Rome",
+        "Connect with knowledgeable hosts who can provide insider tips",
+        "Experience Rome like a local rather than a tourist"
+      ],
+      "pains": [
+        "Difficulty finding hosts who truly understand Rome's hidden gems",
+        "Concerns about accommodation quality matching online descriptions",
+        "Language barriers when communicating with local hosts"
+      ],
+      "clusters": [
+        "0"
+      ],
+      "quotes": [
+        "The host gave us amazing recommendations for authentic Roman restaurants",
+        "Perfect location near the Colosseum with excellent amenities",
+        "Our host was incredibly helpful and made our Rome trip unforgettable"
+      ],
+      "channels": [
+        "Travel booking platforms",
+        "Rome travel forums and blogs",
+        "Social media travel groups"
+      ]
+    },
+    {
+      "id": "persona_2",
+      "name": "The Strategic Traveler",
+      "share": 0.38,
+      "goals": [
+        "Secure prime locations with easy access to attractions and transport",
+        "Ensure exceptional host support throughout their stay",
+        "Maximize travel experience through strategic accommodation choices"
+      ],
+      "pains": [
+        "Uncertainty about actual location convenience until arrival",
+        "Inconsistent host responsiveness and support quality",
+        "Balancing location benefits with accommodation comfort"
+      ],
+      "clusters": [
+        "2"
+      ],
+      "quotes": [
+        "Perfect location with metro station just 2 minutes away",
+        "Host was available 24/7 and solved every issue immediately",
+        "Couldn't have asked for a better location and host combination"
+      ],
+      "channels": [
+        "Location-focused travel apps",
+        "Review aggregation websites",
+        "Travel planning communities"
+      ]
+    },
+    {
+      "id": "persona_3",
+      "name": "The French Sophisticate",
+      "share": 0.08,
+      "goals": [
+        "Find perfectly positioned apartments with refined aesthetics",
+        "Experience attentive, personalized service from hosts",
+        "Enjoy premium travel experiences with attention to detail"
+      ],
+      "pains": [
+        "Limited availability of high-end, well-located properties",
+        "Difficulty finding hosts who meet sophisticated service expectations",
+        "Language preferences not always accommodated by hosts"
+      ],
+      "clusters": [
+        "1"
+      ],
+      "quotes": [
+        "L'appartement était parfaitement situé avec un hôte exceptionnel",
+        "Service impeccable et attention aux détails remarquable",
+        "Exactement ce que nous recherchions pour notre séjour"
+      ],
+      "channels": [
+        "Luxury travel platforms",
+        "French travel communities",
+        "Premium accommodation websites"
+      ]
+    }
+  ]
+}

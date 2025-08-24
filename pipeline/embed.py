@@ -56,12 +56,12 @@ def test_voyage_connection() -> bool:
     try:
         key = os.getenv("VOYAGE_API_KEY")
         if not key or voyageai is None:
-            print("❌ VOYAGE_API_KEY not set")
+            print("ERROR: VOYAGE_API_KEY not set")
             return False
         model = os.getenv("VOYAGE_MODEL", "voyage-3.5-lite")
         vo = voyageai.Client(api_key=key)
         _ = vo.embed(["hello"], model=model, input_type="document")
-        print(f"✅ Voyage reachable with model '{model}'")
+        print(f"SUCCESS: Voyage reachable with model '{model}'")
         return True
     except Exception as e:
         print(f"Voyage connection failed: {e}")

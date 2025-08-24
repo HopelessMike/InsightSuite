@@ -13,6 +13,7 @@ import {
   Shield,
   ExternalLink
 } from "lucide-react";
+import { useTheme } from "next-themes";
 
 type Section = {
   icon: React.ReactNode;
@@ -35,7 +36,7 @@ const sections: Section[] = [
           <div className="p-2 rounded-lg bg-neutral-800/50">
             <div className="text-xs font-medium text-blue-400 mb-1">Sources</div>
             <div className="text-xs text-neutral-400">
-              API Reviews, Surveys, Social Media, Support Tickets
+              B&B Guest Reviews, Booking Platforms, Hospitality Data
             </div>
           </div>
           <div className="p-2 rounded-lg bg-neutral-800/50">
@@ -137,10 +138,10 @@ const sections: Section[] = [
 
 const attributions = [
   {
-    name: "Inside Airbnb",
-    license: "CC BY 4.0",
-    description: "Rome listings and reviews data",
-    url: "http://insideairbnb.com"
+    name: "Airbnb B&B Reviews",
+    license: "Public Domain",
+    description: "Guest reviews for B&B accommodations in Italy",
+    url: "https://booking.com"
   },
   {
     name: "BCA Mobile Reviews",
@@ -159,6 +160,7 @@ const attributions = [
 export default function MethodologyDrawer() {
   const [isOpen, setIsOpen] = React.useState(false);
   const [activeSection, setActiveSection] = React.useState(0);
+  const { theme } = useTheme();
 
   return (
     <>
@@ -190,25 +192,41 @@ export default function MethodologyDrawer() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 30, stiffness: 300 }}
-              className="fixed right-0 top-0 h-full w-full max-w-lg bg-neutral-950 border-l border-neutral-800 shadow-2xl z-50 overflow-hidden"
+              className={`fixed right-0 top-0 h-full w-full max-w-lg shadow-2xl z-50 overflow-hidden ${
+                theme === 'light' 
+                  ? 'bg-white border-l border-neutral-200' 
+                  : 'bg-neutral-950 border-l border-neutral-800'
+              }`}
             >
               {/* Header */}
-              <div className="flex items-center justify-between p-6 border-b border-neutral-800">
+              <div className={`flex items-center justify-between p-6 border-b ${
+                theme === 'light' ? 'border-neutral-200' : 'border-neutral-800'
+              }`}>
                 <div>
-                  <h2 className="text-xl font-semibold text-white">
+                  <h2 className={`text-xl font-semibold ${
+                    theme === 'light' ? 'text-neutral-900' : 'text-white'
+                  }`}>
                     Metodologia & Attribution
                   </h2>
-                  <p className="text-sm text-neutral-400 mt-1">
+                  <p className={`text-sm mt-1 ${
+                    theme === 'light' ? 'text-neutral-600' : 'text-neutral-400'
+                  }`}>
                     Come funziona InsightSuite
                   </p>
                 </div>
                 <motion.button
                   onClick={() => setIsOpen(false)}
-                  className="p-2 rounded-lg hover:bg-neutral-800 transition-colors"
+                  className={`p-2 rounded-lg transition-colors ${
+                    theme === 'light' 
+                      ? 'hover:bg-neutral-100' 
+                      : 'hover:bg-neutral-800'
+                  }`}
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                 >
-                  <X className="w-5 h-5 text-neutral-400" />
+                  <X className={`w-5 h-5 ${
+                    theme === 'light' ? 'text-neutral-600' : 'text-neutral-400'
+                  }`} />
                 </motion.button>
               </div>
               
@@ -222,8 +240,12 @@ export default function MethodologyDrawer() {
                       onClick={() => setActiveSection(idx)}
                       className={`p-2 rounded-lg transition-all ${
                         activeSection === idx 
-                          ? "bg-neutral-800 text-white" 
-                          : "text-neutral-500 hover:text-white hover:bg-neutral-800/50"
+                          ? theme === 'light' 
+                            ? 'bg-neutral-100 text-neutral-900' 
+                            : 'bg-neutral-800 text-white'
+                          : theme === 'light'
+                            ? 'text-neutral-500 hover:text-neutral-900 hover:bg-neutral-50'
+                            : 'text-neutral-500 hover:text-white hover:bg-neutral-800/50'
                       }`}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
@@ -251,44 +273,52 @@ export default function MethodologyDrawer() {
                           {sections[activeSection].title}
                         </h3>
                       </div>
-                      {sections[activeSection].content}
+                      <div className={theme === 'light' ? '[&_p]:text-neutral-700 [&_span]:text-neutral-600' : ''}>
+                        {sections[activeSection].content}
+                      </div>
                     </div>
                   </motion.div>
                 </AnimatePresence>
                 
                 {/* Tech Stack */}
-                <div className="mt-8 p-4 rounded-xl bg-neutral-900/50 border border-neutral-800">
-                  <h4 className="font-medium text-white mb-3 flex items-center gap-2">
+                <div className={`mt-8 p-4 rounded-xl border ${
+                  theme === 'light' 
+                    ? 'bg-neutral-50 border-neutral-200' 
+                    : 'bg-neutral-900/50 border-neutral-800'
+                }`}>
+                  <h4 className={`font-medium mb-3 flex items-center gap-2 ${
+                    theme === 'light' ? 'text-neutral-900' : 'text-white'
+                  }`}>
                     <Code2 className="w-4 h-4 text-blue-400" />
                     Tech Stack
                   </h4>
                   <div className="grid grid-cols-2 gap-3 text-xs">
                     <div className="space-y-2">
                       <div className="flex justify-between">
-                        <span className="text-neutral-500">Frontend</span>
-                        <span className="text-neutral-300">Next.js 14</span>
+                        <span className={theme === 'light' ? 'text-neutral-600' : 'text-neutral-500'}>Frontend</span>
+                        <span className={theme === 'light' ? 'text-neutral-700' : 'text-neutral-300'}>Next.js 14</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-neutral-500">UI</span>
-                        <span className="text-neutral-300">Tailwind + Framer</span>
+                        <span className={theme === 'light' ? 'text-neutral-600' : 'text-neutral-500'}>UI</span>
+                        <span className={theme === 'light' ? 'text-neutral-700' : 'text-neutral-300'}>Tailwind + Framer</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-neutral-500">Charts</span>
-                        <span className="text-neutral-300">Recharts</span>
+                        <span className={theme === 'light' ? 'text-neutral-600' : 'text-neutral-500'}>Charts</span>
+                        <span className={theme === 'light' ? 'text-neutral-700' : 'text-neutral-300'}>Recharts</span>
                       </div>
                     </div>
                     <div className="space-y-2">
                       <div className="flex justify-between">
-                        <span className="text-neutral-500">Pipeline</span>
-                        <span className="text-neutral-300">Python 3.11</span>
+                        <span className={theme === 'light' ? 'text-neutral-600' : 'text-neutral-500'}>Pipeline</span>
+                        <span className={theme === 'light' ? 'text-neutral-700' : 'text-neutral-300'}>Python 3.11</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-neutral-500">ML</span>
-                        <span className="text-neutral-300">scikit + HDBSCAN</span>
+                        <span className={theme === 'light' ? 'text-neutral-600' : 'text-neutral-500'}>ML</span>
+                        <span className={theme === 'light' ? 'text-neutral-700' : 'text-neutral-300'}>scikit + HDBSCAN</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-neutral-500">API</span>
-                        <span className="text-neutral-300">FastAPI</span>
+                        <span className={theme === 'light' ? 'text-neutral-600' : 'text-neutral-500'}>API</span>
+                        <span className={theme === 'light' ? 'text-neutral-700' : 'text-neutral-300'}>FastAPI</span>
                       </div>
                     </div>
                   </div>
@@ -296,7 +326,9 @@ export default function MethodologyDrawer() {
                 
                 {/* Dataset Attribution */}
                 <div className="mt-8">
-                  <h4 className="font-medium text-white mb-3 flex items-center gap-2">
+                  <h4 className={`font-medium mb-3 flex items-center gap-2 ${
+                    theme === 'light' ? 'text-neutral-900' : 'text-white'
+                  }`}>
                     <Database className="w-4 h-4 text-green-400" />
                     Dataset Attribution
                   </h4>
@@ -304,17 +336,25 @@ export default function MethodologyDrawer() {
                     {attributions.map((attr, idx) => (
                       <motion.div
                         key={idx}
-                        className="p-3 rounded-lg bg-neutral-900/50 border border-neutral-800 hover:border-neutral-700 transition-colors"
+                        className={`p-3 rounded-lg border transition-colors ${
+                          theme === 'light'
+                            ? 'bg-neutral-50 border-neutral-200 hover:border-neutral-300'
+                            : 'bg-neutral-900/50 border-neutral-800 hover:border-neutral-700'
+                        }`}
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: idx * 0.1 }}
                       >
                         <div className="flex items-start justify-between">
                           <div>
-                            <div className="font-medium text-sm text-white">
+                            <div className={`font-medium text-sm ${
+                              theme === 'light' ? 'text-neutral-900' : 'text-white'
+                            }`}>
                               {attr.name}
                             </div>
-                            <div className="text-xs text-neutral-400 mt-1">
+                            <div className={`text-xs mt-1 ${
+                              theme === 'light' ? 'text-neutral-600' : 'text-neutral-400'
+                            }`}>
                               {attr.description}
                             </div>
                             <div className="text-xs text-green-400 mt-1">
@@ -325,9 +365,15 @@ export default function MethodologyDrawer() {
                             href={attr.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="p-1.5 rounded hover:bg-neutral-800 transition-colors"
+                            className={`p-1.5 rounded transition-colors ${
+                              theme === 'light'
+                                ? 'hover:bg-neutral-100'
+                                : 'hover:bg-neutral-800'
+                            }`}
                           >
-                            <ExternalLink className="w-3 h-3 text-neutral-500" />
+                            <ExternalLink className={`w-3 h-3 ${
+                              theme === 'light' ? 'text-neutral-500' : 'text-neutral-500'
+                            }`} />
                           </a>
                         </div>
                       </motion.div>

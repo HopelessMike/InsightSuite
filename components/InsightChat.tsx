@@ -12,7 +12,9 @@ import {
   Users,
   Loader2
 } from "lucide-react";
+import { useLocale } from "@/lib/i18n";
 import type { ProjectData } from "@/lib/types";
+
 
 type Message = { 
   role: "user" | "assistant"; 
@@ -49,32 +51,31 @@ type Props = {
 };
 
 export default function InsightChat({ data, projectId }: Props) {
+  const { t } = useLocale();
   const [messages, setMessages] = React.useState<Message[]>([]);
   const [input, setInput] = React.useState("");
   const [isLoading, setIsLoading] = React.useState(false);
   const [isTyping, setIsTyping] = React.useState(false);
+  const [mounted, setMounted] = React.useState(false);
   const messagesEndRef = React.useRef<HTMLDivElement>(null);
   const inputRef = React.useRef<HTMLInputElement>(null);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   React.useEffect(() => {
-    scrollToBottom();
-  }, [messages, isTyping]);
-
-  const simulateStreaming = async (text: string, onUpdate: (partial: string) => void) => {
-    const words = text.split(" ");
-    let accumulated = "";
-    
-    for (let i = 0; i < words.length; i++) {
-      accumulated += (i > 0 ? " " : "") + words[i];
-      onUpdate(accumulated);
-      await new Promise(resolve => setTimeout(resolve, 30 + Math.random() * 20));
+    // Only scroll if component is mounted and there are actual messages or if typing
+    if (mounted && (messages.length > 0 || isTyping)) {
+      scrollToBottom();
     }
-  };
+  }, [messages, isTyping, mounted]);
 
+  // Real LLM integration
   const handleSend = async (question: string) => {
     if (!question.trim() || isLoading) return;
     
@@ -90,35 +91,41 @@ export default function InsightChat({ data, projectId }: Props) {
     setIsTyping(true);
     
     try {
-      // Simulate API call with context
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Call the API route with LLM integration
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          question: question.trim(),
+          projectId: projectId
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error('API request failed');
+      }
+
+      const result = await response.json();
       
-      // Generate contextual response based on data
-      const response = generateContextualResponse(question, data);
-      
-      // Add empty assistant message
+      // Add assistant message
       const assistantMessage: Message = {
         role: "assistant",
-        text: "",
+        text: result.answer || "Mi dispiace, non ho potuto elaborare la richiesta.",
         timestamp: new Date()
       };
       
       setMessages(prev => [...prev, assistantMessage]);
       
-      // Simulate streaming
-      await simulateStreaming(response, (partial) => {
-        setMessages(prev => {
-          const updated = [...prev];
-          updated[updated.length - 1].text = partial;
-          return updated;
-        });
-      });
-      
     } catch (error) {
       console.error("Chat error:", error);
+      
+      // Fallback to enhanced local response if API fails
+      const fallbackResponse = generateEnhancedResponse(question, data);
       setMessages(prev => [...prev, {
         role: "assistant",
-        text: "Mi dispiace, si è verificato un errore. Riprova più tardi.",
+        text: fallbackResponse,
         timestamp: new Date()
       }]);
     } finally {
@@ -128,85 +135,166 @@ export default function InsightChat({ data, projectId }: Props) {
     }
   };
 
-  const generateContextualResponse = (question: string, data?: ProjectData): string => {
+  // Enhanced local response generator with deep analysis
+  const generateEnhancedResponse = (question: string, data?: ProjectData): string => {
     if (!data) {
       return "I dati del progetto non sono ancora caricati. Attendi qualche istante e riprova.";
     }
     
     const q = question.toLowerCase();
+    const clusters = data.clusters || [];
+    const personas = data.personas || [];
+    const meta = data.meta || {};
+    const aggregates = data.aggregates || {};
     
-    // Cluster peggiorando
-    if (q.includes("peggior") || q.includes("trend negativ")) {
-      const negativeClusters = data.clusters
-        .filter(c => c.sentiment < -0.3)
+    // Cluster peggiorando nel tempo
+    if (q.includes("peggior") || q.includes("trend negativ") || q.includes("declino")) {
+      const negativeTrends = clusters
+        .filter(c => {
+          if (!c.trend || c.trend.length < 2) return false;
+          const recentTrend = c.trend.slice(-3);
+          const avgRecent = recentTrend.reduce((sum, t) => sum + t.count, 0) / recentTrend.length;
+          const avgOld = c.trend.slice(0, 3).reduce((sum, t) => sum + t.count, 0) / Math.min(3, c.trend.length);
+          return avgRecent < avgOld && c.sentiment < 0;
+        })
         .slice(0, 3);
       
-      if (negativeClusters.length > 0) {
-        return `Ho identificato ${negativeClusters.length} cluster con trend negativi:\n\n` +
-          negativeClusters.map((c, i) => 
-            `${i + 1}. **${c.label}** (sentiment: ${c.sentiment.toFixed(2)})\n` +
-            `   Share: ${(c.share * 100).toFixed(1)}%\n` +
-            `   Keywords: ${c.keywords.slice(0, 3).join(", ")}`
+      if (negativeTrends.length > 0) {
+        return `**Analisi dei Trend Negativi**\n\n` +
+          `Ho identificato ${negativeTrends.length} cluster con trend in peggioramento:\n\n` +
+          negativeTrends.map((c, i) => 
+            `**${i + 1}. ${c.label}**\n` +
+            `• Sentiment attuale: ${c.sentiment.toFixed(2)} (${c.sentiment < -0.5 ? 'molto negativo' : 'negativo'})\n` +
+            `• Impatto: ${(c.share * 100).toFixed(1)}% delle recensioni\n` +
+            `• Trend: -${((1 - (c.trend[c.trend.length-1].count / c.trend[0].count)) * 100).toFixed(0)}% nell'ultimo periodo\n` +
+            `• Criticità principali: ${c.weaknesses.slice(0, 2).join(", ")}\n` +
+            `• Keywords correlate: ${c.keywords.slice(0, 3).join(", ")}`
           ).join("\n\n") +
-          "\n\nTi consiglio di prioritizzare interventi su questi temi per migliorare l'esperienza complessiva.";
+          `\n\n**Raccomandazione**: Questi cluster richiedono attenzione immediata. ` +
+          `Il cluster "${negativeTrends[0].label}" è particolarmente critico con un calo del ` +
+          `${((1 - (negativeTrends[0].trend[negativeTrends[0].trend.length-1].count / negativeTrends[0].trend[0].count)) * 100).toFixed(0)}%.`;
       }
-      return "Non ho identificato cluster con trend particolarmente negativi nel periodo analizzato.";
+      return "Non ho identificato cluster con trend particolarmente negativi nel periodo analizzato. " +
+        "Il sentiment complessivo si mantiene stabile.";
     }
     
-    // Temi critici
-    if (q.includes("critici") || q.includes("problemi")) {
-      const criticalClusters = data.clusters
-        .sort((a, b) => b.opportunity_score - a.opportunity_score)
+    // Temi più critici con analisi approfondita
+    if (q.includes("critici") || q.includes("problemi") || q.includes("urgenti")) {
+      const criticalClusters = clusters
+        .sort((a, b) => {
+          const scoreA = (Math.abs(a.sentiment) * a.share * 100) + a.opportunity_score;
+          const scoreB = (Math.abs(b.sentiment) * b.share * 100) + b.opportunity_score;
+          return scoreB - scoreA;
+        })
         .slice(0, 3);
       
-      return `Ecco i 3 temi più critici basati sull'opportunity score:\n\n` +
-        criticalClusters.map((c, i) => 
-          `${i + 1}. **${c.label}**\n` +
-          `   Opportunity Score: ${c.opportunity_score.toFixed(2)}\n` +
-          `   Impatto: ${(c.share * 100).toFixed(1)}% degli utenti\n` +
-          `   Principali criticità: ${c.weaknesses.slice(0, 2).join(", ")}`
-        ).join("\n\n");
+      const totalImpact = criticalClusters.reduce((sum, c) => sum + c.share, 0);
+      
+      return `**Analisi dei Temi Critici**\n\n` +
+        `I 3 temi più critici rappresentano il ${(totalImpact * 100).toFixed(0)}% del totale:\n\n` +
+        criticalClusters.map((c, i) => {
+          const urgencyLevel = c.sentiment < -0.5 ? "Critico" : 
+                              c.sentiment < -0.2 ? "Alto" : "Medio";
+          
+          return `**${i + 1}. ${c.label}** (${urgencyLevel})\n` +
+            `• Opportunity Score: ${c.opportunity_score.toFixed(2)}\n` +
+            `• Impatto: ${(c.share * 100).toFixed(1)}% degli utenti (${c.size.toLocaleString()} recensioni)\n` +
+            `• Sentiment: ${c.sentiment.toFixed(2)}\n` +
+            `• Criticità principali:\n` +
+            c.weaknesses.slice(0, 3).map(w => `  - ${w}`).join("\n") + "\n" +
+            `• Quote rappresentative: "${c.quotes[0]?.text.substring(0, 100)}..."`;
+        }).join("\n\n") +
+        `\n\n**Insight chiave**: Il cluster "${criticalClusters[0].label}" richiede intervento prioritario ` +
+        `con ${(criticalClusters[0].share * 100).toFixed(0)}% di impatto sugli utenti.`;
     }
     
-    // Driver sentiment negativo
-    if (q.includes("driver") || q.includes("sentiment negativ")) {
-      const negativeDrivers = data.clusters
+    // Driver del sentiment negativo con correlazioni
+    if (q.includes("driver") || q.includes("sentiment negativ") || q.includes("causa") || q.includes("motiv")) {
+      const negativeDrivers = clusters
         .filter(c => c.sentiment < 0)
         .sort((a, b) => (a.sentiment * a.share) - (b.sentiment * b.share))
-        .slice(0, 3);
+        .slice(0, 4);
       
-      return `I principali driver del sentiment negativo sono:\n\n` +
-        negativeDrivers.map(c => 
-          `• **${c.label}**: ${c.weaknesses[0] || "Problematiche generali"}`
-        ).join("\n") +
-        "\n\nQuesti temi impattano complessivamente il " +
-        `${(negativeDrivers.reduce((sum, c) => sum + c.share, 0) * 100).toFixed(0)}% degli utenti.`;
+      const totalNegativeImpact = negativeDrivers.reduce((sum, c) => sum + c.share, 0);
+      const avgNegativeSentiment = negativeDrivers.reduce((sum, c) => sum + c.sentiment, 0) / negativeDrivers.length;
+      
+      return `**Analisi dei Driver del Sentiment Negativo**\n\n` +
+        `Ho identificato ${negativeDrivers.length} driver principali che impattano il ${(totalNegativeImpact * 100).toFixed(0)}% degli utenti:\n\n` +
+        negativeDrivers.map((c, i) => 
+          `**${i + 1}. ${c.label}**\n` +
+          `• Contributo negativo: ${Math.abs(c.sentiment * c.share * 100).toFixed(1)} punti\n` +
+          `• Problematiche: ${c.weaknesses.slice(0, 2).join(", ")}\n` +
+          `• Keywords negative: ${c.keywords.filter(k => k.toLowerCase().includes('non') || k.toLowerCase().includes('problema')).slice(0, 3).join(", ")}`
+        ).join("\n\n") +
+        `\n\n**Correlazioni identificate**:\n` +
+        `• Sentiment medio negativo: ${avgNegativeSentiment.toFixed(2)}\n` +
+        `• Cluster più correlati: ${negativeDrivers.slice(0, 2).map(c => c.label).join(" + ")}\n` +
+        `• Pattern ricorrente: ${negativeDrivers[0].weaknesses[0]}\n\n` +
+        `**Strategia consigliata**: Focus immediato su "${negativeDrivers[0].label}" ` +
+        `per massimizzare l'impatto positivo sul sentiment complessivo.`;
     }
     
-    // Azioni prioritarie
-    if (q.includes("azioni") || q.includes("priorit") || q.includes("suggerisci")) {
-      const topIssues = data.clusters
+    // Azioni prioritarie con roadmap dettagliata
+    if (q.includes("azioni") || q.includes("priorit") || q.includes("suggerisci") || q.includes("fare")) {
+      const topIssues = clusters
         .sort((a, b) => b.opportunity_score - a.opportunity_score)
-        .slice(0, 3);
+        .slice(0, 5);
       
-      return `Basandomi sull'analisi, suggerisco queste azioni prioritarie:\n\n` +
-        `🎯 **Quick Wins** (alto impatto, facile implementazione):\n` +
-        topIssues.filter(c => c.sentiment > -0.3 && c.share > 0.1).map(c =>
-          `• Migliorare ${c.label.toLowerCase()}`
+      const quickWins = topIssues.filter(c => c.sentiment > -0.3 && c.share > 0.1);
+      const mustFix = topIssues.filter(c => c.sentiment <= -0.3 && c.share > 0.1);
+      const strategic = topIssues.filter(c => c.sentiment <= -0.3 && c.share <= 0.1);
+      
+      return `**Piano d'Azione Strategico - ${projectId.toUpperCase()}**\n\n` +
+        `Basandomi su ${meta.totals.reviews.toLocaleString()} recensioni analizzate:\n\n` +
+        
+        `**FASE 1: Quick Wins (0-30 giorni)**\n` +
+        `Impatto stimato: +${(quickWins.length * 0.15).toFixed(1)} punti sentiment\n` +
+        quickWins.map(c =>
+          `• ${c.label}: ${c.strengths[0] ? `Potenziare ${c.strengths[0]}` : `Migliorare processo`}\n` +
+          `  - Effort: Basso | Impact: ${(c.share * 100).toFixed(0)}% utenti`
         ).join("\n") + "\n\n" +
-        `🔴 **Must Fix** (critici da risolvere subito):\n` +
-        topIssues.filter(c => c.sentiment <= -0.3 && c.share > 0.1).map(c =>
-          `• Risolvere problemi in ${c.label.toLowerCase()}`
+        
+        `**FASE 2: Must Fix (30-60 giorni)**\n` +
+        `Impatto stimato: +${(mustFix.length * 0.25).toFixed(1)} punti sentiment\n` +
+        mustFix.map(c =>
+          `• ${c.label}: Risolvere ${c.weaknesses[0]}\n` +
+          `  - Effort: Medio | Impact: ${(c.share * 100).toFixed(0)}% utenti | Urgenza: Alta`
         ).join("\n") + "\n\n" +
-        `📊 Consiglio di monitorare costantemente questi KPI per misurare i progressi.`;
+        
+        `**FASE 3: Iniziative Strategiche (60-90 giorni)**\n` +
+        strategic.map(c =>
+          `• ${c.label}: Piano di miglioramento strutturale\n` +
+          `  - Effort: Alto | Impact: Lungo termine`
+        ).join("\n") + "\n\n" +
+        
+        `**KPI da Monitorare**:\n` +
+        `• Sentiment Score: Target +0.3 in 90 giorni\n` +
+        `• Volume recensioni negative: -40% su cluster critici\n` +
+        `• NPS Score: +15 punti\n` +
+        `• Retention Rate: +10%\n\n` +
+        
+        `**Next Step Immediato**: Iniziare con "${quickWins[0]?.label || mustFix[0]?.label}" ` +
+        `per generare momentum positivo visibile in 2 settimane.`;
     }
     
-    // Default response
-    return `Analizzando il dataset ${projectId}, ho ${data.meta.totals.reviews.toLocaleString()} recensioni ` +
-      `organizzate in ${data.meta.totals.clusters} cluster tematici. ` +
-      `Il sentiment medio è ${data.aggregates.sentiment_mean.toFixed(2)}. ` +
-      `Posso aiutarti ad approfondire aspetti specifici - prova a chiedermi dei trend negativi, ` +
-      `dei temi critici o delle azioni prioritarie da intraprendere.`;
+    // Default response with comprehensive overview
+    return `**Dashboard Analitica ${projectId.toUpperCase()}**\n\n` +
+      `**Metriche Chiave:**\n` +
+      `• Dataset: ${meta.totals.reviews.toLocaleString()} recensioni\n` +
+      `• Cluster identificati: ${meta.totals.clusters}\n` +
+      `• Sentiment medio: ${aggregates.sentiment_mean.toFixed(2)}\n\n` +
+      
+      `**Top 3 Temi Positivi:**\n` +
+      clusters.filter(c => c.sentiment > 0).sort((a, b) => b.sentiment - a.sentiment).slice(0, 3).map((c, i) =>
+        `${i + 1}. ${c.label} (+${c.sentiment.toFixed(2)})`
+      ).join("\n") + "\n\n" +
+      
+      `**Top 3 Aree Critiche:**\n` +
+      clusters.filter(c => c.sentiment < 0).sort((a, b) => a.sentiment - b.sentiment).slice(0, 3).map((c, i) =>
+        `${i + 1}. ${c.label} (${c.sentiment.toFixed(2)})`
+      ).join("\n") + "\n\n" +
+      
+      `Usa i suggerimenti sopra per esplorare aspetti specifici, oppure fammi qualsiasi domanda sui dati!`;
   };
 
   return (
@@ -228,8 +316,8 @@ export default function InsightChat({ data, projectId }: Props) {
           </div>
         </div>
 
-        {/* Chat Messages */}
-        <div className="h-96 overflow-y-auto rounded-xl bg-neutral-900/50 border border-neutral-800 p-4 mb-4">
+        {/* Chat Messages - Improved background with light theme support */}
+        <div className="h-96 overflow-y-auto rounded-xl p-4 mb-4 border bg-neutral-800/40 border-neutral-700">
           <AnimatePresence>
             {messages.length === 0 ? (
               <motion.div
@@ -244,7 +332,7 @@ export default function InsightChat({ data, projectId }: Props) {
                     Chiedimi qualsiasi cosa sui dati del progetto
                   </p>
                   <p className="text-neutral-600 text-xs mt-1">
-                    Usa i suggerimenti sopra per iniziare
+                    Usa i suggerimenti sotto per iniziare
                   </p>
                 </div>
               </motion.div>
@@ -274,16 +362,29 @@ export default function InsightChat({ data, projectId }: Props) {
                       message.role === "user" ? "text-right" : ""
                     }`}>
                       <div className="text-xs text-neutral-500 mb-1">
-                        {message.role === "user" ? "Tu" : "Assistant"}
+                        {message.role === "user" ? t('chat.you') : t('chat.assistant')}
                       </div>
                       <div className={`inline-block px-4 py-2 rounded-xl ${
                         message.role === "user"
                           ? "bg-blue-600/20 text-white"
-                          : "bg-neutral-800/50 text-neutral-200"
+                          : "bg-blue-600/20 text-white"
                       }`}>
-                        <p className="text-sm whitespace-pre-wrap">
-                          {message.text}
-                        </p>
+                        <div className="text-sm whitespace-pre-wrap">
+                          {message.text.split('\n').map((line, i) => (
+                            <React.Fragment key={i}>
+                              {line.startsWith('**') && line.endsWith('**') ? (
+                                <strong>{line.slice(2, -2)}</strong>
+                              ) : line.startsWith('• ') ? (
+                                <div className="ml-4">{line}</div>
+                              ) : line.startsWith('  -') || line.startsWith('   •') ? (
+                                <div className="ml-8 text-neutral-400">{line}</div>
+                              ) : (
+                                line
+                              )}
+                              {i < message.text.split('\n').length - 1 && <br />}
+                            </React.Fragment>
+                          ))}
+                        </div>
                       </div>
                     </div>
                   </motion.div>
@@ -298,7 +399,7 @@ export default function InsightChat({ data, projectId }: Props) {
                     <div className="p-2 rounded-lg bg-purple-600/20 text-purple-400">
                       <Bot className="w-4 h-4" />
                     </div>
-                    <div className="bg-neutral-800/50 px-4 py-2 rounded-xl">
+                    <div className="bg-blue-600/20 px-4 py-2 rounded-xl">
                       <div className="flex gap-1">
                         <span className="w-2 h-2 bg-neutral-500 rounded-full animate-pulse" />
                         <span className="w-2 h-2 bg-neutral-500 rounded-full animate-pulse delay-75" />
@@ -313,7 +414,7 @@ export default function InsightChat({ data, projectId }: Props) {
           <div ref={messagesEndRef} />
         </div>
 
-        {/* Quick Prompts - Moved here, above input */}
+        {/* Quick Prompts */}
         <div className="flex flex-wrap gap-2 mb-3">
           {QUICK_PROMPTS.map((prompt, idx) => (
             <motion.button
@@ -347,7 +448,7 @@ export default function InsightChat({ data, projectId }: Props) {
             ref={inputRef}
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="Scrivi una domanda..."
+            placeholder={t('chat.placeholder')}
             disabled={isLoading}
             className="input-field flex-1"
           />

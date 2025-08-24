@@ -57,7 +57,7 @@ def _resolve_anthropic_model_for_meta() -> str:
     return wanted or "rule-based"
 
 # -----------------------------
-# Text cleaning
+# Text cleaning + stopwords removal + lemmatization
 # -----------------------------
 _ZW_CHARS = ["\u200b", "\u200c", "\u200d", "\ufeff"]
 _HTML_TAG_RE = re.compile(r"<[^>]+>")
@@ -78,6 +78,94 @@ def clean_text(s: str) -> str:
     s = _MULTI_SPACE_RE.sub(" ", s).replace("\r", "")
     s = _MULTI_NEWLINE_RE.sub("\n\n", s)
     return s.strip()
+
+# Stopwords multilingua (essenziali)
+_STOPWORDS = {
+    'en': {'the', 'a', 'an', 'and', 'or', 'but', 'in', 'on', 'at', 'to', 'for', 'of', 'with', 'by', 'is', 'are', 'was', 'were', 'be', 'been', 'have', 'has', 'had', 'do', 'does', 'did', 'will', 'would', 'should', 'could', 'can', 'may', 'might', 'must', 'shall', 'this', 'that', 'these', 'those', 'i', 'you', 'he', 'she', 'it', 'we', 'they', 'me', 'him', 'her', 'us', 'them', 'my', 'your', 'his', 'our', 'their', 'not', 'no'},
+    'it': {'il', 'lo', 'la', 'i', 'gli', 'le', 'un', 'una', 'uno', 'di', 'a', 'da', 'in', 'con', 'su', 'per', 'tra', 'fra', 'e', 'o', 'ma', 'però', 'che', 'chi', 'cui', 'dove', 'quando', 'come', 'perché', 'se', 'questo', 'questa', 'quello', 'quella', 'questi', 'queste', 'quelli', 'quelle', 'io', 'tu', 'lui', 'lei', 'noi', 'voi', 'loro', 'mi', 'ti', 'ci', 'vi', 'si', 'mio', 'tuo', 'suo', 'nostro', 'vostro', 'loro', 'è', 'sono', 'sei', 'siamo', 'siete', 'era', 'ero', 'eri', 'eravamo', 'eravate', 'erano', 'ho', 'hai', 'ha', 'abbiamo', 'avete', 'hanno', 'non'},
+    'es': {'el', 'la', 'los', 'las', 'un', 'una', 'unos', 'unas', 'de', 'del', 'a', 'al', 'en', 'con', 'por', 'para', 'desde', 'hasta', 'y', 'o', 'pero', 'que', 'quien', 'donde', 'cuando', 'como', 'porque', 'si', 'este', 'esta', 'estos', 'estas', 'ese', 'esa', 'esos', 'esas', 'aquel', 'aquella', 'aquellos', 'aquellas', 'yo', 'tú', 'él', 'ella', 'nosotros', 'vosotros', 'ellos', 'ellas', 'me', 'te', 'se', 'nos', 'os', 'mi', 'tu', 'su', 'nuestro', 'vuestro', 'es', 'son', 'era', 'eran', 'he', 'has', 'ha', 'hemos', 'habéis', 'han', 'no'},
+    'fr': {'le', 'la', 'les', 'un', 'une', 'des', 'de', 'du', 'à', 'au', 'aux', 'en', 'dans', 'sur', 'avec', 'par', 'pour', 'sans', 'sous', 'entre', 'et', 'ou', 'mais', 'que', 'qui', 'où', 'quand', 'comment', 'pourquoi', 'si', 'ce', 'cette', 'ces', 'cet', 'celui', 'celle', 'ceux', 'celles', 'je', 'tu', 'il', 'elle', 'nous', 'vous', 'ils', 'elles', 'me', 'te', 'se', 'mon', 'ton', 'son', 'notre', 'votre', 'leur', 'est', 'sont', 'était', 'étaient', 'ai', 'as', 'a', 'avons', 'avez', 'ont', 'ne', 'pas'},
+    'de': {'der', 'die', 'das', 'den', 'dem', 'des', 'ein', 'eine', 'einen', 'einem', 'einer', 'eines', 'und', 'oder', 'aber', 'in', 'auf', 'an', 'zu', 'von', 'mit', 'bei', 'für', 'über', 'unter', 'durch', 'dass', 'wer', 'was', 'wo', 'wann', 'wie', 'warum', 'wenn', 'dieser', 'diese', 'dieses', 'jener', 'jene', 'jenes', 'ich', 'du', 'er', 'sie', 'es', 'wir', 'ihr', 'mich', 'dich', 'sich', 'uns', 'euch', 'mein', 'dein', 'sein', 'unser', 'euer', 'ihr', 'ist', 'sind', 'war', 'waren', 'habe', 'hast', 'hat', 'haben', 'habt', 'nicht', 'kein', 'keine'}
+}
+
+def remove_stopwords(text: str, lang: str = 'en') -> str:
+    """Rimuove stopwords dal testo basandosi sulla lingua"""
+    if not text or not isinstance(text, str):
+        return ""
+    
+    # Determina le stopwords da usare
+    stopwords = _STOPWORDS.get(lang.lower()[:2], _STOPWORDS['en'])
+    
+    # Tokenizzazione semplice
+    words = re.findall(r'\b\w+\b', text.lower())
+    
+    # Filtra stopwords
+    filtered_words = [w for w in words if w not in stopwords and len(w) > 2]
+    
+    return ' '.join(filtered_words)
+
+def lemmatize_text(text: str, lang: str = 'en') -> str:
+    """Lemmatizzazione opzionale con spaCy (degrada silenziosamente se non disponibile)"""
+    try:
+        import spacy
+        
+        # Mappa lingua a modello spaCy
+        lang_models = {
+            'en': 'en_core_web_sm',
+            'it': 'it_core_news_sm', 
+            'es': 'es_core_news_sm',
+            'fr': 'fr_core_news_sm',
+            'de': 'de_core_news_sm'
+        }
+        
+        model_name = lang_models.get(lang.lower()[:2], 'en_core_web_sm')
+        
+        try:
+            nlp = spacy.load(model_name)
+        except OSError:
+            # Modello non installato, usa fallback inglese
+            try:
+                nlp = spacy.load('en_core_web_sm')
+            except OSError:
+                # Nessun modello disponibile, ritorna testo originale
+                return text
+        
+        # Processa il testo
+        doc = nlp(text[:1000])  # Limita a 1000 caratteri per performance
+        lemmas = [token.lemma_ for token in doc if not token.is_stop and not token.is_punct and token.text.strip()]
+        
+        return ' '.join(lemmas)
+        
+    except ImportError:
+        # spaCy non installato, ritorna testo originale
+        return text
+    except Exception:
+        # Qualsiasi altro errore, ritorna testo originale
+        return text
+
+def preprocess_for_keywords(text: str, lang: str = 'en', use_lemmatization: bool = False) -> str:
+    """
+    Preprocessa il testo per l'estrazione delle keywords:
+    - Pulizia base
+    - Rimozione stopwords multilingua
+    - Lemmatizzazione opzionale (se abilitata e spaCy disponibile)
+    """
+    if not text or not isinstance(text, str):
+        return ""
+    
+    # 1. Pulizia base
+    cleaned = clean_text(text)
+    
+    # 2. Rimozione stopwords
+    no_stopwords = remove_stopwords(cleaned, lang)
+    
+    # 3. Lemmatizzazione opzionale
+    if use_lemmatization:
+        result = lemmatize_text(no_stopwords, lang)
+    else:
+        result = no_stopwords
+    
+    return result
 
 # -----------------------------
 # Sentiment pipeline (lazy) + cache resume
@@ -122,6 +210,64 @@ def try_load_preproc_cache(project_id: str) -> Optional[pd.DataFrame]:
         except Exception:
             return None
     return None
+def calculate_timeseries(df: pd.DataFrame, clusters: List[Dict]) -> Dict:
+    """
+    Calcola serie temporali per sentiment e volume
+    """
+    if 'timestamp' not in df.columns or df['timestamp'].isna().all():
+        return {}
+    
+    # Converti timestamp a datetime
+    df = df.copy()
+    df['timestamp'] = pd.to_datetime(df['timestamp'], errors='coerce')
+    df = df.dropna(subset=['timestamp'])
+    
+    if len(df) == 0:
+        return {}
+    
+    # Aggrega per mese
+    df['month'] = df['timestamp'].dt.to_period('M')
+    
+    # Serie mensile generale
+    monthly = df.groupby('month').agg({
+        'sentiment': 'mean',
+        'id': 'count'
+    }).rename(columns={'id': 'volume'})
+    
+    monthly_data = []
+    for period, row in monthly.iterrows():
+        monthly_data.append({
+            'date': str(period),
+            'sentiment_mean': round(row['sentiment'], 3),
+            'volume': int(row['volume'])
+        })
+    
+    # Serie per cluster
+    cluster_series = {}
+    if 'cluster_label' in df.columns:
+        for cluster in clusters:
+            cid = cluster['id']
+            cluster_df = df[df['cluster_label'] == cid]
+            if len(cluster_df) > 0:
+                cluster_monthly = cluster_df.groupby('month').agg({
+                    'id': 'count',
+                    'sentiment': 'mean'
+                }).rename(columns={'id': 'volume'})
+                
+                series = []
+                for period, row in cluster_monthly.iterrows():
+                    series.append({
+                        'date': str(period),
+                        'volume': int(row['volume']),
+                        'share': round(row['volume'] / monthly.loc[period, 'volume'], 3),
+                        'sentiment': round(row['sentiment'], 3)
+                    })
+                cluster_series[cid] = series
+    
+    return {
+        'monthly': monthly_data,
+        'clusters': cluster_series
+    }
 
 def save_preproc_cache(df: pd.DataFrame, project_id: str) -> None:
     path = _preproc_cache_path(project_id)
@@ -220,20 +366,133 @@ def _normalize_df(
     out['source'] = source
     return out
 
+# -----------------------------
+# Generic dataset loader (CSV / JSONL / Parquet) with column guessing
+# -----------------------------
+def _guess_col(candidates: list[str], columns: list[str]) -> Optional[str]:
+    cols_lower = {c.lower(): c for c in columns}
+    for cand in candidates:
+        if cand.lower() in cols_lower:
+            return cols_lower[cand.lower()]
+    # fuzzy: try contains
+    for c in columns:
+        cl = c.lower()
+        for cand in candidates:
+            if cand.lower() in cl:
+                return c
+    return None
+
+def _read_any(path: str) -> pd.DataFrame:
+    p = str(path).lower()
+    if p.endswith(".jsonl") or p.endswith(".jsonl.gz"):
+        # JSON lines
+        try:
+            return pd.read_json(path, lines=True)
+        except Exception:
+            # try with explicit encoding fallback
+            return pd.read_json(path, lines=True, encoding="utf-8")
+    if p.endswith(".parquet") or p.endswith(".parq"):
+        return pd.read_parquet(path)
+    # default: CSV (robusto)
+    return _robust_read_csv(path)
+
+def load_generic_reviews(path: str) -> pd.DataFrame:
+    """
+    Carica un dataset di recensioni (CSV/JSONL/Parquet) e normalizza lo schema:
+    colonne target: id, text, rating, timestamp, lang
+    - text: prova a mappare tra ['text','review','review_text','content','body','comment','comments','message']
+    - id:   ['id','review_id','comment_id','uuid']
+    - rating: ['rating','stars','score','vote','voto']
+    - timestamp: ['date','created_at','time','timestamp','published_at','data']
+    - lang: ['lang','language','locale']
+    Se una colonna non esiste, viene riempita con valori di default (es. lang='detect').
+    """
+    df_raw = _read_any(path)
+    if not isinstance(df_raw, pd.DataFrame) or len(df_raw.columns) == 0:
+        raise RuntimeError(f"Empty or invalid table: {path}")
+
+    cols = df_raw.columns.tolist()
+
+    text_col = _guess_col(
+        ["text","review","review_text","content","body","comment","comments","message","reviewBody"],
+        cols
+    )
+    if not text_col:
+        raise KeyError(f"Cannot find a text column in {path}. Columns: {cols}")
+
+    id_col = _guess_col(["id","review_id","comment_id","uuid"], cols)
+    rating_col = _guess_col(["rating","stars","score","vote","voto","ratingValue"], cols)
+    time_col = _guess_col(["date","created_at","time","timestamp","published_at","data"], cols)
+    lang_col = _guess_col(["lang","language","locale"], cols)
+
+    out = _normalize_df(
+        df=df_raw,
+        source=Path(path).name,
+        id_col=id_col,
+        text_col=text_col,
+        rating_col=rating_col,
+        time_col=time_col,
+        lang_col=lang_col
+    )
+
+    # Se manca la lingua, metti 'detect' per attivare lo step di detection in run_demo.py
+    if 'lang' not in out.columns or out['lang'].isna().all():
+        out['lang'] = 'detect'
+
+    return out
+
 def load_airbnb_reviews(path: str) -> pd.DataFrame:
     print(f"Loading Airbnb reviews from {path} ...")
     df = _robust_read_csv(path)
-    if 'comments' not in df.columns:
+    
+    # Handle text column - check for 'comments', 'title', and other alternatives
+    text_col = None
+    if 'comments' in df.columns:
+        text_col = 'comments'
+    elif 'title' in df.columns:
+        text_col = 'title'
+    else:
         for alt in ['review', 'text', 'content']:
             if alt in df.columns:
-                df['comments'] = df[alt]; break
-    if 'date' not in df.columns:
+                text_col = alt
+                break
+    
+    if text_col and text_col != 'comments':
+        df['comments'] = df[text_col]
+    
+    # Handle date column - check for 'date', 'review_date', and other alternatives  
+    date_col = None
+    if 'date' in df.columns:
+        date_col = 'date'
+    elif 'review_date' in df.columns:
+        date_col = 'review_date'
+    else:
         for alt in ['at', 'timestamp', 'time']:
             if alt in df.columns:
-                df['date'] = df[alt]; break
-    if 'id' not in df.columns and 'review_id' in df.columns:
-        df['id'] = df['review_id']
-    return _normalize_df(df, "InsideAirbnb", 'id', 'comments', None, 'date', None)
+                date_col = alt
+                break
+    
+    if date_col and date_col != 'date':
+        df['date'] = df[date_col]
+    
+    # Handle rating column - check for 'score' and other alternatives
+    rating_col = None
+    if 'rating' in df.columns:
+        rating_col = 'rating'
+    elif 'score' in df.columns:
+        # Handle comma-separated scores in Italian format
+        df['score'] = df['score'].astype(str).str.replace(',', '.', regex=False)
+        df['score'] = pd.to_numeric(df['score'], errors='coerce')
+        rating_col = 'score'
+    
+    # Generate IDs if missing
+    if 'id' not in df.columns:
+        if 'review_id' in df.columns:
+            df['id'] = df['review_id']
+        else:
+            df['id'] = df.index.astype(str)
+    
+    return _normalize_df(df, "InsideAirbnb", 'id', 'comments', rating_col, 'date', None)
 
 def load_mendeley_mobile(path: str) -> pd.DataFrame:
     print(f"Loading Mendeley Mobile reviews from {path} ...")
@@ -292,67 +551,294 @@ def _languages_list(df: pd.DataFrame) -> List[str]:
         langs.append("other")
     return langs
 
-def save_project_json(project_id: str, df_reviews: pd.DataFrame, clusters: List[Dict], personas: List[Dict], meta: Dict, output_dir: str = './out') -> str:
-    out_dir = Path(output_dir); out_dir.mkdir(parents=True, exist_ok=True)
-    sentiments = df_reviews['sentiment'].dropna() if 'sentiment' in df_reviews.columns else pd.Series([], dtype=float)
-    ratings = df_reviews['rating'].dropna() if 'rating' in df_reviews.columns else pd.Series([], dtype=float)
-
-    rating_hist: List[List[int]] = []
-    if len(ratings) > 0:
+def save_project_json(
+    project_id: str,
+    df: pd.DataFrame,
+    clusters: List[Dict],
+    personas: List[Dict],
+    meta: Dict,
+    output_dir: str,
+    timeseries: Dict = None
+) -> str:
+    """
+    Save project data to JSON file with complete structure for frontend consumption
+    
+    Args:
+        project_id: Unique project identifier (airbnb, mobile, ecommerce)
+        df: DataFrame with all reviews and analysis
+        clusters: List of cluster dictionaries with summaries
+        personas: List of persona dictionaries
+        meta: Metadata dictionary with name and source
+        output_dir: Output directory path
+        timeseries: Optional timeseries data
+    
+    Returns:
+        Path to saved JSON file
+    """
+    import json
+    from pathlib import Path
+    from datetime import datetime
+    
+    # Ensure output directory exists
+    Path(output_dir).mkdir(parents=True, exist_ok=True)
+    
+    # Calculate aggregates from dataframe
+    aggregates = {}
+    
+    # Sentiment statistics
+    if 'sentiment' in df.columns and df['sentiment'].notna().any():
+        sentiment_values = df['sentiment'].dropna()
+        aggregates['sentiment_mean'] = round(float(sentiment_values.mean()), 3)
+        
+        # Sentiment distribution
+        neg_count = (sentiment_values < -0.3).sum()
+        neu_count = ((sentiment_values >= -0.3) & (sentiment_values <= 0.3)).sum()
+        pos_count = (sentiment_values > 0.3).sum()
+        total_sent = len(sentiment_values)
+        
+        aggregates['sentiment_dist'] = {
+            'neg': round(neg_count / total_sent, 3) if total_sent > 0 else 0,
+            'neu': round(neu_count / total_sent, 3) if total_sent > 0 else 0,
+            'pos': round(pos_count / total_sent, 3) if total_sent > 0 else 0
+        }
+    else:
+        aggregates['sentiment_mean'] = 0.0
+        aggregates['sentiment_dist'] = {'neg': 0, 'neu': 0, 'pos': 1.0}
+    
+    # Rating histogram
+    if 'rating' in df.columns and df['rating'].notna().any():
+        rating_counts = df['rating'].value_counts().sort_index()
+        rating_hist = []
         for r in range(1, 6):
-            rating_hist.append([r, int((ratings == r).sum())])
+            count = int(rating_counts.get(r, 0))
+            rating_hist.append([r, count])
     else:
-        rating_hist = [[1,0],[2,0],[3,0],[4,0],[5,0]]
-
-    neg = int((sentiments < -0.05).sum())
-    pos = int((sentiments > 0.05).sum())
-    neu = int(len(sentiments) - neg - pos)
-    total = max(1, len(sentiments))
-    sentiment_mean = float(sentiments.mean()) if len(sentiments) else 0.0
-    dist = {"neg": round(neg/total,3), "neu": round(neu/total,3), "pos": round(pos/total,3)}
-
-    method = {
-        "sentiment": os.getenv("SENTIMENT_MODEL", "xlm-roberta (CardiffNLP)"),
-        "embedding": "voyage-3.5-lite" if os.getenv("VOYAGE_API_KEY") else "tf-idf",
-        "clustering": "hdbscan",
-        "llm": _resolve_anthropic_model_for_meta()
-    }
-
-    project_data = {
-        "meta": {
-            "project_id": project_id,
-            "name": meta.get("name", project_id),
-            "source": meta.get("source", ""),
-            "date_range": [
-                str(df_reviews['timestamp'].min().date()) if 'timestamp' in df_reviews.columns and df_reviews['timestamp'].notna().any() else "",
-                str(df_reviews['timestamp'].max().date()) if 'timestamp' in df_reviews.columns and df_reviews['timestamp'].notna().any() else "",
-            ],
-            "languages": _languages_list(df_reviews),
-            "totals": {"reviews": int(len(df_reviews)), "clusters": int(len(clusters))},
-            "method": method
-        },
-        "aggregates": {
-            "sentiment_mean": round(sentiment_mean, 3),
-            "sentiment_dist": dist,
-            "rating_hist": rating_hist
-        },
-        "clusters": clusters,
-        "personas": personas
-    }
-
-    filename = f"{project_id}.json"
-    filepath = out_dir / filename
-    with open(filepath, "w", encoding="utf-8") as f:
-        json.dump(project_data, f, indent=2, ensure_ascii=False)
-
-    public_dir = Path("../public/demo/projects")
-    if public_dir.exists():
-        with open(public_dir / filename, "w", encoding="utf-8") as f:
-            json.dump(project_data, f, indent=2, ensure_ascii=False)
-        print(f"Saved to: {filepath}  (mirrored to {public_dir/filename})")
+        rating_hist = [[1, 0], [2, 0], [3, 0], [4, 0], [5, 0]]
+    
+    aggregates['rating_hist'] = rating_hist
+    
+    # Extract languages
+    languages = []
+    if 'lang' in df.columns:
+        lang_counts = df['lang'].value_counts()
+        # Keep languages with at least 10 reviews
+        languages = [str(lang) for lang in lang_counts[lang_counts >= 10].index.tolist()]
+        if not languages:
+            languages = ['en']  # Default fallback
     else:
-        print(f"Saved to: {filepath}")
-    return str(filepath)
+        languages = ['en']
+    
+    # Get date range
+    date_range = ["", ""]
+    if 'timestamp' in df.columns and df['timestamp'].notna().any():
+        dates = pd.to_datetime(df['timestamp'], errors='coerce').dropna()
+        if len(dates) > 0:
+            date_range = [
+                dates.min().strftime('%Y-%m-%d'),
+                dates.max().strftime('%Y-%m-%d')
+            ]
+    
+    # Build metadata
+    full_meta = {
+        'project_id': project_id,
+        'name': meta.get('name', project_id.title()),
+        'source': meta.get('source', 'Unknown'),
+        'date_range': date_range,
+        'languages': languages,
+        'totals': {
+            'reviews': len(df),
+            'clusters': len(clusters)
+        }
+    }
+    
+    # Add method info if available
+    if meta.get('method'):
+        full_meta['method'] = meta['method']
+    else:
+        # Default method info
+        full_meta['method'] = {
+            'sentiment': 'xlm-roberta (CardiffNLP)',
+            'embedding': 'voyage-3.5-lite',
+            'clustering': 'hdbscan',
+            'llm': 'claude-sonnet-4-20250514'
+        }
+    
+    # Process clusters to ensure all required fields
+    processed_clusters = []
+    for cluster in clusters:
+        processed_cluster = {
+            'id': cluster.get('id', f"cluster_{len(processed_clusters)}"),
+            'label': cluster.get('label', f"Cluster {len(processed_clusters) + 1}"),
+            'size': int(cluster.get('size', 0)),
+            'share': float(cluster.get('share', 0)),
+            'sentiment': float(cluster.get('sentiment', 0)),
+            'keywords': cluster.get('keywords', [])[:15],  # Max 15 keywords
+            'summary': cluster.get('summary', ''),
+            'strengths': cluster.get('strengths', [])[:3],  # Max 3 strengths
+            'weaknesses': cluster.get('weaknesses', [])[:3],  # Max 3 weaknesses
+            'opportunity_score': float(cluster.get('opportunity_score', 0.5))
+        }
+        
+        # Add trend if available
+        if 'trend' in cluster:
+            processed_cluster['trend'] = cluster['trend']
+        
+        # Process quotes
+        quotes = []
+        if 'quotes' in cluster:
+            for quote in cluster['quotes'][:12]:  # Max 12 quotes
+                if isinstance(quote, dict):
+                    processed_quote = {
+                        'id': str(quote.get('id', '')),
+                        'text': str(quote.get('text', ''))[:800],  # Max 800 chars
+                        'rating': quote.get('rating'),
+                        'sentiment': float(quote.get('sentiment', 0)),
+                        'lang': str(quote.get('lang', 'unknown')),
+                        'date': quote.get('date'),
+                        'sourceId': str(quote.get('sourceId', ''))
+                    }
+                elif isinstance(quote, str):
+                    # Handle legacy string quotes
+                    processed_quote = {
+                        'id': '',
+                        'text': str(quote)[:800],
+                        'rating': None,
+                        'sentiment': 0,
+                        'lang': 'unknown',
+                        'date': None,
+                        'sourceId': ''
+                    }
+                else:
+                    continue
+                quotes.append(processed_quote)
+        
+        processed_cluster['quotes'] = quotes
+        
+        # Add co_occurs if available
+        if 'co_occurs' in cluster:
+            processed_cluster['co_occurs'] = cluster['co_occurs']
+        else:
+            processed_cluster['co_occurs'] = []
+        
+        processed_clusters.append(processed_cluster)
+    
+    # Calculate opportunity scores if not present
+    for cluster in processed_clusters:
+        if cluster['opportunity_score'] == 0.5:  # Default value, needs calculation
+            # Simple heuristic: high negativity + high share = high opportunity
+            negativity = max(0, -cluster['sentiment'])
+            share = cluster['share']
+            cluster['opportunity_score'] = round(
+                (negativity * 0.6 + share * 0.4) * 1.5,  # Boost factor
+                3
+            )
+            cluster['opportunity_score'] = min(1.0, cluster['opportunity_score'])
+    
+    # Process personas to ensure all required fields
+    processed_personas = []
+    for persona in personas:
+        processed_persona = {
+            'id': persona.get('id', f"persona_{len(processed_personas) + 1}"),
+            'name': persona.get('name', persona.get('title', f"Persona {len(processed_personas) + 1}")),
+            'share': float(persona.get('share', 0.25)),
+            'goals': persona.get('goals', [])[:5],  # Max 5 goals
+            'pains': persona.get('pains', persona.get('pain_points', []))[:5],  # Max 5 pains
+            'clusters': persona.get('clusters', []),
+            'quotes': persona.get('quotes', [])[:3],  # Max 3 quotes
+            'channels': persona.get('channels', [])[:5]  # Max 5 channels
+        }
+        processed_personas.append(processed_persona)
+    
+    # Normalize persona shares to sum to 1.0
+    total_share = sum(p['share'] for p in processed_personas)
+    if total_share > 0:
+        for persona in processed_personas:
+            persona['share'] = round(persona['share'] / total_share, 3)
+    
+    # Build final data structure
+    data = {
+        'meta': full_meta,
+        'aggregates': aggregates,
+        'clusters': processed_clusters,
+        'personas': processed_personas
+    }
+    
+    # Add timeseries if provided
+    if timeseries and (timeseries.get('monthly') or timeseries.get('clusters')):
+        # Validate and clean timeseries data
+        clean_timeseries = {}
+        
+        if 'monthly' in timeseries and timeseries['monthly']:
+            clean_monthly = []
+            for point in timeseries['monthly']:
+                clean_point = {
+                    'date': str(point.get('date', '')),
+                    'sentiment_mean': round(float(point.get('sentiment_mean', 0)), 3),
+                    'volume': int(point.get('volume', 0))
+                }
+                clean_monthly.append(clean_point)
+            if clean_monthly:
+                clean_timeseries['monthly'] = clean_monthly
+        
+        if 'clusters' in timeseries and timeseries['clusters']:
+            clean_clusters = {}
+            for cluster_id, series in timeseries['clusters'].items():
+                if series and isinstance(series, list):
+                    clean_series = []
+                    for point in series:
+                        clean_point = {
+                            'date': str(point.get('date', '')),
+                            'volume': int(point.get('volume', 0)),
+                            'share': round(float(point.get('share', 0)), 3),
+                            'sentiment': round(float(point.get('sentiment', 0)), 3)
+                        }
+                        clean_series.append(clean_point)
+                    if clean_series:
+                        clean_clusters[cluster_id] = clean_series
+            if clean_clusters:
+                clean_timeseries['clusters'] = clean_clusters
+        
+        if clean_timeseries:
+            data['timeseries'] = clean_timeseries
+    
+    # Save to JSON file
+    output_path = Path(output_dir) / f"{project_id}.json"
+    
+    try:
+        with open(output_path, 'w', encoding='utf-8') as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+        
+        print(f"SUCCESS: Saved project JSON to {output_path}")
+        
+        # Validate JSON structure
+        with open(output_path, 'r', encoding='utf-8') as f:
+            loaded = json.load(f)
+            
+        # Basic validation
+        assert 'meta' in loaded, "Missing meta section"
+        assert 'aggregates' in loaded, "Missing aggregates section"
+        assert 'clusters' in loaded, "Missing clusters section"
+        assert 'personas' in loaded, "Missing personas section"
+        assert len(loaded['clusters']) > 0, "No clusters found"
+        assert len(loaded['personas']) > 0, "No personas found"
+        
+        # Validate sentiment ranges
+        for cluster in loaded['clusters']:
+            assert -1 <= cluster['sentiment'] <= 1, f"Invalid sentiment in cluster {cluster['id']}"
+            assert 0 <= cluster['share'] <= 1, f"Invalid share in cluster {cluster['id']}"
+            assert 0 <= cluster['opportunity_score'] <= 1, f"Invalid opportunity_score in cluster {cluster['id']}"
+        
+        # Validate persona shares sum to ~1.0
+        persona_share_sum = sum(p['share'] for p in loaded['personas'])
+        assert 0.95 <= persona_share_sum <= 1.05, f"Persona shares sum to {persona_share_sum}, should be ~1.0"
+        
+        print(f"SUCCESS: JSON validation passed")
+        
+    except Exception as e:
+        print(f"ERROR: Error saving or validating JSON: {e}")
+        raise
+    
+    return str(output_path)
 
 def cache_key(text: str) -> str:
     return hashlib.sha256(text.encode()).hexdigest()

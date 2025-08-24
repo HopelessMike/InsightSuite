@@ -4,15 +4,15 @@
     "name": "BCA Mobile (Google Play)",
     "source": "Mendeley",
     "date_range": [
-      "2023-12-24",
-      "2024-06-12"
+      "2024-01-02",
+      "2025-09-26"
     ],
     "languages": [
       "id"
     ],
     "totals": {
-      "reviews": 10000,
-      "clusters": 27
+      "reviews": 520,
+      "clusters": 6
     },
     "method": {
       "sentiment": "xlm-roberta (CardiffNLP)",
@@ -22,601 +22,1760 @@
     }
   },
   "aggregates": {
-    "sentiment_mean": -0.204,
+    "sentiment_mean": -0.072,
     "sentiment_dist": {
-      "neg": 0.539,
-      "neu": 0.13,
-      "pos": 0.331
+      "neg": 0.45,
+      "neu": 0.144,
+      "pos": 0.406
     },
     "rating_hist": [
       [
         1,
-        3830
+        49
       ],
       [
         2,
-        698
+        127
       ],
       [
         3,
-        580
+        53
       ],
       [
         4,
-        465
+        108
       ],
       [
         5,
-        4427
+        183
       ]
     ]
   },
   "clusters": [
     {
       "id": "cluster_0",
-      "label": "Masalah Saldo dan Transaksi QRIS",
-      "size": 148,
-      "share": 0.074,
-      "sentiment": -0.764,
+      "label": "Sostituzioni di prodotti",
+      "size": 49,
+      "share": 0.108,
+      "sentiment": -0.228,
       "keywords": [
-        "saya",
-        "saldo",
-        "di",
-        "bca",
-        "ada",
-        "transaksi",
-        "masuk",
-        "tidak",
-        "ini",
-        "bisa",
-        "ke",
-        "kenapa"
+        "sostituzioni forzate",
+        "forzate equivalenti",
+        "equivalenti",
+        "forzate",
+        "sostituzioni proposte",
+        "qualità",
+        "proposte",
+        "proposte alternative",
+        "alternative qualità",
+        "alternative"
       ],
-      "summary": "Keluhan utama terkait masalah saldo yang terpotong saat transaksi QRIS gagal namun dana tidak dikembalikan, transfer yang tidak masuk meski sudah terpotong, dan lambatnya penanganan customer service dalam menyelesaikan masalah pengembalian dana.",
-      "strengths": [],
+      "summary": "Recensioni polarizzate riguardo alle sostituzioni di prodotti: alcuni clienti lamentano sostituzioni forzate e non equivalenti, mentre altri apprezzano le alternative proposte di qualità",
+      "strengths": [
+        "Alternative di qualità quando proposte correttamente",
+        "Sostituzioni ben gestite in alcuni casi"
+      ],
       "weaknesses": [
-        "Transaksi QRIS sering gagal namun saldo tetap terpotong",
-        "Dana yang hilang tidak dikembalikan atau proses pengembalian sangat lambat (hingga 1 bulan lebih)",
-        "Transfer masuk tidak tercatat di saldo meski mutasi menunjukkan dana masuk"
-      ]
+        "Sostituzioni forzate senza consenso del cliente",
+        "Prodotti sostitutivi non equivalenti a quelli ordinati",
+        "Mancanza di coerenza nel servizio di sostituzione"
+      ],
+      "opportunity_score": 0.27,
+      "quotes": [
+        {
+          "id": "177",
+          "text": "Sostituzioni proposte bene, alternative di qualità.",
+          "rating": 5.0,
+          "sentiment": -0.8863240480422974,
+          "lang": "id",
+          "date": "2024-07-11",
+          "sourceId": "177"
+        },
+        {
+          "id": "489",
+          "text": "Sostituzioni forzate e non equivalenti.",
+          "rating": 3.0,
+          "sentiment": -0.5975091457366943,
+          "lang": "id",
+          "date": "2025-07-23",
+          "sourceId": "489"
+        },
+        {
+          "id": "497",
+          "text": "Sostituzioni forzate e non equivalenti.",
+          "rating": 3.0,
+          "sentiment": 0.6448011994361877,
+          "lang": "id",
+          "date": "2025-07-27",
+          "sourceId": "497"
+        },
+        {
+          "id": "480",
+          "text": "Sostituzioni proposte bene, alternative di qualità.",
+          "rating": 5.0,
+          "sentiment": -0.8822728395462036,
+          "lang": "id",
+          "date": "2025-07-13",
+          "sourceId": "480"
+        },
+        {
+          "id": "205",
+          "text": "Sostituzioni forzate e non equivalenti.",
+          "rating": 1.0,
+          "sentiment": -0.897026777267456,
+          "lang": "id",
+          "date": "2024-08-01",
+          "sourceId": "205"
+        },
+        {
+          "id": "256",
+          "text": "Sostituzioni forzate e non equivalenti.",
+          "rating": 3.0,
+          "sentiment": 0.0,
+          "lang": "id",
+          "date": "2024-09-18",
+          "sourceId": "256"
+        },
+        {
+          "id": "247",
+          "text": "Sostituzioni forzate e non equivalenti.",
+          "rating": 1.0,
+          "sentiment": -0.8946573734283447,
+          "lang": "id",
+          "date": "2024-09-07",
+          "sourceId": "247"
+        },
+        {
+          "id": "246",
+          "text": "Sostituzioni forzate e non equivalenti.",
+          "rating": 1.0,
+          "sentiment": 0.6987319588661194,
+          "lang": "id",
+          "date": "2024-09-06",
+          "sourceId": "246"
+        },
+        {
+          "id": "286",
+          "text": "Sostituzioni forzate e non equivalenti.",
+          "rating": 1.0,
+          "sentiment": 0.8037226796150208,
+          "lang": "id",
+          "date": "2024-11-04",
+          "sourceId": "286"
+        },
+        {
+          "id": "223",
+          "text": "Sostituzioni forzate e non equivalenti.",
+          "rating": 3.0,
+          "sentiment": 0.6547524929046631,
+          "lang": "id",
+          "date": "2024-08-20",
+          "sourceId": "223"
+        },
+        {
+          "id": "170",
+          "text": "Sostituzioni forzate e non equivalenti.",
+          "rating": 1.0,
+          "sentiment": -0.9191167950630188,
+          "lang": "id",
+          "date": "2024-06-28",
+          "sourceId": "170"
+        },
+        {
+          "id": "43",
+          "text": "Sostituzioni proposte bene, alternative di qualità.",
+          "rating": 4.0,
+          "sentiment": 0.8156139850616455,
+          "lang": "id",
+          "date": "2024-02-24",
+          "sourceId": "43"
+        }
+      ],
+      "co_occurs": []
     },
     {
       "id": "cluster_1",
-      "label": "Masalah Verifikasi OTP dan Login",
-      "size": 192,
-      "share": 0.096,
-      "sentiment": -0.738,
-      "keywords": [
-        "otp",
-        "kode",
-        "bisa",
-        "kode otp",
-        "verifikasi",
-        "saya",
-        "ga",
-        "sms",
-        "tidak",
-        "pulsa",
-        "login",
-        "masuk"
+      "label": "Processo di registrazione efficiente",
+      "size": 40,
+      "share": 0.088,
+      "sentiment": -0.058,
+      "keywords": [],
+      "summary": "Gli utenti apprezzano la semplicità e velocità del processo di registrazione, che permette di completare il primo ordine in pochi minuti",
+      "strengths": [
+        "Registrazione veloce e intuitiva",
+        "Processo chiaro e comprensibile",
+        "Possibilità di effettuare ordini immediatamente dopo la registrazione"
       ],
-      "summary": "Pengguna mengalami kesulitan serius dalam proses verifikasi OTP dan login ke aplikasi BCA Mobile. Kode OTP tidak diterima melalui SMS meskipun pulsa terpotong, menyebabkan frustrasi dan kerugian finansial bagi pengguna.",
-      "strengths": [],
       "weaknesses": [
-        "Kode OTP tidak dikirim atau tidak diterima melalui SMS",
-        "Pulsa terpotong tanpa mendapat kode verifikasi",
-        "Proses verifikasi gagal berulang kali"
-      ]
+        "Mancanza di varietà nei feedback raccolti",
+        "Assenza di dettagli su eventuali problematiche"
+      ],
+      "opportunity_score": 0.105,
+      "quotes": [
+        {
+          "id": "215",
+          "text": "Registrazione veloce e chiara, in pochi minuti ho fatto il primo ordine.",
+          "rating": 5.0,
+          "sentiment": -0.6781459450721741,
+          "lang": "id",
+          "date": "2024-08-10",
+          "sourceId": "215"
+        },
+        {
+          "id": "193",
+          "text": "Registrazione veloce e chiara, in pochi minuti ho fatto il primo ordine.",
+          "rating": 5.0,
+          "sentiment": -0.801804780960083,
+          "lang": "id",
+          "date": "2024-07-24",
+          "sourceId": "193"
+        },
+        {
+          "id": "149",
+          "text": "Registrazione veloce e chiara, in pochi minuti ho fatto il primo ordine.",
+          "rating": 5.0,
+          "sentiment": -0.7220606803894043,
+          "lang": "id",
+          "date": "2024-06-16",
+          "sourceId": "149"
+        },
+        {
+          "id": "319",
+          "text": "Registrazione veloce e chiara, in pochi minuti ho fatto il primo ordine.",
+          "rating": 4.0,
+          "sentiment": -0.6750708818435669,
+          "lang": "id",
+          "date": "2024-12-28",
+          "sourceId": "319"
+        },
+        {
+          "id": "35",
+          "text": "Registrazione veloce e chiara, in pochi minuti ho fatto il primo ordine.",
+          "rating": 5.0,
+          "sentiment": 0.5130185484886169,
+          "lang": "id",
+          "date": "2024-02-15",
+          "sourceId": "35"
+        },
+        {
+          "id": "121",
+          "text": "Registrazione veloce e chiara, in pochi minuti ho fatto il primo ordine.",
+          "rating": 5.0,
+          "sentiment": 0.8610398769378662,
+          "lang": "id",
+          "date": "2024-05-20",
+          "sourceId": "121"
+        },
+        {
+          "id": "493",
+          "text": "Registrazione veloce e chiara, in pochi minuti ho fatto il primo ordine.",
+          "rating": 5.0,
+          "sentiment": 0.4903797209262848,
+          "lang": "id",
+          "date": "2025-07-26",
+          "sourceId": "493"
+        },
+        {
+          "id": "323",
+          "text": "Registrazione veloce e chiara, in pochi minuti ho fatto il primo ordine.",
+          "rating": 4.0,
+          "sentiment": -0.7451257705688477,
+          "lang": "id",
+          "date": "2025-01-01",
+          "sourceId": "323"
+        },
+        {
+          "id": "514",
+          "text": "Registrazione veloce e chiara, in pochi minuti ho fatto il primo ordine.",
+          "rating": 5.0,
+          "sentiment": 0.0,
+          "lang": "id",
+          "date": "2025-09-10",
+          "sourceId": "514"
+        },
+        {
+          "id": "61",
+          "text": "Registrazione veloce e chiara, in pochi minuti ho fatto il primo ordine.",
+          "rating": 4.0,
+          "sentiment": 0.0,
+          "lang": "id",
+          "date": "2024-04-08",
+          "sourceId": "61"
+        },
+        {
+          "id": "315",
+          "text": "Registrazione veloce e chiara, in pochi minuti ho fatto il primo ordine.",
+          "rating": 5.0,
+          "sentiment": 0.4903797209262848,
+          "lang": "id",
+          "date": "2024-12-18",
+          "sourceId": "315"
+        },
+        {
+          "id": "81",
+          "text": "Registrazione veloce e chiara, in pochi minuti ho fatto il primo ordine.",
+          "rating": 5.0,
+          "sentiment": -0.8693867325782776,
+          "lang": "id",
+          "date": "2024-04-22",
+          "sourceId": "81"
+        }
+      ],
+      "co_occurs": []
     },
     {
       "id": "cluster_2",
-      "label": "Masalah Verifikasi Wajah",
-      "size": 68,
-      "share": 0.034,
-      "sentiment": -0.84,
+      "label": "Interfaccia e Usabilità",
+      "size": 75,
+      "share": 0.166,
+      "sentiment": -0.106,
       "keywords": [
-        "verifikasi",
-        "wajah",
-        "susah",
-        "verifikasi wajah",
-        "gagal",
-        "terus",
-        "gagal terus",
-        "bisa",
-        "banget",
-        "susah verifikasi",
-        "selalu gagal",
-        "selalu"
+        "chiara categorie",
+        "chiara",
+        "categorie facili",
+        "facili",
+        "facili navigare",
+        "interfaccia",
+        "interfaccia chiara",
+        "navigare",
+        "categorie",
+        "troppi",
+        "passaggi",
+        "confusa"
       ],
-      "summary": "Pengguna mengalami kesulitan besar dalam proses verifikasi wajah yang sering gagal meskipun sudah mengikuti panduan dengan benar, menyebabkan frustrasi dan tidak bisa mengakses aplikasi",
-      "strengths": [],
+      "summary": "Feedback contrastanti sull'esperienza utente: interfaccia apprezzata per chiarezza e navigazione, ma criticità significative nel processo di checkout e registrazione",
+      "strengths": [
+        "Interfaccia chiara e intuitiva",
+        "Categorie ben organizzate e facili da navigare"
+      ],
       "weaknesses": [
-        "Proses verifikasi wajah sangat sulit dan sering gagal",
-        "Sistem verifikasi tidak konsisten meskipun foto jelas dan mengikuti panduan",
-        "Proses berulang-ulang yang menyebabkan frustrasi pengguna"
-      ]
+        "Processo di checkout troppo lungo con eccessivi tap",
+        "Registrazione confusa e con troppi passaggi",
+        "User experience generale da migliorare"
+      ],
+      "opportunity_score": 0.195,
+      "quotes": [
+        {
+          "id": "58",
+          "text": "Registrazione confusa con troppi passaggi.",
+          "rating": 2.0,
+          "sentiment": -0.8072923421859741,
+          "lang": "id",
+          "date": "2024-04-07",
+          "sourceId": "58"
+        },
+        {
+          "id": "452",
+          "text": "Registrazione confusa con troppi passaggi.",
+          "rating": 1.0,
+          "sentiment": -0.8281692862510681,
+          "lang": "id",
+          "date": "2025-06-15",
+          "sourceId": "452"
+        },
+        {
+          "id": "88",
+          "text": "Registrazione confusa con troppi passaggi.",
+          "rating": 2.0,
+          "sentiment": -0.8216854929924011,
+          "lang": "id",
+          "date": "2024-04-25",
+          "sourceId": "88"
+        },
+        {
+          "id": "7",
+          "text": "Interfaccia chiara, categorie facili da navigare.",
+          "rating": 5.0,
+          "sentiment": -0.833615779876709,
+          "lang": "id",
+          "date": "2024-01-08",
+          "sourceId": "7"
+        },
+        {
+          "id": "203",
+          "text": "Troppi tap per arrivare alla cassa, UX da rivedere.",
+          "rating": 3.0,
+          "sentiment": -0.6664178967475891,
+          "lang": "id",
+          "date": "2024-07-31",
+          "sourceId": "203"
+        },
+        {
+          "id": "440",
+          "text": "Troppi tap per arrivare alla cassa, UX da rivedere.",
+          "rating": 1.0,
+          "sentiment": -0.9055443406105042,
+          "lang": "id",
+          "date": "2025-05-29",
+          "sourceId": "440"
+        },
+        {
+          "id": "165",
+          "text": "Troppi tap per arrivare alla cassa, UX da rivedere.",
+          "rating": 2.0,
+          "sentiment": -0.9028882384300232,
+          "lang": "id",
+          "date": "2024-06-24",
+          "sourceId": "165"
+        },
+        {
+          "id": "94",
+          "text": "Interfaccia chiara, categorie facili da navigare.",
+          "rating": 5.0,
+          "sentiment": 0.8429705500602722,
+          "lang": "id",
+          "date": "2024-04-29",
+          "sourceId": "94"
+        },
+        {
+          "id": "475",
+          "text": "Interfaccia chiara, categorie facili da navigare.",
+          "rating": 4.0,
+          "sentiment": -0.8868193030357361,
+          "lang": "id",
+          "date": "2025-07-08",
+          "sourceId": "475"
+        },
+        {
+          "id": "456",
+          "text": "Interfaccia chiara, categorie facili da navigare.",
+          "rating": 4.0,
+          "sentiment": 0.44787657260894775,
+          "lang": "id",
+          "date": "2025-06-19",
+          "sourceId": "456"
+        },
+        {
+          "id": "194",
+          "text": "Troppi tap per arrivare alla cassa, UX da rivedere.",
+          "rating": 2.0,
+          "sentiment": -0.39499467611312866,
+          "lang": "id",
+          "date": "2024-07-25",
+          "sourceId": "194"
+        },
+        {
+          "id": "267",
+          "text": "Registrazione confusa con troppi passaggi.",
+          "rating": 2.0,
+          "sentiment": 0.8156139850616455,
+          "lang": "id",
+          "date": "2024-09-28",
+          "sourceId": "267"
+        }
+      ],
+      "co_occurs": []
     },
     {
       "id": "cluster_3",
-      "label": "Aplikasi Sangat Bagus dan Membantu",
-      "size": 63,
-      "share": 0.031,
-      "sentiment": 0.808,
+      "label": "Autenticazione e Supporto",
+      "size": 124,
+      "share": 0.274,
+      "sentiment": -0.1,
       "keywords": [
-        "aplikasi",
-        "bagus",
-        "sangat",
-        "membantu",
-        "sangat membantu",
-        "nya",
-        "aplikasi nya",
-        "aplikasinya",
-        "aplikasi bagus",
-        "dan",
-        "transaksi",
-        "sangat bagus"
+        "problema",
+        "login",
+        "comodissimo",
+        "faceid comodissimo",
+        "nessun",
+        "nessun problema",
+        "faceid",
+        "comodissimo nessun",
+        "login faceid",
+        "minuti",
+        "chat rapida",
+        "risolto minuti"
       ],
-      "summary": "Pengguna memberikan penilaian sangat positif terhadap aplikasi ini, memuji kualitas aplikasi yang bagus dan sangat membantu dalam memudahkan berbagai transaksi tanpa perlu keluar rumah.",
+      "summary": "Recensioni miste su login e assistenza clienti, con utenti divisi tra chi apprezza il FaceID e chi ha problemi di accesso, supporto rapido via chat ma assistenza generale insoddisfacente",
       "strengths": [
-        "Aplikasi dinilai sangat bagus dan berkualitas",
-        "Sangat membantu dan memudahkan pengguna",
-        "Cepat dan mudah digunakan"
+        "Login con FaceID funziona perfettamente",
+        "Chat di supporto risolve problemi rapidamente in 5 minuti"
       ],
-      "weaknesses": []
+      "weaknesses": [
+        "Login fallisce frequentemente richiedendo reset password",
+        "Assistenza clienti non risponde o fornisce risposte standard"
+      ],
+      "opportunity_score": 0.254,
+      "quotes": [
+        {
+          "id": "103",
+          "text": "Assistenza non risponde o risposte standard.",
+          "rating": 2.0,
+          "sentiment": 0.49957728385925293,
+          "lang": "id",
+          "date": "2024-05-04",
+          "sourceId": "103"
+        },
+        {
+          "id": "220",
+          "text": "Chat rapida: problema risolto in 5 minuti.",
+          "rating": 5.0,
+          "sentiment": 0.5130185484886169,
+          "lang": "id",
+          "date": "2024-08-16",
+          "sourceId": "220"
+        },
+        {
+          "id": "190",
+          "text": "Chat rapida: problema risolto in 5 minuti.",
+          "rating": 5.0,
+          "sentiment": -0.5835307240486145,
+          "lang": "id",
+          "date": "2024-07-19",
+          "sourceId": "190"
+        },
+        {
+          "id": "358",
+          "text": "Assistenza non risponde o risposte standard.",
+          "rating": 2.0,
+          "sentiment": 0.8989192843437195,
+          "lang": "id",
+          "date": "2025-03-15",
+          "sourceId": "358"
+        },
+        {
+          "id": "277",
+          "text": "Login con FaceID comodissimo, nessun problema.",
+          "rating": 4.0,
+          "sentiment": -0.4982387125492096,
+          "lang": "id",
+          "date": "2024-10-19",
+          "sourceId": "277"
+        },
+        {
+          "id": "389",
+          "text": "Chat rapida: problema risolto in 5 minuti.",
+          "rating": 5.0,
+          "sentiment": -0.5369077920913696,
+          "lang": "id",
+          "date": "2025-04-20",
+          "sourceId": "389"
+        },
+        {
+          "id": "292",
+          "text": "Login spesso fallisce, devo reimpostare la password.",
+          "rating": 1.0,
+          "sentiment": 0.5982692241668701,
+          "lang": "id",
+          "date": "2024-11-19",
+          "sourceId": "292"
+        },
+        {
+          "id": "515",
+          "text": "Chat rapida: problema risolto in 5 minuti.",
+          "rating": 5.0,
+          "sentiment": -0.5487461090087891,
+          "lang": "id",
+          "date": "2025-09-12",
+          "sourceId": "515"
+        },
+        {
+          "id": "510",
+          "text": "Login con FaceID comodissimo, nessun problema.",
+          "rating": 5.0,
+          "sentiment": -0.7869208455085754,
+          "lang": "id",
+          "date": "2025-08-25",
+          "sourceId": "510"
+        },
+        {
+          "id": "32",
+          "text": "Login con FaceID comodissimo, nessun problema.",
+          "rating": 5.0,
+          "sentiment": -0.6895424127578735,
+          "lang": "id",
+          "date": "2024-02-10",
+          "sourceId": "32"
+        },
+        {
+          "id": "138",
+          "text": "Login con FaceID comodissimo, nessun problema.",
+          "rating": 5.0,
+          "sentiment": 0.6188258528709412,
+          "lang": "id",
+          "date": "2024-06-06",
+          "sourceId": "138"
+        },
+        {
+          "id": "416",
+          "text": "Login spesso fallisce, devo reimpostare la password.",
+          "rating": 1.0,
+          "sentiment": 0.8869165182113647,
+          "lang": "id",
+          "date": "2025-05-10",
+          "sourceId": "416"
+        }
+      ],
+      "co_occurs": []
     },
     {
       "id": "cluster_4",
-      "label": "Kemudahan Transaksi",
-      "size": 49,
-      "share": 0.024,
-      "sentiment": 0.415,
+      "label": "Promozioni e Coupon",
+      "size": 52,
+      "share": 0.115,
+      "sentiment": 0.019,
       "keywords": [
-        "transaksi",
-        "mempermudah",
-        "memudahkan",
-        "mempermudah transaksi",
-        "bertransaksi",
-        "mudah",
-        "lebih",
-        "memudahkan transaksi",
-        "lebih mudah",
-        "dan",
-        "untuk",
-        "memudahkan bertransaksi"
+        "ottime promo",
+        "promo coupon",
+        "ottime",
+        "automatici cassa",
+        "coupon",
+        "coupon automatici",
+        "automatici",
+        "cassa",
+        "spesso funzionano",
+        "spesso",
+        "promo spesso",
+        "funzionano"
       ],
-      "summary": "Pengguna sangat menghargai kemudahan dan kepraktisan aplikasi dalam melakukan berbagai jenis transaksi pembayaran, menghilangkan kebutuhan untuk menggunakan ATM atau metode pembayaran konvensional lainnya.",
+      "summary": "Feedback contrastanti sui sistemi promozionali: i coupon automatici in cassa vengono apprezzati per la loro efficacia, mentre i codici promo manuali presentano frequenti problemi di funzionamento.",
       "strengths": [
-        "Mempermudah dan mempercepat proses transaksi",
-        "Mudah digunakan untuk berbagai jenis pembayaran",
-        "Menghilangkan ketergantungan pada ATM"
+        "Coupon automatici in cassa funzionano bene",
+        "Sistema di promozioni automatiche apprezzato dagli utenti"
       ],
-      "weaknesses": []
+      "weaknesses": [
+        "Codici promo spesso non funzionano",
+        "Inaffidabilità del sistema di codici promozionali manuali"
+      ],
+      "opportunity_score": 0.069,
+      "quotes": [
+        {
+          "id": "184",
+          "text": "Ottime promo e coupon automatici in cassa.",
+          "rating": 5.0,
+          "sentiment": 0.8823762536048889,
+          "lang": "id",
+          "date": "2024-07-15",
+          "sourceId": "184"
+        },
+        {
+          "id": "377",
+          "text": "Ottime promo e coupon automatici in cassa.",
+          "rating": 4.0,
+          "sentiment": 0.5223876237869263,
+          "lang": "id",
+          "date": "2025-04-12",
+          "sourceId": "377"
+        },
+        {
+          "id": "438",
+          "text": "Codici promo spesso non funzionano.",
+          "rating": 3.0,
+          "sentiment": 0.7983508706092834,
+          "lang": "id",
+          "date": "2025-05-28",
+          "sourceId": "438"
+        },
+        {
+          "id": "97",
+          "text": "Ottime promo e coupon automatici in cassa.",
+          "rating": 3.0,
+          "sentiment": 0.0,
+          "lang": "id",
+          "date": "2024-04-30",
+          "sourceId": "97"
+        },
+        {
+          "id": "390",
+          "text": "Codici promo spesso non funzionano.",
+          "rating": 3.0,
+          "sentiment": -0.7549625635147095,
+          "lang": "id",
+          "date": "2025-04-22",
+          "sourceId": "390"
+        },
+        {
+          "id": "52",
+          "text": "Codici promo spesso non funzionano.",
+          "rating": 2.0,
+          "sentiment": 0.0,
+          "lang": "id",
+          "date": "2024-03-23",
+          "sourceId": "52"
+        },
+        {
+          "id": "174",
+          "text": "Ottime promo e coupon automatici in cassa.",
+          "rating": 5.0,
+          "sentiment": -0.6084884405136108,
+          "lang": "id",
+          "date": "2024-07-07",
+          "sourceId": "174"
+        },
+        {
+          "id": "491",
+          "text": "Ottime promo e coupon automatici in cassa.",
+          "rating": 5.0,
+          "sentiment": 0.8389295339584351,
+          "lang": "id",
+          "date": "2025-07-24",
+          "sourceId": "491"
+        },
+        {
+          "id": "23",
+          "text": "Codici promo spesso non funzionano.",
+          "rating": 1.0,
+          "sentiment": -0.8993406295776367,
+          "lang": "id",
+          "date": "2024-01-31",
+          "sourceId": "23"
+        },
+        {
+          "id": "308",
+          "text": "Ottime promo e coupon automatici in cassa.",
+          "rating": 5.0,
+          "sentiment": 0.8037226796150208,
+          "lang": "id",
+          "date": "2024-12-12",
+          "sourceId": "308"
+        },
+        {
+          "id": "123",
+          "text": "Ottime promo e coupon automatici in cassa.",
+          "rating": 5.0,
+          "sentiment": 0.6900812983512878,
+          "lang": "id",
+          "date": "2024-05-22",
+          "sourceId": "123"
+        },
+        {
+          "id": "78",
+          "text": "Codici promo spesso non funzionano.",
+          "rating": 3.0,
+          "sentiment": 0.8156139850616455,
+          "lang": "id",
+          "date": "2024-04-20",
+          "sourceId": "78"
+        }
+      ],
+      "co_occurs": []
     },
     {
       "id": "cluster_5",
-      "label": "Sangat Membantu dalam Transaksi",
-      "size": 50,
-      "share": 0.025,
-      "sentiment": 0.7,
+      "label": "Problemi tecnici e operativi misti",
+      "size": 113,
+      "share": 0.249,
+      "sentiment": -0.072,
       "keywords": [
-        "sangat",
-        "membantu",
-        "sangat membantu",
-        "transaksi",
-        "bertransaksi",
-        "untuk",
-        "dalam",
-        "membantu untuk",
-        "mudah",
-        "membantu dalam",
-        "dan",
-        "mempermudah"
+        "crash",
+        "conferma",
+        "carrello",
+        "frequenti",
+        "crash frequenti",
+        "frequenti conferma",
+        "conferma carrello",
+        "lenta",
+        "rifiutata motivo",
+        "motivo assistenza",
+        "rifiutata",
+        "motivo"
       ],
-      "summary": "Pengguna sangat puas dengan kemudahan dan kepraktisan aplikasi untuk berbagai jenis transaksi keuangan, terutama pembayaran dan transfer uang",
+      "summary": "Cluster con feedback contrastanti che evidenzia problemi ricorrenti di crash dell'app durante il checkout, difficoltà nei pagamenti e ritardi nelle consegne, bilanciati da alcuni utenti che riportano stabilità dell'applicazione",
       "strengths": [
-        "Sangat membantu dan mempermudah proses transaksi",
-        "Cepat dan praktis dalam pembayaran",
-        "Mudah digunakan untuk berbagai jenis transaksi"
-      ],
-      "weaknesses": []
-    },
-    {
-      "id": "cluster_6",
-      "label": "Kepuasan Tinggi - Ulasan Positif Singkat",
-      "size": 131,
-      "share": 0.065,
-      "sentiment": 0.503,
-      "keywords": [
-        "sangat",
-        "bagus",
-        "sangat bagus",
-        "memuaskan",
-        "puas",
-        "sangat puas",
-        "membatu",
-        "bermanfaat",
-        "sangat bermanfaat",
-        "sangat membatu",
-        "berguna",
-        "sangat berguna"
-      ],
-      "summary": "Cluster berisi 131 ulasan (6.5%) dengan ekspresi kepuasan yang sangat tinggi menggunakan kata-kata positif sederhana seperti 'sangat bagus', 'memuaskan', dan 'sangat bermanfaat'",
-      "strengths": [
-        "Tingkat kepuasan pengguna yang sangat tinggi",
-        "Konsistensi feedback positif yang kuat",
-        "Penggunaan kata intensifier 'sangat' menunjukkan apresiasi mendalam"
+        "App stabile durante i periodi di sconti per alcuni utenti",
+        "Assenza di crash per una parte degli utilizzatori"
       ],
       "weaknesses": [
-        "Ulasan terlalu singkat dan tidak informatif",
-        "Tidak ada detail spesifik tentang fitur atau aspek yang disukai",
-        "Kurangnya konteks atau penjelasan mendalam"
-      ]
-    },
-    {
-      "id": "cluster_7",
-      "label": "Excellent Overall Satisfaction",
-      "size": 78,
-      "share": 0.039,
-      "sentiment": 0.574,
-      "keywords": [
-        "terbaik",
-        "top",
-        "best",
-        "the",
-        "the best",
-        "is",
-        "is the",
-        "top bgt",
-        "bgt"
+        "Crash frequenti alla conferma del carrello",
+        "Carte di pagamento rifiutate senza motivo apparente",
+        "Assistenza clienti lenta nel rispondere"
       ],
-      "summary": "Users consistently express highest satisfaction using superlative terms like 'terbaik' (best), 'top', and 'the best', indicating exceptional product/service quality",
-      "strengths": [
-        "Consistently rated as the best by users",
-        "High customer satisfaction and loyalty",
-        "Strong positive brand perception"
+      "opportunity_score": 0.214,
+      "quotes": [
+        {
+          "id": "353",
+          "text": "Carta rifiutata senza motivo, assistenza lenta.",
+          "rating": 2.0,
+          "sentiment": -0.9346668720245361,
+          "lang": "id",
+          "date": "2025-03-01",
+          "sourceId": "353"
+        },
+        {
+          "id": "18",
+          "text": "App stabile anche durante gli sconti, nessun crash.",
+          "rating": 5.0,
+          "sentiment": 0.5470007658004761,
+          "lang": "id",
+          "date": "2024-01-26",
+          "sourceId": "18"
+        },
+        {
+          "id": "163",
+          "text": "App stabile anche durante gli sconti, nessun crash.",
+          "rating": 5.0,
+          "sentiment": 0.7839451432228088,
+          "lang": "id",
+          "date": "2024-06-22",
+          "sourceId": "163"
+        },
+        {
+          "id": "288",
+          "text": "Carta rifiutata senza motivo, assistenza lenta.",
+          "rating": 1.0,
+          "sentiment": -0.4409628212451935,
+          "lang": "id",
+          "date": "2024-11-10",
+          "sourceId": "288"
+        },
+        {
+          "id": "40",
+          "text": "Crash frequenti alla conferma carrello.",
+          "rating": 2.0,
+          "sentiment": 0.6448011994361877,
+          "lang": "id",
+          "date": "2024-02-20",
+          "sourceId": "40"
+        },
+        {
+          "id": "186",
+          "text": "Consegna in ritardo e prodotti mancanti.",
+          "rating": 3.0,
+          "sentiment": 0.8419134020805359,
+          "lang": "id",
+          "date": "2024-07-17",
+          "sourceId": "186"
+        },
+        {
+          "id": "289",
+          "text": "Carta rifiutata senza motivo, assistenza lenta.",
+          "rating": 2.0,
+          "sentiment": -0.6168950796127319,
+          "lang": "id",
+          "date": "2024-11-14",
+          "sourceId": "289"
+        },
+        {
+          "id": "278",
+          "text": "App stabile anche durante gli sconti, nessun crash.",
+          "rating": 5.0,
+          "sentiment": -0.6647499203681946,
+          "lang": "id",
+          "date": "2024-10-27",
+          "sourceId": "278"
+        },
+        {
+          "id": "195",
+          "text": "Carta rifiutata senza motivo, assistenza lenta.",
+          "rating": 1.0,
+          "sentiment": 0.7666977047920227,
+          "lang": "id",
+          "date": "2024-07-26",
+          "sourceId": "195"
+        },
+        {
+          "id": "41",
+          "text": "App stabile anche durante gli sconti, nessun crash.",
+          "rating": 5.0,
+          "sentiment": -0.8037289381027222,
+          "lang": "id",
+          "date": "2024-02-20",
+          "sourceId": "41"
+        },
+        {
+          "id": "446",
+          "text": "Consegna in ritardo e prodotti mancanti.",
+          "rating": 2.0,
+          "sentiment": -0.8188101649284363,
+          "lang": "id",
+          "date": "2025-06-05",
+          "sourceId": "446"
+        },
+        {
+          "id": "158",
+          "text": "Crash frequenti alla conferma carrello.",
+          "rating": 2.0,
+          "sentiment": 0.0,
+          "lang": "id",
+          "date": "2024-06-19",
+          "sourceId": "158"
+        }
       ],
-      "weaknesses": [
-        "Reviews lack specific details about what makes it the best",
-        "No constructive feedback for potential improvements",
-        "Limited insight into specific product features or benefits"
-      ]
-    },
-    {
-      "id": "cluster_8",
-      "label": "Emoji-Only Positive Reactions",
-      "size": 79,
-      "share": 0.039,
-      "sentiment": 0.547,
-      "keywords": [],
-      "summary": "A cluster of extremely brief reviews consisting almost entirely of positive emoji reactions, primarily thumbs up symbols, with minimal text content.",
-      "strengths": [
-        "High volume of positive sentiment indicators",
-        "Quick and easy user engagement",
-        "Clear approval signals"
-      ],
-      "weaknesses": [
-        "Lack of specific feedback or details",
-        "No actionable insights for improvement",
-        "Minimal informational value"
-      ]
-    },
-    {
-      "id": "cluster_9",
-      "label": "Kepuasan Umum - Sangat Membantu",
-      "size": 89,
-      "share": 0.044,
-      "sentiment": 0.816,
-      "keywords": [],
-      "summary": "Cluster berisi 89 review (4.4%) dengan sentiment positif tinggi (0.82) yang secara konsisten menyatakan aplikasi 'sangat membantu' tanpa detail spesifik",
-      "strengths": [
-        "Tingkat kepuasan pengguna yang sangat tinggi",
-        "Konsistensi feedback positif yang kuat",
-        "Aplikasi dinilai memberikan manfaat nyata"
-      ],
-      "weaknesses": [
-        "Tidak ada detail spesifik tentang fitur yang membantu",
-        "Feedback terlalu umum untuk improvement",
-        "Kurangnya insight mendalam tentang pengalaman pengguna"
-      ]
-    },
-    {
-      "id": "cluster_10",
-      "label": "cluster_10",
-      "size": 49,
-      "share": 0.024,
-      "sentiment": 0.816,
-      "keywords": [],
-      "summary": "Tema caratterizzato da: . Riassume opinioni simili nel dataset.",
-      "strengths": [],
-      "weaknesses": []
-    },
-    {
-      "id": "cluster_11",
-      "label": "cluster_11",
-      "size": 54,
-      "share": 0.027,
-      "sentiment": 0.593,
-      "keywords": [
-        "sekali",
-        "bagus sekali",
-        "sangat",
-        "sangat bagus",
-        "kurang bagus",
-        "kurang"
-      ],
-      "summary": "Tema caratterizzato da: sekali, bagus sekali, sangat, sangat bagus, kurang bagus. Riassume opinioni simili nel dataset.",
-      "strengths": [],
-      "weaknesses": []
-    },
-    {
-      "id": "cluster_12",
-      "label": "cluster_12",
-      "size": 47,
-      "share": 0.023,
-      "sentiment": 0.382,
-      "keywords": [],
-      "summary": "Tema caratterizzato da: . Riassume opinioni simili nel dataset.",
-      "strengths": [],
-      "weaknesses": []
-    },
-    {
-      "id": "cluster_13",
-      "label": "cluster_13",
-      "size": 50,
-      "share": 0.025,
-      "sentiment": 0.714,
-      "keywords": [
-        "sangat baik",
-        "sangat",
-        "cukup",
-        "cukup baik",
-        "sekali",
-        "baik sekali"
-      ],
-      "summary": "Tema caratterizzato da: sangat baik, sangat, cukup, cukup baik, sekali. Riassume opinioni simili nel dataset.",
-      "strengths": [],
-      "weaknesses": []
-    },
-    {
-      "id": "cluster_14",
-      "label": "cluster_14",
-      "size": 63,
-      "share": 0.031,
-      "sentiment": 0.513,
-      "keywords": [],
-      "summary": "Tema caratterizzato da: . Riassume opinioni simili nel dataset.",
-      "strengths": [],
-      "weaknesses": []
-    },
-    {
-      "id": "cluster_15",
-      "label": "cluster_15",
-      "size": 47,
-      "share": 0.023,
-      "sentiment": 0.513,
-      "keywords": [],
-      "summary": "Tema caratterizzato da: . Riassume opinioni simili nel dataset.",
-      "strengths": [],
-      "weaknesses": []
-    },
-    {
-      "id": "cluster_16",
-      "label": "cluster_16",
-      "size": 51,
-      "share": 0.025,
-      "sentiment": 0.513,
-      "keywords": [],
-      "summary": "Tema caratterizzato da: . Riassume opinioni simili nel dataset.",
-      "strengths": [],
-      "weaknesses": []
-    },
-    {
-      "id": "cluster_17",
-      "label": "cluster_17",
-      "size": 71,
-      "share": 0.035,
-      "sentiment": 0.49,
-      "keywords": [],
-      "summary": "Tema caratterizzato da: . Riassume opinioni simili nel dataset.",
-      "strengths": [],
-      "weaknesses": []
-    },
-    {
-      "id": "cluster_18",
-      "label": "cluster_18",
-      "size": 74,
-      "share": 0.037,
-      "sentiment": 0.49,
-      "keywords": [],
-      "summary": "Tema caratterizzato da: . Riassume opinioni simili nel dataset.",
-      "strengths": [],
-      "weaknesses": []
-    },
-    {
-      "id": "cluster_19",
-      "label": "cluster_19",
-      "size": 69,
-      "share": 0.034,
-      "sentiment": 0.007,
-      "keywords": [
-        "okey"
-      ],
-      "summary": "Tema caratterizzato da: okey. Riassume opinioni simili nel dataset.",
-      "strengths": [],
-      "weaknesses": []
-    },
-    {
-      "id": "cluster_20",
-      "label": "cluster_20",
-      "size": 53,
-      "share": 0.026,
-      "sentiment": 0.0,
-      "keywords": [],
-      "summary": "Tema caratterizzato da: . Riassume opinioni simili nel dataset.",
-      "strengths": [],
-      "weaknesses": []
-    },
-    {
-      "id": "cluster_21",
-      "label": "cluster_21",
-      "size": 56,
-      "share": 0.028,
-      "sentiment": 0.0,
-      "keywords": [],
-      "summary": "Tema caratterizzato da: . Riassume opinioni simili nel dataset.",
-      "strengths": [],
-      "weaknesses": []
-    },
-    {
-      "id": "cluster_22",
-      "label": "cluster_22",
-      "size": 69,
-      "share": 0.034,
-      "sentiment": 0.0,
-      "keywords": [],
-      "summary": "Tema caratterizzato da: . Riassume opinioni simili nel dataset.",
-      "strengths": [],
-      "weaknesses": []
-    },
-    {
-      "id": "cluster_23",
-      "label": "cluster_23",
-      "size": 63,
-      "share": 0.031,
-      "sentiment": 0.0,
-      "keywords": [],
-      "summary": "Tema caratterizzato da: . Riassume opinioni simili nel dataset.",
-      "strengths": [],
-      "weaknesses": []
-    },
-    {
-      "id": "cluster_24",
-      "label": "cluster_24",
-      "size": 77,
-      "share": 0.038,
-      "sentiment": 0.207,
-      "keywords": [
-        "keren",
-        "jos",
-        "josss",
-        "aman"
-      ],
-      "summary": "Tema caratterizzato da: keren, jos, josss, aman. Riassume opinioni simili nel dataset.",
-      "strengths": [],
-      "weaknesses": []
-    },
-    {
-      "id": "cluster_25",
-      "label": "cluster_25",
-      "size": 86,
-      "share": 0.043,
-      "sentiment": 0.645,
-      "keywords": [],
-      "summary": "Tema caratterizzato da: . Riassume opinioni simili nel dataset.",
-      "strengths": [],
-      "weaknesses": []
-    },
-    {
-      "id": "cluster_26",
-      "label": "cluster_26",
-      "size": 81,
-      "share": 0.04,
-      "sentiment": 0.645,
-      "keywords": [],
-      "summary": "Tema caratterizzato da: . Riassume opinioni simili nel dataset.",
-      "strengths": [],
-      "weaknesses": []
+      "co_occurs": []
     }
   ],
   "personas": [
     {
       "id": "persona_1",
-      "name": "Tech-Struggling Sarah",
-      "share": 0.33,
+      "name": "Power User",
+      "share": 0.298,
       "goals": [
-        "Complete transactions quickly without technical issues",
-        "Access account reliably through secure login",
-        "Have accurate balance information at all times"
+        "Advanced features",
+        "Quick navigation",
+        "Customization options"
       ],
       "pains": [
-        "Cannot receive or verify OTP codes for login",
-        "QRIS transactions fail or show incorrect balances",
-        "Frequent app crashes during critical payment moments"
+        "Missing features",
+        "Slow performance",
+        "Complex UI"
       ],
-      "clusters": [
-        "1",
-        "0"
-      ],
+      "clusters": [],
       "quotes": [
-        "OTP tidak masuk lagi, tidak bisa login",
-        "Saldo QRIS tidak sesuai setelah transaksi",
-        "Aplikasi error terus saat mau bayar"
+        "\"Love the new features\"",
+        "\"Could be faster\""
       ],
       "channels": [
-        "customer_support",
-        "app_store_reviews",
-        "social_media_complaints"
+        "App stores",
+        "Tech forums",
+        "Social media"
       ]
     },
     {
       "id": "persona_2",
-      "name": "Happy Customer Mike",
-      "share": 0.29,
+      "name": "Casual User",
+      "share": 0.243,
       "goals": [
-        "Use app efficiently for daily transactions",
-        "Recommend reliable financial services to others",
-        "Maintain positive banking experience"
+        "Simple interface",
+        "Reliable basic functions",
+        "Easy learning"
       ],
       "pains": [
-        "Occasional minor UI improvements needed",
-        "Limited advanced features for power users",
-        "Sometimes slow customer service response"
+        "Too many options",
+        "Confusing navigation",
+        "Frequent crashes"
       ],
-      "clusters": [
-        "6",
-        "9",
-        "7"
-      ],
+      "clusters": [],
       "quotes": [
-        "Aplikasi sangat membantu untuk transaksi harian",
-        "Excellent service, very satisfied!",
-        "Recommended untuk semua orang"
+        "\"Simple and works\"",
+        "\"Too complicated\""
       ],
       "channels": [
-        "app_store_reviews",
-        "word_of_mouth",
-        "social_media_praise"
+        "App stores",
+        "Friends",
+        "Default options"
       ]
     },
     {
       "id": "persona_3",
-      "name": "Quick Reactor Alex",
-      "share": 0.23,
+      "name": "Power User",
+      "share": 0.459,
       "goals": [
-        "Express satisfaction with minimal effort",
-        "Acknowledge good service quickly",
-        "Maintain simple interaction with brands"
+        "Advanced features",
+        "Quick navigation",
+        "Customization options"
       ],
       "pains": [
-        "Don't want to write lengthy reviews",
-        "Prefer visual communication over text",
-        "Limited time for detailed feedback"
+        "Missing features",
+        "Slow performance",
+        "Complex UI"
       ],
-      "clusters": [
-        "25",
-        "26",
-        "8"
-      ],
+      "clusters": [],
       "quotes": [
-        "👍👍👍",
-        "Good",
-        "😊💯"
+        "\"Love the new features\"",
+        "\"Could be faster\""
       ],
       "channels": [
-        "app_ratings",
-        "emoji_reactions",
-        "quick_surveys"
+        "App stores",
+        "Tech forums",
+        "Social media"
       ]
     }
-  ]
+  ],
+  "timeseries": {
+    "monthly": [
+      {
+        "date": "2024-01",
+        "sentiment_mean": -0.27,
+        "volume": 25
+      },
+      {
+        "date": "2024-02",
+        "sentiment_mean": -0.079,
+        "volume": 20
+      },
+      {
+        "date": "2024-03",
+        "sentiment_mean": -0.225,
+        "volume": 9
+      },
+      {
+        "date": "2024-04",
+        "sentiment_mean": 0.024,
+        "volume": 44
+      },
+      {
+        "date": "2024-05",
+        "sentiment_mean": 0.162,
+        "volume": 33
+      },
+      {
+        "date": "2024-06",
+        "sentiment_mean": 0.1,
+        "volume": 41
+      },
+      {
+        "date": "2024-07",
+        "sentiment_mean": -0.107,
+        "volume": 33
+      },
+      {
+        "date": "2024-08",
+        "sentiment_mean": -0.33,
+        "volume": 32
+      },
+      {
+        "date": "2024-09",
+        "sentiment_mean": 0.012,
+        "volume": 34
+      },
+      {
+        "date": "2024-10",
+        "sentiment_mean": -0.293,
+        "volume": 14
+      },
+      {
+        "date": "2024-11",
+        "sentiment_mean": -0.051,
+        "volume": 13
+      },
+      {
+        "date": "2024-12",
+        "sentiment_mean": -0.275,
+        "volume": 25
+      },
+      {
+        "date": "2025-01",
+        "sentiment_mean": -0.197,
+        "volume": 15
+      },
+      {
+        "date": "2025-02",
+        "sentiment_mean": 0.004,
+        "volume": 15
+      },
+      {
+        "date": "2025-03",
+        "sentiment_mean": 0.115,
+        "volume": 10
+      },
+      {
+        "date": "2025-04",
+        "sentiment_mean": -0.108,
+        "volume": 36
+      },
+      {
+        "date": "2025-05",
+        "sentiment_mean": 0.061,
+        "volume": 43
+      },
+      {
+        "date": "2025-06",
+        "sentiment_mean": -0.13,
+        "volume": 26
+      },
+      {
+        "date": "2025-07",
+        "sentiment_mean": -0.122,
+        "volume": 36
+      },
+      {
+        "date": "2025-08",
+        "sentiment_mean": -0.235,
+        "volume": 7
+      },
+      {
+        "date": "2025-09",
+        "sentiment_mean": 0.017,
+        "volume": 9
+      }
+    ],
+    "clusters": {
+      "cluster_0": [
+        {
+          "date": "2024-01",
+          "volume": 3,
+          "share": 0.12,
+          "sentiment": -0.207
+        },
+        {
+          "date": "2024-02",
+          "volume": 2,
+          "share": 0.1,
+          "sentiment": -0.022
+        },
+        {
+          "date": "2024-04",
+          "volume": 1,
+          "share": 0.023,
+          "sentiment": -0.667
+        },
+        {
+          "date": "2024-05",
+          "volume": 4,
+          "share": 0.121,
+          "sentiment": 0.015
+        },
+        {
+          "date": "2024-06",
+          "volume": 3,
+          "share": 0.073,
+          "sentiment": -0.413
+        },
+        {
+          "date": "2024-07",
+          "volume": 4,
+          "share": 0.121,
+          "sentiment": -0.337
+        },
+        {
+          "date": "2024-08",
+          "volume": 8,
+          "share": 0.25,
+          "sentiment": -0.462
+        },
+        {
+          "date": "2024-09",
+          "volume": 4,
+          "share": 0.118,
+          "sentiment": -0.049
+        },
+        {
+          "date": "2024-10",
+          "volume": 2,
+          "share": 0.143,
+          "sentiment": -0.27
+        },
+        {
+          "date": "2024-11",
+          "volume": 1,
+          "share": 0.077,
+          "sentiment": 0.804
+        },
+        {
+          "date": "2024-12",
+          "volume": 1,
+          "share": 0.04,
+          "sentiment": -0.883
+        },
+        {
+          "date": "2025-01",
+          "volume": 2,
+          "share": 0.133,
+          "sentiment": -0.013
+        },
+        {
+          "date": "2025-04",
+          "volume": 1,
+          "share": 0.028,
+          "sentiment": 0.513
+        },
+        {
+          "date": "2025-05",
+          "volume": 4,
+          "share": 0.093,
+          "sentiment": -0.371
+        },
+        {
+          "date": "2025-06",
+          "volume": 3,
+          "share": 0.115,
+          "sentiment": -0.172
+        },
+        {
+          "date": "2025-07",
+          "volume": 5,
+          "share": 0.139,
+          "sentiment": -0.091
+        },
+        {
+          "date": "2025-08",
+          "volume": 1,
+          "share": 0.143,
+          "sentiment": -0.845
+        }
+      ],
+      "cluster_1": [
+        {
+          "date": "2024-01",
+          "volume": 1,
+          "share": 0.04,
+          "sentiment": -0.917
+        },
+        {
+          "date": "2024-02",
+          "volume": 4,
+          "share": 0.2,
+          "sentiment": 0.276
+        },
+        {
+          "date": "2024-04",
+          "volume": 6,
+          "share": 0.136,
+          "sentiment": -0.053
+        },
+        {
+          "date": "2024-05",
+          "volume": 3,
+          "share": 0.091,
+          "sentiment": 0.262
+        },
+        {
+          "date": "2024-06",
+          "volume": 2,
+          "share": 0.049,
+          "sentiment": -0.576
+        },
+        {
+          "date": "2024-07",
+          "volume": 2,
+          "share": 0.061,
+          "sentiment": -0.829
+        },
+        {
+          "date": "2024-08",
+          "volume": 3,
+          "share": 0.094,
+          "sentiment": -0.764
+        },
+        {
+          "date": "2024-09",
+          "volume": 2,
+          "share": 0.059,
+          "sentiment": 0.408
+        },
+        {
+          "date": "2024-10",
+          "volume": 1,
+          "share": 0.071,
+          "sentiment": -0.678
+        },
+        {
+          "date": "2024-11",
+          "volume": 1,
+          "share": 0.077,
+          "sentiment": 0.867
+        },
+        {
+          "date": "2024-12",
+          "volume": 2,
+          "share": 0.08,
+          "sentiment": -0.092
+        },
+        {
+          "date": "2025-01",
+          "volume": 2,
+          "share": 0.133,
+          "sentiment": -0.083
+        },
+        {
+          "date": "2025-05",
+          "volume": 5,
+          "share": 0.116,
+          "sentiment": 0.194
+        },
+        {
+          "date": "2025-06",
+          "volume": 1,
+          "share": 0.038,
+          "sentiment": 0.79
+        },
+        {
+          "date": "2025-07",
+          "volume": 4,
+          "share": 0.111,
+          "sentiment": -0.068
+        },
+        {
+          "date": "2025-09",
+          "volume": 1,
+          "share": 0.111,
+          "sentiment": 0.0
+        }
+      ],
+      "cluster_2": [
+        {
+          "date": "2024-01",
+          "volume": 2,
+          "share": 0.08,
+          "sentiment": -0.859
+        },
+        {
+          "date": "2024-03",
+          "volume": 2,
+          "share": 0.222,
+          "sentiment": -0.177
+        },
+        {
+          "date": "2024-04",
+          "volume": 10,
+          "share": 0.227,
+          "sentiment": -0.145
+        },
+        {
+          "date": "2024-05",
+          "volume": 10,
+          "share": 0.303,
+          "sentiment": -0.205
+        },
+        {
+          "date": "2024-06",
+          "volume": 6,
+          "share": 0.146,
+          "sentiment": 0.241
+        },
+        {
+          "date": "2024-07",
+          "volume": 6,
+          "share": 0.182,
+          "sentiment": -0.161
+        },
+        {
+          "date": "2024-08",
+          "volume": 1,
+          "share": 0.031,
+          "sentiment": -0.852
+        },
+        {
+          "date": "2024-09",
+          "volume": 6,
+          "share": 0.176,
+          "sentiment": -0.209
+        },
+        {
+          "date": "2024-10",
+          "volume": 1,
+          "share": 0.071,
+          "sentiment": 0.567
+        },
+        {
+          "date": "2024-11",
+          "volume": 1,
+          "share": 0.077,
+          "sentiment": -0.707
+        },
+        {
+          "date": "2024-12",
+          "volume": 4,
+          "share": 0.16,
+          "sentiment": -0.086
+        },
+        {
+          "date": "2025-01",
+          "volume": 1,
+          "share": 0.067,
+          "sentiment": -0.601
+        },
+        {
+          "date": "2025-02",
+          "volume": 1,
+          "share": 0.067,
+          "sentiment": 0.513
+        },
+        {
+          "date": "2025-03",
+          "volume": 1,
+          "share": 0.1,
+          "sentiment": 0.49
+        },
+        {
+          "date": "2025-04",
+          "volume": 4,
+          "share": 0.111,
+          "sentiment": 0.136
+        },
+        {
+          "date": "2025-05",
+          "volume": 7,
+          "share": 0.163,
+          "sentiment": -0.233
+        },
+        {
+          "date": "2025-06",
+          "volume": 5,
+          "share": 0.192,
+          "sentiment": -0.086
+        },
+        {
+          "date": "2025-07",
+          "volume": 4,
+          "share": 0.111,
+          "sentiment": -0.39
+        },
+        {
+          "date": "2025-08",
+          "volume": 1,
+          "share": 0.143,
+          "sentiment": 0.821
+        },
+        {
+          "date": "2025-09",
+          "volume": 2,
+          "share": 0.222,
+          "sentiment": 0.789
+        }
+      ],
+      "cluster_3": [
+        {
+          "date": "2024-01",
+          "volume": 4,
+          "share": 0.16,
+          "sentiment": -0.384
+        },
+        {
+          "date": "2024-02",
+          "volume": 2,
+          "share": 0.1,
+          "sentiment": -0.345
+        },
+        {
+          "date": "2024-03",
+          "volume": 4,
+          "share": 0.444,
+          "sentiment": -0.431
+        },
+        {
+          "date": "2024-04",
+          "volume": 6,
+          "share": 0.136,
+          "sentiment": 0.079
+        },
+        {
+          "date": "2024-05",
+          "volume": 8,
+          "share": 0.242,
+          "sentiment": 0.306
+        },
+        {
+          "date": "2024-06",
+          "volume": 10,
+          "share": 0.244,
+          "sentiment": 0.136
+        },
+        {
+          "date": "2024-07",
+          "volume": 6,
+          "share": 0.182,
+          "sentiment": -0.299
+        },
+        {
+          "date": "2024-08",
+          "volume": 5,
+          "share": 0.156,
+          "sentiment": 0.381
+        },
+        {
+          "date": "2024-09",
+          "volume": 7,
+          "share": 0.206,
+          "sentiment": -0.381
+        },
+        {
+          "date": "2024-10",
+          "volume": 3,
+          "share": 0.214,
+          "sentiment": -0.67
+        },
+        {
+          "date": "2024-11",
+          "volume": 4,
+          "share": 0.308,
+          "sentiment": 0.093
+        },
+        {
+          "date": "2024-12",
+          "volume": 6,
+          "share": 0.24,
+          "sentiment": -0.698
+        },
+        {
+          "date": "2025-01",
+          "volume": 5,
+          "share": 0.333,
+          "sentiment": -0.583
+        },
+        {
+          "date": "2025-02",
+          "volume": 5,
+          "share": 0.333,
+          "sentiment": 0.029
+        },
+        {
+          "date": "2025-03",
+          "volume": 3,
+          "share": 0.3,
+          "sentiment": 0.757
+        },
+        {
+          "date": "2025-04",
+          "volume": 17,
+          "share": 0.472,
+          "sentiment": -0.142
+        },
+        {
+          "date": "2025-05",
+          "volume": 11,
+          "share": 0.256,
+          "sentiment": 0.219
+        },
+        {
+          "date": "2025-06",
+          "volume": 7,
+          "share": 0.269,
+          "sentiment": -0.325
+        },
+        {
+          "date": "2025-07",
+          "volume": 8,
+          "share": 0.222,
+          "sentiment": 0.073
+        },
+        {
+          "date": "2025-08",
+          "volume": 1,
+          "share": 0.143,
+          "sentiment": -0.787
+        },
+        {
+          "date": "2025-09",
+          "volume": 2,
+          "share": 0.222,
+          "sentiment": -0.681
+        }
+      ],
+      "cluster_4": [
+        {
+          "date": "2024-01",
+          "volume": 4,
+          "share": 0.16,
+          "sentiment": -0.264
+        },
+        {
+          "date": "2024-02",
+          "volume": 1,
+          "share": 0.05,
+          "sentiment": -0.853
+        },
+        {
+          "date": "2024-03",
+          "volume": 1,
+          "share": 0.111,
+          "sentiment": 0.0
+        },
+        {
+          "date": "2024-04",
+          "volume": 7,
+          "share": 0.159,
+          "sentiment": -0.011
+        },
+        {
+          "date": "2024-05",
+          "volume": 2,
+          "share": 0.061,
+          "sentiment": 0.773
+        },
+        {
+          "date": "2024-06",
+          "volume": 2,
+          "share": 0.049,
+          "sentiment": 0.01
+        },
+        {
+          "date": "2024-07",
+          "volume": 7,
+          "share": 0.212,
+          "sentiment": 0.169
+        },
+        {
+          "date": "2024-08",
+          "volume": 2,
+          "share": 0.062,
+          "sentiment": -0.823
+        },
+        {
+          "date": "2024-09",
+          "volume": 4,
+          "share": 0.118,
+          "sentiment": 0.041
+        },
+        {
+          "date": "2024-11",
+          "volume": 1,
+          "share": 0.077,
+          "sentiment": 0.688
+        },
+        {
+          "date": "2024-12",
+          "volume": 3,
+          "share": 0.12,
+          "sentiment": -0.273
+        },
+        {
+          "date": "2025-01",
+          "volume": 2,
+          "share": 0.133,
+          "sentiment": -0.419
+        },
+        {
+          "date": "2025-02",
+          "volume": 3,
+          "share": 0.2,
+          "sentiment": 0.128
+        },
+        {
+          "date": "2025-03",
+          "volume": 1,
+          "share": 0.1,
+          "sentiment": 0.489
+        },
+        {
+          "date": "2025-04",
+          "volume": 5,
+          "share": 0.139,
+          "sentiment": -0.213
+        },
+        {
+          "date": "2025-05",
+          "volume": 3,
+          "share": 0.07,
+          "sentiment": 0.687
+        },
+        {
+          "date": "2025-06",
+          "volume": 2,
+          "share": 0.077,
+          "sentiment": -0.258
+        },
+        {
+          "date": "2025-07",
+          "volume": 1,
+          "share": 0.028,
+          "sentiment": 0.839
+        },
+        {
+          "date": "2025-08",
+          "volume": 1,
+          "share": 0.143,
+          "sentiment": 0.513
+        }
+      ],
+      "cluster_5": [
+        {
+          "date": "2024-01",
+          "volume": 6,
+          "share": 0.24,
+          "sentiment": -0.047
+        },
+        {
+          "date": "2024-02",
+          "volume": 8,
+          "share": 0.4,
+          "sentiment": -0.263
+        },
+        {
+          "date": "2024-03",
+          "volume": 2,
+          "share": 0.222,
+          "sentiment": 0.026
+        },
+        {
+          "date": "2024-04",
+          "volume": 10,
+          "share": 0.227,
+          "sentiment": 0.063
+        },
+        {
+          "date": "2024-05",
+          "volume": 5,
+          "share": 0.152,
+          "sentiment": 0.398
+        },
+        {
+          "date": "2024-06",
+          "volume": 12,
+          "share": 0.293,
+          "sentiment": 0.243
+        },
+        {
+          "date": "2024-07",
+          "volume": 7,
+          "share": 0.212,
+          "sentiment": 0.029
+        },
+        {
+          "date": "2024-08",
+          "volume": 7,
+          "share": 0.219,
+          "sentiment": -0.243
+        },
+        {
+          "date": "2024-09",
+          "volume": 6,
+          "share": 0.176,
+          "sentiment": 0.336
+        },
+        {
+          "date": "2024-10",
+          "volume": 6,
+          "share": 0.429,
+          "sentiment": -0.24
+        },
+        {
+          "date": "2024-11",
+          "volume": 4,
+          "share": 0.308,
+          "sentiment": -0.671
+        },
+        {
+          "date": "2024-12",
+          "volume": 3,
+          "share": 0.12,
+          "sentiment": 0.149
+        },
+        {
+          "date": "2025-01",
+          "volume": 2,
+          "share": 0.133,
+          "sentiment": 0.385
+        },
+        {
+          "date": "2025-02",
+          "volume": 2,
+          "share": 0.133,
+          "sentiment": -0.388
+        },
+        {
+          "date": "2025-03",
+          "volume": 3,
+          "share": 0.3,
+          "sentiment": -0.558
+        },
+        {
+          "date": "2025-04",
+          "volume": 7,
+          "share": 0.194,
+          "sentiment": -0.205
+        },
+        {
+          "date": "2025-05",
+          "volume": 6,
+          "share": 0.14,
+          "sentiment": -0.07
+        },
+        {
+          "date": "2025-06",
+          "volume": 6,
+          "share": 0.231,
+          "sentiment": -0.004
+        },
+        {
+          "date": "2025-07",
+          "volume": 8,
+          "share": 0.222,
+          "sentiment": -0.508
+        },
+        {
+          "date": "2025-08",
+          "volume": 2,
+          "share": 0.286,
+          "sentiment": -0.675
+        },
+        {
+          "date": "2025-09",
+          "volume": 1,
+          "share": 0.111,
+          "sentiment": 0.789
+        }
+      ]
+    }
+  }
 }

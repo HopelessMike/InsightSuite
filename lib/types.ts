@@ -32,6 +32,19 @@ export type Persona = {
   channels: string[]
 }
 
+export type TimeseriesPoint = {
+  date: string
+  sentiment_mean?: number
+  volume?: number
+  share?: number
+  sentiment?: number
+}
+
+export type Timeseries = {
+  monthly?: TimeseriesPoint[]
+  clusters?: Record<string, TimeseriesPoint[]>
+}
+
 export type ProjectData = {
   meta: {
     project_id: string
@@ -48,4 +61,5 @@ export type ProjectData = {
   }
   clusters: Cluster[]
   personas: Persona[]
+  timeseries?: Timeseries  // NEW
 }

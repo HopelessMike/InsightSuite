@@ -1,6 +1,3 @@
 # ai_service/__init__.py
-"""
-InsightSuite AI Service - Backend for customer feedback analysis
-"""
-
+# File vuoto o con solo informazioni sul package
 __version__ = "1.0.0"

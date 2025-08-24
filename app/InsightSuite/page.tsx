@@ -61,12 +61,15 @@ export default function InsightSuitePage() {
 
   React.useEffect(() => {
     setMounted(true);
+    window.scrollTo(0, 0); // Aggiunto scroll to top
   }, []);
 
   React.useEffect(() => {
     let cancelled = false;
     const loadData = async () => {
       setIsLoading(true);
+      // Scroll to top when project changes
+      window.scrollTo({ top: 0, behavior: 'smooth' });
       await new Promise((r) => setTimeout(r, 250));
       try {
         const res = await fetch(PROJECT_FILES[selectedProject as TabKey], {
@@ -97,17 +100,10 @@ export default function InsightSuitePage() {
 
   if (!mounted) return null;
 
-  const datasetName = (key: TabKey) =>
-    t(`datasets.${key}`) ?? key.toUpperCase();
+  const datasetName = (key: TabKey) => t(`datasets.${key}`);
 
   return (
     <div className="min-h-screen">
-      {/* Background */}
-      <div className="fixed inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-purple-500/5" />
-        <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:radial-gradient(white,transparent_70%)]" />
-      </div>
-
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
         {/* Header */}
         <motion.header
@@ -232,7 +228,8 @@ export default function InsightSuitePage() {
                         transition={{ delay: idx * 0.05 }}
                         title={cluster.label}
                       >
-                        <span className="max-w-[120px] truncate">
+                        {/* Rimosso il motion.div extra che causava il quadrato stondato */}
+                        <span className="whitespace-nowrap">
                           {cluster.label}
                         </span>
                       </motion.span>
@@ -240,6 +237,72 @@ export default function InsightSuitePage() {
                   </div>
                 </div>
               </div>
+
+
+              {/* Fix 7: Trends Section moved up */}
+              {projectData?.timeseries?.monthly && projectData.timeseries.monthly.length > 0 && (
+                <div className="insightsuite-card">
+                  <h2 className="title-lg mb-4">{t("charts.trends.title")}</h2>
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div className="h-[260px]">
+                      <div className="text-sm font-medium mb-2">
+                        {t("charts.trends.sentimentOverTime")}
+                      </div>
+                      <ResponsiveContainer width="100%" height="100%">
+                        <LineChart data={projectData.timeseries.monthly}>
+                          <CartesianGrid stroke="#27272a" strokeDasharray="3 3" />
+                          <XAxis dataKey="date" tick={{ fill: "#a3a3a3", fontSize: 11 }} />
+                          <YAxis
+                            domain={[-1, 1]}
+                            tick={{ fill: "#a3a3a3", fontSize: 11 }}
+                          />
+                          <Tooltip
+                            contentStyle={{
+                              backgroundColor: "#171717",
+                              border: "1px solid #404040",
+                              borderRadius: "8px",
+                            }}
+                          />
+                          <Line
+                            type="monotone"
+                            dataKey="sentiment_mean"
+                            stroke="#3b82f6"
+                            dot={false}
+                            strokeWidth={2}
+                          />
+                        </LineChart>
+                      </ResponsiveContainer>
+                    </div>
+                    <div className="h-[260px]">
+                      <div className="text-sm font-medium mb-2">
+                        {t("charts.trends.volumeOverTime")}
+                      </div>
+                      <ResponsiveContainer width="100%" height="100%">
+                        <AreaChart data={projectData.timeseries.monthly}>
+                          <CartesianGrid stroke="#27272a" strokeDasharray="3 3" />
+                          <XAxis dataKey="date" tick={{ fill: "#a3a3a3", fontSize: 11 }} />
+                          <YAxis tick={{ fill: "#a3a3a3", fontSize: 11 }} />
+                          <Tooltip
+                            contentStyle={{
+                              backgroundColor: "#171717",
+                              border: "1px solid #404040",
+                              borderRadius: "8px",
+                            }}
+                          />
+                          <Area 
+                            type="monotone" 
+                            dataKey="volume" 
+                            stroke="#22c55e"
+                            fill="#22c55e"
+                            fillOpacity={0.3}
+                            strokeWidth={2} 
+                          />
+                        </AreaChart>
+                      </ResponsiveContainer>
+                    </div>
+                  </div>
+                </div>
+              )}
 
               {/* Main Visualizations */}
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
@@ -264,88 +327,6 @@ export default function InsightSuitePage() {
                   </div>
                 </div>
               </div>
-
-              {/* Trends Section (optional) */}
-              {projectData?.timeseries?.monthly?.length ? (
-                <div className="insightsuite-card">
-                  <h2 className="title-lg mb-4">{t("charts.trends.title")}</h2>
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    <div className="h-[260px]">
-                      <div className="text-sm font-medium mb-2">
-                        {t("charts.trends.sentimentOverTime")}
-                      </div>
-                      <ResponsiveContainer width="100%" height="100%">
-                        <LineChart data={projectData.timeseries.monthly}>
-                          <CartesianGrid stroke="#27272a" strokeDasharray="3 3" />
-                          <XAxis dataKey="date" tick={{ fill: "#a3a3a3", fontSize: 11 }} />
-                          <YAxis
-                            domain={[-1, 1]}
-                            tick={{ fill: "#a3a3a3", fontSize: 11 }}
-                          />
-                          <Tooltip />
-                          <Line
-                            type="monotone"
-                            dataKey="sentiment_mean"
-                            dot={false}
-                            strokeWidth={2}
-                          />
-                        </LineChart>
-                      </ResponsiveContainer>
-                    </div>
-                    <div className="h-[260px]">
-                      <div className="text-sm font-medium mb-2">
-                        {t("charts.trends.volumeOverTime")}
-                      </div>
-                      <ResponsiveContainer width="100%" height="100%">
-                        <AreaChart data={projectData.timeseries.monthly}>
-                          <CartesianGrid stroke="#27272a" strokeDasharray="3 3" />
-                          <XAxis dataKey="date" tick={{ fill: "#a3a3a3", fontSize: 11 }} />
-                          <YAxis tick={{ fill: "#a3a3a3", fontSize: 11 }} />
-                          <Tooltip />
-                          <Area type="monotone" dataKey="volume" strokeWidth={2} />
-                        </AreaChart>
-                      </ResponsiveContainer>
-                    </div>
-                  </div>
-
-                  {projectData?.timeseries?.clusters &&
-                  Object.keys(projectData.timeseries.clusters).length ? (
-                    <div className="mt-6 h-[260px]">
-                      <div className="text-sm font-medium mb-2">
-                        {t("charts.trends.topClusterTrends")}
-                      </div>
-                      <ResponsiveContainer width="100%" height="100%">
-                        <LineChart>
-                          <CartesianGrid
-                            stroke="#27272a"
-                            strokeDasharray="3 3"
-                          />
-                          <XAxis dataKey="date" tick={{ fill: "#a3a3a3", fontSize: 11 }} />
-                          <YAxis
-                            domain={[0, 1]}
-                            tickFormatter={(v) => `${(v * 100).toFixed(0)}%`}
-                            tick={{ fill: "#a3a3a3", fontSize: 11 }}
-                          />
-                          <Tooltip />
-                          <Legend />
-                          {Object.entries(projectData.timeseries.clusters)
-                            .slice(0, 3)
-                            .map(([cid, series], idx) => (
-                              <Line
-                                key={cid}
-                                data={series as any[]}
-                                name={cid}
-                                dataKey="share"
-                                dot={false}
-                                strokeWidth={2}
-                              />
-                            ))}
-                        </LineChart>
-                      </ResponsiveContainer>
-                    </div>
-                  ) : null}
-                </div>
-              ) : null}
 
               {/* Personas */}
               <div>
@@ -391,6 +372,8 @@ export default function InsightSuitePage() {
 }
 
 function LoadingSkeleton() {
+  const { t } = useLocale();
+  
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-6">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -415,6 +398,9 @@ function LoadingSkeleton() {
             <div className="skeleton h-full rounded-xl" />
           </div>
         </div>
+      </div>
+      <div className="text-center text-neutral-500">
+        {t("app.loading")}
       </div>
     </motion.div>
   );

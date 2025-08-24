@@ -9,3 +9,4 @@ export { default as StatCard } from "./StatCard";
 export { default as InsightChat } from "./InsightChat";
 export { default as ClusterDetail } from "./ClusterDetail";
 export { default as ThemeProvider } from "./theme-provider";
+export { default as LocaleToggle } from "./LocaleToggle";

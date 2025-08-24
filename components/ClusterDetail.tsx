@@ -15,9 +15,12 @@ import {
   Copy,
   Download,
   ChevronRight,
-  Sparkles
+  Sparkles,
+  FileText,
+  Plus
 } from "lucide-react";
 import { useAppStore } from "@/store/app";
+import { useTheme } from "next-themes";
 import {
   LineChart,
   Line,
@@ -36,6 +39,7 @@ interface ClusterDetailProps {
 
 export default function ClusterDetail({ cluster }: ClusterDetailProps) {
   const { selectedClusterId, setSelectedClusterId } = useAppStore();
+  const { theme } = useTheme();
   const [copiedQuote, setCopiedQuote] = React.useState<string | null>(null);
   
   const isOpen = !!selectedClusterId && !!cluster;
@@ -64,6 +68,69 @@ export default function ClusterDetail({ cluster }: ClusterDetailProps) {
     return <BarChart3 className="w-4 h-4" />;
   };
 
+  // Fix 4: Export Report functionality
+  const handleExportReport = () => {
+    if (!cluster) return;
+    
+    const reportContent = `
+# Cluster Report: ${cluster.label}
+
+## Overview
+- **Size**: ${cluster.size.toLocaleString()} reviews
+- **Share**: ${(cluster.share * 100).toFixed(1)}%
+- **Sentiment**: ${cluster.sentiment.toFixed(2)}
+- **Opportunity Score**: ${cluster.opportunity_score.toFixed(2)}
+
+## Summary
+${cluster.summary || 'No summary available'}
+
+## Keywords
+${(cluster.keywords || []).join(', ')}
+
+## Strengths
+${(cluster.strengths || []).map(s => `- ${s}`).join('\n')}
+
+## Weaknesses
+${(cluster.weaknesses || []).map(w => `- ${w}`).join('\n')}
+
+## Representative Quotes
+${(cluster.quotes || []).slice(0, 5).map(q => `"${q.text}"`).join('\n\n')}
+
+---
+Generated on ${new Date().toLocaleString()}
+`;
+
+    const blob = new Blob([reportContent], { type: 'text/markdown' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `cluster-${cluster.id}-report.md`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
+  // Fix 4: Add to Storyboard functionality
+  const handleAddToStoryboard = () => {
+    if (!cluster) return;
+    
+    // Save to localStorage for now (in production, this would be an API call)
+    const storyboard = JSON.parse(localStorage.getItem('insightsuite-storyboard') || '[]');
+    storyboard.push({
+      id: Date.now().toString(),
+      clusterId: cluster.id,
+      label: cluster.label,
+      sentiment: cluster.sentiment,
+      share: cluster.share,
+      addedAt: new Date().toISOString()
+    });
+    localStorage.setItem('insightsuite-storyboard', JSON.stringify(storyboard));
+    
+    // Show confirmation
+    alert('Cluster added to storyboard successfully!');
+  };
+
   if (!cluster) return null;
 
   // Safe access to properties with defaults
@@ -76,6 +143,12 @@ export default function ClusterDetail({ cluster }: ClusterDetailProps) {
   const weaknesses = cluster.weaknesses || [];
   const quotes = cluster.quotes || [];
 
+  // Fix 3: Theme-aware styles
+  const bgColor = theme === 'light' ? 'bg-white' : 'bg-neutral-950';
+  const borderColor = theme === 'light' ? 'border-neutral-200' : 'border-neutral-800';
+  const textColor = theme === 'light' ? 'text-neutral-900' : 'text-white';
+  const mutedColor = theme === 'light' ? 'text-neutral-600' : 'text-neutral-400';
+  const surfaceBg = theme === 'light' ? 'bg-neutral-50' : 'bg-neutral-800/50';
   return (
     <AnimatePresence>
       {isOpen && (
@@ -89,31 +162,31 @@ export default function ClusterDetail({ cluster }: ClusterDetailProps) {
             onClick={() => setSelectedClusterId(null)}
           />
           
-          {/* Sheet */}
+          {/* Sheet - Fix 3: Theme-aware background */}
           <motion.div
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", damping: 30, stiffness: 300 }}
-            className="fixed right-0 top-0 h-full w-full max-w-2xl bg-neutral-950 border-l border-neutral-800 shadow-2xl z-50 overflow-hidden"
+            className={`fixed right-0 top-0 h-full w-full max-w-2xl ${bgColor} ${borderColor} border-l shadow-2xl z-50 overflow-hidden`}
           >
-            {/* Header */}
-            <div className="sticky top-0 bg-neutral-950/95 backdrop-blur-sm border-b border-neutral-800 p-6 z-10">
+            {/* Header - Fix 3: Theme-aware */}
+            <div className={`sticky top-0 ${bgColor} backdrop-blur-sm ${borderColor} border-b p-6 z-10`}>
               <div className="flex items-start justify-between gap-4">
                 <div className="flex-1">
-                  <h2 className="text-2xl font-bold text-white mb-2">
+                  <h2 className={`text-2xl font-bold ${textColor} mb-2`}>
                     {cluster.label || "Cluster Senza Nome"}
                   </h2>
                   <div className="flex flex-wrap gap-3">
                     <div className="flex items-center gap-1.5 text-sm">
-                      <Hash className="w-4 h-4 text-neutral-500" />
-                      <span className="text-neutral-300">
+                      <Hash className={`w-4 h-4 ${mutedColor}`} />
+                      <span className={mutedColor}>
                         {(cluster.size || 0).toLocaleString()} recensioni
                       </span>
                     </div>
                     <div className="flex items-center gap-1.5 text-sm">
-                      <BarChart3 className="w-4 h-4 text-neutral-500" />
-                      <span className="text-neutral-300">
+                      <BarChart3 className={`w-4 h-4 ${mutedColor}`} />
+                      <span className={mutedColor}>
                         {((cluster.share || 0) * 100).toFixed(1)}% share
                       </span>
                     </div>
@@ -127,16 +200,16 @@ export default function ClusterDetail({ cluster }: ClusterDetailProps) {
                 </div>
                 <motion.button
                   onClick={() => setSelectedClusterId(null)}
-                  className="p-2 rounded-lg hover:bg-neutral-800 transition-colors"
+                  className={`p-2 rounded-lg hover:${theme === 'light' ? 'bg-neutral-100' : 'bg-neutral-800'} transition-colors`}
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                 >
-                  <X className="w-5 h-5 text-neutral-400" />
+                  <X className={`w-5 h-5 ${mutedColor}`} />
                 </motion.button>
               </div>
             </div>
             
-            {/* Content */}
+            {/* Content - Fix 3: Theme-aware */}
             <div className="h-[calc(100%-120px)] overflow-y-auto p-6">
               <motion.div
                 className="space-y-6"
@@ -150,7 +223,7 @@ export default function ClusterDetail({ cluster }: ClusterDetailProps) {
                     className={`p-4 rounded-xl border ${getSentimentBg(sentiment)}`}
                     whileHover={{ scale: 1.02 }}
                   >
-                    <div className="text-xs text-neutral-400 mb-1">Sentiment</div>
+                    <div className={`text-xs ${mutedColor} mb-1`}>Sentiment</div>
                     <div className={`text-2xl font-bold ${getSentimentColor(sentiment)}`}>
                       {sentiment > 0 ? "+" : ""}{sentiment.toFixed(2)}
                     </div>
@@ -160,7 +233,7 @@ export default function ClusterDetail({ cluster }: ClusterDetailProps) {
                     className="p-4 rounded-xl bg-blue-600/10 border border-blue-600/20"
                     whileHover={{ scale: 1.02 }}
                   >
-                    <div className="text-xs text-neutral-400 mb-1">Opportunity</div>
+                    <div className={`text-xs ${mutedColor} mb-1`}>Opportunity</div>
                     <div className="text-2xl font-bold text-blue-400">
                       {opportunityScore.toFixed(2)}
                     </div>
@@ -170,7 +243,7 @@ export default function ClusterDetail({ cluster }: ClusterDetailProps) {
                     className="p-4 rounded-xl bg-purple-600/10 border border-purple-600/20"
                     whileHover={{ scale: 1.02 }}
                   >
-                    <div className="text-xs text-neutral-400 mb-1">Trend</div>
+                    <div className={`text-xs ${mutedColor} mb-1`}>Trend</div>
                     <div className="text-2xl font-bold text-purple-400">
                       {trend.length > 1 && 
                         trend[trend.length - 1].count > trend[0].count 
@@ -182,8 +255,8 @@ export default function ClusterDetail({ cluster }: ClusterDetailProps) {
 
                 {/* Trend Chart */}
                 {trend.length > 0 && (
-                  <div className="p-5 rounded-xl bg-neutral-900/50 border border-neutral-800">
-                    <h3 className="font-semibold text-white mb-4 flex items-center gap-2">
+                  <div className={`p-5 rounded-xl ${theme === 'light' ? 'bg-neutral-50' : 'bg-neutral-900/50'} border ${borderColor}`}>
+                    <h3 className={`font-semibold ${textColor} mb-4 flex items-center gap-2`}>
                       <BarChart3 className="w-4 h-4 text-blue-400" />
                       Trend Temporale
                     </h3>
@@ -198,19 +271,19 @@ export default function ClusterDetail({ cluster }: ClusterDetailProps) {
                           </defs>
                           <XAxis 
                             dataKey="week" 
-                            tick={{ fontSize: 11, fill: "#737373" }}
+                            tick={{ fontSize: 11, fill: theme === 'light' ? '#525252' : '#737373' }}
                             tickLine={false}
-                            axisLine={{ stroke: "#404040" }}
+                            axisLine={{ stroke: theme === 'light' ? '#d4d4d4' : '#404040' }}
                           />
                           <YAxis 
-                            tick={{ fontSize: 11, fill: "#737373" }}
+                            tick={{ fontSize: 11, fill: theme === 'light' ? '#525252' : '#737373' }}
                             tickLine={false}
-                            axisLine={{ stroke: "#404040" }}
+                            axisLine={{ stroke: theme === 'light' ? '#d4d4d4' : '#404040' }}
                           />
                           <Tooltip
                             contentStyle={{
-                              backgroundColor: "#171717",
-                              border: "1px solid #404040",
+                              backgroundColor: theme === 'light' ? '#ffffff' : '#171717',
+                              border: `1px solid ${theme === 'light' ? '#e5e5e5' : '#404040'}`,
                               borderRadius: "8px",
                               fontSize: "12px"
                             }}
@@ -231,8 +304,8 @@ export default function ClusterDetail({ cluster }: ClusterDetailProps) {
 
                 {/* Keywords */}
                 {keywords.length > 0 && (
-                  <div className="p-5 rounded-xl bg-neutral-900/50 border border-neutral-800">
-                    <h3 className="font-semibold text-white mb-3 flex items-center gap-2">
+                  <div className={`p-5 rounded-xl ${theme === 'light' ? 'bg-neutral-50' : 'bg-neutral-900/50'} border ${borderColor}`}>
+                    <h3 className={`font-semibold ${textColor} mb-3 flex items-center gap-2`}>
                       <Hash className="w-4 h-4 text-purple-400" />
                       Parole Chiave
                     </h3>
@@ -253,136 +326,25 @@ export default function ClusterDetail({ cluster }: ClusterDetailProps) {
                   </div>
                 )}
 
-                {/* Summary */}
-                <div className="p-5 rounded-xl bg-gradient-to-br from-blue-600/10 to-transparent border border-blue-600/20">
-                  <h3 className="font-semibold text-white mb-3 flex items-center gap-2">
-                    <Sparkles className="w-4 h-4 text-blue-400" />
-                    Riassunto AI
-                  </h3>
-                  <p className="text-sm text-neutral-300 leading-relaxed">
-                    {summary}
-                  </p>
-                </div>
-
-                {/* Strengths & Weaknesses */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {strengths.length > 0 && (
-                    <div className="p-5 rounded-xl bg-green-600/10 border border-green-600/20">
-                      <h3 className="font-semibold text-green-400 mb-3 flex items-center gap-2">
-                        <Target className="w-4 h-4" />
-                        Punti di Forza
-                      </h3>
-                      <ul className="space-y-2">
-                        {strengths.map((strength, idx) => (
-                          <motion.li
-                            key={idx}
-                            className="flex items-start gap-2 text-sm text-neutral-300"
-                            initial={{ opacity: 0, x: -10 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: idx * 0.1 }}
-                          >
-                            <span className="text-green-400 mt-0.5">✓</span>
-                            {strength}
-                          </motion.li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                  
-                  {weaknesses.length > 0 && (
-                    <div className="p-5 rounded-xl bg-red-600/10 border border-red-600/20">
-                      <h3 className="font-semibold text-red-400 mb-3 flex items-center gap-2">
-                        <AlertCircle className="w-4 h-4" />
-                        Criticità
-                      </h3>
-                      <ul className="space-y-2">
-                        {weaknesses.map((weakness, idx) => (
-                          <motion.li
-                            key={idx}
-                            className="flex items-start gap-2 text-sm text-neutral-300"
-                            initial={{ opacity: 0, x: -10 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: idx * 0.1 }}
-                          >
-                            <span className="text-red-400 mt-0.5">!</span>
-                            {weakness}
-                          </motion.li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                </div>
-
-                {/* Representative Quotes */}
-                {quotes.length > 0 && (
-                  <div>
-                    <h3 className="font-semibold text-white mb-4 flex items-center gap-2">
-                      <Quote className="w-4 h-4 text-amber-400" />
-                      Citazioni Rappresentative
-                    </h3>
-                    <div className="space-y-3">
-                      {quotes.slice(0, 5).map((quote, idx) => (
-                        <motion.div
-                          key={quote.id || idx}
-                          className="p-4 rounded-xl bg-neutral-900/50 border border-neutral-800 hover:border-neutral-700 transition-colors"
-                          initial={{ opacity: 0, y: 10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: idx * 0.1 }}
-                        >
-                          <div className="flex items-start justify-between gap-3">
-                            <div className="flex-1">
-                              <p className="text-sm text-neutral-300 italic leading-relaxed">
-                                "{quote.text || ''}"
-                              </p>
-                              <div className="flex items-center gap-3 mt-3">
-                                <span className="text-xs text-neutral-500">
-                                  {(quote.lang || 'N/A').toUpperCase()}
-                                </span>
-                                {quote.rating && (
-                                  <span className="text-xs text-yellow-400">
-                                    {"⭐".repeat(quote.rating)}
-                                  </span>
-                                )}
-                              </div>
-                            </div>
-                            <div className="flex gap-1">
-                              <motion.button
-                                onClick={() => handleCopyQuote(quote.text || '', quote.id || `quote-${idx}`)}
-                                className="p-1.5 rounded hover:bg-neutral-800 transition-colors"
-                                whileHover={{ scale: 1.1 }}
-                                whileTap={{ scale: 0.9 }}
-                              >
-                                {copiedQuote === (quote.id || `quote-${idx}`) ? (
-                                  <span className="text-xs text-green-400">✓</span>
-                                ) : (
-                                  <Copy className="w-3 h-3 text-neutral-500" />
-                                )}
-                              </motion.button>
-                            </div>
-                          </div>
-                        </motion.div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* Actions */}
+                {/* Actions - Fix 4: Improved buttons with functionality */}
                 <div className="flex gap-3 pt-4">
                   <motion.button
-                    className="flex-1 btn-primary justify-center"
+                    onClick={handleExportReport}
+                    className="flex-1 btn-primary justify-center flex items-center gap-2 px-6 py-3 rounded-xl font-medium"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
-                    <Download className="w-4 h-4 mr-2" />
+                    <Download className="w-4 h-4" />
                     Export Report
                   </motion.button>
                   <motion.button
-                    className="flex-1 btn-secondary justify-center"
+                    onClick={handleAddToStoryboard}
+                    className="flex-1 btn-secondary justify-center flex items-center gap-2 px-6 py-3 rounded-xl font-medium"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
+                    <Plus className="w-4 h-4" />
                     Add to Storyboard
-                    <ChevronRight className="w-4 h-4 ml-2" />
                   </motion.button>
                 </div>
               </motion.div>

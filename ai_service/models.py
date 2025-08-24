@@ -2,8 +2,46 @@
 Pydantic models for API
 """
 from pydantic import BaseModel, Field
-from typing import List, Optional, Dict, Any
+from typing import List, Optional, Dict, Any, Literal
 from datetime import datetime
+
+# Review models
+class Review(BaseModel):
+    """Individual review model"""
+    id: str
+    text: str
+    clusterId: Optional[str] = None
+    clusterLabel: Optional[str] = None
+    sentiment: float = Field(ge=-1, le=1)
+    lang: str
+    date: Optional[str] = None
+    rating: Optional[float] = Field(None, ge=1, le=5)
+    sourceId: str
+    projectId: str
+
+class ReviewPage(BaseModel):
+    """Paginated review response"""
+    total: int
+    page: int
+    pageSize: int
+    items: List[Review]
+
+class ReviewQuery(BaseModel):
+    """Review query parameters"""
+    projectId: str
+    q: Optional[str] = None
+    clusterId: Optional[str] = None
+    lang: Optional[str] = None
+    ratingMin: Optional[int] = Field(None, ge=1, le=5)
+    ratingMax: Optional[int] = Field(None, ge=1, le=5)
+    sentimentMin: Optional[float] = Field(-1.0, ge=-1, le=1)
+    sentimentMax: Optional[float] = Field(1.0, ge=-1, le=1)
+    dateFrom: Optional[str] = None
+    dateTo: Optional[str] = None
+    sort: Literal["date", "sentiment", "rating"] = "date"
+    order: Literal["asc", "desc"] = "desc"
+    page: int = Field(1, ge=1)
+    pageSize: int = Field(50, ge=1, le=200)
 
 class Quote(BaseModel):
     """Review quote model"""

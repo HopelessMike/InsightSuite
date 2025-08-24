@@ -28,7 +28,7 @@ export default function StatCard({
   return (
     <motion.div
       className={`insightsuite-card insightsuite-card-hover h-full ${className}`}
-      whileHover={{ scale: 1.02 }}
+      whileHover={{ y: -4, scale: 1.02 }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
     >
       <div className="flex items-start justify-between mb-3">

@@ -1,0 +1,521 @@
+userName,score,at,content
+Andrea,1,2024-01-02 00:00:00,Codici promo spesso non funzionano.
+Matteo,2,2024-01-03 00:00:00,Consegna in ritardo e prodotti mancanti.
+Arianna,4,2024-01-03 00:00:00,Consegne puntuali e rider gentili.
+Sofia,2,2024-01-04 00:00:00,Crash frequenti alla conferma carrello.
+Beatrice,4,2024-01-04 00:00:00,Ottime promo e coupon automatici in cassa.
+Tommaso,5,2024-01-04 00:00:00,Consegne puntuali e rider gentili.
+Paolo,5,2024-01-06 00:00:00,"Login con FaceID comodissimo, nessun problema."
+Davide,5,2024-01-08 00:00:00,"Interfaccia chiara, categorie facili da navigare."
+Elisa,5,2024-01-10 00:00:00,Chat rapida: problema risolto in 5 minuti.
+Marco,2,2024-01-12 00:00:00,Crash frequenti alla conferma carrello.
+Simone,1,2024-01-12 00:00:00,Sostituzioni forzate e non equivalenti.
+Roberto,4,2024-01-14 00:00:00,"Registrazione veloce e chiara, in pochi minuti ho fatto il primo ordine."
+Roberto,3,2024-01-16 00:00:00,Crash frequenti alla conferma carrello.
+Nicola,4,2024-01-17 00:00:00,Ottime promo e coupon automatici in cassa.
+Sofia,4,2024-01-18 00:00:00,"Interfaccia chiara, categorie facili da navigare."
+Giulia,4,2024-01-18 00:00:00,Consegne puntuali e rider gentili.
+Davide,5,2024-01-22 00:00:00,"Sostituzioni proposte bene, alternative di qualità."
+Nicola,2,2024-01-23 00:00:00,"Login spesso fallisce, devo reimpostare la password."
+Gabriele,5,2024-01-26 00:00:00,"App stabile anche durante gli sconti, nessun crash."
+Giulia,3,2024-01-26 00:00:00,Consegne puntuali e rider gentili.
+Matteo,5,2024-01-26 00:00:00,Consegne puntuali e rider gentili.
+Matteo,2,2024-01-27 00:00:00,"Carta rifiutata senza motivo, assistenza lenta."
+Francesca,1,2024-01-30 00:00:00,Sostituzioni forzate e non equivalenti.
+Paolo,1,2024-01-31 00:00:00,Codici promo spesso non funzionano.
+Arianna,5,2024-01-31 00:00:00,"Login con FaceID comodissimo, nessun problema."
+Edoardo,2,2024-02-01 00:00:00,Consegna in ritardo e prodotti mancanti.
+Riccardo,4,2024-02-02 00:00:00,"Registrazione veloce e chiara, in pochi minuti ho fatto il primo ordine."
+Marco,3,2024-02-04 00:00:00,"Carta rifiutata senza motivo, assistenza lenta."
+Aurora,4,2024-02-06 00:00:00,"Registrazione veloce e chiara, in pochi minuti ho fatto il primo ordine."
+Matteo,4,2024-02-08 00:00:00,Consegne puntuali e rider gentili.
+Pietro,5,2024-02-08 00:00:00,"Registrazione veloce e chiara, in pochi minuti ho fatto il primo ordine."
+Ilaria,1,2024-02-08 00:00:00,Crash frequenti alla conferma carrello.
+Pietro,5,2024-02-10 00:00:00,"Login con FaceID comodissimo, nessun problema."
+Sara,4,2024-02-11 00:00:00,Consegne puntuali e rider gentili.
+Francesca,5,2024-02-11 00:00:00,"App stabile anche durante gli sconti, nessun crash."
+Noemi,5,2024-02-15 00:00:00,"Registrazione veloce e chiara, in pochi minuti ho fatto il primo ordine."
+Luca,4,2024-02-15 00:00:00,"Login con FaceID comodissimo, nessun problema."
+Matteo,4,2024-02-17 00:00:00,"Pagamento fluido con Apple Pay, fattura inviata subito."
+Claudia,3,2024-02-18 00:00:00,Codici promo spesso non funzionano.
+Federico,2,2024-02-19 00:00:00,Sostituzioni forzate e non equivalenti.
+Claudia,2,2024-02-20 00:00:00,Crash frequenti alla conferma carrello.
+Filippo,5,2024-02-20 00:00:00,"App stabile anche durante gli sconti, nessun crash."
+Francesca,3,2024-02-23 00:00:00,"Carta rifiutata senza motivo, assistenza lenta."
+Serena,4,2024-02-24 00:00:00,"Sostituzioni proposte bene, alternative di qualità."
+Giulia,3,2024-02-29 00:00:00,Crash frequenti alla conferma carrello.
+Federico,2,2024-03-03 00:00:00,"Troppi tap per arrivare alla cassa, UX da rivedere."
+Daniele,3,2024-03-07 00:00:00,Crash frequenti alla conferma carrello.
+Sara,4,2024-03-09 00:00:00,"Login con FaceID comodissimo, nessun problema."
+Michele,3,2024-03-12 00:00:00,"Troppi tap per arrivare alla cassa, UX da rivedere."
+Beatrice,5,2024-03-15 00:00:00,Chat rapida: problema risolto in 5 minuti.
+Luca,3,2024-03-19 00:00:00,Assistenza non risponde o risposte standard.
+Francesca,2,2024-03-20 00:00:00,Consegna in ritardo e prodotti mancanti.
+Davide,2,2024-03-23 00:00:00,Codici promo spesso non funzionano.
+Federico,3,2024-03-26 00:00:00,"Login spesso fallisce, devo reimpostare la password."
+Martina,2,2024-04-01 00:00:00,Consegna in ritardo e prodotti mancanti.
+Francesca,5,2024-04-02 00:00:00,Consegne puntuali e rider gentili.
+Ilaria,4,2024-04-05 00:00:00,Chat rapida: problema risolto in 5 minuti.
+Roberto,2,2024-04-06 00:00:00,Crash frequenti alla conferma carrello.
+Nicola,2,2024-04-07 00:00:00,Registrazione confusa con troppi passaggi.
+Paolo,4,2024-04-07 00:00:00,"Registrazione veloce e chiara, in pochi minuti ho fatto il primo ordine."
+Arianna,4,2024-04-07 00:00:00,"Interfaccia chiara, categorie facili da navigare."
+Pietro,4,2024-04-08 00:00:00,"Registrazione veloce e chiara, in pochi minuti ho fatto il primo ordine."
+Elisa,4,2024-04-09 00:00:00,"Interfaccia chiara, categorie facili da navigare."
+Davide,2,2024-04-09 00:00:00,"Login spesso fallisce, devo reimpostare la password."
+Michele,5,2024-04-10 00:00:00,Chat rapida: problema risolto in 5 minuti.
+Stefano,3,2024-04-12 00:00:00,"Carta rifiutata senza motivo, assistenza lenta."
+Silvia,5,2024-04-13 00:00:00,Consegne puntuali e rider gentili.
+Matteo,5,2024-04-13 00:00:00,"Interfaccia chiara, categorie facili da navigare."
+Stefano,5,2024-04-15 00:00:00,"Registrazione veloce e chiara, in pochi minuti ho fatto il primo ordine."
+Giulia,3,2024-04-15 00:00:00,Consegna in ritardo e prodotti mancanti.
+Francesca,5,2024-04-16 00:00:00,Ottime promo e coupon automatici in cassa.
+Eleonora,1,2024-04-17 00:00:00,Sostituzioni forzate e non equivalenti.
+Elisa,5,2024-04-17 00:00:00,"App stabile anche durante gli sconti, nessun crash."
+Martina,1,2024-04-17 00:00:00,Codici promo spesso non funzionano.
+Paolo,2,2024-04-18 00:00:00,"Carta rifiutata senza motivo, assistenza lenta."
+Martina,5,2024-04-19 00:00:00,"App stabile anche durante gli sconti, nessun crash."
+Silvia,2,2024-04-20 00:00:00,Registrazione confusa con troppi passaggi.
+Aurora,4,2024-04-20 00:00:00,"Registrazione veloce e chiara, in pochi minuti ho fatto il primo ordine."
+Luca,3,2024-04-20 00:00:00,Codici promo spesso non funzionano.
+Noemi,3,2024-04-21 00:00:00,Codici promo spesso non funzionano.
+Nicola,4,2024-04-21 00:00:00,"Interfaccia chiara, categorie facili da navigare."
+Noemi,5,2024-04-22 00:00:00,"Registrazione veloce e chiara, in pochi minuti ho fatto il primo ordine."
+Elisa,2,2024-04-23 00:00:00,"Carta rifiutata senza motivo, assistenza lenta."
+Pietro,1,2024-04-23 00:00:00,Crash frequenti alla conferma carrello.
+Gabriele,5,2024-04-24 00:00:00,"App stabile anche durante gli sconti, nessun crash."
+Filippo,2,2024-04-24 00:00:00,Codici promo spesso non funzionano.
+Filippo,5,2024-04-25 00:00:00,"Login con FaceID comodissimo, nessun problema."
+Matteo,2,2024-04-25 00:00:00,"Login spesso fallisce, devo reimpostare la password."
+Tommaso,2,2024-04-25 00:00:00,Registrazione confusa con troppi passaggi.
+Marco,4,2024-04-26 00:00:00,"Interfaccia chiara, categorie facili da navigare."
+Sofia,5,2024-04-26 00:00:00,"Login con FaceID comodissimo, nessun problema."
+Claudia,4,2024-04-28 00:00:00,"Pagamento fluido con Apple Pay, fattura inviata subito."
+Arianna,1,2024-04-28 00:00:00,Codici promo spesso non funzionano.
+Eleonora,5,2024-04-29 00:00:00,"Registrazione veloce e chiara, in pochi minuti ho fatto il primo ordine."
+Aurora,5,2024-04-29 00:00:00,"Interfaccia chiara, categorie facili da navigare."
+Giorgia,5,2024-04-30 00:00:00,Consegne puntuali e rider gentili.
+Beatrice,5,2024-04-30 00:00:00,"Interfaccia chiara, categorie facili da navigare."
+Serena,3,2024-04-30 00:00:00,Ottime promo e coupon automatici in cassa.
+Nicola,5,2024-05-01 00:00:00,"Interfaccia chiara, categorie facili da navigare."
+Serena,5,2024-05-02 00:00:00,"Login con FaceID comodissimo, nessun problema."
+Giulia,5,2024-05-02 00:00:00,"Interfaccia chiara, categorie facili da navigare."
+Elisa,4,2024-05-03 00:00:00,"Login con FaceID comodissimo, nessun problema."
+Paolo,4,2024-05-03 00:00:00,"Sostituzioni proposte bene, alternative di qualità."
+Michele,2,2024-05-04 00:00:00,Assistenza non risponde o risposte standard.
+Noemi,2,2024-05-05 00:00:00,"Troppi tap per arrivare alla cassa, UX da rivedere."
+Gabriele,3,2024-05-05 00:00:00,"Troppi tap per arrivare alla cassa, UX da rivedere."
+Giorgia,5,2024-05-06 00:00:00,"Registrazione veloce e chiara, in pochi minuti ho fatto il primo ordine."
+Pietro,4,2024-05-07 00:00:00,"App stabile anche durante gli sconti, nessun crash."
+Tommaso,2,2024-05-08 00:00:00,"Login spesso fallisce, devo reimpostare la password."
+Sara,3,2024-05-09 00:00:00,Registrazione confusa con troppi passaggi.
+Chiara,4,2024-05-11 00:00:00,"Interfaccia chiara, categorie facili da navigare."
+Nicola,2,2024-05-11 00:00:00,Sostituzioni forzate e non equivalenti.
+Pietro,2,2024-05-13 00:00:00,Crash frequenti alla conferma carrello.
+Davide,2,2024-05-13 00:00:00,Assistenza non risponde o risposte standard.
+Valentina,3,2024-05-14 00:00:00,Registrazione confusa con troppi passaggi.
+Stefano,3,2024-05-14 00:00:00,"Troppi tap per arrivare alla cassa, UX da rivedere."
+Vittoria,5,2024-05-15 00:00:00,Chat rapida: problema risolto in 5 minuti.
+Ilaria,2,2024-05-15 00:00:00,Assistenza non risponde o risposte standard.
+Stefano,4,2024-05-17 00:00:00,"Interfaccia chiara, categorie facili da navigare."
+Riccardo,4,2024-05-19 00:00:00,"App stabile anche durante gli sconti, nessun crash."
+Alessio,5,2024-05-20 00:00:00,"Pagamento fluido con Apple Pay, fattura inviata subito."
+Chiara,5,2024-05-20 00:00:00,"Registrazione veloce e chiara, in pochi minuti ho fatto il primo ordine."
+Marco,4,2024-05-21 00:00:00,Chat rapida: problema risolto in 5 minuti.
+Daniele,5,2024-05-22 00:00:00,Ottime promo e coupon automatici in cassa.
+Elisa,4,2024-05-26 00:00:00,Ottime promo e coupon automatici in cassa.
+Vittoria,5,2024-05-27 00:00:00,"Registrazione veloce e chiara, in pochi minuti ho fatto il primo ordine."
+Pietro,1,2024-05-27 00:00:00,"Troppi tap per arrivare alla cassa, UX da rivedere."
+Filippo,1,2024-05-27 00:00:00,Sostituzioni forzate e non equivalenti.
+Michele,1,2024-05-27 00:00:00,Consegna in ritardo e prodotti mancanti.
+Sofia,1,2024-05-29 00:00:00,Crash frequenti alla conferma carrello.
+Daniele,5,2024-05-31 00:00:00,"Sostituzioni proposte bene, alternative di qualità."
+Ilaria,5,2024-06-02 00:00:00,Consegne puntuali e rider gentili.
+Tommaso,2,2024-06-03 00:00:00,"Login spesso fallisce, devo reimpostare la password."
+Giulia,2,2024-06-03 00:00:00,Sostituzioni forzate e non equivalenti.
+Chiara,4,2024-06-03 00:00:00,"Pagamento fluido con Apple Pay, fattura inviata subito."
+Federico,1,2024-06-04 00:00:00,Registrazione confusa con troppi passaggi.
+Arianna,5,2024-06-04 00:00:00,Chat rapida: problema risolto in 5 minuti.
+Edoardo,4,2024-06-05 00:00:00,"Login con FaceID comodissimo, nessun problema."
+Filippo,5,2024-06-06 00:00:00,"Login con FaceID comodissimo, nessun problema."
+Nicola,3,2024-06-07 00:00:00,"Carta rifiutata senza motivo, assistenza lenta."
+Francesca,2,2024-06-07 00:00:00,"Troppi tap per arrivare alla cassa, UX da rivedere."
+Elisa,2,2024-06-08 00:00:00,Codici promo spesso non funzionano.
+Noemi,4,2024-06-09 00:00:00,"Pagamento fluido con Apple Pay, fattura inviata subito."
+Riccardo,5,2024-06-09 00:00:00,Consegne puntuali e rider gentili.
+Beatrice,2,2024-06-09 00:00:00,Registrazione confusa con troppi passaggi.
+Silvia,5,2024-06-10 00:00:00,Chat rapida: problema risolto in 5 minuti.
+Elisa,5,2024-06-10 00:00:00,"Registrazione veloce e chiara, in pochi minuti ho fatto il primo ordine."
+Marco,5,2024-06-12 00:00:00,"Login con FaceID comodissimo, nessun problema."
+Francesca,2,2024-06-14 00:00:00,"Carta rifiutata senza motivo, assistenza lenta."
+Giulia,5,2024-06-16 00:00:00,"Registrazione veloce e chiara, in pochi minuti ho fatto il primo ordine."
+Riccardo,2,2024-06-16 00:00:00,Crash frequenti alla conferma carrello.
+Serena,5,2024-06-16 00:00:00,Chat rapida: problema risolto in 5 minuti.
+Claudia,2,2024-06-17 00:00:00,Consegna in ritardo e prodotti mancanti.
+Silvia,2,2024-06-17 00:00:00,"Carta rifiutata senza motivo, assistenza lenta."
+Beatrice,4,2024-06-18 00:00:00,Consegne puntuali e rider gentili.
+Marco,4,2024-06-18 00:00:00,Assistenza non risponde o risposte standard.
+Chiara,5,2024-06-18 00:00:00,Consegne puntuali e rider gentili.
+Aurora,5,2024-06-19 00:00:00,Ottime promo e coupon automatici in cassa.
+Andrea,2,2024-06-19 00:00:00,Crash frequenti alla conferma carrello.
+Pietro,2,2024-06-20 00:00:00,"Carta rifiutata senza motivo, assistenza lenta."
+Giorgia,2,2024-06-21 00:00:00,"Carta rifiutata senza motivo, assistenza lenta."
+Federico,4,2024-06-22 00:00:00,Crash frequenti alla conferma carrello.
+Sara,4,2024-06-22 00:00:00,"Interfaccia chiara, categorie facili da navigare."
+Alice,5,2024-06-22 00:00:00,"App stabile anche durante gli sconti, nessun crash."
+Chiara,5,2024-06-22 00:00:00,"Login con FaceID comodissimo, nessun problema."
+Edoardo,2,2024-06-24 00:00:00,"Troppi tap per arrivare alla cassa, UX da rivedere."
+Vittoria,3,2024-06-25 00:00:00,"Carta rifiutata senza motivo, assistenza lenta."
+Nicola,2,2024-06-25 00:00:00,Sostituzioni forzate e non equivalenti.
+Arianna,2,2024-06-26 00:00:00,"Carta rifiutata senza motivo, assistenza lenta."
+Marco,2,2024-06-27 00:00:00,"Login spesso fallisce, devo reimpostare la password."
+Michele,1,2024-06-28 00:00:00,Sostituzioni forzate e non equivalenti.
+Francesca,4,2024-06-30 00:00:00,"Interfaccia chiara, categorie facili da navigare."
+Edoardo,4,2024-07-01 00:00:00,"Interfaccia chiara, categorie facili da navigare."
+Chiara,5,2024-07-02 00:00:00,"Pagamento fluido con Apple Pay, fattura inviata subito."
+Vittoria,5,2024-07-07 00:00:00,Ottime promo e coupon automatici in cassa.
+Ilaria,1,2024-07-10 00:00:00,Registrazione confusa con troppi passaggi.
+Roberto,3,2024-07-11 00:00:00,Crash frequenti alla conferma carrello.
+Michele,5,2024-07-11 00:00:00,"Sostituzioni proposte bene, alternative di qualità."
+Riccardo,4,2024-07-11 00:00:00,Chat rapida: problema risolto in 5 minuti.
+Riccardo,1,2024-07-12 00:00:00,Codici promo spesso non funzionano.
+Beatrice,5,2024-07-12 00:00:00,"Interfaccia chiara, categorie facili da navigare."
+Matteo,1,2024-07-13 00:00:00,Sostituzioni forzate e non equivalenti.
+Sofia,2,2024-07-13 00:00:00,Crash frequenti alla conferma carrello.
+Stefano,2,2024-07-13 00:00:00,"Troppi tap per arrivare alla cassa, UX da rivedere."
+Luca,5,2024-07-15 00:00:00,Ottime promo e coupon automatici in cassa.
+Martina,4,2024-07-17 00:00:00,"Sostituzioni proposte bene, alternative di qualità."
+Alice,3,2024-07-17 00:00:00,Consegna in ritardo e prodotti mancanti.
+Giulia,2,2024-07-18 00:00:00,Crash frequenti alla conferma carrello.
+Martina,2,2024-07-19 00:00:00,"Login spesso fallisce, devo reimpostare la password."
+Tommaso,5,2024-07-19 00:00:00,Ottime promo e coupon automatici in cassa.
+Claudia,5,2024-07-19 00:00:00,Chat rapida: problema risolto in 5 minuti.
+Michele,3,2024-07-21 00:00:00,Assistenza non risponde o risposte standard.
+Eleonora,3,2024-07-22 00:00:00,Chat rapida: problema risolto in 5 minuti.
+Chiara,5,2024-07-24 00:00:00,"Registrazione veloce e chiara, in pochi minuti ho fatto il primo ordine."
+Edoardo,2,2024-07-25 00:00:00,"Troppi tap per arrivare alla cassa, UX da rivedere."
+Filippo,1,2024-07-26 00:00:00,"Carta rifiutata senza motivo, assistenza lenta."
+Nicola,4,2024-07-27 00:00:00,Consegna in ritardo e prodotti mancanti.
+Valentina,4,2024-07-28 00:00:00,Ottime promo e coupon automatici in cassa.
+Sofia,4,2024-07-28 00:00:00,"Sostituzioni proposte bene, alternative di qualità."
+Eleonora,5,2024-07-28 00:00:00,"Registrazione veloce e chiara, in pochi minuti ho fatto il primo ordine."
+Matteo,4,2024-07-30 00:00:00,Chat rapida: problema risolto in 5 minuti.
+Alice,5,2024-07-30 00:00:00,Ottime promo e coupon automatici in cassa.
+Alessio,2,2024-07-30 00:00:00,Consegna in ritardo e prodotti mancanti.
+Ilaria,3,2024-07-31 00:00:00,"Troppi tap per arrivare alla cassa, UX da rivedere."
+Daniele,5,2024-07-31 00:00:00,Ottime promo e coupon automatici in cassa.
+Chiara,1,2024-08-01 00:00:00,Sostituzioni forzate e non equivalenti.
+Eleonora,5,2024-08-02 00:00:00,"Registrazione veloce e chiara, in pochi minuti ho fatto il primo ordine."
+Valentina,4,2024-08-03 00:00:00,"App stabile anche durante gli sconti, nessun crash."
+Arianna,1,2024-08-05 00:00:00,Crash frequenti alla conferma carrello.
+Elisa,2,2024-08-06 00:00:00,Consegna in ritardo e prodotti mancanti.
+Simone,5,2024-08-06 00:00:00,"Pagamento fluido con Apple Pay, fattura inviata subito."
+Simone,5,2024-08-06 00:00:00,"Sostituzioni proposte bene, alternative di qualità."
+Chiara,2,2024-08-07 00:00:00,"Login spesso fallisce, devo reimpostare la password."
+Alessio,4,2024-08-09 00:00:00,"Pagamento fluido con Apple Pay, fattura inviata subito."
+Pietro,4,2024-08-10 00:00:00,Ottime promo e coupon automatici in cassa.
+Roberto,5,2024-08-10 00:00:00,"Registrazione veloce e chiara, in pochi minuti ho fatto il primo ordine."
+Elisa,4,2024-08-11 00:00:00,"Pagamento fluido con Apple Pay, fattura inviata subito."
+Sara,2,2024-08-12 00:00:00,"Login spesso fallisce, devo reimpostare la password."
+Gabriele,2,2024-08-14 00:00:00,Consegna in ritardo e prodotti mancanti.
+Sofia,5,2024-08-14 00:00:00,"Pagamento fluido con Apple Pay, fattura inviata subito."
+Edoardo,5,2024-08-16 00:00:00,Chat rapida: problema risolto in 5 minuti.
+Eleonora,2,2024-08-18 00:00:00,"Carta rifiutata senza motivo, assistenza lenta."
+Valentina,5,2024-08-19 00:00:00,"App stabile anche durante gli sconti, nessun crash."
+Riccardo,3,2024-08-20 00:00:00,Sostituzioni forzate e non equivalenti.
+Claudia,5,2024-08-20 00:00:00,"Interfaccia chiara, categorie facili da navigare."
+Martina,2,2024-08-22 00:00:00,Sostituzioni forzate e non equivalenti.
+Giulia,5,2024-08-22 00:00:00,Ottime promo e coupon automatici in cassa.
+Roberto,5,2024-08-23 00:00:00,Chat rapida: problema risolto in 5 minuti.
+Luca,5,2024-08-25 00:00:00,Consegne puntuali e rider gentili.
+Noemi,2,2024-08-25 00:00:00,Sostituzioni forzate e non equivalenti.
+Claudia,2,2024-08-25 00:00:00,Sostituzioni forzate e non equivalenti.
+Davide,5,2024-08-26 00:00:00,"Pagamento fluido con Apple Pay, fattura inviata subito."
+Edoardo,2,2024-08-27 00:00:00,Sostituzioni forzate e non equivalenti.
+Noemi,4,2024-08-28 00:00:00,"Registrazione veloce e chiara, in pochi minuti ho fatto il primo ordine."
+Valentina,5,2024-08-29 00:00:00,"Sostituzioni proposte bene, alternative di qualità."
+Silvia,2,2024-08-29 00:00:00,Crash frequenti alla conferma carrello.
+Pietro,4,2024-08-30 00:00:00,"Login con FaceID comodissimo, nessun problema."
+Claudia,2,2024-09-01 00:00:00,Consegna in ritardo e prodotti mancanti.
+Sofia,4,2024-09-02 00:00:00,"Registrazione veloce e chiara, in pochi minuti ho fatto il primo ordine."
+Silvia,1,2024-09-04 00:00:00,Consegna in ritardo e prodotti mancanti.
+Gabriele,2,2024-09-05 00:00:00,"Login spesso fallisce, devo reimpostare la password."
+Riccardo,5,2024-09-05 00:00:00,Consegne puntuali e rider gentili.
+Vittoria,4,2024-09-06 00:00:00,"Interfaccia chiara, categorie facili da navigare."
+Arianna,5,2024-09-06 00:00:00,"Interfaccia chiara, categorie facili da navigare."
+Vittoria,4,2024-09-06 00:00:00,"Registrazione veloce e chiara, in pochi minuti ho fatto il primo ordine."
+Luca,5,2024-09-06 00:00:00,Ottime promo e coupon automatici in cassa.
+Claudia,1,2024-09-06 00:00:00,Sostituzioni forzate e non equivalenti.
+Arianna,1,2024-09-07 00:00:00,Sostituzioni forzate e non equivalenti.
+Alice,4,2024-09-08 00:00:00,Consegne puntuali e rider gentili.
+Giorgia,4,2024-09-11 00:00:00,Consegne puntuali e rider gentili.
+Silvia,4,2024-09-13 00:00:00,Ottime promo e coupon automatici in cassa.
+Giorgia,2,2024-09-13 00:00:00,Assistenza non risponde o risposte standard.
+Filippo,5,2024-09-13 00:00:00,Ottime promo e coupon automatici in cassa.
+Riccardo,5,2024-09-15 00:00:00,"Login con FaceID comodissimo, nessun problema."
+Arianna,4,2024-09-15 00:00:00,"Pagamento fluido con Apple Pay, fattura inviata subito."
+Sofia,2,2024-09-16 00:00:00,Crash frequenti alla conferma carrello.
+Luca,3,2024-09-18 00:00:00,Sostituzioni forzate e non equivalenti.
+Davide,2,2024-09-19 00:00:00,Sostituzioni forzate e non equivalenti.
+Nicola,1,2024-09-20 00:00:00,Assistenza non risponde o risposte standard.
+Ilaria,1,2024-09-20 00:00:00,Crash frequenti alla conferma carrello.
+Matteo,3,2024-09-21 00:00:00,Consegne puntuali e rider gentili.
+Ilaria,5,2024-09-21 00:00:00,"Interfaccia chiara, categorie facili da navigare."
+Pietro,4,2024-09-23 00:00:00,Chat rapida: problema risolto in 5 minuti.
+Sofia,5,2024-09-23 00:00:00,"Interfaccia chiara, categorie facili da navigare."
+Gabriele,5,2024-09-23 00:00:00,"Login con FaceID comodissimo, nessun problema."
+Giulia,2,2024-09-25 00:00:00,Crash frequenti alla conferma carrello.
+Federico,2,2024-09-26 00:00:00,"Troppi tap per arrivare alla cassa, UX da rivedere."
+Sara,2,2024-09-28 00:00:00,Registrazione confusa con troppi passaggi.
+Sara,2,2024-09-28 00:00:00,Consegna in ritardo e prodotti mancanti.
+Paolo,5,2024-09-29 00:00:00,"Login con FaceID comodissimo, nessun problema."
+Stefano,3,2024-09-29 00:00:00,Codici promo spesso non funzionano.
+Matteo,4,2024-10-02 00:00:00,"Carta rifiutata senza motivo, assistenza lenta."
+Daniele,2,2024-10-04 00:00:00,Crash frequenti alla conferma carrello.
+Vittoria,1,2024-10-08 00:00:00,"Carta rifiutata senza motivo, assistenza lenta."
+Vittoria,5,2024-10-15 00:00:00,"Sostituzioni proposte bene, alternative di qualità."
+Andrea,2,2024-10-17 00:00:00,"Login spesso fallisce, devo reimpostare la password."
+Michele,5,2024-10-17 00:00:00,"Sostituzioni proposte bene, alternative di qualità."
+Serena,4,2024-10-19 00:00:00,"Login con FaceID comodissimo, nessun problema."
+Marco,5,2024-10-27 00:00:00,"App stabile anche durante gli sconti, nessun crash."
+Noemi,4,2024-10-28 00:00:00,"App stabile anche durante gli sconti, nessun crash."
+Andrea,5,2024-10-28 00:00:00,"Pagamento fluido con Apple Pay, fattura inviata subito."
+Aurora,5,2024-10-28 00:00:00,"Login con FaceID comodissimo, nessun problema."
+Stefano,1,2024-10-29 00:00:00,Crash frequenti alla conferma carrello.
+Sara,5,2024-10-31 00:00:00,"Registrazione veloce e chiara, in pochi minuti ho fatto il primo ordine."
+Roberto,2,2024-10-31 00:00:00,"Troppi tap per arrivare alla cassa, UX da rivedere."
+Luca,3,2024-11-01 00:00:00,Chat rapida: problema risolto in 5 minuti.
+Claudia,1,2024-11-04 00:00:00,Sostituzioni forzate e non equivalenti.
+Andrea,5,2024-11-10 00:00:00,"Pagamento fluido con Apple Pay, fattura inviata subito."
+Noemi,1,2024-11-10 00:00:00,"Carta rifiutata senza motivo, assistenza lenta."
+Luca,2,2024-11-14 00:00:00,"Carta rifiutata senza motivo, assistenza lenta."
+Valentina,2,2024-11-14 00:00:00,Crash frequenti alla conferma carrello.
+Andrea,2,2024-11-15 00:00:00,Consegna in ritardo e prodotti mancanti.
+Pietro,1,2024-11-19 00:00:00,"Login spesso fallisce, devo reimpostare la password."
+Daniele,5,2024-11-22 00:00:00,"Login con FaceID comodissimo, nessun problema."
+Claudia,5,2024-11-22 00:00:00,"Interfaccia chiara, categorie facili da navigare."
+Federico,3,2024-11-23 00:00:00,Codici promo spesso non funzionano.
+Martina,2,2024-11-27 00:00:00,"Login spesso fallisce, devo reimpostare la password."
+Silvia,5,2024-11-29 00:00:00,"Registrazione veloce e chiara, in pochi minuti ho fatto il primo ordine."
+Riccardo,2,2024-12-03 00:00:00,"Login spesso fallisce, devo reimpostare la password."
+Matteo,2,2024-12-03 00:00:00,Crash frequenti alla conferma carrello.
+Giulia,2,2024-12-03 00:00:00,Crash frequenti alla conferma carrello.
+Davide,5,2024-12-04 00:00:00,"Pagamento fluido con Apple Pay, fattura inviata subito."
+Silvia,5,2024-12-04 00:00:00,"Interfaccia chiara, categorie facili da navigare."
+Serena,5,2024-12-05 00:00:00,Consegne puntuali e rider gentili.
+Riccardo,2,2024-12-07 00:00:00,Registrazione confusa con troppi passaggi.
+Eleonora,5,2024-12-08 00:00:00,"Pagamento fluido con Apple Pay, fattura inviata subito."
+Giorgia,1,2024-12-09 00:00:00,Codici promo spesso non funzionano.
+Federico,5,2024-12-11 00:00:00,Consegne puntuali e rider gentili.
+Simone,5,2024-12-12 00:00:00,Ottime promo e coupon automatici in cassa.
+Eleonora,2,2024-12-13 00:00:00,"Login spesso fallisce, devo reimpostare la password."
+Simone,2,2024-12-13 00:00:00,"Login spesso fallisce, devo reimpostare la password."
+Noemi,5,2024-12-16 00:00:00,"Login con FaceID comodissimo, nessun problema."
+Valentina,5,2024-12-16 00:00:00,"Interfaccia chiara, categorie facili da navigare."
+Alice,4,2024-12-16 00:00:00,Consegne puntuali e rider gentili.
+Federico,1,2024-12-18 00:00:00,Codici promo spesso non funzionano.
+Andrea,5,2024-12-18 00:00:00,"Registrazione veloce e chiara, in pochi minuti ho fatto il primo ordine."
+Filippo,5,2024-12-19 00:00:00,"Sostituzioni proposte bene, alternative di qualità."
+Davide,5,2024-12-26 00:00:00,"App stabile anche durante gli sconti, nessun crash."
+Giulia,5,2024-12-27 00:00:00,"Pagamento fluido con Apple Pay, fattura inviata subito."
+Daniele,4,2024-12-28 00:00:00,"Registrazione veloce e chiara, in pochi minuti ho fatto il primo ordine."
+Pietro,5,2024-12-29 00:00:00,"Interfaccia chiara, categorie facili da navigare."
+Roberto,5,2024-12-30 00:00:00,"Login con FaceID comodissimo, nessun problema."
+Ilaria,2,2024-12-31 00:00:00,"Login spesso fallisce, devo reimpostare la password."
+Stefano,4,2025-01-01 00:00:00,"Registrazione veloce e chiara, in pochi minuti ho fatto il primo ordine."
+Sara,5,2025-01-03 00:00:00,"Interfaccia chiara, categorie facili da navigare."
+Aurora,4,2025-01-03 00:00:00,Ottime promo e coupon automatici in cassa.
+Michele,5,2025-01-06 00:00:00,"Sostituzioni proposte bene, alternative di qualità."
+Andrea,3,2025-01-08 00:00:00,"Carta rifiutata senza motivo, assistenza lenta."
+Chiara,5,2025-01-11 00:00:00,Chat rapida: problema risolto in 5 minuti.
+Elisa,5,2025-01-12 00:00:00,Chat rapida: problema risolto in 5 minuti.
+Martina,4,2025-01-14 00:00:00,"Registrazione veloce e chiara, in pochi minuti ho fatto il primo ordine."
+Matteo,5,2025-01-15 00:00:00,Chat rapida: problema risolto in 5 minuti.
+Roberto,1,2025-01-20 00:00:00,Crash frequenti alla conferma carrello.
+Michele,2,2025-01-22 00:00:00,Sostituzioni forzate e non equivalenti.
+Nicola,5,2025-01-23 00:00:00,Ottime promo e coupon automatici in cassa.
+Gabriele,4,2025-01-26 00:00:00,"Login spesso fallisce, devo reimpostare la password."
+Alice,5,2025-01-31 00:00:00,"Pagamento fluido con Apple Pay, fattura inviata subito."
+Matteo,4,2025-01-31 00:00:00,"Login con FaceID comodissimo, nessun problema."
+Elisa,5,2025-02-02 00:00:00,Chat rapida: problema risolto in 5 minuti.
+Silvia,2,2025-02-03 00:00:00,"Carta rifiutata senza motivo, assistenza lenta."
+Riccardo,3,2025-02-06 00:00:00,Assistenza non risponde o risposte standard.
+Pietro,5,2025-02-06 00:00:00,"Pagamento fluido con Apple Pay, fattura inviata subito."
+Giorgia,5,2025-02-07 00:00:00,"Pagamento fluido con Apple Pay, fattura inviata subito."
+Beatrice,5,2025-02-12 00:00:00,"Login con FaceID comodissimo, nessun problema."
+Aurora,2,2025-02-12 00:00:00,Assistenza non risponde o risposte standard.
+Riccardo,2,2025-02-17 00:00:00,Codici promo spesso non funzionano.
+Alice,5,2025-02-17 00:00:00,Chat rapida: problema risolto in 5 minuti.
+Matteo,2,2025-02-20 00:00:00,Codici promo spesso non funzionano.
+Pietro,1,2025-02-20 00:00:00,Crash frequenti alla conferma carrello.
+Luca,5,2025-02-22 00:00:00,Consegne puntuali e rider gentili.
+Chiara,4,2025-02-23 00:00:00,Ottime promo e coupon automatici in cassa.
+Nicola,5,2025-02-25 00:00:00,"Interfaccia chiara, categorie facili da navigare."
+Federico,4,2025-02-25 00:00:00,Consegne puntuali e rider gentili.
+Pietro,2,2025-03-01 00:00:00,"Carta rifiutata senza motivo, assistenza lenta."
+Valentina,2,2025-03-04 00:00:00,Registrazione confusa con troppi passaggi.
+Serena,5,2025-03-04 00:00:00,Consegne puntuali e rider gentili.
+Roberto,2,2025-03-08 00:00:00,Assistenza non risponde o risposte standard.
+Sara,5,2025-03-13 00:00:00,"App stabile anche durante gli sconti, nessun crash."
+Marco,2,2025-03-15 00:00:00,Assistenza non risponde o risposte standard.
+Chiara,5,2025-03-17 00:00:00,"Pagamento fluido con Apple Pay, fattura inviata subito."
+Arianna,4,2025-03-20 00:00:00,Ottime promo e coupon automatici in cassa.
+Sofia,3,2025-03-25 00:00:00,"Login spesso fallisce, devo reimpostare la password."
+Stefano,3,2025-03-27 00:00:00,Crash frequenti alla conferma carrello.
+Valentina,2,2025-04-02 00:00:00,Assistenza non risponde o risposte standard.
+Paolo,5,2025-04-02 00:00:00,"Interfaccia chiara, categorie facili da navigare."
+Martina,1,2025-04-03 00:00:00,Crash frequenti alla conferma carrello.
+Alessio,5,2025-04-03 00:00:00,"Login con FaceID comodissimo, nessun problema."
+Silvia,5,2025-04-04 00:00:00,Chat rapida: problema risolto in 5 minuti.
+Noemi,5,2025-04-04 00:00:00,Chat rapida: problema risolto in 5 minuti.
+Matteo,2,2025-04-04 00:00:00,Registrazione confusa con troppi passaggi.
+Giorgia,5,2025-04-05 00:00:00,"Login con FaceID comodissimo, nessun problema."
+Simone,5,2025-04-05 00:00:00,"Login con FaceID comodissimo, nessun problema."
+Alice,4,2025-04-05 00:00:00,Ottime promo e coupon automatici in cassa.
+Simone,1,2025-04-07 00:00:00,Crash frequenti alla conferma carrello.
+Davide,2,2025-04-07 00:00:00,"Carta rifiutata senza motivo, assistenza lenta."
+Gabriele,5,2025-04-09 00:00:00,"Pagamento fluido con Apple Pay, fattura inviata subito."
+Sofia,5,2025-04-11 00:00:00,Chat rapida: problema risolto in 5 minuti.
+Chiara,4,2025-04-12 00:00:00,Ottime promo e coupon automatici in cassa.
+Francesca,1,2025-04-14 00:00:00,Crash frequenti alla conferma carrello.
+Martina,5,2025-04-14 00:00:00,"App stabile anche durante gli sconti, nessun crash."
+Paolo,5,2025-04-14 00:00:00,"App stabile anche durante gli sconti, nessun crash."
+Nicola,2,2025-04-16 00:00:00,Assistenza non risponde o risposte standard.
+Tommaso,5,2025-04-17 00:00:00,Ottime promo e coupon automatici in cassa.
+Simone,5,2025-04-18 00:00:00,Chat rapida: problema risolto in 5 minuti.
+Arianna,5,2025-04-19 00:00:00,"Sostituzioni proposte bene, alternative di qualità."
+Sofia,4,2025-04-19 00:00:00,"Interfaccia chiara, categorie facili da navigare."
+Elisa,3,2025-04-19 00:00:00,"Login spesso fallisce, devo reimpostare la password."
+Francesca,2,2025-04-19 00:00:00,"Login spesso fallisce, devo reimpostare la password."
+Francesca,5,2025-04-20 00:00:00,Chat rapida: problema risolto in 5 minuti.
+Beatrice,5,2025-04-20 00:00:00,Chat rapida: problema risolto in 5 minuti.
+Marco,3,2025-04-22 00:00:00,Codici promo spesso non funzionano.
+Roberto,2,2025-04-22 00:00:00,Registrazione confusa con troppi passaggi.
+Giulia,2,2025-04-23 00:00:00,"Login spesso fallisce, devo reimpostare la password."
+Alice,2,2025-04-24 00:00:00,Consegna in ritardo e prodotti mancanti.
+Edoardo,5,2025-04-25 00:00:00,Consegne puntuali e rider gentili.
+Filippo,5,2025-04-26 00:00:00,"Login con FaceID comodissimo, nessun problema."
+Daniele,1,2025-04-27 00:00:00,"Login spesso fallisce, devo reimpostare la password."
+Eleonora,5,2025-04-29 00:00:00,Ottime promo e coupon automatici in cassa.
+Vittoria,5,2025-04-30 00:00:00,Chat rapida: problema risolto in 5 minuti.
+Tommaso,4,2025-05-01 00:00:00,Chat rapida: problema risolto in 5 minuti.
+Roberto,4,2025-05-01 00:00:00,Chat rapida: problema risolto in 5 minuti.
+Arianna,4,2025-05-01 00:00:00,"Login con FaceID comodissimo, nessun problema."
+Stefano,4,2025-05-02 00:00:00,"Login con FaceID comodissimo, nessun problema."
+Martina,2,2025-05-03 00:00:00,Sostituzioni forzate e non equivalenti.
+Roberto,3,2025-05-04 00:00:00,"Login spesso fallisce, devo reimpostare la password."
+Michele,5,2025-05-05 00:00:00,Chat rapida: problema risolto in 5 minuti.
+Serena,4,2025-05-06 00:00:00,"Sostituzioni proposte bene, alternative di qualità."
+Giulia,4,2025-05-07 00:00:00,"App stabile anche durante gli sconti, nessun crash."
+Filippo,4,2025-05-07 00:00:00,Consegne puntuali e rider gentili.
+Filippo,2,2025-05-07 00:00:00,Sostituzioni forzate e non equivalenti.
+Chiara,3,2025-05-08 00:00:00,Crash frequenti alla conferma carrello.
+Luca,2,2025-05-08 00:00:00,Registrazione confusa con troppi passaggi.
+Paolo,5,2025-05-08 00:00:00,"Pagamento fluido con Apple Pay, fattura inviata subito."
+Elisa,3,2025-05-08 00:00:00,"Troppi tap per arrivare alla cassa, UX da rivedere."
+Filippo,2,2025-05-09 00:00:00,Consegna in ritardo e prodotti mancanti.
+Claudia,1,2025-05-09 00:00:00,Registrazione confusa con troppi passaggi.
+Andrea,1,2025-05-10 00:00:00,"Login spesso fallisce, devo reimpostare la password."
+Paolo,5,2025-05-10 00:00:00,"Registrazione veloce e chiara, in pochi minuti ho fatto il primo ordine."
+Stefano,5,2025-05-10 00:00:00,"Registrazione veloce e chiara, in pochi minuti ho fatto il primo ordine."
+Matteo,4,2025-05-11 00:00:00,"Registrazione veloce e chiara, in pochi minuti ho fatto il primo ordine."
+Martina,1,2025-05-11 00:00:00,Codici promo spesso non funzionano.
+Pietro,4,2025-05-12 00:00:00,"Pagamento fluido con Apple Pay, fattura inviata subito."
+Beatrice,4,2025-05-13 00:00:00,"Interfaccia chiara, categorie facili da navigare."
+Alessio,3,2025-05-14 00:00:00,"Interfaccia chiara, categorie facili da navigare."
+Pietro,4,2025-05-17 00:00:00,"Pagamento fluido con Apple Pay, fattura inviata subito."
+Ilaria,2,2025-05-17 00:00:00,Assistenza non risponde o risposte standard.
+Sofia,5,2025-05-17 00:00:00,Consegne puntuali e rider gentili.
+Sofia,5,2025-05-18 00:00:00,"App stabile anche durante gli sconti, nessun crash."
+Stefano,3,2025-05-18 00:00:00,Consegna in ritardo e prodotti mancanti.
+Valentina,4,2025-05-19 00:00:00,"Registrazione veloce e chiara, in pochi minuti ho fatto il primo ordine."
+Marco,5,2025-05-20 00:00:00,Ottime promo e coupon automatici in cassa.
+Michele,4,2025-05-20 00:00:00,"Login spesso fallisce, devo reimpostare la password."
+Chiara,5,2025-05-21 00:00:00,"Pagamento fluido con Apple Pay, fattura inviata subito."
+Michele,3,2025-05-23 00:00:00,"Login spesso fallisce, devo reimpostare la password."
+Filippo,5,2025-05-25 00:00:00,"Login con FaceID comodissimo, nessun problema."
+Tommaso,4,2025-05-26 00:00:00,"Registrazione veloce e chiara, in pochi minuti ho fatto il primo ordine."
+Federico,4,2025-05-27 00:00:00,"Pagamento fluido con Apple Pay, fattura inviata subito."
+Valentina,2,2025-05-27 00:00:00,"Carta rifiutata senza motivo, assistenza lenta."
+Alice,3,2025-05-28 00:00:00,Codici promo spesso non funzionano.
+Andrea,2,2025-05-28 00:00:00,Sostituzioni forzate e non equivalenti.
+Gabriele,1,2025-05-29 00:00:00,"Troppi tap per arrivare alla cassa, UX da rivedere."
+Valentina,5,2025-05-29 00:00:00,"Interfaccia chiara, categorie facili da navigare."
+Alessio,4,2025-06-02 00:00:00,Consegne puntuali e rider gentili.
+Valentina,4,2025-06-03 00:00:00,"Login con FaceID comodissimo, nessun problema."
+Beatrice,2,2025-06-03 00:00:00,Crash frequenti alla conferma carrello.
+Alice,2,2025-06-03 00:00:00,Consegna in ritardo e prodotti mancanti.
+Paolo,2,2025-06-05 00:00:00,Consegna in ritardo e prodotti mancanti.
+Andrea,2,2025-06-05 00:00:00,"Login spesso fallisce, devo reimpostare la password."
+Arianna,3,2025-06-07 00:00:00,Assistenza non risponde o risposte standard.
+Luca,3,2025-06-09 00:00:00,Crash frequenti alla conferma carrello.
+Silvia,1,2025-06-09 00:00:00,"Login spesso fallisce, devo reimpostare la password."
+Sofia,5,2025-06-13 00:00:00,"Login con FaceID comodissimo, nessun problema."
+Sofia,1,2025-06-15 00:00:00,Registrazione confusa con troppi passaggi.
+Matteo,4,2025-06-16 00:00:00,"Sostituzioni proposte bene, alternative di qualità."
+Riccardo,1,2025-06-17 00:00:00,"Login spesso fallisce, devo reimpostare la password."
+Valentina,5,2025-06-18 00:00:00,Ottime promo e coupon automatici in cassa.
+Beatrice,4,2025-06-19 00:00:00,"Interfaccia chiara, categorie facili da navigare."
+Arianna,2,2025-06-20 00:00:00,"Troppi tap per arrivare alla cassa, UX da rivedere."
+Paolo,2,2025-06-21 00:00:00,Registrazione confusa con troppi passaggi.
+Claudia,5,2025-06-21 00:00:00,"Login con FaceID comodissimo, nessun problema."
+Stefano,3,2025-06-22 00:00:00,Consegne puntuali e rider gentili.
+Stefano,5,2025-06-25 00:00:00,"Sostituzioni proposte bene, alternative di qualità."
+Claudia,5,2025-06-26 00:00:00,"App stabile anche durante gli sconti, nessun crash."
+Sofia,4,2025-06-27 00:00:00,"App stabile anche durante gli sconti, nessun crash."
+Ilaria,4,2025-06-27 00:00:00,Ottime promo e coupon automatici in cassa.
+Arianna,1,2025-06-28 00:00:00,Registrazione confusa con troppi passaggi.
+Roberto,5,2025-06-29 00:00:00,"Registrazione veloce e chiara, in pochi minuti ho fatto il primo ordine."
+Vittoria,5,2025-06-30 00:00:00,"Sostituzioni proposte bene, alternative di qualità."
+Chiara,5,2025-07-01 00:00:00,"Pagamento fluido con Apple Pay, fattura inviata subito."
+Giulia,5,2025-07-01 00:00:00,"Interfaccia chiara, categorie facili da navigare."
+Francesca,2,2025-07-03 00:00:00,Crash frequenti alla conferma carrello.
+Elisa,2,2025-07-04 00:00:00,Assistenza non risponde o risposte standard.
+Federico,2,2025-07-06 00:00:00,Sostituzioni forzate e non equivalenti.
+Alice,2,2025-07-06 00:00:00,"Carta rifiutata senza motivo, assistenza lenta."
+Federico,4,2025-07-07 00:00:00,Crash frequenti alla conferma carrello.
+Noemi,4,2025-07-08 00:00:00,"Interfaccia chiara, categorie facili da navigare."
+Vittoria,2,2025-07-10 00:00:00,"Login spesso fallisce, devo reimpostare la password."
+Pietro,5,2025-07-10 00:00:00,Chat rapida: problema risolto in 5 minuti.
+Edoardo,4,2025-07-12 00:00:00,"Registrazione veloce e chiara, in pochi minuti ho fatto il primo ordine."
+Sofia,2,2025-07-13 00:00:00,Consegna in ritardo e prodotti mancanti.
+Simone,5,2025-07-13 00:00:00,"Sostituzioni proposte bene, alternative di qualità."
+Pietro,5,2025-07-13 00:00:00,"Registrazione veloce e chiara, in pochi minuti ho fatto il primo ordine."
+Michele,4,2025-07-13 00:00:00,"Login con FaceID comodissimo, nessun problema."
+Pietro,3,2025-07-17 00:00:00,Crash frequenti alla conferma carrello.
+Riccardo,3,2025-07-17 00:00:00,"Login spesso fallisce, devo reimpostare la password."
+Daniele,4,2025-07-20 00:00:00,"Pagamento fluido con Apple Pay, fattura inviata subito."
+Edoardo,1,2025-07-21 00:00:00,"Carta rifiutata senza motivo, assistenza lenta."
+Daniele,4,2025-07-22 00:00:00,Consegne puntuali e rider gentili.
+Claudia,2,2025-07-22 00:00:00,Crash frequenti alla conferma carrello.
+Paolo,3,2025-07-23 00:00:00,Sostituzioni forzate e non equivalenti.
+Valentina,2,2025-07-23 00:00:00,Sostituzioni forzate e non equivalenti.
+Davide,5,2025-07-24 00:00:00,Ottime promo e coupon automatici in cassa.
+Ilaria,5,2025-07-25 00:00:00,"Interfaccia chiara, categorie facili da navigare."
+Stefano,5,2025-07-26 00:00:00,"Registrazione veloce e chiara, in pochi minuti ho fatto il primo ordine."
+Nicola,5,2025-07-26 00:00:00,"App stabile anche durante gli sconti, nessun crash."
+Andrea,2,2025-07-26 00:00:00,"Troppi tap per arrivare alla cassa, UX da rivedere."
+Michele,5,2025-07-27 00:00:00,"Pagamento fluido con Apple Pay, fattura inviata subito."
+Valentina,3,2025-07-27 00:00:00,Sostituzioni forzate e non equivalenti.
+Valentina,3,2025-07-28 00:00:00,Assistenza non risponde o risposte standard.
+Martina,4,2025-07-28 00:00:00,Chat rapida: problema risolto in 5 minuti.
+Francesca,5,2025-07-28 00:00:00,Consegne puntuali e rider gentili.
+Serena,2,2025-07-29 00:00:00,"Login spesso fallisce, devo reimpostare la password."
+Marco,4,2025-07-30 00:00:00,Consegne puntuali e rider gentili.
+Arianna,5,2025-07-31 00:00:00,"Registrazione veloce e chiara, in pochi minuti ho fatto il primo ordine."
+Noemi,5,2025-08-01 00:00:00,"Interfaccia chiara, categorie facili da navigare."
+Paolo,2,2025-08-01 00:00:00,"Carta rifiutata senza motivo, assistenza lenta."
+Francesca,4,2025-08-05 00:00:00,"Sostituzioni proposte bene, alternative di qualità."
+Marco,2,2025-08-14 00:00:00,Codici promo spesso non funzionano.
+Eleonora,5,2025-08-14 00:00:00,Consegne puntuali e rider gentili.
+Andrea,2,2025-08-24 00:00:00,Crash frequenti alla conferma carrello.
+Silvia,5,2025-08-25 00:00:00,"Login con FaceID comodissimo, nessun problema."
+Beatrice,4,2025-09-05 00:00:00,"Pagamento fluido con Apple Pay, fattura inviata subito."
+Gabriele,1,2025-09-05 00:00:00,Registrazione confusa con troppi passaggi.
+Edoardo,5,2025-09-08 00:00:00,"Pagamento fluido con Apple Pay, fattura inviata subito."
+Davide,5,2025-09-10 00:00:00,"Registrazione veloce e chiara, in pochi minuti ho fatto il primo ordine."
+Serena,5,2025-09-12 00:00:00,Chat rapida: problema risolto in 5 minuti.
+Simone,2,2025-09-12 00:00:00,"Carta rifiutata senza motivo, assistenza lenta."
+Giulia,5,2025-09-14 00:00:00,"Pagamento fluido con Apple Pay, fattura inviata subito."
+Martina,4,2025-09-23 00:00:00,"Interfaccia chiara, categorie facili da navigare."
+Alessio,5,2025-09-26 00:00:00,"Login con FaceID comodissimo, nessun problema."

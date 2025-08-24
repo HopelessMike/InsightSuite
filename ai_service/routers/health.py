@@ -58,11 +58,10 @@ def check_dependencies() -> bool:
     Check if all required dependencies are available
     """
     try:
-        # Check critical imports
+        # Check critical imports only
         import pandas
-        import numpy
-        import sklearn
-        import hdbscan
+        import fastapi
+        import pydantic
         return True
     except ImportError:
         return False

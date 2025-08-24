@@ -4,19 +4,17 @@
     "name": "Airbnb Roma",
     "source": "InsideAirbnb",
     "date_range": [
-      "2010-05-14",
-      "2025-03-12"
+      "2024-01-02",
+      "2025-09-28"
     ],
     "languages": [
-      "en",
-      "fr",
-      "es",
       "it",
-      "other"
+      "en",
+      "af"
     ],
     "totals": {
-      "reviews": 36481,
-      "clusters": 3
+      "reviews": 480,
+      "clusters": 4
     },
     "method": {
       "sentiment": "xlm-roberta (CardiffNLP)",
@@ -26,214 +24,1269 @@
     }
   },
   "aggregates": {
-    "sentiment_mean": 0.754,
+    "sentiment_mean": 0.127,
     "sentiment_dist": {
-      "neg": 0.04,
-      "neu": 0.025,
-      "pos": 0.935
+      "neg": 0.417,
+      "neu": 0.01,
+      "pos": 0.573
     },
     "rating_hist": [
       [
         1,
-        0
+        37
       ],
       [
         2,
-        0
+        116
       ],
       [
         3,
-        0
+        96
       ],
       [
         4,
-        0
+        119
       ],
       [
         5,
-        0
+        112
       ]
     ]
   },
   "clusters": [
     {
       "id": "cluster_0",
-      "label": "Excellent Rome Accommodations with Outstanding Hosts",
-      "size": 2368,
-      "share": 0.484,
-      "sentiment": 0.842,
+      "label": "Hotel con posizione centrale ma problemi tecnici e di servizio",
+      "size": 236,
+      "share": 0.538,
+      "sentiment": 0.155,
       "keywords": [
-        "the",
-        "to",
-        "in",
-        "was",
-        "is",
-        "we",
-        "apartment",
-        "very",
-        "of",
-        "great",
-        "stay",
-        "for"
+        "check",
+        "posizione",
+        "segnale",
+        "debole",
+        "continue disconnessioni",
+        "debole camera",
+        "disconnessioni",
+        "instabile segnale",
+        "camera",
+        "camera continue",
+        "continue",
+        "segnale debole"
       ],
-      "summary": "Highly positive reviews of Rome apartments featuring exceptional hosts, prime locations near major attractions and transport, clean and well-equipped spaces, and excellent guest service including airport transfers and local recommendations.",
+      "summary": "Hotel con ottima posizione centrale e buon rapporto qualità-prezzo, ma caratterizzato da significativi problemi di connettività Wi-Fi e procedure di check-in inefficienti. Il personale risulta variabile nella qualità del servizio.",
       "strengths": [
-        "Outstanding host service with responsive communication and helpful local recommendations",
-        "Prime locations near major attractions (Colosseum, Roman Forum, Vatican) and transport hubs",
-        "Clean, spacious, and well-equipped apartments with modern amenities"
+        "Posizione ottima vicino al centro e ben collegata ai mezzi pubblici",
+        "Buon rapporto qualità-prezzo",
+        "Isolamento acustico efficace nelle camere"
       ],
       "weaknesses": [
-        "Occasional noise from neighbors",
-        "Some apartments smaller than they appear in photos"
-      ]
+        "Wi-Fi instabile con segnale debole in camera e continue disconnessioni",
+        "Check-in lento con istruzioni poco chiare e lunghe attese",
+        "Staff a volte freddo e poco presente"
+      ],
+      "opportunity_score": 0.323,
+      "quotes": [
+        {
+          "id": "100040",
+          "text": "Prezzo un po' alto rispetto alla qualità della stanza e dei servizi.",
+          "rating": 2.0,
+          "sentiment": -0.5912983417510986,
+          "lang": "it",
+          "date": "2024-07-13",
+          "sourceId": "100040"
+        },
+        {
+          "id": "100369",
+          "text": "Prezzo un po' alto rispetto alla qualità della stanza e dei servizi.",
+          "rating": 2.0,
+          "sentiment": -0.5912983417510986,
+          "lang": "it",
+          "date": "2025-05-24",
+          "sourceId": "100369"
+        },
+        {
+          "id": "100162",
+          "text": "Wi‐Fi stabile e veloce, video call perfette per da solo.",
+          "rating": 4.0,
+          "sentiment": 0.8849191665649414,
+          "lang": "it",
+          "date": "2025-05-12",
+          "sourceId": "100162"
+        },
+        {
+          "id": "100386",
+          "text": "Wi‐Fi instabile: segnale debole in camera e continue disconnessioni.",
+          "rating": 3.0,
+          "sentiment": -0.8480539321899414,
+          "lang": "it",
+          "date": "2024-02-10",
+          "sourceId": "100386"
+        },
+        {
+          "id": "100317",
+          "text": "Check-in lento, istruzioni poco chiare e attesa lunga alla consegna delle chiavi.",
+          "rating": 2.0,
+          "sentiment": -0.7751418352127075,
+          "lang": "it",
+          "date": "2024-11-07",
+          "sourceId": "100317"
+        },
+        {
+          "id": "100220",
+          "text": "Buon rapporto qualità/prezzo per la posizione e i servizi offerti.",
+          "rating": 4.0,
+          "sentiment": 0.897169828414917,
+          "lang": "it",
+          "date": "2024-09-13",
+          "sourceId": "100220"
+        },
+        {
+          "id": "100248",
+          "text": "Wi‐Fi instabile: segnale debole in camera e continue disconnessioni.",
+          "rating": 2.0,
+          "sentiment": -0.8480539321899414,
+          "lang": "it",
+          "date": "2025-09-10",
+          "sourceId": "100248"
+        },
+        {
+          "id": "100208",
+          "text": "Wi‐Fi instabile: segnale debole in camera e continue disconnessioni.",
+          "rating": 3.0,
+          "sentiment": -0.8480539321899414,
+          "lang": "it",
+          "date": "2024-08-21",
+          "sourceId": "100208"
+        },
+        {
+          "id": "100299",
+          "text": "Check-in rapido e flessibile, ci hanno permesso di lasciare i bagagli prima. Molto comodo.",
+          "rating": 5.0,
+          "sentiment": 0.8210534453392029,
+          "lang": "it",
+          "date": "2025-02-04",
+          "sourceId": "100299"
+        },
+        {
+          "id": "100024",
+          "text": "Check-in rapido e flessibile, ci hanno permesso di lasciare i bagagli prima. Molto comodo.",
+          "rating": 5.0,
+          "sentiment": 0.8210534453392029,
+          "lang": "it",
+          "date": "2024-03-03",
+          "sourceId": "100024"
+        },
+        {
+          "id": "100029",
+          "text": "Wi‐Fi stabile e veloce, video call perfette per famiglia con bambini.",
+          "rating": 4.0,
+          "sentiment": 0.8858085870742798,
+          "lang": "it",
+          "date": "2025-08-27",
+          "sourceId": "100029"
+        },
+        {
+          "id": "100333",
+          "text": "Stanza silenziosa nonostante la zona centrale; ottimo isolamento acustico.",
+          "rating": 5.0,
+          "sentiment": 0.8666561841964722,
+          "lang": "it",
+          "date": "2024-06-10",
+          "sourceId": "100333"
+        }
+      ],
+      "co_occurs": []
     },
     {
       "id": "cluster_1",
-      "label": "Appartements parfaitement situés avec hôtes attentionnés",
-      "size": 206,
-      "share": 0.042,
-      "sentiment": 0.922,
+      "label": "Aria Condizionata",
+      "size": 42,
+      "share": 0.096,
+      "sentiment": 0.707,
       "keywords": [
-        "de",
-        "et",
-        "très",
-        "est",
-        "nous",
-        "pour",
-        "bien",
-        "un",
-        "le",
-        "la",
-        "dans",
-        "situé"
+        "rumoroso camera",
+        "rumoroso",
+        "calda",
+        "pomeriggio",
+        "potente",
+        "potente rumoroso",
+        "calda pomeriggio",
+        "camera calda",
+        "climatizzatore",
+        "climatizzatore potente",
+        "silenziosa temperatura",
+        "silenziosa"
       ],
-      "summary": "Appartements très bien situés au cœur de Rome permettant de visiter les principaux sites touristiques à pied. Les logements sont propres, bien équipés et confortables. Les hôtes sont accueillants, réactifs et prodiguent d'excellents conseils pour découvrir la ville.",
+      "summary": "Recensioni contrastanti sull'aria condizionata delle camere, con la maggioranza che lamenta climatizzatori poco potenti e rumorosi che non riescono a raffreddare adeguatamente le stanze nel pomeriggio, mentre una minoranza apprezza l'efficienza e silenziosità del sistema.",
       "strengths": [
-        "Emplacement idéal au centre de Rome, proche des sites touristiques majeurs",
-        "Possibilité de tout faire à pied depuis les appartements",
-        "Hôtes très accueillants, réactifs et de bon conseil"
+        "Aria condizionata efficiente quando funziona bene",
+        "Sistema silenzioso in alcuni casi",
+        "Temperatura piacevole mantenuta in camera"
       ],
       "weaknesses": [
-        "Quelques chambres sur rue peuvent être bruyantes",
-        "Qualité du ménage parfois perfectible"
-      ]
+        "Climatizzatore poco potente",
+        "Rumorosità eccessiva",
+        "Camera calda nel pomeriggio"
+      ],
+      "opportunity_score": 0.058,
+      "quotes": [
+        {
+          "id": "100243",
+          "text": "Climatizzatore poco potente e rumoroso; camera calda nel pomeriggio.",
+          "rating": 1.0,
+          "sentiment": 0.6540299654006958,
+          "lang": "it",
+          "date": "2024-09-16",
+          "sourceId": "100243"
+        },
+        {
+          "id": "100266",
+          "text": "Aria condizionata efficiente e silenziosa; temperatura piacevole in camera.",
+          "rating": 4.0,
+          "sentiment": 0.9210341572761536,
+          "lang": "it",
+          "date": "2024-06-27",
+          "sourceId": "100266"
+        },
+        {
+          "id": "100061",
+          "text": "Aria condizionata efficiente e silenziosa; temperatura piacevole in camera.",
+          "rating": 5.0,
+          "sentiment": 0.9210341572761536,
+          "lang": "it",
+          "date": "2024-05-03",
+          "sourceId": "100061"
+        },
+        {
+          "id": "100450",
+          "text": "Climatizzatore poco potente e rumoroso; camera calda nel pomeriggio.",
+          "rating": 1.0,
+          "sentiment": 0.6540299654006958,
+          "lang": "it",
+          "date": "2024-09-21",
+          "sourceId": "100450"
+        },
+        {
+          "id": "100135",
+          "text": "Climatizzatore poco potente e rumoroso; camera calda nel pomeriggio.",
+          "rating": 2.0,
+          "sentiment": 0.6540299654006958,
+          "lang": "it",
+          "date": "2024-02-13",
+          "sourceId": "100135"
+        },
+        {
+          "id": "100434",
+          "text": "Climatizzatore poco potente e rumoroso; camera calda nel pomeriggio.",
+          "rating": 3.0,
+          "sentiment": 0.6540299654006958,
+          "lang": "it",
+          "date": "2025-07-16",
+          "sourceId": "100434"
+        },
+        {
+          "id": "100292",
+          "text": "Climatizzatore poco potente e rumoroso; camera calda nel pomeriggio.",
+          "rating": 3.0,
+          "sentiment": 0.6540299654006958,
+          "lang": "it",
+          "date": "2024-08-10",
+          "sourceId": "100292"
+        },
+        {
+          "id": "100419",
+          "text": "Aria condizionata efficiente e silenziosa; temperatura piacevole in camera.",
+          "rating": 4.0,
+          "sentiment": 0.9210341572761536,
+          "lang": "it",
+          "date": "2024-11-21",
+          "sourceId": "100419"
+        },
+        {
+          "id": "100409",
+          "text": "Aria condizionata efficiente e silenziosa; temperatura piacevole in camera.",
+          "rating": 4.0,
+          "sentiment": 0.9210341572761536,
+          "lang": "it",
+          "date": "2024-12-19",
+          "sourceId": "100409"
+        },
+        {
+          "id": "100124",
+          "text": "Climatizzatore poco potente e rumoroso; camera calda nel pomeriggio.",
+          "rating": 1.0,
+          "sentiment": 0.6540299654006958,
+          "lang": "it",
+          "date": "2024-04-05",
+          "sourceId": "100124"
+        },
+        {
+          "id": "100334",
+          "text": "Aria condizionata efficiente e silenziosa; temperatura piacevole in camera.",
+          "rating": 4.0,
+          "sentiment": 0.9210341572761536,
+          "lang": "it",
+          "date": "2024-09-27",
+          "sourceId": "100334"
+        },
+        {
+          "id": "100045",
+          "text": "Aria condizionata efficiente e silenziosa; temperatura piacevole in camera.",
+          "rating": 4.0,
+          "sentiment": 0.9210341572761536,
+          "lang": "it",
+          "date": "2024-06-22",
+          "sourceId": "100045"
+        }
+      ],
+      "co_occurs": []
     },
     {
       "id": "cluster_2",
-      "label": "Excellent Location & Host Experience",
-      "size": 2318,
-      "share": 0.474,
-      "sentiment": 0.845,
+      "label": "Comfort del sonno e rumorosità",
+      "size": 120,
+      "share": 0.273,
+      "sentiment": 0.139,
       "keywords": [
-        "great",
-        "location",
-        "great location",
-        "and",
-        "place",
-        "very",
-        "good",
-        "apartment",
-        "stay",
-        "nice",
-        "host",
-        "perfect"
+        "dormito",
+        "vicino",
+        "strada dal",
+        "rumore",
+        "rumore notte",
+        "strada",
+        "dormito male",
+        "notte strada",
+        "male",
+        "notte",
+        "vicino dormito",
+        "dal"
       ],
-      "summary": "Guests consistently praise the exceptional central location with easy access to shops, restaurants, and main attractions, combined with highly responsive and helpful hosts who provide excellent communication and recommendations.",
+      "summary": "Recensioni contrastanti sulla qualità del riposo: molti ospiti apprezzano il comfort del letto e la biancheria morbida, ma una parte significativa lamenta disturbi notturni causati dal rumore della strada e del bar vicino, oltre a materassi troppo duri.",
       "strengths": [
-        "Perfect central location with walkable access to shops, restaurants, and main sites",
-        "Excellent host communication and responsiveness",
-        "Helpful hosts who provide valuable local recommendations"
+        "Letto comodo con biancheria morbida",
+        "Camera pulita e profumata",
+        "Cambio biancheria regolare"
       ],
       "weaknesses": [
-        "Limited specific feedback on potential areas for improvement",
-        "Some reviews lack detailed commentary"
-      ]
+        "Rumore notturno dalla strada e dal bar vicino",
+        "Materasso troppo duro",
+        "Cuscini scomodi"
+      ],
+      "opportunity_score": 0.164,
+      "quotes": [
+        {
+          "id": "100105",
+          "text": "Bagno funzionale e doccia spaziosa; asciugamani puliti ogni giorno.",
+          "rating": 4.0,
+          "sentiment": 0.7619104981422424,
+          "lang": "it",
+          "date": "2024-08-06",
+          "sourceId": "100105"
+        },
+        {
+          "id": "100446",
+          "text": "Materasso un po' duro e cuscini scomodi; riposo non ottimale.",
+          "rating": 3.0,
+          "sentiment": -0.9112791419029236,
+          "lang": "it",
+          "date": "2024-08-16",
+          "sourceId": "100446"
+        },
+        {
+          "id": "100143",
+          "text": "Molto rumore di notte dalla strada e dal bar vicino; abbiamo dormito male.",
+          "rating": 3.0,
+          "sentiment": -0.9160386919975281,
+          "lang": "it",
+          "date": "2024-02-12",
+          "sourceId": "100143"
+        },
+        {
+          "id": "100099",
+          "text": "Camera molto pulita e profumata, cambio biancheria regolare. Con Amici perfetto.",
+          "rating": 4.0,
+          "sentiment": 0.9282376766204834,
+          "lang": "it",
+          "date": "2024-09-03",
+          "sourceId": "100099"
+        },
+        {
+          "id": "100436",
+          "text": "Letto comodo e biancheria morbida; abbiamo dormito benissimo per tutto il soggiorno.",
+          "rating": 4.0,
+          "sentiment": 0.9301002025604248,
+          "lang": "it",
+          "date": "2024-06-05",
+          "sourceId": "100436"
+        },
+        {
+          "id": "100036",
+          "text": "Camera molto pulita e profumata, cambio biancheria regolare. Famiglia Con Bambini perfetto.",
+          "rating": 4.0,
+          "sentiment": 0.9260662198066711,
+          "lang": "it",
+          "date": "2024-09-11",
+          "sourceId": "100036"
+        },
+        {
+          "id": "100401",
+          "text": "Letto comodo e biancheria morbida; abbiamo dormito benissimo per tutto il soggiorno.",
+          "rating": 4.0,
+          "sentiment": 0.9301002025604248,
+          "lang": "it",
+          "date": "2024-12-05",
+          "sourceId": "100401"
+        },
+        {
+          "id": "100336",
+          "text": "Materasso un po' duro e cuscini scomodi; riposo non ottimale.",
+          "rating": 2.0,
+          "sentiment": -0.9112791419029236,
+          "lang": "it",
+          "date": "2024-04-16",
+          "sourceId": "100336"
+        },
+        {
+          "id": "100280",
+          "text": "Molto rumore di notte dalla strada e dal bar vicino; abbiamo dormito male.",
+          "rating": 2.0,
+          "sentiment": -0.9160386919975281,
+          "lang": "it",
+          "date": "2024-07-28",
+          "sourceId": "100280"
+        },
+        {
+          "id": "100432",
+          "text": "Camera molto pulita e profumata, cambio biancheria regolare. Viaggio Di Lavoro perfetto.",
+          "rating": 5.0,
+          "sentiment": 0.9279351234436035,
+          "lang": "it",
+          "date": "2025-07-04",
+          "sourceId": "100432"
+        },
+        {
+          "id": "100104",
+          "text": "Molto rumore di notte dalla strada e dal bar vicino; abbiamo dormito male.",
+          "rating": 2.0,
+          "sentiment": -0.9160386919975281,
+          "lang": "it",
+          "date": "2024-05-20",
+          "sourceId": "100104"
+        },
+        {
+          "id": "100074",
+          "text": "Camera molto pulita e profumata, cambio biancheria regolare. Con Amici perfetto.",
+          "rating": 4.0,
+          "sentiment": 0.9282376766204834,
+          "lang": "it",
+          "date": "2024-09-11",
+          "sourceId": "100074"
+        }
+      ],
+      "co_occurs": []
+    },
+    {
+      "id": "cluster_3",
+      "label": "Colazione con opinioni contrastanti",
+      "size": 41,
+      "share": 0.093,
+      "sentiment": 0.031,
+      "keywords": [
+        "varia qualità",
+        "varia",
+        "torte fatte",
+        "torte",
+        "ottime torte",
+        "qualità",
+        "qualità ottime",
+        "fatte opzioni",
+        "lattosio",
+        "colazione varia",
+        "ottime",
+        "opzioni lattosio"
+      ],
+      "summary": "Le recensioni sulla colazione mostrano opinioni polarizzate: alcuni ospiti apprezzano la varietà e qualità con ottime torte fatte in casa e opzioni senza lattosio, mentre altri trovano l'offerta scarsa con poche opzioni salate e mancanza di alternative senza glutine.",
+      "strengths": [
+        "Torte fatte in casa di ottima qualità",
+        "Varietà e qualità della colazione",
+        "Disponibilità di opzioni senza lattosio"
+      ],
+      "weaknesses": [
+        "Poche opzioni salate disponibili",
+        "Mancanza di alternative senza glutine",
+        "Offerta complessiva considerata scarsa da alcuni ospiti"
+      ],
+      "opportunity_score": 0.056,
+      "quotes": [
+        {
+          "id": "100086",
+          "text": "Colazione varia e di qualità, ottime torte fatte in casa e opzioni senza lattosio.",
+          "rating": 5.0,
+          "sentiment": 0.8825251460075378,
+          "lang": "it",
+          "date": "2024-09-05",
+          "sourceId": "100086"
+        },
+        {
+          "id": "100088",
+          "text": "Colazione un po' scarsa: poche opzioni salate e niente alternative senza glutine.",
+          "rating": 3.0,
+          "sentiment": -0.9483144879341125,
+          "lang": "it",
+          "date": "2024-06-06",
+          "sourceId": "100088"
+        },
+        {
+          "id": "100230",
+          "text": "Colazione un po' scarsa: poche opzioni salate e niente alternative senza glutine.",
+          "rating": 2.0,
+          "sentiment": -0.9483144879341125,
+          "lang": "it",
+          "date": "2024-05-07",
+          "sourceId": "100230"
+        },
+        {
+          "id": "100282",
+          "text": "Colazione un po' scarsa: poche opzioni salate e niente alternative senza glutine.",
+          "rating": 3.0,
+          "sentiment": -0.9483144879341125,
+          "lang": "it",
+          "date": "2024-10-02",
+          "sourceId": "100282"
+        },
+        {
+          "id": "100337",
+          "text": "Colazione varia e di qualità, ottime torte fatte in casa e opzioni senza lattosio.",
+          "rating": 4.0,
+          "sentiment": 0.8825251460075378,
+          "lang": "it",
+          "date": "2024-03-31",
+          "sourceId": "100337"
+        },
+        {
+          "id": "100404",
+          "text": "Colazione varia e di qualità, ottime torte fatte in casa e opzioni senza lattosio.",
+          "rating": 4.0,
+          "sentiment": 0.8825251460075378,
+          "lang": "it",
+          "date": "2025-09-04",
+          "sourceId": "100404"
+        },
+        {
+          "id": "100433",
+          "text": "Colazione varia e di qualità, ottime torte fatte in casa e opzioni senza lattosio.",
+          "rating": 4.0,
+          "sentiment": 0.8825251460075378,
+          "lang": "it",
+          "date": "2024-08-14",
+          "sourceId": "100433"
+        },
+        {
+          "id": "100289",
+          "text": "Colazione varia e di qualità, ottime torte fatte in casa e opzioni senza lattosio.",
+          "rating": 4.0,
+          "sentiment": 0.8825251460075378,
+          "lang": "it",
+          "date": "2025-07-27",
+          "sourceId": "100289"
+        },
+        {
+          "id": "100258",
+          "text": "Colazione varia e di qualità, ottime torte fatte in casa e opzioni senza lattosio.",
+          "rating": 5.0,
+          "sentiment": 0.8825251460075378,
+          "lang": "it",
+          "date": "2025-02-22",
+          "sourceId": "100258"
+        },
+        {
+          "id": "100138",
+          "text": "Colazione varia e di qualità, ottime torte fatte in casa e opzioni senza lattosio.",
+          "rating": 5.0,
+          "sentiment": 0.8825251460075378,
+          "lang": "it",
+          "date": "2024-04-26",
+          "sourceId": "100138"
+        },
+        {
+          "id": "100075",
+          "text": "Colazione un po' scarsa: poche opzioni salate e niente alternative senza glutine.",
+          "rating": 3.0,
+          "sentiment": -0.9483144879341125,
+          "lang": "it",
+          "date": "2024-10-31",
+          "sourceId": "100075"
+        },
+        {
+          "id": "100116",
+          "text": "Colazione un po' scarsa: poche opzioni salate e niente alternative senza glutine.",
+          "rating": 3.0,
+          "sentiment": -0.9483144879341125,
+          "lang": "it",
+          "date": "2024-06-05",
+          "sourceId": "100116"
+        }
+      ],
+      "co_occurs": []
     }
   ],
   "personas": [
     {
       "id": "persona_1",
-      "name": "The Rome Explorer",
-      "share": 0.39,
+      "name": "Budget Traveler",
+      "share": 0.593,
       "goals": [
-        "Find authentic accommodations with local character in Rome",
-        "Connect with knowledgeable hosts who can provide insider tips",
-        "Experience Rome like a local rather than a tourist"
+        "Find affordable stays",
+        "Good location access",
+        "Basic amenities"
       ],
       "pains": [
-        "Difficulty finding hosts who truly understand Rome's hidden gems",
-        "Concerns about accommodation quality matching online descriptions",
-        "Language barriers when communicating with local hosts"
+        "Unexpected fees",
+        "Poor location",
+        "Misleading photos"
       ],
-      "clusters": [
-        "0"
-      ],
+      "clusters": [],
       "quotes": [
-        "The host gave us amazing recommendations for authentic Roman restaurants",
-        "Perfect location near the Colosseum with excellent amenities",
-        "Our host was incredibly helpful and made our Rome trip unforgettable"
+        "\"Perfect location, great value\"",
+        "\"Simple but clean\""
       ],
       "channels": [
-        "Travel booking platforms",
-        "Rome travel forums and blogs",
-        "Social media travel groups"
+        "Price comparison sites",
+        "Review platforms",
+        "Social media"
       ]
     },
     {
       "id": "persona_2",
-      "name": "The Strategic Traveler",
-      "share": 0.38,
+      "name": "Experience Seeker",
+      "share": 0.106,
       "goals": [
-        "Secure prime locations with easy access to attractions and transport",
-        "Ensure exceptional host support throughout their stay",
-        "Maximize travel experience through strategic accommodation choices"
+        "Authentic experiences",
+        "Local recommendations",
+        "Unique properties"
       ],
       "pains": [
-        "Uncertainty about actual location convenience until arrival",
-        "Inconsistent host responsiveness and support quality",
-        "Balancing location benefits with accommodation comfort"
+        "Generic accommodations",
+        "Poor host communication",
+        "Limited local info"
       ],
-      "clusters": [
-        "2"
-      ],
+      "clusters": [],
       "quotes": [
-        "Perfect location with metro station just 2 minutes away",
-        "Host was available 24/7 and solved every issue immediately",
-        "Couldn't have asked for a better location and host combination"
+        "\"Loved the local touch\"",
+        "\"Host made all the difference\""
       ],
       "channels": [
-        "Location-focused travel apps",
-        "Review aggregation websites",
-        "Travel planning communities"
+        "Instagram",
+        "Travel blogs",
+        "Word of mouth"
       ]
     },
     {
       "id": "persona_3",
-      "name": "The French Sophisticate",
-      "share": 0.08,
+      "name": "Comfort Focused",
+      "share": 0.301,
       "goals": [
-        "Find perfectly positioned apartments with refined aesthetics",
-        "Experience attentive, personalized service from hosts",
-        "Enjoy premium travel experiences with attention to detail"
+        "Clean comfortable space",
+        "Reliable amenities",
+        "Quiet environment"
       ],
       "pains": [
-        "Limited availability of high-end, well-located properties",
-        "Difficulty finding hosts who meet sophisticated service expectations",
-        "Language preferences not always accommodated by hosts"
+        "Noise issues",
+        "Cleanliness problems",
+        "Broken facilities"
       ],
-      "clusters": [
-        "1"
-      ],
+      "clusters": [],
       "quotes": [
-        "L'appartement était parfaitement situé avec un hôte exceptionnel",
-        "Service impeccable et attention aux détails remarquable",
-        "Exactement ce que nous recherchions pour notre séjour"
+        "\"Everything worked perfectly\"",
+        "\"Spotlessly clean\""
       ],
       "channels": [
-        "Luxury travel platforms",
-        "French travel communities",
-        "Premium accommodation websites"
+        "Direct booking",
+        "Premium platforms",
+        "Referrals"
       ]
     }
-  ]
+  ],
+  "timeseries": {
+    "monthly": [
+      {
+        "date": "2024-01",
+        "sentiment_mean": 0.111,
+        "volume": 12
+      },
+      {
+        "date": "2024-02",
+        "sentiment_mean": 0.34,
+        "volume": 16
+      },
+      {
+        "date": "2024-03",
+        "sentiment_mean": 0.159,
+        "volume": 22
+      },
+      {
+        "date": "2024-04",
+        "sentiment_mean": -0.13,
+        "volume": 13
+      },
+      {
+        "date": "2024-05",
+        "sentiment_mean": -0.071,
+        "volume": 46
+      },
+      {
+        "date": "2024-06",
+        "sentiment_mean": 0.018,
+        "volume": 39
+      },
+      {
+        "date": "2024-07",
+        "sentiment_mean": -0.027,
+        "volume": 28
+      },
+      {
+        "date": "2024-08",
+        "sentiment_mean": 0.285,
+        "volume": 49
+      },
+      {
+        "date": "2024-09",
+        "sentiment_mean": 0.142,
+        "volume": 43
+      },
+      {
+        "date": "2024-10",
+        "sentiment_mean": -0.029,
+        "volume": 12
+      },
+      {
+        "date": "2024-11",
+        "sentiment_mean": 0.354,
+        "volume": 14
+      },
+      {
+        "date": "2024-12",
+        "sentiment_mean": 0.142,
+        "volume": 9
+      },
+      {
+        "date": "2025-01",
+        "sentiment_mean": 0.161,
+        "volume": 14
+      },
+      {
+        "date": "2025-02",
+        "sentiment_mean": 0.291,
+        "volume": 24
+      },
+      {
+        "date": "2025-03",
+        "sentiment_mean": -0.014,
+        "volume": 13
+      },
+      {
+        "date": "2025-04",
+        "sentiment_mean": 0.16,
+        "volume": 10
+      },
+      {
+        "date": "2025-05",
+        "sentiment_mean": 0.155,
+        "volume": 42
+      },
+      {
+        "date": "2025-06",
+        "sentiment_mean": 0.116,
+        "volume": 18
+      },
+      {
+        "date": "2025-07",
+        "sentiment_mean": 0.224,
+        "volume": 38
+      },
+      {
+        "date": "2025-08",
+        "sentiment_mean": -0.03,
+        "volume": 6
+      },
+      {
+        "date": "2025-09",
+        "sentiment_mean": 0.181,
+        "volume": 12
+      }
+    ],
+    "clusters": {
+      "cluster_0": [
+        {
+          "date": "2024-01",
+          "volume": 4,
+          "share": 0.333,
+          "sentiment": 0.016
+        },
+        {
+          "date": "2024-02",
+          "volume": 10,
+          "share": 0.625,
+          "sentiment": 0.404
+        },
+        {
+          "date": "2024-03",
+          "volume": 12,
+          "share": 0.545,
+          "sentiment": 0.152
+        },
+        {
+          "date": "2024-04",
+          "volume": 4,
+          "share": 0.308,
+          "sentiment": -0.829
+        },
+        {
+          "date": "2024-05",
+          "volume": 21,
+          "share": 0.457,
+          "sentiment": -0.07
+        },
+        {
+          "date": "2024-06",
+          "volume": 18,
+          "share": 0.462,
+          "sentiment": 0.311
+        },
+        {
+          "date": "2024-07",
+          "volume": 10,
+          "share": 0.357,
+          "sentiment": 0.203
+        },
+        {
+          "date": "2024-08",
+          "volume": 26,
+          "share": 0.531,
+          "sentiment": 0.351
+        },
+        {
+          "date": "2024-09",
+          "volume": 17,
+          "share": 0.395,
+          "sentiment": 0.073
+        },
+        {
+          "date": "2024-10",
+          "volume": 5,
+          "share": 0.417,
+          "sentiment": 0.18
+        },
+        {
+          "date": "2024-11",
+          "volume": 9,
+          "share": 0.643,
+          "sentiment": 0.336
+        },
+        {
+          "date": "2024-12",
+          "volume": 5,
+          "share": 0.556,
+          "sentiment": -0.083
+        },
+        {
+          "date": "2025-01",
+          "volume": 7,
+          "share": 0.5,
+          "sentiment": -0.075
+        },
+        {
+          "date": "2025-02",
+          "volume": 14,
+          "share": 0.583,
+          "sentiment": 0.164
+        },
+        {
+          "date": "2025-03",
+          "volume": 7,
+          "share": 0.538,
+          "sentiment": -0.112
+        },
+        {
+          "date": "2025-04",
+          "volume": 4,
+          "share": 0.4,
+          "sentiment": 0.445
+        },
+        {
+          "date": "2025-05",
+          "volume": 19,
+          "share": 0.452,
+          "sentiment": 0.115
+        },
+        {
+          "date": "2025-06",
+          "volume": 13,
+          "share": 0.722,
+          "sentiment": 0.253
+        },
+        {
+          "date": "2025-07",
+          "volume": 19,
+          "share": 0.5,
+          "sentiment": 0.179
+        },
+        {
+          "date": "2025-08",
+          "volume": 3,
+          "share": 0.5,
+          "sentiment": 0.342
+        },
+        {
+          "date": "2025-09",
+          "volume": 9,
+          "share": 0.75,
+          "sentiment": 0.145
+        }
+      ],
+      "cluster_1": [
+        {
+          "date": "2024-01",
+          "volume": 3,
+          "share": 0.25,
+          "sentiment": 0.743
+        },
+        {
+          "date": "2024-02",
+          "volume": 3,
+          "share": 0.188,
+          "sentiment": 0.654
+        },
+        {
+          "date": "2024-04",
+          "volume": 2,
+          "share": 0.154,
+          "sentiment": 0.654
+        },
+        {
+          "date": "2024-05",
+          "volume": 3,
+          "share": 0.065,
+          "sentiment": 0.832
+        },
+        {
+          "date": "2024-06",
+          "volume": 4,
+          "share": 0.103,
+          "sentiment": 0.408
+        },
+        {
+          "date": "2024-07",
+          "volume": 3,
+          "share": 0.107,
+          "sentiment": 0.654
+        },
+        {
+          "date": "2024-08",
+          "volume": 4,
+          "share": 0.082,
+          "sentiment": 0.721
+        },
+        {
+          "date": "2024-09",
+          "volume": 6,
+          "share": 0.14,
+          "sentiment": 0.743
+        },
+        {
+          "date": "2024-10",
+          "volume": 1,
+          "share": 0.083,
+          "sentiment": 0.654
+        },
+        {
+          "date": "2024-11",
+          "volume": 1,
+          "share": 0.071,
+          "sentiment": 0.921
+        },
+        {
+          "date": "2024-12",
+          "volume": 1,
+          "share": 0.111,
+          "sentiment": 0.921
+        },
+        {
+          "date": "2025-02",
+          "volume": 2,
+          "share": 0.083,
+          "sentiment": 0.788
+        },
+        {
+          "date": "2025-03",
+          "volume": 2,
+          "share": 0.154,
+          "sentiment": 0.788
+        },
+        {
+          "date": "2025-04",
+          "volume": 1,
+          "share": 0.1,
+          "sentiment": 0.921
+        },
+        {
+          "date": "2025-05",
+          "volume": 3,
+          "share": 0.071,
+          "sentiment": 0.743
+        },
+        {
+          "date": "2025-07",
+          "volume": 2,
+          "share": 0.053,
+          "sentiment": 0.654
+        },
+        {
+          "date": "2025-08",
+          "volume": 1,
+          "share": 0.167,
+          "sentiment": 0.654
+        }
+      ],
+      "cluster_2": [
+        {
+          "date": "2024-01",
+          "volume": 3,
+          "share": 0.25,
+          "sentiment": -0.299
+        },
+        {
+          "date": "2024-02",
+          "volume": 2,
+          "share": 0.125,
+          "sentiment": 0.007
+        },
+        {
+          "date": "2024-03",
+          "volume": 4,
+          "share": 0.182,
+          "sentiment": 0.467
+        },
+        {
+          "date": "2024-04",
+          "volume": 4,
+          "share": 0.308,
+          "sentiment": -0.034
+        },
+        {
+          "date": "2024-05",
+          "volume": 11,
+          "share": 0.239,
+          "sentiment": -0.092
+        },
+        {
+          "date": "2024-06",
+          "volume": 11,
+          "share": 0.282,
+          "sentiment": -0.077
+        },
+        {
+          "date": "2024-07",
+          "volume": 7,
+          "share": 0.25,
+          "sentiment": -0.155
+        },
+        {
+          "date": "2024-08",
+          "volume": 12,
+          "share": 0.245,
+          "sentiment": 0.105
+        },
+        {
+          "date": "2024-09",
+          "volume": 15,
+          "share": 0.349,
+          "sentiment": 0.219
+        },
+        {
+          "date": "2024-10",
+          "volume": 3,
+          "share": 0.25,
+          "sentiment": 0.314
+        },
+        {
+          "date": "2024-11",
+          "volume": 1,
+          "share": 0.071,
+          "sentiment": -0.916
+        },
+        {
+          "date": "2024-12",
+          "volume": 3,
+          "share": 0.333,
+          "sentiment": 0.259
+        },
+        {
+          "date": "2025-01",
+          "volume": 6,
+          "share": 0.429,
+          "sentiment": 0.62
+        },
+        {
+          "date": "2025-02",
+          "volume": 6,
+          "share": 0.25,
+          "sentiment": 0.286
+        },
+        {
+          "date": "2025-03",
+          "volume": 2,
+          "share": 0.154,
+          "sentiment": 0.463
+        },
+        {
+          "date": "2025-04",
+          "volume": 4,
+          "share": 0.4,
+          "sentiment": -0.495
+        },
+        {
+          "date": "2025-05",
+          "volume": 11,
+          "share": 0.262,
+          "sentiment": 0.611
+        },
+        {
+          "date": "2025-06",
+          "volume": 1,
+          "share": 0.056,
+          "sentiment": 0.762
+        },
+        {
+          "date": "2025-07",
+          "volume": 12,
+          "share": 0.316,
+          "sentiment": 0.132
+        },
+        {
+          "date": "2025-08",
+          "volume": 1,
+          "share": 0.167,
+          "sentiment": -0.911
+        },
+        {
+          "date": "2025-09",
+          "volume": 1,
+          "share": 0.083,
+          "sentiment": 0.93
+        }
+      ],
+      "cluster_3": [
+        {
+          "date": "2024-01",
+          "volume": 1,
+          "share": 0.083,
+          "sentiment": 0.883
+        },
+        {
+          "date": "2024-03",
+          "volume": 4,
+          "share": 0.182,
+          "sentiment": 0.425
+        },
+        {
+          "date": "2024-04",
+          "volume": 2,
+          "share": 0.154,
+          "sentiment": -0.033
+        },
+        {
+          "date": "2024-05",
+          "volume": 5,
+          "share": 0.109,
+          "sentiment": 0.111
+        },
+        {
+          "date": "2024-06",
+          "volume": 3,
+          "share": 0.077,
+          "sentiment": -0.948
+        },
+        {
+          "date": "2024-07",
+          "volume": 3,
+          "share": 0.107,
+          "sentiment": -0.632
+        },
+        {
+          "date": "2024-08",
+          "volume": 6,
+          "share": 0.122,
+          "sentiment": 0.272
+        },
+        {
+          "date": "2024-09",
+          "volume": 1,
+          "share": 0.023,
+          "sentiment": 0.883
+        },
+        {
+          "date": "2024-10",
+          "volume": 2,
+          "share": 0.167,
+          "sentiment": -0.948
+        },
+        {
+          "date": "2024-11",
+          "volume": 1,
+          "share": 0.071,
+          "sentiment": 0.883
+        },
+        {
+          "date": "2025-01",
+          "volume": 1,
+          "share": 0.071,
+          "sentiment": -0.948
+        },
+        {
+          "date": "2025-02",
+          "volume": 1,
+          "share": 0.042,
+          "sentiment": 0.883
+        },
+        {
+          "date": "2025-03",
+          "volume": 1,
+          "share": 0.077,
+          "sentiment": -0.948
+        },
+        {
+          "date": "2025-04",
+          "volume": 1,
+          "share": 0.1,
+          "sentiment": 0.883
+        },
+        {
+          "date": "2025-05",
+          "volume": 3,
+          "share": 0.071,
+          "sentiment": -0.632
+        },
+        {
+          "date": "2025-06",
+          "volume": 2,
+          "share": 0.111,
+          "sentiment": -0.033
+        },
+        {
+          "date": "2025-07",
+          "volume": 3,
+          "share": 0.079,
+          "sentiment": 0.883
+        },
+        {
+          "date": "2025-09",
+          "volume": 1,
+          "share": 0.083,
+          "sentiment": 0.883
+        }
+      ]
+    }
+  }
 }

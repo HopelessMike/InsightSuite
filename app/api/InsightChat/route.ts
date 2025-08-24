@@ -4,11 +4,11 @@ import path from "node:path";
 import fs from "node:fs";
 import type { ProjectData } from "@/lib/types";
 
-const MODEL_ALIAS = process.env.ANTHROPIC_MODEL?.trim() || "claude-4-sonnet";
+const MODEL_ALIAS = process.env.ANTHROPIC_MODEL?.trim() || "claude-3-5-sonnet";
 const MODEL_MAP: Record<string, string> = {
-  "claude-4-sonnet": "claude-sonnet-4-20250514",
+  "claude-3-5-sonnet": "claude-3-5-sonnet-latest",
   "claude-3-5-haiku": "claude-3-5-haiku-latest",
-  "claude-3-7-sonnet": "claude-3-7-sonnet-latest",
+  "claude-3-opus": "claude-3-opus-latest",
 };
 const MODEL = MODEL_MAP[MODEL_ALIAS] ?? MODEL_ALIAS;
 
@@ -31,81 +31,76 @@ function buildContext(doc: ProjectData) {
   const clusters = doc.clusters ?? [];
   const personas = doc.personas ?? [];
   const meta = doc.meta ?? {};
+  const aggregates = doc.aggregates ?? {};
+  const timeseries = doc.timeseries ?? {};
 
+  // Prepare comprehensive context for LLM
   const topClusters = clusters
     .slice()
     .sort((a, b) => (b.share ?? 0) - (a.share ?? 0))
-    .slice(0, 6)
+    .slice(0, 10)
     .map((c) => ({
       id: c.id,
       label: c.label,
       share: c.share ?? 0,
       sentiment: c.sentiment ?? 0,
+      opportunity_score: c.opportunity_score ?? 0,
       summary: c.summary ?? "",
       strengths: c.strengths ?? [],
       weaknesses: c.weaknesses ?? [],
       keywords: c.keywords ?? [],
+      trend: c.trend ?? [],
+      size: c.size ?? 0,
       sampleQuotes: (c.quotes ?? []).slice(0, 3).map((q) => q.text),
     }));
 
-  // 👇 fix: titoli tolleranti alle varianti
+  // Fix: Handle personas title variations
   const personasBrief = personas.map((p: any) => ({
     title: p?.title ?? p?.name ?? p?.label ?? "",
     share: p?.share ?? 0,
     goals: (p?.goals ?? []).slice(0, 5),
     pains: (p?.pains ?? p?.pain_points ?? []).slice(0, 5),
+    behaviors: p?.behaviors ?? [],
+    demographics: p?.demographics ?? {},
   }));
 
-  return { meta, topClusters, personas: personasBrief };
-}
+  // Calculate trends and insights
+  const trendingNegative = clusters.filter(c => {
+    if (!c.trend || c.trend.length < 2) return false;
+    const recent = c.trend[c.trend.length - 1].count;
+    const old = c.trend[0].count;
+    return recent < old && c.sentiment < 0;
+  });
 
-const SYSTEM = `You are InsightSuite's analyst assistant.
-Answer ONLY using the provided dataset facts. If you cannot find an answer in the context, say so.
-Avoid stereotypes and sensitive attributes. Keep it concise and actionable.`;
+  const trendingPositive = clusters.filter(c => {
+    if (!c.trend || c.trend.length < 2) return false;
+    const recent = c.trend[c.trend.length - 1].count;
+    const old = c.trend[0].count;
+    return recent > old && c.sentiment > 0;
+  });
 
-export async function POST(req: NextRequest) {
-  try {
-    const body = (await req.json()) as { question?: string; projectId?: string };
-    if (!body?.question || !body?.projectId) {
-      return NextResponse.json({ error: "Missing 'question' or 'projectId'." }, { status: 400 });
+
+  // Fix: Handle timeseries data safely with proper optional chaining
+  const latestSentiment = timeseries && timeseries.monthly && timeseries.monthly.length > 0
+    ? timeseries.monthly[timeseries.monthly.length - 1].sentiment_mean
+    : undefined;
+    
+  const sentimentTrend = timeseries && timeseries.monthly && timeseries.monthly.length > 1
+    ? timeseries.monthly[timeseries.monthly.length - 1].sentiment_mean - timeseries.monthly[0].sentiment_mean
+    : 0;
+
+  return { 
+    meta, 
+    aggregates,
+    topClusters, 
+    allClusters: clusters.length,
+    personas: personasBrief,
+    trendingNegative: trendingNegative.slice(0, 3),
+    trendingPositive: trendingPositive.slice(0, 3),
+    timeseries: {
+      hasData: !!timeseries?.monthly && timeseries.monthly.length > 0,
+      latestSentiment,
+      sentimentTrend
     }
-
-    const file = findProjectFile(body.projectId);
-    if (!file) return NextResponse.json({ error: "Project not found." }, { status: 404 });
-
-    const json = JSON.parse(fs.readFileSync(file, "utf8")) as ProjectData;
-    const ctx = buildContext(json);
-
-    if (!process.env.ANTHROPIC_API_KEY) {
-      const bullets = ctx.topClusters
-        .map((c) => `• ${c.label} — share ${(c.share * 100).toFixed(1)}%, sentiment ${c.sentiment.toFixed(2)}`)
-        .join("\n");
-      return NextResponse.json({ answer: `**DEMO (no LLM)**\n\nTop cluster:\n${bullets}`, usedModel: "demo-fallback" });
-    }
-
-    const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY! });
-    const prompt =
-      `PROJECT META:\n${JSON.stringify(ctx.meta, null, 2)}\n\n` +
-      `TOP CLUSTERS:\n${JSON.stringify(ctx.topClusters, null, 2)}\n\n` +
-      `PERSONAS:\n${JSON.stringify(ctx.personas, null, 2)}\n\n` +
-      `QUESTION:\n${body.question}`;
-
-    const msg = await client.messages.create({
-      model: MODEL,
-      system: SYSTEM,
-      max_tokens: 900,
-      temperature: 0.2,
-      messages: [{ role: "user", content: prompt }],
-    });
-
-    const answer =
-      (Array.isArray((msg as any)?.content)
-        ? (msg as any).content.map((p: any) => p?.text ?? "").join("")
-        : (msg as any)?.content?.[0]?.text) || "Nessuna risposta disponibile.";
-
-    return NextResponse.json({ answer, usedModel: MODEL_ALIAS });
-  } catch (e: any) {
-    console.error(e);
-    return NextResponse.json({ error: e?.message || "Server error" }, { status: 500 });
-  }
+  };
 }

@@ -7,7 +7,7 @@ from datetime import datetime
 import uuid
 import asyncio
 
-from ai_service.models import (
+from ..models import (
     CreateJobRequest,
     CreateJobResponse,
     JobStatus

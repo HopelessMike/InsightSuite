@@ -1,7 +1,7 @@
 {
   "meta": {
     "project_id": "ecommerce",
-    "name": "Women’s E-Comm",
+    "name": "Women's E-Comm",
     "source": "Kaggle",
     "date_range": [
       "",
@@ -11,8 +11,8 @@
       "en"
     ],
     "totals": {
-      "reviews": 23486,
-      "clusters": 4
+      "reviews": 480,
+      "clusters": 5
     },
     "method": {
       "sentiment": "xlm-roberta (CardiffNLP)",
@@ -22,199 +22,800 @@
     }
   },
   "aggregates": {
-    "sentiment_mean": 0.313,
+    "sentiment_mean": 0.281,
     "sentiment_dist": {
-      "neg": 0.234,
-      "neu": 0.122,
-      "pos": 0.644
+      "neg": 0.24,
+      "neu": 0.19,
+      "pos": 0.571
     },
     "rating_hist": [
       [
         1,
-        842
+        34
       ],
       [
         2,
-        1565
+        82
       ],
       [
         3,
-        2871
+        56
       ],
       [
         4,
-        5077
+        156
       ],
       [
         5,
-        13131
+        152
       ]
     ]
   },
   "clusters": [
     {
       "id": "cluster_0",
-      "label": "Mixed Reviews on Fit and Quality",
-      "size": 22288,
-      "share": 0.97,
-      "sentiment": 0.33,
+      "label": "Assistenza Clienti e Resi",
+      "size": 78,
+      "share": 0.197,
+      "sentiment": 0.48,
       "keywords": [
-        "the",
-        "it",
-        "and",
-        "is",
-        "to",
-        "this",
-        "in",
-        "but",
-        "on",
-        "for",
-        "dress",
-        "with"
+        "via chat",
+        "via",
+        "risolto",
+        "risolto minuti",
+        "assistenza gentilissima",
+        "chat",
+        "problema risolto",
+        "problema",
+        "chat problema",
+        "gentilissima",
+        "gentilissima via",
+        "minuti"
       ],
-      "summary": "Reviews show mixed experiences with clothing items, particularly dresses and tops. Customers appreciate the style and appearance of items but frequently encounter sizing issues, with many items running small or having inconsistent fit across different body types. Quality concerns include cheap-feeling materials, construction flaws, and sizing inconsistencies between regular and petite options.",
+      "summary": "Cluster di recensioni positive che evidenziano l'efficacia del servizio clienti via chat e la semplicità del processo di reso con rimborsi rapidi",
       "strengths": [
-        "Flattering and stylish designs",
-        "Versatile pieces that can be dressed up or down",
-        "Good color options and attractive prints"
+        "Assistenza clienti molto cortese e disponibile",
+        "Risoluzione rapida dei problemi tramite chat (10 minuti)",
+        "Processo di reso semplice e veloce"
       ],
       "weaknesses": [
-        "Inconsistent sizing - many items run small",
-        "Limited petite sizing options",
-        "Quality issues with materials feeling cheap"
-      ]
+        "Recensioni molto ripetitive che suggeriscono possibili contenuti automatizzati",
+        "Mancanza di varietà nelle esperienze descritte"
+      ],
+      "opportunity_score": 0.118,
+      "quotes": [
+        {
+          "id": "108-212",
+          "text": "Assistenza gentilissima via chat, problema risolto in 10 minuti.",
+          "rating": 4.0,
+          "sentiment": 0.8312821388244629,
+          "lang": "en",
+          "date": null,
+          "sourceId": "108-212"
+        },
+        {
+          "id": "104-3",
+          "text": "Assistenza gentilissima via chat, problema risolto in 10 minuti.",
+          "rating": 5.0,
+          "sentiment": 0.8312821388244629,
+          "lang": "en",
+          "date": null,
+          "sourceId": "104-3"
+        },
+        {
+          "id": "108-214",
+          "text": "Reso semplice e rimborsato in 2 giorni.",
+          "rating": 5.0,
+          "sentiment": 0.0,
+          "lang": "en",
+          "date": null,
+          "sourceId": "108-214"
+        },
+        {
+          "id": "107-96",
+          "text": "Assistenza gentilissima via chat, problema risolto in 10 minuti.",
+          "rating": 4.0,
+          "sentiment": 0.8312821388244629,
+          "lang": "en",
+          "date": null,
+          "sourceId": "107-96"
+        },
+        {
+          "id": "110-91",
+          "text": "Assistenza gentilissima via chat, problema risolto in 10 minuti.",
+          "rating": 4.0,
+          "sentiment": 0.8312821388244629,
+          "lang": "en",
+          "date": null,
+          "sourceId": "110-91"
+        },
+        {
+          "id": "106-478",
+          "text": "Assistenza gentilissima via chat, problema risolto in 10 minuti.",
+          "rating": 4.0,
+          "sentiment": 0.8312821388244629,
+          "lang": "en",
+          "date": null,
+          "sourceId": "106-478"
+        },
+        {
+          "id": "105-170",
+          "text": "Reso semplice e rimborsato in 2 giorni.",
+          "rating": 5.0,
+          "sentiment": 0.0,
+          "lang": "en",
+          "date": null,
+          "sourceId": "105-170"
+        },
+        {
+          "id": "103-39",
+          "text": "Reso semplice e rimborsato in 2 giorni.",
+          "rating": 3.0,
+          "sentiment": 0.0,
+          "lang": "en",
+          "date": null,
+          "sourceId": "103-39"
+        },
+        {
+          "id": "104-315",
+          "text": "Reso semplice e rimborsato in 2 giorni.",
+          "rating": 5.0,
+          "sentiment": 0.0,
+          "lang": "en",
+          "date": null,
+          "sourceId": "104-315"
+        },
+        {
+          "id": "105-415",
+          "text": "Assistenza gentilissima via chat, problema risolto in 10 minuti.",
+          "rating": 4.0,
+          "sentiment": 0.8312821388244629,
+          "lang": "en",
+          "date": null,
+          "sourceId": "105-415"
+        },
+        {
+          "id": "112-369",
+          "text": "Reso semplice e rimborsato in 2 giorni.",
+          "rating": 4.0,
+          "sentiment": 0.0,
+          "lang": "en",
+          "date": null,
+          "sourceId": "112-369"
+        },
+        {
+          "id": "111-137",
+          "text": "Reso semplice e rimborsato in 2 giorni.",
+          "rating": 4.0,
+          "sentiment": 0.0,
+          "lang": "en",
+          "date": null,
+          "sourceId": "111-137"
+        }
+      ],
+      "co_occurs": []
     },
     {
       "id": "cluster_1",
-      "label": "Empty Reviews",
-      "size": 95,
-      "share": 0.004,
-      "sentiment": 0.0,
-      "keywords": [],
-      "summary": "This cluster contains 95 reviews with no actual content - all entries are null/empty values, representing missing or unavailable review data.",
-      "strengths": [],
+      "label": "Problemi di servizio e qualità con packaging misto",
+      "size": 147,
+      "share": 0.371,
+      "sentiment": -0.189,
+      "keywords": [
+        "packaging",
+        "sostenibile apprezzato",
+        "sostenibile",
+        "curato sostenibile",
+        "curato",
+        "packaging curato",
+        "apprezzato",
+        "scatola",
+        "schiacciata",
+        "danneggiato",
+        "arrivata schiacciata",
+        "danneggiato scatola"
+      ],
+      "summary": "Cluster caratterizzato da problematiche multiple nel servizio clienti, con particolare focus sui problemi di packaging danneggiato, prezzi percepiti come eccessivi e difficoltà logistiche, bilanciati da apprezzamenti per la sostenibilità del packaging",
+      "strengths": [
+        "Packaging curato e sostenibile molto apprezzato dai clienti"
+      ],
       "weaknesses": [
-        "No actual review content available",
-        "Missing customer feedback data",
-        "Cannot provide meaningful insights from empty entries"
-      ]
+        "Packaging danneggiato frequentemente con scatole schiacciate",
+        "Prezzo alto rispetto alla qualità percepita",
+        "Consegne in ritardo con tracking poco chiaro"
+      ],
+      "opportunity_score": 0.393,
+      "quotes": [
+        {
+          "id": "109-412",
+          "text": "Taglia non corrispondente, ho dovuto cambiare due volte.",
+          "rating": 1.0,
+          "sentiment": -0.8491018414497375,
+          "lang": "en",
+          "date": null,
+          "sourceId": "109-412"
+        },
+        {
+          "id": "108-131",
+          "text": "Consegna in ritardo di 5 giorni, tracking poco chiaro.",
+          "rating": 2.0,
+          "sentiment": -0.8759452700614929,
+          "lang": "en",
+          "date": null,
+          "sourceId": "108-131"
+        },
+        {
+          "id": "111-444",
+          "text": "Consegna in ritardo di 5 giorni, tracking poco chiaro.",
+          "rating": 1.0,
+          "sentiment": -0.8759452700614929,
+          "lang": "en",
+          "date": null,
+          "sourceId": "111-444"
+        },
+        {
+          "id": "106-54",
+          "text": "Taglia non corrispondente, ho dovuto cambiare due volte.",
+          "rating": 2.0,
+          "sentiment": -0.8491018414497375,
+          "lang": "en",
+          "date": null,
+          "sourceId": "106-54"
+        },
+        {
+          "id": "111-331",
+          "text": "Prezzo alto rispetto alla qualità percepita.",
+          "rating": 3.0,
+          "sentiment": 0.7643725872039795,
+          "lang": "en",
+          "date": null,
+          "sourceId": "111-331"
+        },
+        {
+          "id": "107-33",
+          "text": "Prezzo alto rispetto alla qualità percepita.",
+          "rating": 3.0,
+          "sentiment": 0.7643725872039795,
+          "lang": "en",
+          "date": null,
+          "sourceId": "107-33"
+        },
+        {
+          "id": "110-206",
+          "text": "Taglia non corrispondente, ho dovuto cambiare due volte.",
+          "rating": 3.0,
+          "sentiment": -0.8491018414497375,
+          "lang": "en",
+          "date": null,
+          "sourceId": "110-206"
+        },
+        {
+          "id": "111-76",
+          "text": "Assistenza irraggiungibile, ticket rimasto senza risposta.",
+          "rating": 3.0,
+          "sentiment": -0.8267970085144043,
+          "lang": "en",
+          "date": null,
+          "sourceId": "111-76"
+        },
+        {
+          "id": "102-219",
+          "text": "Assistenza irraggiungibile, ticket rimasto senza risposta.",
+          "rating": 2.0,
+          "sentiment": -0.8267970085144043,
+          "lang": "en",
+          "date": null,
+          "sourceId": "102-219"
+        },
+        {
+          "id": "101-28",
+          "text": "Assistenza irraggiungibile, ticket rimasto senza risposta.",
+          "rating": 3.0,
+          "sentiment": -0.8267970085144043,
+          "lang": "en",
+          "date": null,
+          "sourceId": "101-28"
+        },
+        {
+          "id": "103-66",
+          "text": "Packaging danneggiato, scatola arrivata schiacciata.",
+          "rating": 1.0,
+          "sentiment": -0.9302712082862854,
+          "lang": "en",
+          "date": null,
+          "sourceId": "103-66"
+        },
+        {
+          "id": "105-293",
+          "text": "Packaging curato e sostenibile, molto apprezzato.",
+          "rating": 5.0,
+          "sentiment": 0.9261066913604736,
+          "lang": "en",
+          "date": null,
+          "sourceId": "105-293"
+        }
+      ],
+      "co_occurs": []
     },
     {
       "id": "cluster_2",
-      "label": "Empty Reviews",
-      "size": 324,
-      "share": 0.014,
-      "sentiment": 0.0,
+      "label": "Consegna e Imballaggio Eccellenti",
+      "size": 41,
+      "share": 0.104,
+      "sentiment": 0.782,
       "keywords": [],
-      "summary": "This cluster contains 324 reviews with no actual content - all entries are null/empty values, representing missing or unavailable review data.",
-      "strengths": [],
+      "summary": "Cluster di recensioni identiche che evidenziano un servizio deconsegna rapida e imballaggio perfetto, con consegna in 24 ore e prodotti che arrivano integri.",
+      "strengths": [
+        "Consegna rapidissima in 24 ore",
+        "Imballaggio sempre integro e sicuro",
+        "Servizio logistico affidabile e costante"
+      ],
       "weaknesses": [
-        "No actual review content available",
-        "Missing customer feedback data",
-        "Cannot extract meaningful insights"
-      ]
+        "Recensioni identiche suggeriscono possibili duplicati o automazione",
+        "Mancanza di dettagli sul prodotto stesso",
+        "Assenza di feedback sul rapporto qualità-prezzo"
+      ],
+      "opportunity_score": 0.062,
+      "quotes": [
+        {
+          "id": "112-312",
+          "text": "Consegna rapidissima in 24h, imballo integro.",
+          "rating": 5.0,
+          "sentiment": 0.7824796438217163,
+          "lang": "en",
+          "date": null,
+          "sourceId": "112-312"
+        },
+        {
+          "id": "105-136",
+          "text": "Consegna rapidissima in 24h, imballo integro.",
+          "rating": 4.0,
+          "sentiment": 0.7824796438217163,
+          "lang": "en",
+          "date": null,
+          "sourceId": "105-136"
+        },
+        {
+          "id": "105-74",
+          "text": "Consegna rapidissima in 24h, imballo integro.",
+          "rating": 4.0,
+          "sentiment": 0.7824796438217163,
+          "lang": "en",
+          "date": null,
+          "sourceId": "105-74"
+        },
+        {
+          "id": "105-319",
+          "text": "Consegna rapidissima in 24h, imballo integro.",
+          "rating": 5.0,
+          "sentiment": 0.7824796438217163,
+          "lang": "en",
+          "date": null,
+          "sourceId": "105-319"
+        },
+        {
+          "id": "107-44",
+          "text": "Consegna rapidissima in 24h, imballo integro.",
+          "rating": 4.0,
+          "sentiment": 0.7824796438217163,
+          "lang": "en",
+          "date": null,
+          "sourceId": "107-44"
+        },
+        {
+          "id": "102-476",
+          "text": "Consegna rapidissima in 24h, imballo integro.",
+          "rating": 5.0,
+          "sentiment": 0.7824796438217163,
+          "lang": "en",
+          "date": null,
+          "sourceId": "102-476"
+        },
+        {
+          "id": "102-254",
+          "text": "Consegna rapidissima in 24h, imballo integro.",
+          "rating": 4.0,
+          "sentiment": 0.7824796438217163,
+          "lang": "en",
+          "date": null,
+          "sourceId": "102-254"
+        },
+        {
+          "id": "111-466",
+          "text": "Consegna rapidissima in 24h, imballo integro.",
+          "rating": 4.0,
+          "sentiment": 0.7824796438217163,
+          "lang": "en",
+          "date": null,
+          "sourceId": "111-466"
+        },
+        {
+          "id": "110-367",
+          "text": "Consegna rapidissima in 24h, imballo integro.",
+          "rating": 4.0,
+          "sentiment": 0.7824796438217163,
+          "lang": "en",
+          "date": null,
+          "sourceId": "110-367"
+        },
+        {
+          "id": "110-55",
+          "text": "Consegna rapidissima in 24h, imballo integro.",
+          "rating": 4.0,
+          "sentiment": 0.7824796438217163,
+          "lang": "en",
+          "date": null,
+          "sourceId": "110-55"
+        },
+        {
+          "id": "107-322",
+          "text": "Consegna rapidissima in 24h, imballo integro.",
+          "rating": 5.0,
+          "sentiment": 0.7824796438217163,
+          "lang": "en",
+          "date": null,
+          "sourceId": "107-322"
+        },
+        {
+          "id": "105-110",
+          "text": "Consegna rapidissima in 24h, imballo integro.",
+          "rating": 5.0,
+          "sentiment": 0.7824796438217163,
+          "lang": "en",
+          "date": null,
+          "sourceId": "105-110"
+        }
+      ],
+      "co_occurs": []
     },
     {
       "id": "cluster_3",
-      "label": "Empty Reviews",
-      "size": 271,
-      "share": 0.012,
-      "sentiment": 0.0,
+      "label": "Vestibilità e Taglie",
+      "size": 56,
+      "share": 0.141,
+      "sentiment": 0.932,
       "keywords": [],
-      "summary": "This cluster contains 271 reviews with no actual content - all entries are null or missing values, representing 1.2% of the total dataset.",
-      "strengths": [],
+      "summary": "Cluster di recensioni che evidenzia la perfetta corrispondenza tra le taglie indicate nella guida e la vestibilità effettiva del prodotto",
+      "strengths": [
+        "Taglia fedele alla guida delle taglie",
+        "Vestibilità perfetta e precisa",
+        "Affidabilità nella scelta della taglia"
+      ],
       "weaknesses": [
-        "No actual review content available",
-        "Missing customer feedback data",
-        "Cannot extract meaningful insights"
-      ]
+        "Mancanza de varietà nei commenti",
+        "Assenza di dettagli specifici sulla vestibilità"
+      ],
+      "opportunity_score": 0.085,
+      "quotes": [
+        {
+          "id": "102-1",
+          "text": "Taglia fedele alla guida, vestibilità perfetta.",
+          "rating": 5.0,
+          "sentiment": 0.9321776628494263,
+          "lang": "en",
+          "date": null,
+          "sourceId": "102-1"
+        },
+        {
+          "id": "109-122",
+          "text": "Taglia fedele alla guida, vestibilità perfetta.",
+          "rating": 4.0,
+          "sentiment": 0.9321776628494263,
+          "lang": "en",
+          "date": null,
+          "sourceId": "109-122"
+        },
+        {
+          "id": "107-333",
+          "text": "Taglia fedele alla guida, vestibilità perfetta.",
+          "rating": 4.0,
+          "sentiment": 0.9321776628494263,
+          "lang": "en",
+          "date": null,
+          "sourceId": "107-333"
+        },
+        {
+          "id": "102-202",
+          "text": "Taglia fedele alla guida, vestibilità perfetta.",
+          "rating": 4.0,
+          "sentiment": 0.9321776628494263,
+          "lang": "en",
+          "date": null,
+          "sourceId": "102-202"
+        },
+        {
+          "id": "111-242",
+          "text": "Taglia fedele alla guida, vestibilità perfetta.",
+          "rating": 5.0,
+          "sentiment": 0.9321776628494263,
+          "lang": "en",
+          "date": null,
+          "sourceId": "111-242"
+        },
+        {
+          "id": "109-450",
+          "text": "Taglia fedele alla guida, vestibilità perfetta.",
+          "rating": 4.0,
+          "sentiment": 0.9321776628494263,
+          "lang": "en",
+          "date": null,
+          "sourceId": "109-450"
+        },
+        {
+          "id": "107-346",
+          "text": "Taglia fedele alla guida, vestibilità perfetta.",
+          "rating": 5.0,
+          "sentiment": 0.9321776628494263,
+          "lang": "en",
+          "date": null,
+          "sourceId": "107-346"
+        },
+        {
+          "id": "107-270",
+          "text": "Taglia fedele alla guida, vestibilità perfetta.",
+          "rating": 5.0,
+          "sentiment": 0.9321776628494263,
+          "lang": "en",
+          "date": null,
+          "sourceId": "107-270"
+        },
+        {
+          "id": "112-396",
+          "text": "Taglia fedele alla guida, vestibilità perfetta.",
+          "rating": 5.0,
+          "sentiment": 0.9321776628494263,
+          "lang": "en",
+          "date": null,
+          "sourceId": "112-396"
+        },
+        {
+          "id": "106-194",
+          "text": "Taglia fedele alla guida, vestibilità perfetta.",
+          "rating": 5.0,
+          "sentiment": 0.9321776628494263,
+          "lang": "en",
+          "date": null,
+          "sourceId": "106-194"
+        },
+        {
+          "id": "106-464",
+          "text": "Taglia fedele alla guida, vestibilità perfetta.",
+          "rating": 4.0,
+          "sentiment": 0.9321776628494263,
+          "lang": "en",
+          "date": null,
+          "sourceId": "106-464"
+        },
+        {
+          "id": "101-57",
+          "text": "Taglia fedele alla guida, vestibilità perfetta.",
+          "rating": 5.0,
+          "sentiment": 0.9321776628494263,
+          "lang": "en",
+          "date": null,
+          "sourceId": "101-57"
+        }
+      ],
+      "co_occurs": []
+    },
+    {
+      "id": "cluster_4",
+      "label": "Rapporto qualità-prezzo eccellente",
+      "size": 74,
+      "share": 0.187,
+      "sentiment": 0.877,
+      "keywords": [
+        "qualità prezzo",
+        "sconto",
+        "prezzo sconto",
+        "rapporto qualità",
+        "rapporto",
+        "prezzo",
+        "ottimo",
+        "ottimo rapporto",
+        "tessuto",
+        "ottima tessuto",
+        "ottima",
+        "rifinito"
+      ],
+      "summary": "Cluster di recensioni molto positive che evidenziano l'ottimo rapporto qualità-prezzo dei prodotti, specialmente quando acquistati in sconto. I clienti apprezzano particolarmente la qualità dei tessuti descritti come morbidi e rifiniti.",
+      "strengths": [
+        "Ottimo rapporto qualità-prezzo",
+        "Tessuti di qualità morbidi e ben rifiniti",
+        "Convenienza con gli sconti"
+      ],
+      "weaknesses": [
+        "Occasionali problemi di durata del tessuto (formazione di pallini)"
+      ],
+      "opportunity_score": 0.112,
+      "quotes": [
+        {
+          "id": "112-21",
+          "text": "Qualità sotto le aspettative: tessuto che fa pallini dopo pochi usi.",
+          "rating": 3.0,
+          "sentiment": 0.7938907146453857,
+          "lang": "en",
+          "date": null,
+          "sourceId": "112-21"
+        },
+        {
+          "id": "105-402",
+          "text": "Qualità ottima, tessuto Sneakers morbido e rifinito.",
+          "rating": 5.0,
+          "sentiment": 0.8677974343299866,
+          "lang": "en",
+          "date": null,
+          "sourceId": "105-402"
+        },
+        {
+          "id": "106-153",
+          "text": "Ottimo rapporto qualità/prezzo con sconto.",
+          "rating": 5.0,
+          "sentiment": 0.907035768032074,
+          "lang": "en",
+          "date": null,
+          "sourceId": "106-153"
+        },
+        {
+          "id": "102-2",
+          "text": "Qualità ottima, tessuto Camicia lino morbido e rifinito.",
+          "rating": 4.0,
+          "sentiment": 0.8393461108207703,
+          "lang": "en",
+          "date": null,
+          "sourceId": "102-2"
+        },
+        {
+          "id": "101-222",
+          "text": "Qualità ottima, tessuto Abito estivo morbido e rifinito.",
+          "rating": 4.0,
+          "sentiment": 0.8908999562263489,
+          "lang": "en",
+          "date": null,
+          "sourceId": "101-222"
+        },
+        {
+          "id": "102-456",
+          "text": "Ottimo rapporto qualità/prezzo con sconto.",
+          "rating": 4.0,
+          "sentiment": 0.907035768032074,
+          "lang": "en",
+          "date": null,
+          "sourceId": "102-456"
+        },
+        {
+          "id": "106-79",
+          "text": "Qualità ottima, tessuto Borsa pelle morbido e rifinito.",
+          "rating": 5.0,
+          "sentiment": 0.8340873122215271,
+          "lang": "en",
+          "date": null,
+          "sourceId": "106-79"
+        },
+        {
+          "id": "102-278",
+          "text": "Ottimo rapporto qualità/prezzo con sconto.",
+          "rating": 4.0,
+          "sentiment": 0.907035768032074,
+          "lang": "en",
+          "date": null,
+          "sourceId": "102-278"
+        },
+        {
+          "id": "108-84",
+          "text": "Qualità ottima, tessuto Pantaloni eleganti morbido e rifinito.",
+          "rating": 4.0,
+          "sentiment": 0.8959402441978455,
+          "lang": "en",
+          "date": null,
+          "sourceId": "108-84"
+        },
+        {
+          "id": "103-366",
+          "text": "Qualità ottima, tessuto Jeans slim morbido e rifinito.",
+          "rating": 5.0,
+          "sentiment": 0.8346782922744751,
+          "lang": "en",
+          "date": null,
+          "sourceId": "103-366"
+        },
+        {
+          "id": "105-409",
+          "text": "Ottimo rapporto qualità/prezzo con sconto.",
+          "rating": 5.0,
+          "sentiment": 0.907035768032074,
+          "lang": "en",
+          "date": null,
+          "sourceId": "105-409"
+        },
+        {
+          "id": "104-251",
+          "text": "Qualità ottima, tessuto Giacca casual morbido e rifinito.",
+          "rating": 5.0,
+          "sentiment": 0.8397308588027954,
+          "lang": "en",
+          "date": null,
+          "sourceId": "104-251"
+        }
+      ],
+      "co_occurs": []
     }
   ],
   "personas": [
     {
       "id": "persona_1",
-      "name": "Quality-Conscious Shopper",
-      "share": 0.34,
+      "name": "Consumatrice Attenta alla Qualità",
+      "share": 0.35,
       "goals": [
-        "Find well-fitting clothing that lasts",
-        "Get good value for money spent",
-        "Avoid returns and exchanges"
+        "Prodotti di alta qualità con buon rapporto qualità-prezzo",
+        "Tessuti pregiati e rifiniture curate",
+        "Sconti e promozioni vantaggiose"
       ],
       "pains": [
-        "Inconsistent sizing across products",
-        "Quality doesn't match price point",
-        "Difficulty determining fit from online descriptions"
+        "Tessuti che si deteriorano rapidamente",
+        "Prezzi non giustificati dalla qualità",
+        "Difetti di fabbricazione"
       ],
-      "clusters": [
-        "0"
-      ],
+      "clusters": ["cluster_4"],
       "quotes": [
-        "The sizing runs small, had to return",
-        "Good quality fabric but fit was off",
-        "Mixed feelings about this purchase"
+        "\"Ottimo rapporto qualità/prezzo con sconto\"",
+        "\"Qualità ottima, tessuto morbido e rifinito\""
       ],
       "channels": [
-        "Online reviews",
-        "Social media recommendations",
-        "Email newsletters"
+        "Newsletter promozionali",
+        "Sito web e-commerce",
+        "Social media (Instagram, Facebook)"
       ]
     },
     {
       "id": "persona_2",
-      "name": "Silent Browser",
-      "share": 0.3,
+      "name": "Cliente che Valuta l'Assistenza",
+      "share": 0.25,
       "goals": [
-        "Quick and easy shopping experience",
-        "Find products without hassle",
-        "Make purchases based on ratings only"
+        "Assistenza clienti rapida ed efficiente",
+        "Processi di reso semplici e veloci",
+        "Comunicazione chiara e trasparente"
       ],
       "pains": [
-        "Don't have time to write detailed reviews",
-        "Overwhelmed by too many product options",
-        "Prefer actions over words"
+        "Assistenza irraggiungibile",
+        "Tempi di risposta lunghi",
+        "Procedure di reso complicate"
       ],
-      "clusters": [
-        "2",
-        "3"
-      ],
+      "clusters": ["cluster_0"],
       "quotes": [
-        "",
-        "Good product",
-        ""
+        "\"Assistenza gentilissima via chat, problema risolto in 10 minuti\"",
+        "\"Reso semplice e rimborsato in 2 giorni\""
       ],
       "channels": [
-        "Mobile apps",
-        "Search engines",
-        "Direct website visits"
+        "Chat online",
+        "Email di supporto",
+        "Telefono assistenza"
       ]
     },
     {
       "id": "persona_3",
-      "name": "Cautious First-Time Buyer",
-      "share": 0.21,
+      "name": "Shopper Pragmatica",
+      "share": 0.40,
       "goals": [
-        "Research thoroughly before purchasing",
-        "Understand product quality and fit",
-        "Make informed buying decisions"
+        "Vestibilità precisa e taglie affidabili",
+        "Consegne rapide e affidabili",
+        "Packaging sostenibile e protettivo"
       ],
       "pains": [
-        "Uncertainty about new brands",
-        "Fear of wasting money on poor quality",
-        "Limited information to base decisions on"
+        "Taglie non corrispondenti",
+        "Consegne in ritardo",
+        "Packaging danneggiato"
       ],
-      "clusters": [
-        "0",
-        "1"
-      ],
+      "clusters": ["cluster_1", "cluster_2", "cluster_3"],
       "quotes": [
-        "Not sure about the quality yet",
-        "Waiting to see how it holds up",
-        "Seems okay so far"
+        "\"Taglia fedele alla guida, vestibilità perfetta\"",
+        "\"Consegna rapidissima in 24h, imballo integro\"",
+        "\"Packaging danneggiato, scatola arrivata schiacciata\""
       ],
       "channels": [
-        "Review websites",
-        "Comparison shopping sites",
-        "Brand websites"
+        "Recensioni prodotto",
+        "Guida alle taglie",
+        "Pagina di tracking ordine"
       ]
     }
   ]
