@@ -1,16 +1,19 @@
-# api/insightsuite/index.py
+# api/insightsuite/[...path].py
 import os, sys
 from pathlib import Path
 
+# Rende importabile il root del progetto
 ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
+# Directory dati bundle della funzione
 DATA_DIR = Path(__file__).resolve().parent / "_data"
 os.environ.setdefault("INSIGHTS_DATA_DIR", str(DATA_DIR))
 
+# Usa la stessa app FastAPI dell'entrypoint principale
 try:
-    from ai_service.main import app
+    from ai_service.main import app  # deve definire: app = FastAPI(...)
 except Exception:
     from fastapi import FastAPI
     app = FastAPI(title="InsightSuite API (fallback)")
