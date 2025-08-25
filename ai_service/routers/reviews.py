@@ -120,7 +120,7 @@ async def get_reviews(
 
     return ReviewPage(total=total, page=page, pageSize=pageSize, items=items)
 
-@router.get("/reviews/stats")
+@router.get("reviews/stats")
 async def get_review_stats(projectId: str = Query(..., description="Project ID")) -> Dict[str, Any]:
     df = load_reviews(projectId)
     return {
