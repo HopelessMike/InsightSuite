@@ -47,13 +47,16 @@ origins = [
     "http://localhost:3001",
     "https://localhost:3000",
     "https://localhost:3001",
+    "https://michelemiranda.com",
+    "https://v0-insight-suite.vercel.app",
+    "https://v0-insight-suite-git-main-elmikedenapoli-gmailcoms-projects.vercel.app",
 ]
 
 # Add more origins for production
 if os.getenv("ENVIRONMENT") == "production":
     origins.extend([
-        "https://your-domain.com",
-        "https://app.your-domain.com"
+        "https://michelemiranda.com",
+        "https://v0-insight-suite.vercel.app"
     ])
 
 app.add_middleware(
@@ -66,8 +69,8 @@ app.add_middleware(
 
 # Include routers
 app.include_router(health.router, tags=["health"])
-app.include_router(jobs.router, prefix="/api/v1", tags=["jobs"])
-app.include_router(reviews.router, prefix="/api/v1", tags=["reviews"])  # NEW
+app.include_router(jobs.router, prefix="/api", tags=["jobs"])
+app.include_router(reviews.router, prefix="/api", tags=["reviews"])
 
 @app.get("/", tags=["root"])
 async def root():
@@ -81,7 +84,7 @@ async def root():
         "health": "/health"
     }
 
-@app.get("/api/v1/status", response_model=HealthStatus, tags=["status"])
+@app.get("/api/status", response_model=HealthStatus, tags=["status"])
 async def get_status():
     """
     Get detailed service status

@@ -13,7 +13,11 @@
       "destination": "/api/index.py"
     },
     {
-      "source": "/",
+      "source": "/docs",
+      "destination": "/api/index.py"
+    },
+    {
+      "source": "/openapi.json",
       "destination": "/api/index.py"
     }
   ],

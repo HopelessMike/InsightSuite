@@ -7,7 +7,7 @@ from typing import Dict
 
 router = APIRouter()
 
-@router.get("/health/check")
+@router.get("/health")
 async def health_check() -> Dict[str, str]:
     """
     Simple health check endpoint
