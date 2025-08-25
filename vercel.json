@@ -9,11 +9,23 @@
       "destination": "/api/index.py"
     },
     {
+      "source": "/InsightSuite/health",
+      "destination": "/api/index.py"
+    },
+    {
       "source": "/health",
       "destination": "/api/index.py"
     },
     {
+      "source": "/InsightSuite/docs",
+      "destination": "/api/index.py"
+    },
+    {
       "source": "/docs",
+      "destination": "/api/index.py"
+    },
+    {
+      "source": "/InsightSuite/openapi.json",
       "destination": "/api/index.py"
     },
     {

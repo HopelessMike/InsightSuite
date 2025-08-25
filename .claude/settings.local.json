@@ -12,7 +12,8 @@
       "Bash(npm run dev:*)",
       "Bash(curl:*)",
       "Bash(del \"C:\\Users\\mmiranda\\Downloads\\insight-suite\\main.py\")",
-      "Bash(del \"C:\\Users\\mmiranda\\Downloads\\insight-suite\\verify_api.py\")"
+      "Bash(del \"C:\\Users\\mmiranda\\Downloads\\insight-suite\\verify_api.py\")",
+      "Bash(pnpm build:*)"
     ],
     "deny": [],
     "ask": [],
