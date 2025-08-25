@@ -1,12 +1,32 @@
 {
-  "$schema": "https://openapi.vercel.sh/vercel.json",
-  "regions": ["fra1"],
+  "builds": [
+    {
+      "src": "api/index.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/InsightSuite/api/(.*)",
+      "dest": "/api/index.py"
+    },
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/index.py"
+    },
+    {
+      "src": "/health",
+      "dest": "/api/index.py"
+    },
+    {
+      "src": "/",
+      "dest": "/api/index.py"
+    }
+  ],
   "functions": {
-    "api/**/*.py": { "maxDuration": 20, "memory": 1024 }
+    "api/index.py": {
+      "maxDuration": 60
+    }
   },
-  "rewrites": [
-    { "source": "/InsightSuite/api/InsightChat", "destination": "/api/InsightChat" },
-    { "source": "/InsightSuite/api/InsightChat/(.*)", "destination": "/api/InsightChat/$1" },
-    { "source": "/InsightSuite/api/(.*)", "destination": "/api/insightsuite/$1" }
-  ]
+  "regions": ["fra1"]
 }

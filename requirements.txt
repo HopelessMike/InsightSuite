@@ -1,4 +1,9 @@
-fastapi==0.115.*
-pydantic==2.*
-pandas==2.*
-requests==2.*
+fastapi==0.115.0
+pydantic==2.9.2
+pandas==2.2.3
+requests==2.32.3
+uvicorn==0.32.0
+python-multipart==0.0.12
+python-dateutil==2.9.0
+# Starlette viene installato automaticamente con FastAPI nella versione compatibile
+# Non specificare starlette separatamente per evitare conflitti
