@@ -102,6 +102,52 @@ async def get_status():
         }
     )
 
+@app.get("/api/debug", tags=["debug"])
+async def debug_info():
+    """
+    Debug endpoint to check filesystem and environment
+    """
+    import os
+    from pathlib import Path
+    
+    debug_info = {
+        "cwd": str(Path.cwd()),
+        "file_path": str(Path(__file__).parent),
+        "env_vars": {
+            "INSIGHTS_DATA_DIR": os.environ.get("INSIGHTS_DATA_DIR", "NOT_SET"),
+            "VERCEL": os.environ.get("VERCEL", "NOT_SET"),
+            "VERCEL_ENV": os.environ.get("VERCEL_ENV", "NOT_SET"),
+        },
+        "paths_checked": [],
+        "files_found": []
+    }
+    
+    # Check common paths for data files
+    current_dir = Path(__file__).parent.parent
+    paths_to_check = [
+        current_dir / "api" / "insightsuite" / "_data",
+        current_dir / "pipeline" / "out",
+        current_dir / "public" / "demo" / "projects",
+        Path("./api/insightsuite/_data"),
+        Path("./pipeline/out"),
+        Path("./public/demo/projects"),
+    ]
+    
+    for path in paths_to_check:
+        path_info = {
+            "path": str(path.absolute()),
+            "exists": path.exists(),
+            "files": []
+        }
+        if path.exists():
+            try:
+                path_info["files"] = [f.name for f in path.glob("*.jsonl")]
+            except Exception as e:
+                path_info["error"] = str(e)
+        debug_info["paths_checked"].append(path_info)
+    
+    return debug_info
+
 def check_voyage_connection() -> bool:
     """
     Check if Voyage AI is accessible

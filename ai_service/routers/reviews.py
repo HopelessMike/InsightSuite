@@ -28,7 +28,13 @@ def load_reviews(project_id: str) -> pd.DataFrame:
     paths = []
     if data_dir_env:
         paths.append(Path(data_dir_env) / f"{project_id}_reviews.jsonl")
+    
+    # Add more comprehensive paths for production
+    current_dir = Path(__file__).parent.parent.parent  # Go to project root
     paths += [
+        current_dir / "api" / "insightsuite" / "_data" / f"{project_id}_reviews.jsonl",
+        current_dir / "pipeline" / "out" / f"{project_id}_reviews.jsonl", 
+        current_dir / "public" / "demo" / "projects" / f"{project_id}_reviews.jsonl",
         Path(f"./out/{project_id}_reviews.jsonl"),
         Path(f"./pipeline/out/{project_id}_reviews.jsonl"),
         Path(f"../pipeline/out/{project_id}_reviews.jsonl"),
@@ -38,7 +44,8 @@ def load_reviews(project_id: str) -> pd.DataFrame:
         Path(f"./data/{project_id}_reviews.jsonl"),
     ]
 
-    for p in paths:
+    # Try each path until we find the data file
+    for i, p in enumerate(paths):
         if p.exists():
             try:
                 df = pd.read_json(p, lines=True)
@@ -47,9 +54,8 @@ def load_reviews(project_id: str) -> pd.DataFrame:
                 _cache[project_id] = (df, now)
                 return df
             except Exception as e:
-                print(f"Error loading {p}: {e}")
+                # Continue to next path if this one fails
                 continue
-
     raise HTTPException(status_code=404, detail=f"Reviews data not found for project {project_id}")
 
 @router.get("/reviews", response_model=ReviewPage)

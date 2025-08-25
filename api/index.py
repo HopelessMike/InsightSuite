@@ -20,17 +20,13 @@ if DATA_DIR.exists():
 # Import the main app from ai_service
 try:
     from ai_service.main import app
-    print("SUCCESS: Imported app from ai_service.main")
 except ImportError as e:
-    print(f"WARNING: Could not import from ai_service.main: {e}")
-    
     # Fallback to root main.py (for compatibility)
     try:
         from main import app
-        print("SUCCESS: Imported app from root main.py")
     except ImportError as e2:
-        print(f"WARNING: Could not import from root main.py: {e2}")
         raise ImportError(f"Could not import app: {e}, {e2}")
 
-# IMPORTANT: Export handler for Vercel
-handler = app
+# IMPORTANT: Export app for Vercel (not handler)
+# Vercel will automatically wrap this as a handler
+app = app
