@@ -23,10 +23,8 @@
   ],
   "functions": {
     "api/index.py": {
-      "runtime": "python3.11",
       "maxDuration": 60,
       "memory": 1024
     }
-  },
-  "regions": ["fra1"]
+  }
 }
