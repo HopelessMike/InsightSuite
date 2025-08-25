@@ -92,7 +92,7 @@ export default function InsightChat({ data, projectId }: Props) {
     
     try {
       // Call the API route with LLM integration
-      const response = await fetch('/api/InsightChat', {
+      const response = await fetch('api/InsightChat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

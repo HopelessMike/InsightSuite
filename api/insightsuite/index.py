@@ -1,27 +1,29 @@
-# api/insightsuite/index.py
 import os, sys
 from pathlib import Path
 from fastapi import FastAPI
 
-# Rende importabile il root del progetto (per ai_service.*)
 ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-# Directory con i dati JSONL inclusi nel bundle serverless
 DATA_DIR = Path(__file__).resolve().parent / "_data"
 os.environ.setdefault("INSIGHTS_DATA_DIR", str(DATA_DIR))
 
-# Costruisci SEMPRE l'app qui e registra i router esplicitamente
 app = FastAPI(title="InsightSuite API")
 
+# rotta di health SEMPRE presente a /health
+@app.get("/health")
+def health_root():
+    return {"ok": True, "service": "insightsuite", "path": "/health"}
+
+# includi i router della tua app
 try:
     from ai_service.routers import health, reviews, jobs
-    app.include_router(health.router)   # GET /health
-    app.include_router(reviews.router)  # GET /reviews, /reviews/stats
-    app.include_router(jobs.router)     # /jobs/*
+    app.include_router(health.router)   # se qui hai prefix="/api/v1", rimane disponibile /api/v1/health
+    app.include_router(reviews.router)
+    app.include_router(jobs.router)
 except Exception as e:
-    # Fallback minimale per diagnosi
-    @app.get("/health")
-    def health_fallback():
-        return {"ok": False, "error": f"routers not loaded: {e.__class__.__name__}: {e}"}
+    # Diagnostica se l'import fallisce
+    @app.get("/routers-status")
+    def routers_status():
+        return {"ok": False, "error": f"{e.__class__.__name__}: {e}"}

@@ -86,7 +86,9 @@ export default function ReviewsTable({ data, clusters = [], title }: Props) {
           params.append('ratingMax', selectedRatingFilter);
         }
         
-        const response = await fetch(`http://localhost:8000/api/v1/reviews?${params}`);
+        // risolve in  /InsightSuite/api/reviews?...  grazie al basePath
+        const response = await fetch(`api/reviews?${params.toString()}`, { cache: "no-store" });
+
         
         if (!response.ok) {
           throw new Error(`Error: ${response.status}`);
