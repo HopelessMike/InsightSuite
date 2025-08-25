@@ -57,7 +57,7 @@ export default function ReviewsTable({ data, clusters = [], title }: Props) {
   const [sortField, setSortField] = React.useState<"date" | "sentiment" | "rating">("date");
   const [sortOrder, setSortOrder] = React.useState<"asc" | "desc">("desc");
   const [currentPage, setCurrentPage] = React.useState(1);
-  const [pageSize] = React.useState(50);
+  const [pageSize] = React.useState(10);
   
   const [reviews, setReviews] = React.useState<ReviewPage | null>(null);
   const [isLoading, setIsLoading] = React.useState(false);
