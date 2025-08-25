@@ -1,42 +1,68 @@
-# InsightSuite API
+# 🎯 InsightSuite - Customer Feedback Analysis Platform
 
-Backend API for InsightSuite analytics platform, built with FastAPI and deployed on Vercel.
+> **Piattaforma AI-powered per l'analisi intelligente del feedback dei clienti con clustering automatico, analisi del sentiment e visualizzazioni interattive.**
+
+![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
+![Next.js](https://img.shields.io/badge/Next.js-14.1.0-black.svg)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.115.0-green.svg)
+![Python](https://img.shields.io/badge/Python-3.11-blue.svg)
+
+## 🌟 **Panoramica**
+
+**InsightSuite** è una piattaforma completa per l'analisi del feedback dei clienti che combina intelligenza artificiale, visualizzazioni interattive e un'interfaccia utente moderna. La piattaforma permette di:
+
+- 📊 **Analizzare automaticamente** migliaia di recensioni e feedback
+- 🤖 **Identificare cluster tematici** attraverso algoritmi di machine learning
+- 💭 **Analizzare sentiment** con modelli AI avanzati
+- 👥 **Generare personas** dei clienti basate sui dati
+- 📈 **Visualizzare insights** con grafici interattivi
+- 🔍 **Esplorare i dati** con filtri e ricerche avanzate
 
 ## 🚀 Quick Start
 
 ### Prerequisites
-- Python 3.12+
-- pip or poetry
-- Git
+- Node.js 18+
+- Python 3.11+
+- pnpm (raccomandato)
 
 ### Local Development
 
 1. **Clone the repository**
 ```bash
-git clone [your-repo-url]
+git clone https://github.com/HopelessMike/InsightSuite.git
 cd InsightSuite
 ```
 
-2. **Create virtual environment**
+2. **Install dependencies**
 ```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-```
+# Frontend
+pnpm install
 
-3. **Install dependencies**
-```bash
+# Backend
 pip install -r requirements.txt
 ```
 
-4. **Run the development server**
+3. **Configure environment**
 ```bash
-python run_local.py
+cp .env.example .env.local
+# Configura le API keys (vedi sezione Configuration)
 ```
 
-The API will be available at:
-- API: http://localhost:8000
-- Documentation: http://localhost:8000/docs
-- Health Check: http://localhost:8000/health
+4. **Start development servers**
+```bash
+# Terminal 1 - Frontend
+pnpm dev
+
+# Terminal 2 - Backend
+cd ai_service
+python main.py
+```
+
+The application will be available at:
+- **Frontend**: http://localhost:3000/InsightSuite
+- **API**: http://localhost:8000
+- **Documentation**: http://localhost:8000/docs
+- **Health Check**: http://localhost:8000/health
 
 ### Testing
 
