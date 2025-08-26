@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { withBase } from "@/lib/basePath";
+import { withAssetPath } from "@/lib/basePath";
 import { motion, AnimatePresence } from "framer-motion";
 import { useAppStore } from "@/store/app";
 import ThemesTreemap from "@/components/ThemesTreemap";
@@ -42,9 +42,9 @@ import {
 type TabKey = "airbnb" | "mobile" | "ecommerce";
 
 const PROJECT_FILES: Record<TabKey, string> = {
-  airbnb: withBase("/demo/projects/airbnb.json"),
-  mobile: withBase("/demo/projects/mobile.json"),
-  ecommerce: withBase("/demo/projects/ecommerce.json"),
+  airbnb: withAssetPath("/demo/projects/airbnb.json"),
+  mobile: withAssetPath("/demo/projects/mobile.json"),
+  ecommerce: withAssetPath("/demo/projects/ecommerce.json"),
 };
 
 export default function InsightSuitePage() {

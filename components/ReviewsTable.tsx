@@ -17,7 +17,7 @@ import {
 } from "lucide-react";
 import { useAppStore } from "@/store/app";
 import { useLocale } from "@/lib/i18n";
-import { withBase } from "@/lib/basePath";
+import { withApiPath } from "@/lib/basePath";
 import type { Cluster } from "@/lib/types";
 
 type Review = {
@@ -87,8 +87,8 @@ export default function ReviewsTable({ data, clusters = [], title }: Props) {
           params.append('ratingMax', selectedRatingFilter);
         }
         
-        // Use withBase to ensure correct API path
-        const response = await fetch(withBase(`/api/reviews?${params.toString()}`), { cache: "no-store" });
+        // Use withApiPath to ensure correct API path
+        const response = await fetch(withApiPath(`/api/reviews?${params.toString()}`), { cache: "no-store" });
 
         
         if (!response.ok) {
