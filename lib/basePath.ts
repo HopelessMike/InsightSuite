@@ -1,18 +1,29 @@
 // lib/basePath.ts
-// Punto di mount sul dominio "contenitore" (quello del portfolio)
+// Configurazione per microfrontends deployment
 const MICRO_MOUNT = "/InsightSuite";
 
-// Fallback opzionale: se vuoi forzare un prefisso in qualche env
-const ENV_BASE = process.env.NEXT_PUBLIC_BASE_PATH || "";
+// Determina se siamo su Vercel diretto o attraverso microfrontend
+function isDirectVercelDomain(): boolean {
+  if (typeof window === "undefined") return false;
+  const hostname = window.location.hostname;
+  return hostname.includes("vercel.app") || hostname === "localhost";
+}
 
-/** Rileva a runtime se l'app è montata sotto /InsightSuite (Microfrontends). */
+/** Rileva a runtime la base path corretta */
 function resolveBase(): string {
   if (typeof window === "undefined") {
-    // SSR: usa il fallback ENV se presente, altrimenti nessun prefisso
-    return ENV_BASE;
+    // SSR: usa variabile d'ambiente se presente
+    return process.env.NEXT_PUBLIC_BASE_PATH || "";
   }
-  const { pathname } = window.location;
-  // Esempi validi: /InsightSuite, /InsightSuite/, /InsightSuite/qualcosa
+  
+  const { pathname, hostname } = window.location;
+  
+  // Se siamo su vercel.app diretto o localhost, nessun prefisso
+  if (isDirectVercelDomain()) {
+    return "";
+  }
+  
+  // Altrimenti controlla se siamo sotto /InsightSuite (microfrontend)
   if (
     pathname === MICRO_MOUNT ||
     pathname === MICRO_MOUNT + "/" ||
@@ -20,31 +31,39 @@ function resolveBase(): string {
   ) {
     return MICRO_MOUNT;
   }
-  return ""; // dominio diretto *.vercel.app o dev locale
+  
+  return "";
 }
 
 function norm(p: string) {
   return p.startsWith("/") ? p : `/${p}`;
 }
 
-/** Path sotto la base (per link/asset/API). */
+/** Path generico sotto la base */
 export function withBase(p: string) {
   return `${resolveBase()}${norm(p)}`;
 }
 
 /** Path per le API.
- *  - Su dominio microfrontends: /InsightSuite/api/...
- *  - Su dominio diretto (o dev): /api/...
+ *  IMPORTANTE: Le API sono sempre sul dominio diretto Vercel, NON passano dal microfrontend
  */
 export function withApiPath(p: string) {
   const s = norm(p);
-  // Se già passi "api/..." o "/api/..." non duplico "api"
+  
+  // Se siamo in ambiente browser e NON su dominio diretto
+  if (typeof window !== "undefined" && !isDirectVercelDomain()) {
+    // Usa URL assoluto per le API
+    const apiBase = process.env.NEXT_PUBLIC_API_URL || "https://v0-insight-suite.vercel.app";
+    const apiPath = s.startsWith("/api") ? s : `/api${s}`;
+    return `${apiBase}${apiPath}`;
+  }
+  
+  // Altrimenti usa path relativo
   const apiPath = s.startsWith("/api") ? s : `/api${s}`;
-  const base = resolveBase();
-  return base ? `${base}${apiPath}` : apiPath;
+  return apiPath;
 }
 
-/** Path per asset statici (public/, file demo, ecc.). */
+/** Path per asset statici */
 export function withAssetPath(p: string) {
   return withBase(p);
 }

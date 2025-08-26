@@ -10,7 +10,10 @@
     "v0-insight-suite": {
       "packageName": "insightsuite",
       "routing": [
-        { "paths": ["/InsightSuite", "/InsightSuite/:path*"] }
+        { 
+          "paths": ["/InsightSuite", "/InsightSuite/:path*"],
+          "basePath": "/InsightSuite"
+        }
       ]
     }
   }
