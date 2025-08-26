@@ -1,32 +1,45 @@
-"""
-Vercel handler for InsightSuite API
-This file imports the main FastAPI app from ai_service and exposes it for Vercel
-"""
-
-import sys
+# api/index.py
 import os
 from pathlib import Path
+from fastapi import FastAPI, APIRouter
+from fastapi.middleware.cors import CORSMiddleware
 
-# Add root directory to path
-root_path = Path(__file__).parent.parent
-if str(root_path) not in sys.path:
-    sys.path.insert(0, str(root_path))
+# Dati demo letti dai router
+DATA_DIR = Path(__file__).resolve().parent / "insightsuite" / "_data"
+os.environ.setdefault("INSIGHTS_DATA_DIR", str(DATA_DIR))
 
-# Set data directory environment variable
-DATA_DIR = root_path / "api" / "insightsuite" / "_data"
-if DATA_DIR.exists():
-    os.environ.setdefault("INSIGHTS_DATA_DIR", str(DATA_DIR))
+# App principale
+app = FastAPI(title="InsightSuite API")
 
-# Import the main app from ai_service
-try:
-    from ai_service.main import app
-except ImportError as e:
-    # Fallback to root main.py (for compatibility)
-    try:
-        from main import app
-    except ImportError as e2:
-        raise ImportError(f"Could not import app: {e}, {e2}")
+# CORS (puoi restringere i domini se vuoi)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # oppure ["https://michelemiranda.com", "https://*.vercel.app"]
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
-# IMPORTANT: Export app for Vercel (not handler)
-# Vercel will automatically wrap this as a handler
-app = app
+# /health e info root
+@app.get("/")
+def info():
+    return {"ok": True, "service": "insightsuite", "endpoints": ["/health", "/api/*"]}
+
+@app.get("/health")
+def health():
+    return {"ok": True, "service": "insightsuite", "path": "/health"}
+
+# API reali sotto /api/*
+api = APIRouter(prefix="/api")
+
+# importa i router python esistenti
+from ai_service.routers import reviews, jobs  # noqa: E402
+
+api.include_router(reviews.router)
+api.include_router(jobs.router)
+
+# registra le API
+app.include_router(api)
+
+# (opzionale) esponi anche docs/swagger rediretti
+# NB: Vercel rewriterà /docs e /openapi.json su questa funzione
