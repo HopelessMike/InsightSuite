@@ -4,9 +4,9 @@
     { "src": "api/index.py", "use": "@vercel/python" }
   ],
   "routes": [
-    { "src": "/api/InsightChat", "continue": true },   // lascia gestire a Next (app/api/InsightChat/route.ts)
-    { "src": "/api/(.*)", "dest": "/api/index.py" },   // tutto il resto delle API al backend Python
-    { "src": "/health", "dest": "/api/index.py" },     // health check
+    { "src": "/api/InsightChat", "continue": true },   
+    { "src": "/api/(.*)", "dest": "/api/index.py" },   
+    { "src": "/health", "dest": "/api/index.py" },     
     { "src": "/docs", "dest": "/api/index.py" },
     { "src": "/openapi.json", "dest": "/api/index.py" }
   ],
