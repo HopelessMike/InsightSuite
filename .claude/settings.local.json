@@ -13,7 +13,14 @@
       "Bash(curl:*)",
       "Bash(del \"C:\\Users\\mmiranda\\Downloads\\insight-suite\\main.py\")",
       "Bash(del \"C:\\Users\\mmiranda\\Downloads\\insight-suite\\verify_api.py\")",
-      "Bash(pnpm build:*)"
+      "Bash(pnpm build:*)",
+      "Bash(git add:*)",
+      "Bash(git reset:*)",
+      "Bash(node:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "WebFetch(domain:v0-insight-suite.vercel.app)",
+      "WebFetch(domain:v0-insight-suite.vercel.app)"
     ],
     "deny": [],
     "ask": [],
