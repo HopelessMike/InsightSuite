@@ -1,5 +1,18 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "rewrites": [
+    { "source": "/api/health", "destination": "/api/index" },
+
+    { "source": "/api/reviews", "destination": "/api/index" },
+    { "source": "/api/reviews/:path*", "destination": "/api/index" },
+
+    { "source": "/api/jobs", "destination": "/api/index" },
+    { "source": "/api/jobs/:path*", "destination": "/api/index" },
+
+    { "source": "/api/status", "destination": "/api/index" },
+    { "source": "/api/debug", "destination": "/api/index" }
+
+  ],
   "functions": {
     "api/**/*.py": {
       "memory": 1024,
