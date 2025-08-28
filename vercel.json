@@ -1,14 +1,22 @@
 {
-  "version": 2,
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "builds": [
     { "src": "package.json", "use": "@vercel/next" },
     { "src": "api/index.py", "use": "@vercel/python" }
   ],
+  "functions": {
+    "api/index.py": {
+      "runtime": "python3.12",
+      "memory": 1024,
+      "maxDuration": 60,
+      "includeFiles": [
+        "ai_service/**"
+      ]
+    }
+  },
   "routes": [
-    { "src": "/api/InsightChat", "dest": "/api/InsightChat" },
-    { "src": "/api/(.*)", "dest": "/api/index.py" },
-    { "src": "/health", "dest": "/api/index.py" },
-    { "src": "/docs", "dest": "/api/index.py" },
-    { "src": "/openapi.json", "dest": "/api/index.py" }
+    { "src": "^/api/(.*)$", "dest": "api/index.py" },
+    { "src": "^/(health|docs|openapi\\.json)$", "dest": "api/index.py" },
+    { "src": "/(.*)", "dest": "/" }
   ]
 }
