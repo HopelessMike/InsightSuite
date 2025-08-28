@@ -1,69 +1,30 @@
 // lib/basePath.ts
-// Configurazione per microfrontends deployment
 const MICRO_MOUNT = "/InsightSuite";
 
-// Determina se siamo su Vercel diretto o attraverso microfrontend
-function isDirectVercelDomain(): boolean {
+function isMounted(): boolean {
   if (typeof window === "undefined") return false;
-  const hostname = window.location.hostname;
-  return hostname.includes("vercel.app") || hostname === "localhost";
+  return window.location.pathname.startsWith(MICRO_MOUNT);
 }
 
-/** Rileva a runtime la base path corretta */
-function resolveBase(): string {
-  if (typeof window === "undefined") {
-    // SSR: usa variabile d'ambiente se presente
-    return process.env.NEXT_PUBLIC_BASE_PATH || "";
-  }
-  
-  const { pathname, hostname } = window.location;
-  
-  // Se siamo su vercel.app diretto o localhost, nessun prefisso
-  if (isDirectVercelDomain()) {
-    return "";
-  }
-  
-  // Altrimenti controlla se siamo sotto /InsightSuite (microfrontend)
-  if (
-    pathname === MICRO_MOUNT ||
-    pathname === MICRO_MOUNT + "/" ||
-    pathname.startsWith(MICRO_MOUNT + "/")
-  ) {
-    return MICRO_MOUNT;
-  }
-  
-  return "";
-}
-
-function norm(p: string) {
-  return p.startsWith("/") ? p : `/${p}`;
-}
-
-/** Path generico sotto la base */
+/** Prefissa i link interni con il mount quando serve */
 export function withBase(p: string) {
-  return `${resolveBase()}${norm(p)}`;
-}
-
-/** Path per le API.
- *  IMPORTANTE: Le API sono sempre sul dominio diretto Vercel, NON passano dal microfrontend
- */
-export function withApiPath(p: string) {
-  const s = norm(p);
-  
-  // Se siamo in ambiente browser e NON su dominio diretto
-  if (typeof window !== "undefined" && !isDirectVercelDomain()) {
-    // Usa URL assoluto per le API
-    const apiBase = process.env.NEXT_PUBLIC_API_URL || "https://v0-insight-suite.vercel.app";
-    const apiPath = s.startsWith("/api") ? s : `/api${s}`;
-    return `${apiBase}${apiPath}`;
+  const clean = p.startsWith("/") ? p : `/${p}`;
+  if (typeof window !== "undefined" && isMounted()) {
+    return `${MICRO_MOUNT}${clean}`;
   }
-  
-  // Altrimenti usa path relativo
-  const apiPath = s.startsWith("/api") ? s : `/api${s}`;
-  return apiPath;
+  return clean; // standalone (child) o SSR: link relativo alla root
 }
 
-/** Path per asset statici */
+/** Costruisce il path API corretto (relativo) */
+export function withApiPath(p: string) {
+  const clean = p.startsWith("/api") ? p : `/api${p.startsWith("/") ? p : `/${p}`}`;
+  if (typeof window !== "undefined" && isMounted()) {
+    return `${MICRO_MOUNT}${clean}`; // es. /InsightSuite/api/...
+  }
+  return clean; // es. /api/...
+}
+
+/** Alias per asset/static */
 export function withAssetPath(p: string) {
   return withBase(p);
 }
