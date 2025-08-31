@@ -160,7 +160,7 @@ def main():
     urls = {
         'local': 'http://localhost:8000',
         'staging': 'https://v0-insight-suite.vercel.app',
-        'production': 'https://michelemiranda.com/InsightSuite/api'
+        'production': 'https://michelemiranda.com/InsightSuite'
     }
     
     if args.env != 'local':

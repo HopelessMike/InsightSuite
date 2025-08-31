@@ -57,7 +57,7 @@ def create_project_structure():
             print(f"⚠️  Missing: {file_name}")
     
     # Create sample data file if _data is empty
-    data_dir = project_root / "_data"
+    data_dir = project_root / "ai_service/_data"
     if not any(data_dir.glob("*.jsonl")):
         sample_file = data_dir / "sample_reviews.jsonl"
         sample_data = [

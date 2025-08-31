@@ -43,10 +43,10 @@ def check_project_structure():
     files_to_check = [
         "main.py",
         "api/index.py",
-        "routers/__init__.py",
-        "routers/health.py",
-        "routers/reviews.py",
-        "routers/jobs.py",
+        "ai_service/routers/__init__.py",
+        "ai_service/routers/health.py",
+        "ai_service/routers/reviews.py",
+        "ai_service/routers/jobs.py",
         "requirements.txt",
         "vercel.json"
     ]
