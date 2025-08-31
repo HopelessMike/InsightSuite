@@ -1,14 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "functions": {
-    "api/index.py": {
-      "memory": 1024,
-      "maxDuration": 60,
-      "includeFiles": "ai_service/**"
-    }
-  },
-  "routes": [
-    { "src": "/api/(health|reviews(?:/.*)?|jobs(?:/.*)?)", "dest": "/api/index.py" },
-    { "src": "/InsightSuite/api/(health|reviews(?:/.*)?|jobs(?:/.*)?)", "dest": "/api/index.py" }
-  ]
+    "api/**/*.py": { "memory": 1024, "maxDuration": 60 }
+  }
 }

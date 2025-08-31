@@ -1,12 +1,10 @@
-// next.config.mjs  (InsightSuite)
-import { withMicrofrontends } from '@vercel/microfrontends/next/config';
-
-/** @type {import('next').NextConfig} */
+// next.config.mjs — InsightSuite (child)
+ /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  images: { unoptimized: true },
   eslint: { ignoreDuringBuilds: true },
   typescript: { ignoreBuildErrors: true },
-  images: { unoptimized: true },
 };
 
-export default withMicrofrontends(nextConfig);
+export default nextConfig;
