@@ -1,3 +1,6 @@
+// next.config.mjs — InsightSuite (child)
+import { withMicrofrontends } from '@vercel/microfrontends/next/config';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -5,7 +8,7 @@ const nextConfig = {
   eslint: { ignoreDuringBuilds: true },
   typescript: { ignoreBuildErrors: true },
 
-  // Quando arriva /InsightSuite/... dal main, instrada alle vere route del child
+  // Facoltativo ma utile: “sfila” il prefisso se mai arrivasse al child
   async rewrites() {
     return [
       { source: '/InsightSuite', destination: '/' },
@@ -14,4 +17,4 @@ const nextConfig = {
   },
 };
 
-export default nextConfig;
+export default withMicrofrontends(nextConfig);
