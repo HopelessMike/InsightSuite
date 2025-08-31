@@ -1,29 +1,19 @@
 // app/api/InsightChat/route.ts
 import type { NextRequest } from 'next/server';
-
-export const runtime = 'nodejs';            // Evita Edge: alcuni SDK/fetch lato server richiedono Node
-export const dynamic = 'force-dynamic';     // Niente cache per le risposte di chat
-export const preferredRegion = 'auto';      // lascia a Vercel la scelta migliore
-
-type ChatBody = {
-  question?: string;
-  projectId?: string;
-  // opzionale: storico o contesto futuro
-  history?: Array<{ role: 'user' | 'assistant'; content: string }>;
-};
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
 
 const MODEL = process.env.ANTHROPIC_MODEL || 'claude-3-5-sonnet-latest';
-const ANTHROPIC_API_URL = 'https://api.anthropic.com/v1/messages';
-const ANTHROPIC_VERSION = process.env.ANTHROPIC_VERSION || '2023-06-01';
+const API_URL = 'https://api.anthropic.com/v1/messages';
+const API_VERSION = process.env.ANTHROPIC_VERSION || '2023-06-01';
 
-function json(data: unknown, status = 200) {
+function json(data: unknown, status = 200, extra: Record<string,string> = {}) {
   return new Response(JSON.stringify(data), {
     status,
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*', ...extra },
   });
 }
 
-// CORS (utile quando chiamato attraverso il portfolio su dominio diverso)
 export async function OPTIONS() {
   return new Response(null, {
     status: 204,
@@ -37,141 +27,61 @@ export async function OPTIONS() {
 }
 
 export async function POST(req: NextRequest) {
-  // Headers CORS in risposta
-  const corsHeaders = {
-    'Access-Control-Allow-Origin': '*',
-    'Content-Type': 'application/json',
-  } as const;
-
-  // 1) Validazione env
-  const apiKey = process.env.ANTHROPIC_API_KEY;
-  if (!apiKey) {
-    // Manteniamo la stringa esatta che fa scattare il tuo fallback lato client
-    return new Response(
-      JSON.stringify({ error: 'ANTHROPIC_API_KEY not configured' }),
-      { status: 200, headers: corsHeaders }
-    );
+  const key = process.env.ANTHROPIC_API_KEY;
+  if (!key) {
+    // messaggio usato dal tuo fallback client
+    return json({ error: 'ANTHROPIC_API_KEY not configured' }, 200);
   }
 
-  // 2) Parse del body
-  let body: ChatBody;
+  let body: { question?: string; projectId?: string; history?: {role:'user'|'assistant';content:string}[] } = {};
   try {
-    body = (await req.json()) as ChatBody;
-  } catch {
-    return new Response(JSON.stringify({ error: 'Invalid JSON body' }), {
-      status: 400,
-      headers: corsHeaders,
-    });
+    body = await req.json();
+  } catch (e) {
+    console.error('InsightChat: invalid JSON body', e);
+    return json({ error: 'Invalid JSON body' }, 400);
   }
 
-  const question = body?.question?.trim();
-  const projectId = body?.projectId?.trim();
+  const q = (body.question || '').trim();
+  const projectId = (body.projectId || '').trim();
+  if (!q) return json({ error: 'Missing "question"' }, 400);
 
-  if (!question) {
-    return new Response(JSON.stringify({ error: 'Missing "question"' }), {
-      status: 400,
-      headers: corsHeaders,
-    });
-  }
-
-  // 3) Costruzione messaggi (utente + eventuale contesto/storico)
-  //   NB: Anthropic Messages API richiede una lista di messaggi con role "user"/"assistant".
-  const messages: Array<{ role: 'user' | 'assistant'; content: string }> = [];
-
-  // Se vuoi personalizzare il prompt con projectId:
-  const userPrompt =
-    projectId && projectId.length > 0
-      ? `Project: ${projectId}\nUser question: ${question}`
-      : question;
-
-  // Aggiungi storico se fornito (sanificato)
+  const messages: Array<{role:'user'|'assistant';content:string}> = [];
   if (Array.isArray(body.history)) {
     for (const m of body.history) {
-      if (
-        (m.role === 'user' || m.role === 'assistant') &&
-        typeof m.content === 'string' &&
-        m.content.length > 0
-      ) {
+      if ((m.role === 'user' || m.role === 'assistant') && typeof m.content === 'string' && m.content) {
         messages.push({ role: m.role, content: m.content });
       }
     }
   }
-  messages.push({ role: 'user', content: userPrompt });
+  messages.push({ role: 'user', content: projectId ? `Project: ${projectId}\nUser question: ${q}` : q });
 
-  // 4) Chiamata all’API Anthropic via fetch (no dipendenze extra)
-  //    Doc: headers x-api-key & anthropic-version, body con model, max_tokens, messages
-  //    https://docs.anthropic.com/en/api/messages
   try {
-    const resp = await fetch(ANTHROPIC_API_URL, {
+    const r = await fetch(API_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'x-api-key': apiKey,
-        'anthropic-version': ANTHROPIC_VERSION,
+        'x-api-key': key,
+        'anthropic-version': API_VERSION, // richiesto dalla Messages API
       },
-      body: JSON.stringify({
-        model: MODEL,
-        max_tokens: 512,
-        messages,
-        // opzionale: system prompt minimo
-        system:
-          'You are an assistant for InsightSuite. Be concise and reference data when possible.',
-      }),
+      body: JSON.stringify({ model: MODEL, max_tokens: 512, messages,
+        system: 'You are an assistant for InsightSuite. Answer concisely referencing data when possible.' }),
     });
 
-    if (!resp.ok) {
-      const errText = await safeText(resp);
-      return new Response(
-        JSON.stringify({
-          error: 'LLM request failed',
-          status: resp.status,
-          details: truncate(errText, 2000),
-        }),
-        { status: 502, headers: corsHeaders }
-      );
+    if (!r.ok) {
+      const text = await r.text().catch(()=>'');
+      console.error('InsightChat: Anthropic non-200', r.status, text.slice(0,800));
+      return json({ error: 'LLM request failed', status: r.status, details: text.slice(0,2000) }, 502);
     }
 
-    type AnthropicMessageContent =
-      | { type: 'text'; text: string }
-      | { type: string; [k: string]: unknown };
+    const data = await r.json().catch(()=> ({}));
+    // tipica struttura: { content: [{type:'text', text:'...'}], ... }
+    const answer = Array.isArray(data?.content)
+      ? data.content.find((c:any)=>c?.type==='text')?.text ?? ''
+      : '';
 
-    const data = (await resp.json()) as {
-      content?: AnthropicMessageContent[];
-    };
-
-    // L’API restituisce un array di "content" (spesso un unico item di type=text)
-    const answer =
-      Array.isArray(data.content) &&
-      data.content.find((c) => (c as any).type === 'text') &&
-      (data.content.find((c) => (c as any).type === 'text') as any).text;
-
-    return new Response(
-      JSON.stringify({
-        answer: typeof answer === 'string' ? answer : '',
-        model: MODEL,
-      }),
-      { status: 200, headers: corsHeaders }
-    );
-  } catch (err) {
-    return new Response(
-      JSON.stringify({
-        error: 'LLM request error',
-        details:
-          err instanceof Error ? truncate(err.message, 2000) : 'unknown',
-      }),
-      { status: 500, headers: corsHeaders }
-    );
+    return json({ answer, model: MODEL }, 200);
+  } catch (e: any) {
+    console.error('InsightChat: request error', e?.stack || e);
+    return json({ error: 'LLM request error', details: e?.message || 'unknown' }, 500);
   }
-}
-
-// Helpers
-async function safeText(r: Response) {
-  try {
-    return await r.text();
-  } catch {
-    return '';
-  }
-}
-function truncate(s: string, max = 2000) {
-  return s.length > max ? s.slice(0, max) + '…' : s;
 }
