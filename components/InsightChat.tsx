@@ -1,5 +1,6 @@
 "use client";
 
+import { withApiPath } from "@/lib/basePath";
 import * as React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
@@ -51,6 +52,7 @@ type Props = {
 };
 
 export default function InsightChat({ data, projectId }: Props) {
+  const CHAT_ENDPOINT = withApiPath('/api/InsightChat');
   const { t } = useLocale();
   const [messages, setMessages] = React.useState<Message[]>([]);
   const [input, setInput] = React.useState("");
@@ -92,16 +94,16 @@ export default function InsightChat({ data, projectId }: Props) {
     
     try {
       // Call the API route with LLM integration
-      const response = await fetch('/InsightSuite/api/InsightChat', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          question: question.trim(),
-          projectId: projectId
-        })
-      });
+      const response = await fetch(withApiPath('/api/InsightChat'), {
+         method: 'POST',
+         headers: {
+           'Content-Type': 'application/json',
+         },
+         body: JSON.stringify({
+           question: question.trim(),
+           projectId: projectId
+         })
+       });
 
       console.log('API Response status:', response.status);
       

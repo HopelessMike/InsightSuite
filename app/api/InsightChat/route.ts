@@ -1,209 +1,177 @@
-import { NextRequest, NextResponse } from "next/server";
-import Anthropic from "@anthropic-ai/sdk";
-import path from "node:path";
-import fs from "node:fs";
-import type { ProjectData } from "@/lib/types";
+// app/api/InsightChat/route.ts
+import type { NextRequest } from 'next/server';
 
-const MODEL_ALIAS = process.env.ANTHROPIC_MODEL?.trim() || "claude-3-5-sonnet-20250106";
-const MODEL_MAP: Record<string, string> = {
-  "claude-3-5-sonnet": "claude-3-5-sonnet-20250106",
-  "claude-3-5-haiku": "claude-3-5-haiku-20241022", 
-  "claude-3-opus": "claude-3-opus-20240229",
+export const runtime = 'nodejs';            // Evita Edge: alcuni SDK/fetch lato server richiedono Node
+export const dynamic = 'force-dynamic';     // Niente cache per le risposte di chat
+export const preferredRegion = 'auto';      // lascia a Vercel la scelta migliore
+
+type ChatBody = {
+  question?: string;
+  projectId?: string;
+  // opzionale: storico o contesto futuro
+  history?: Array<{ role: 'user' | 'assistant'; content: string }>;
 };
-const MODEL = MODEL_MAP[MODEL_ALIAS] ?? MODEL_ALIAS;
 
-function findProjectFile(projectId: string): string | null {
-  const dir = path.join(process.cwd(), "public", "demo", "projects");
-  const files = fs.readdirSync(dir).filter((f) => f.endsWith(".json"));
-  const byName = files.find((f) => f.toLowerCase().includes(projectId.toLowerCase()));
-  if (byName) return path.join(dir, byName);
-  for (const f of files) {
-    try {
-      const p = path.join(dir, f);
-      const j = JSON.parse(fs.readFileSync(p, "utf8")) as ProjectData;
-      if (j?.meta?.project_id?.toLowerCase() === projectId.toLowerCase()) return p;
-    } catch {}
-  }
-  return null;
+const MODEL = process.env.ANTHROPIC_MODEL || 'claude-3-5-sonnet-latest';
+const ANTHROPIC_API_URL = 'https://api.anthropic.com/v1/messages';
+const ANTHROPIC_VERSION = process.env.ANTHROPIC_VERSION || '2023-06-01';
+
+function json(data: unknown, status = 200) {
+  return new Response(JSON.stringify(data), {
+    status,
+    headers: { 'Content-Type': 'application/json' },
+  });
 }
 
-function buildContext(doc: ProjectData) {
-  const clusters = doc.clusters ?? [];
-  const personas = doc.personas ?? [];
-  const meta = doc.meta ?? {};
-  const aggregates = doc.aggregates ?? {};
-  const timeseries = doc.timeseries ?? {};
-
-  // Prepare comprehensive context for LLM
-  const topClusters = clusters
-    .slice()
-    .sort((a, b) => (b.share ?? 0) - (a.share ?? 0))
-    .slice(0, 10)
-    .map((c) => ({
-      id: c.id,
-      label: c.label,
-      share: c.share ?? 0,
-      sentiment: c.sentiment ?? 0,
-      opportunity_score: c.opportunity_score ?? 0,
-      summary: c.summary ?? "",
-      strengths: c.strengths ?? [],
-      weaknesses: c.weaknesses ?? [],
-      keywords: c.keywords ?? [],
-      trend: c.trend ?? [],
-      size: c.size ?? 0,
-      sampleQuotes: (c.quotes ?? []).slice(0, 3).map((q) => q.text),
-    }));
-
-  // Fix: Handle personas title variations
-  const personasBrief = personas.map((p: any) => ({
-    title: p?.title ?? p?.name ?? p?.label ?? "",
-    share: p?.share ?? 0,
-    goals: (p?.goals ?? []).slice(0, 5),
-    pains: (p?.pains ?? p?.pain_points ?? []).slice(0, 5),
-    behaviors: p?.behaviors ?? [],
-    demographics: p?.demographics ?? {},
-  }));
-
-  // Calculate trends and insights
-  const trendingNegative = clusters.filter(c => {
-    if (!c.trend || c.trend.length < 2) return false;
-    const recent = c.trend[c.trend.length - 1].count;
-    const old = c.trend[0].count;
-    return recent < old && c.sentiment < 0;
+// CORS (utile quando chiamato attraverso il portfolio su dominio diverso)
+export async function OPTIONS() {
+  return new Response(null, {
+    status: 204,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'POST, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+      'Access-Control-Max-Age': '86400',
+    },
   });
-
-  const trendingPositive = clusters.filter(c => {
-    if (!c.trend || c.trend.length < 2) return false;
-    const recent = c.trend[c.trend.length - 1].count;
-    const old = c.trend[0].count;
-    return recent > old && c.sentiment > 0;
-  });
-
-
-  // Fix: Handle timeseries data safely with proper optional chaining
-  const latestSentiment = timeseries && timeseries.monthly && timeseries.monthly.length > 0
-    ? timeseries.monthly[timeseries.monthly.length - 1].sentiment_mean
-    : undefined;
-    
-  const sentimentTrend = timeseries && timeseries.monthly && timeseries.monthly.length > 1
-    ? (timeseries.monthly[timeseries.monthly.length - 1]?.sentiment_mean ?? 0) - (timeseries.monthly[0]?.sentiment_mean ?? 0)
-    : 0;
-
-  return { 
-    meta, 
-    aggregates,
-    topClusters, 
-    allClusters: clusters.length,
-    personas: personasBrief,
-    trendingNegative: trendingNegative.slice(0, 3),
-    trendingPositive: trendingPositive.slice(0, 3),
-    timeseries: {
-      hasData: !!timeseries?.monthly && timeseries.monthly.length > 0,
-      latestSentiment,
-      sentimentTrend
-    }
-  };
 }
 
 export async function POST(req: NextRequest) {
-  console.log("InsightChat API called");
-  try {
-    const body = await req.json();
-    const { question, projectId } = body;
-    
-    console.log("Request:", { question: question?.substring(0, 50) + "...", projectId });
+  // Headers CORS in risposta
+  const corsHeaders = {
+    'Access-Control-Allow-Origin': '*',
+    'Content-Type': 'application/json',
+  } as const;
 
-    if (!question || !projectId) {
-      console.log("Missing required parameters");
-      return NextResponse.json(
-        { error: "Missing question or projectId" },
-        { status: 400 }
-      );
-    }
-
-    // Find and load project data
-    const projectFile = findProjectFile(projectId);
-    if (!projectFile) {
-      return NextResponse.json(
-        { error: "Project not found" },
-        { status: 404 }
-      );
-    }
-
-    const projectData: ProjectData = JSON.parse(fs.readFileSync(projectFile, "utf8"));
-    const context = buildContext(projectData);
-
-    // Initialize Anthropic client
-    if (!process.env.ANTHROPIC_API_KEY) {
-      console.log("ANTHROPIC_API_KEY not found in environment variables");
-      return NextResponse.json(
-        { 
-          error: "ANTHROPIC_API_KEY not configured",
-          answer: "ANTHROPIC_API_KEY not configured - using fallback mode" 
-        },
-        { status: 200 } // Changed to 200 so frontend can handle gracefully
-      );
-    }
-
-    const anthropic = new Anthropic({
-      apiKey: process.env.ANTHROPIC_API_KEY,
-    });
-
-    // Create comprehensive prompt for LLM
-    const systemPrompt = `Sei un esperto analista di customer insights per ${projectId.toUpperCase()}. 
-Rispondi in italiano in modo professionale e dettagliato. 
-
-CONTESTO DEL PROGETTO:
-- Progetto: ${(context.meta as any).project_name || projectId}
-- Dataset: ${(context.aggregates as any).total_reviews?.toLocaleString() || "N/A"} recensioni
-- Sentiment medio: ${context.aggregates.sentiment_mean?.toFixed(2) || "N/A"}
-- Cluster identificati: ${context.allClusters}
-- Personas identificate: ${context.personas.length}
-
-TOP CLUSTER (ordinati per impatto):
-${context.topClusters.map((c, i) => `${i+1}. ${c.label} - Impact: ${(c.share*100).toFixed(1)}% - Sentiment: ${c.sentiment.toFixed(2)} - Opportunity: ${c.opportunity_score.toFixed(2)}
-   Punti di forza: ${c.strengths.join(", ")}
-   Criticità: ${c.weaknesses.join(", ")}
-   Keywords: ${c.keywords.join(", ")}
-   Quotes esempio: "${c.sampleQuotes.join('", "')}"
-`).join("\n")}
-
-PERSONAS:
-${context.personas.map((p, i) => `${i+1}. ${p.title} (${(p.share*100).toFixed(1)}% utenti)
-   Obiettivi: ${p.goals.join(", ")}
-   Pain Points: ${p.pains.join(", ")}
-   Comportamenti: ${p.behaviors.join(", ")}
-`).join("\n")}
-
-TREND ANALYSIS:
-- Cluster in miglioramento: ${context.trendingPositive.map(c => c.label).join(", ") || "Nessuno identificato"}
-- Cluster in peggioramento: ${context.trendingNegative.map(c => c.label).join(", ") || "Nessuno identificato"}
-- Sentiment trend: ${context.timeseries.sentimentTrend > 0 ? "Positivo" : context.timeseries.sentimentTrend < 0 ? "Negativo" : "Stabile"} (${context.timeseries.sentimentTrend?.toFixed(3) || "N/A"})
-
-Rispondi alla domanda dell'utente usando questi dati. Fornisci insights dettagliati, numeri specifici, e raccomandazioni concrete quando appropriato.`;
-
-    const response = await anthropic.messages.create({
-      model: MODEL,
-      max_tokens: 2000,
-      temperature: 0.7,
-      system: systemPrompt,
-      messages: [
-        {
-          role: "user",
-          content: question
-        }
-      ],
-    });
-
-    const answer = response.content[0].type === "text" ? response.content[0].text : "Errore nel processare la risposta";
-
-    return NextResponse.json({ answer });
-
-  } catch (error) {
-    console.error("InsightChat API error:", error);
-    return NextResponse.json(
-      { error: "Internal server error" },
-      { status: 500 }
+  // 1) Validazione env
+  const apiKey = process.env.ANTHROPIC_API_KEY;
+  if (!apiKey) {
+    // Manteniamo la stringa esatta che fa scattare il tuo fallback lato client
+    return new Response(
+      JSON.stringify({ error: 'ANTHROPIC_API_KEY not configured' }),
+      { status: 200, headers: corsHeaders }
     );
   }
+
+  // 2) Parse del body
+  let body: ChatBody;
+  try {
+    body = (await req.json()) as ChatBody;
+  } catch {
+    return new Response(JSON.stringify({ error: 'Invalid JSON body' }), {
+      status: 400,
+      headers: corsHeaders,
+    });
+  }
+
+  const question = body?.question?.trim();
+  const projectId = body?.projectId?.trim();
+
+  if (!question) {
+    return new Response(JSON.stringify({ error: 'Missing "question"' }), {
+      status: 400,
+      headers: corsHeaders,
+    });
+  }
+
+  // 3) Costruzione messaggi (utente + eventuale contesto/storico)
+  //   NB: Anthropic Messages API richiede una lista di messaggi con role "user"/"assistant".
+  const messages: Array<{ role: 'user' | 'assistant'; content: string }> = [];
+
+  // Se vuoi personalizzare il prompt con projectId:
+  const userPrompt =
+    projectId && projectId.length > 0
+      ? `Project: ${projectId}\nUser question: ${question}`
+      : question;
+
+  // Aggiungi storico se fornito (sanificato)
+  if (Array.isArray(body.history)) {
+    for (const m of body.history) {
+      if (
+        (m.role === 'user' || m.role === 'assistant') &&
+        typeof m.content === 'string' &&
+        m.content.length > 0
+      ) {
+        messages.push({ role: m.role, content: m.content });
+      }
+    }
+  }
+  messages.push({ role: 'user', content: userPrompt });
+
+  // 4) Chiamata all’API Anthropic via fetch (no dipendenze extra)
+  //    Doc: headers x-api-key & anthropic-version, body con model, max_tokens, messages
+  //    https://docs.anthropic.com/en/api/messages
+  try {
+    const resp = await fetch(ANTHROPIC_API_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': apiKey,
+        'anthropic-version': ANTHROPIC_VERSION,
+      },
+      body: JSON.stringify({
+        model: MODEL,
+        max_tokens: 512,
+        messages,
+        // opzionale: system prompt minimo
+        system:
+          'You are an assistant for InsightSuite. Be concise and reference data when possible.',
+      }),
+    });
+
+    if (!resp.ok) {
+      const errText = await safeText(resp);
+      return new Response(
+        JSON.stringify({
+          error: 'LLM request failed',
+          status: resp.status,
+          details: truncate(errText, 2000),
+        }),
+        { status: 502, headers: corsHeaders }
+      );
+    }
+
+    type AnthropicMessageContent =
+      | { type: 'text'; text: string }
+      | { type: string; [k: string]: unknown };
+
+    const data = (await resp.json()) as {
+      content?: AnthropicMessageContent[];
+    };
+
+    // L’API restituisce un array di "content" (spesso un unico item di type=text)
+    const answer =
+      Array.isArray(data.content) &&
+      data.content.find((c) => (c as any).type === 'text') &&
+      (data.content.find((c) => (c as any).type === 'text') as any).text;
+
+    return new Response(
+      JSON.stringify({
+        answer: typeof answer === 'string' ? answer : '',
+        model: MODEL,
+      }),
+      { status: 200, headers: corsHeaders }
+    );
+  } catch (err) {
+    return new Response(
+      JSON.stringify({
+        error: 'LLM request error',
+        details:
+          err instanceof Error ? truncate(err.message, 2000) : 'unknown',
+      }),
+      { status: 500, headers: corsHeaders }
+    );
+  }
+}
+
+// Helpers
+async function safeText(r: Response) {
+  try {
+    return await r.text();
+  } catch {
+    return '';
+  }
+}
+function truncate(s: string, max = 2000) {
+  return s.length > max ? s.slice(0, max) + '…' : s;
 }

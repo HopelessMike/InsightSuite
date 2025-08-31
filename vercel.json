@@ -7,8 +7,10 @@
       "includeFiles": "ai_service/**"
     }
   },
+  "rewrites": [
+    { "source": "/InsightSuite/api/:path*", "destination": "/api/:path*" }
+  ],
   "routes": [
-    { "src": "/api/(.*)", "dest": "/api/index.py" },
-    { "src": "/InsightSuite/api/(.*)", "dest": "/api/index.py" }
+    { "src": "/api/(health|reviews(?:/.*)?|jobs(?:/.*)?)", "dest": "/api/index.py" }
   ]
 }
