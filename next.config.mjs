@@ -1,13 +1,12 @@
+// next.config.mjs  (InsightSuite)
+import { withMicrofrontends } from '@vercel/microfrontends/next/config';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-
-  // nessun basePath, nessun assetPrefix
-  // niente variabile NEXT_PUBLIC_BASE_PATH qui
-
   eslint: { ignoreDuringBuilds: true },
   typescript: { ignoreBuildErrors: true },
-  images: { unoptimized: true }
+  images: { unoptimized: true },
 };
 
-export default nextConfig;
+export default withMicrofrontends(nextConfig);
